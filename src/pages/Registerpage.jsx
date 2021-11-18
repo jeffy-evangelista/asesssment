@@ -21,6 +21,8 @@ export default function Registerpage() {
   const history = useHistory()
   const { signInWithGoogle, register } = useAuth()
   const [email, setEmail] = useState('')
+  const [name, setName] = useState('')
+  const [location, setLocation] = useState('')
   const [password, setPassword] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
   const toast = useToast()
@@ -79,6 +81,28 @@ export default function Registerpage() {
                 required
                 value={email}
                 onChange={e => setEmail(e.target.value)}
+              />
+            </FormControl>
+            <FormControl id='name'>
+              <FormLabel>Name</FormLabel>
+              <Input
+                name='name'
+                type='name'
+                autoComplete='name'
+                required
+                value={name}
+                onChange={e => setPassword(e.target.value)}
+              />
+            </FormControl>
+            <FormControl id='location'>
+              <FormLabel>Location</FormLabel>
+              <Input
+                name='location'
+                type='location'
+                autoComplete='location'
+                required
+                value={location}
+                onChange={e => setPassword(e.target.value)}
               />
             </FormControl>
             <FormControl id='password'>
