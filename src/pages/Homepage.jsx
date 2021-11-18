@@ -78,6 +78,9 @@ export default function Homepage() {
         <ListItem>
           <Link to='/test'>test page</Link>
         </ListItem>
+        <ListItem>
+          <Link to='/reports'>reports</Link>
+        </ListItem>
       </List>
     </Layout>
   )
