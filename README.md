@@ -1,6 +1,5 @@
 # React Authentication using Firebase (new API v9)
 
-Reactjs authentication using firebase auth (using the new v9 API). The benefit of using this new API is that the final bundle size is much smaller compared to the previous - which in turn makes your React site efficient and load much faster.
 
 ## Why this?
 
