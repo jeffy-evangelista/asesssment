@@ -5,6 +5,7 @@ import {
   Spacer,
   useColorMode,
   useColorModeValue,
+  Select,
 } from '@chakra-ui/react'
 import React from 'react'
 import { FaMoon, FaSun } from 'react-icons/fa'
@@ -29,11 +30,15 @@ export function Navbar() {
         mx='auto'
         spacing={4}
       >
+      
         <Navlink to='/' name='Firebase Authentication' size='lg' />
         <Spacer />
+        {currentUser && <Navlink to='/social-worker' name='Social Worker' />}
+        {currentUser && <Navlink to='/target-client-list' name='Target Client List' />}
+        {currentUser && <Navlink to='/reports' name='Reports' />}
+        {currentUser && <Navlink to='/profile' name='Profile' />}
         {!currentUser && <Navlink to='/login' name='Login' />}
         {!currentUser && <Navlink to='/register' name='Register' />}
-        {currentUser && <Navlink to='/profile' name='Profile' />}
         {currentUser && (
           <Navlink
             to='/logout'

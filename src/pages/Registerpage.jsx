@@ -91,7 +91,7 @@ export default function Registerpage() {
                 autoComplete='name'
                 required
                 value={name}
-                onChange={e => setPassword(e.target.value)}
+                onChange={e => setName(e.target.value)}
               />
             </FormControl>
             <FormControl id='location'>
@@ -102,7 +102,7 @@ export default function Registerpage() {
                 autoComplete='location'
                 required
                 value={location}
-                onChange={e => setPassword(e.target.value)}
+                onChange={e => setLocation(e.target.value)}
               />
             </FormControl>
             <FormControl id='password'>
@@ -118,7 +118,7 @@ export default function Registerpage() {
             </FormControl>
             <Button
               type='submit'
-              colorScheme='pink'
+              colorScheme=''
               size='lg'
               fontSize='md'
               isLoading={isSubmitting}

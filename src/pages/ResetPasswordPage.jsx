@@ -68,7 +68,7 @@ export default function ResetPasswordPage() {
                 onChange={e => setPassword(e.target.value)}
               />
             </FormControl>
-            <Button type='submit' colorScheme='pink' size='lg' fontSize='md'>
+            <Button type='submit' colorScheme='' size='lg' fontSize='md'>
               Reset password
             </Button>
           </Stack>
