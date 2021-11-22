@@ -11,12 +11,19 @@ import ForgotPasswordPage from '../pages/ForgotPasswordPage'
 import Homepage from '../pages/Homepage'
 import Loginpage from '../pages/Loginpage'
 import NotfoundPage from '../pages/NotfoundPage'
-import Profilepage from '../pages/Profilepage'
-import EditProfile from '../pages/EditProfile'
+import Profilepage from '../pages/Profile/Profile'
+  import EditProfile from '../pages/Profile/Update'
 import Registerpage from '../pages/Registerpage'
 import ResetPasswordPage from '../pages/ResetPasswordPage'
 import TestPage from '../pages/TestPage'
+import TargetClientList from '../pages/TargetClientList/TargetClientList'
+  import CreateClient from '../pages/TargetClientList/Create'
+  import UpdateClient from '../pages/TargetClientList/Update'
+import SocialWorker from '../pages/SocialWorker/SocialWorker'
+  import CreateSocialWorker from '../pages/SocialWorker/Create'
+  import UpdateSocialWorker from '../pages/SocialWorker/Update'
 import Reports from '../pages/Reports'
+
 
 
 export default function AppRouter(props) {
@@ -30,6 +37,12 @@ export default function AppRouter(props) {
           <ProtectedRoute exact path='/profile' component={Profilepage} />
           <ProtectedRoute exact path='/profile/edit' component={EditProfile} />
           <ProtectedRoute exact path='/test' component={TestPage} />
+          <ProtectedRoute exact path='/social-worker' component={SocialWorker}/>
+          <ProtectedRoute exact path='/social-worker/create' component={CreateSocialWorker}/>
+          <ProtectedRoute exact path='/social-worker/update' component={UpdateSocialWorker}/>
+          <ProtectedRoute exact path='/target-client-list' component={TargetClientList}/>
+          <ProtectedRoute exact path='/target-client-list/create' component={CreateClient}/>
+          <ProtectedRoute exact path='/target-client-list/update' component={UpdateClient}/>
           <ProtectedRoute exact path='/reports' component={Reports}/>
 
           <ProtectedRoute

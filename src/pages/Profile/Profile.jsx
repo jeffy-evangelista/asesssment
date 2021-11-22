@@ -1,30 +1,30 @@
-import {  chakra, 
+import {  
           Container, 
           Heading,
           Avatar,
           Box,
           Center,
           Image,
-          Flex,
           Text,
+          Flex,
           Stack,
           Button,
           useColorModeValue
         } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import React from 'react'
-import { Layout } from '../components/Layout'
-import { useAuth } from '../contexts/AuthContext'
+import { Layout } from '../../components/Layout'
+import { useAuth } from '../../contexts/AuthContext'
 
-export default function Profilepage() {
+export default function Profile() {
   const { currentUser } = useAuth()
   return (
     <Layout>
       <Heading>User Profile</Heading>
       <Container maxW='container.lg' overflowX='auto' py={4}>
-        /* <chakra.pre p={4}>
+        {/* <chakra.pre p={4}>
           {currentUser && <pre> {JSON.stringify(currentUser, null, 2)}</pre>}
-        </chakra.pre> */
+        </chakra.pre>*/}
 
         <Center py={12}>
       <Box

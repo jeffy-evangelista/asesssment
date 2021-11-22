@@ -90,7 +90,7 @@ export default function Registerpage() {
                 type='name'
                 autoComplete='name'
                 required
-                value={displayName}
+                
                 onChange={e => setName(e.target.value)}
               />
             </FormControl>
@@ -118,7 +118,7 @@ export default function Registerpage() {
             </FormControl>
             <Button
               type='submit'
-              colorScheme='pink'
+              colorScheme=''
               size='lg'
               fontSize='md'
               isLoading={isSubmitting}

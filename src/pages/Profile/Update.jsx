@@ -3,12 +3,9 @@ import {
     Heading,
     Box,
     Center,
-    Flex,
-    Text,
     Stack,
     Button,
     useColorModeValue,
-    Link,
     FormControl,
     FormLabel,
     Input,
@@ -16,11 +13,10 @@ import {
 
 } from '@chakra-ui/react'
 import React from 'react'
-import { Layout } from '../components/Layout'
-import { useAuth } from '../contexts/AuthContext'
+import { Layout } from '../../components/Layout'
+import { useAuth } from '../../contexts/AuthContext'
 
-export default function Profilepage() {
-const { currentUser } = useAuth()
+export default function Update() {
 return (
 <Layout>
 <Heading>Edit User</Heading>

@@ -10,14 +10,6 @@ import {
     Td,
     Tfoot
   } from '@chakra-ui/react';
-  import {
-    MdPhone,
-    MdEmail,
-    MdLocationOn,
-    MdFacebook,
-    MdOutlineEmail,
-  } from 'react-icons/md';
-  import { BsGithub, BsDiscord, BsPerson } from 'react-icons/bs';
 import React from 'react'
 import { Layout } from '../components/Layout'
 
