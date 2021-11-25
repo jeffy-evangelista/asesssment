@@ -14,10 +14,10 @@ import {
 import { Link } from 'react-router-dom'
 import React from 'react'
 import { Layout } from '../../components/Layout'
-import { useAuth } from '../../contexts/AuthContext'
+// import { useAuth } from '../../contexts/AuthContext'
 
 export default function Profile() {
-  const { currentUser } = useAuth()
+  // const { currentUser } = useAuth()
   return (
     <Layout>
       <Heading>User Profile</Heading>
