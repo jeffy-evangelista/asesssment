@@ -24,7 +24,8 @@ export default function Profile() {
       <Container maxW='container.lg' overflowX='auto' py={4}>
         {/* <chakra.pre p={4}>
           {currentUser && <pre> {JSON.stringify(currentUser, null, 2)}</pre>}
-        </chakra.pre> */}
+        </chakra.pre>*/}
+
         <Center py={12}>
       <Box
         w={'full'}
@@ -57,7 +58,7 @@ export default function Profile() {
         <Box p={6}>
           <Stack spacing={0} align={'center'} mb={5}>
             <Heading fontSize={'2xl'} fontWeight={500} fontFamily={'body'}>
-              Name
+              {currentUser.displayName}
             </Heading>
           </Stack>
 
@@ -65,7 +66,7 @@ export default function Profile() {
             <Stack spacing={0} align={'center'}>
               <Text fontWeight={600}>Email</Text>
               <Text fontSize={'sm'} color={'gray.500'}>
-                Email address here...
+              {currentUser.email}
               </Text>
             </Stack>
             <Stack spacing={0} align={'center'}>
@@ -77,12 +78,12 @@ export default function Profile() {
             <Stack spacing={0} align={'center'}>
               <Text fontWeight={600}>Date Created</Text>
               <Text fontSize={'sm'} color={'gray.500'}>
-              Date here
+              {currentUser.createdAt}
               </Text>
             </Stack>
           </Stack>
 
-          
+            
           <Link to='/profile/edit'>
             <Button
               w={'full'}

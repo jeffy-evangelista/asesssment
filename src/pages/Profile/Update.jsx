@@ -39,11 +39,11 @@ return (
             </FormControl>
             <FormControl id="password">
               <FormLabel>Name</FormLabel>
-              <Input type="password" />
+              <Input type="text" />
             </FormControl>
             <FormControl id="password">
               <FormLabel>Location</FormLabel>
-              <Input type="password" />
+              <Input type="text" />
             </FormControl>
             <FormControl>
             <Checkbox>Admin</Checkbox>

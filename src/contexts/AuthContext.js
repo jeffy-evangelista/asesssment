@@ -44,7 +44,11 @@ export default function AuthContextProvider({ children }) {
   }
 
   function register(email, password) {
-    return createUserWithEmailAndPassword(auth, email, password)
+    return createUserWithEmailAndPassword(auth, email,  password)
+  }
+  
+  function updateProfile(displayName){
+    return updateProfile(auth, displayName)
   }
 
   function forgotPassword(email) {
@@ -74,6 +78,7 @@ export default function AuthContextProvider({ children }) {
     logout,
     forgotPassword,
     resetPassword,
+    updateProfile
   }
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 }

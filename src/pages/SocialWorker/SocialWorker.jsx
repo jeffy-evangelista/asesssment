@@ -19,10 +19,31 @@ import {
   AddIcon } from '@chakra-ui/icons'
 import { Layout } from '../../components/Layout'
 import { Link } from 'react-router-dom'
-import React from 'react'
-
+import React, { useState, useEffect } from 'react'
+import {
+  collection,
+  getDocs,
+} from "firebase/firestore";
+import { db } from '../../utils/init-firebase'
 export default function SocialWorker() {
+
+  const [socialWork, setSocialWork] = useState([]);
+  const usersCollectionRef = collection(db, "socialWork");
+
+  useEffect(() => {
+    const getSocialWork = async () => {
+      const data = await getDocs(usersCollectionRef);
+      setSocialWork(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    };
+
+    getSocialWork();
+  }, []);
+
+  
+
   return (
+    
+
   <Layout>      
     <Flex>
         <Heading>Social Worker</Heading>
@@ -43,6 +64,7 @@ export default function SocialWorker() {
           </Tr>
           </Thead>
             <Tbody>
+
                 <Tr>
                     <Td>Gene Gulanes</Td>
                     <Td>
@@ -112,6 +134,19 @@ export default function SocialWorker() {
           </Tbody>
         </Table>
     </Center>
+    {socialWork.map((works) => {
+        return (
+          <div>
+            {" "}
+            <h1>Firstname: {works.first}</h1>
+            <h1>Middlename: {works.middle}</h1>
+            <h1>Lastname: {works.last}</h1>
+            <h1>Address: {works.address}</h1>
+          </div>
+        );
+      })}
 </Layout>
+
   )
+  
 }

@@ -21,7 +21,7 @@ export default function Registerpage() {
   const history = useHistory()
   const { signInWithGoogle, register } = useAuth()
   const [email, setEmail] = useState('')
-  const [name, setName] = useState('')
+  const [displayName, setName] = useState('')
   const [location, setLocation] = useState('')
   const [password, setPassword] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -55,7 +55,7 @@ export default function Registerpage() {
             }
             // your register logic here
             setIsSubmitting(true)
-            register(email, password)
+            register(email, password ,displayName)
               .then(res => {})
               .catch(error => {
                 console.log(error.message)
@@ -90,7 +90,7 @@ export default function Registerpage() {
                 type='name'
                 autoComplete='name'
                 required
-                value={name}
+                
                 onChange={e => setName(e.target.value)}
               />
             </FormControl>
