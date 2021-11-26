@@ -1,53 +1,19 @@
 import {
     Box,
-    FormControl,
-    FormLabel,
-    Input,
     VStack,
     SimpleGrid,
     GridItem,
-    Button,
-    RadioGroup,
-    HStack,
-    CheckboxGroup,
-    Checkbox,
-    Radio,
     Text,
-    FormHelperText,
     Divider,
-    NumberInput,
-    NumberInputField,
-    NumberInputStepper,
-    NumberIncrementStepper,
-    NumberDecrementStepper,
-    Select,
-    Flex,
-    Spacer,
-    InputLeftAddon,
-    InputGroup
+    Button
 
 } from '@chakra-ui/react'
-import React, { useState } from 'react'
-import Serial from './Serial'
-import Review from './Review'
+import Serial from './FamilySerial'
+import Review from './ReviewOfSystems'
+import PhysicalExamination from './PhysicalExamination'
 
 
 export default function Figure2() {
-    const [outCome, setOutCome] = useState("");
-    const [attendant, setAttendant] = useState("");
-    const [sex, setSex] = useState("");
-    const [tod, setTod] = useState("");
-    const [pod, setPod] = useState("");
-    const [step1, setStep1] = useState("");
-    const [step2, setStep2] = useState("");
-    const [step3, setStep3] = useState("");
-    const [tap, setTap] = useState("");
-    const [sutured, setSutured] = useState("");
-    const [enc1, setEnc1] = useState("");
-    const [enc2, setEnc2] = useState("");
-    const [enc3, setEnc3] = useState("");
-    const [enc4, setEnc4] = useState("");
-    const [enc5, setEnc5] = useState("");
 
     return (
         <Box boxShadow={'lg'} p={8}>
@@ -61,8 +27,17 @@ export default function Figure2() {
                         <Divider />
                         <Text fontSize="4xl" textAlign="center" color="teal">Medical History</Text>
                     </GridItem>
-                    <Review/>
-
+                    <Review />
+                    <GridItem colSpan={12}>
+                        <Divider />
+                        <Text fontSize="4xl" textAlign="center" color="teal">Physical Examination</Text>
+                    </GridItem>
+                    <PhysicalExamination />
+                    <GridItem colSpan={12} >
+                        <Button colorScheme='green' w='full'>
+                            Submit
+                        </Button>
+                    </GridItem>
                 </SimpleGrid>
             </VStack>
         </Box>

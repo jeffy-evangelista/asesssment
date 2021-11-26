@@ -1,10 +1,7 @@
 import {
-    Box,
     FormControl,
     FormLabel,
     Input,
-    VStack,
-    SimpleGrid,
     GridItem,
     Text,
     NumberInput,
@@ -15,11 +12,9 @@ import {
     Select,
     InputLeftAddon,
     InputGroup
-
 } from '@chakra-ui/react'
-import React, { useState } from 'react'
 
-export default function Serial() {
+export default function FamilySerial() {
 
     return (
         <>

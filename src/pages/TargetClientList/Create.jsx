@@ -1,5 +1,4 @@
 import { 
-<<<<<<< HEAD
   Heading, 
   Box,
   Accordion,
@@ -8,31 +7,11 @@ import {
   AccordionIcon,
   AccordionPanel 
 } from '@chakra-ui/react'
-import React from 'react'
+import React, {useState} from 'react'
 import { Layout } from '../../components/Layout'
 import Figure1 from './Forms/Figure1'
 import Figure5 from './Forms/Figure5'
 import Figure2 from './Forms/Figure2/Figure2'
-
-export default function Create() {
-
-=======
-  Heading, Box, Tab, Tabs, TabList, TabPanels, TabPanel, FormControl,
-  FormLabel,
-  Input,
-  VStack,
-  SimpleGrid,
-  GridItem,
-  Button,
-  NumberInput,
-  NumberInputField,
-  NumberInputStepper,
-  NumberIncrementStepper,
-  NumberDecrementStepper, 
-  Checkbox
- } from '@chakra-ui/react'
-import React, {useState} from 'react'
-import { Layout } from '../../components/Layout'
 import {
   collection,
   getDocs,
@@ -85,7 +64,6 @@ export default function Create() {
 
 
 
->>>>>>> 8f2e4c25aefebde206f7c775b3a3ad5706cad8a5
   return (
     <Layout>
       <Heading mb={5}>Add New Client</Heading>

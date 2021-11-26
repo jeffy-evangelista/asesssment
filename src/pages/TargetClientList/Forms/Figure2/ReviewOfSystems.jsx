@@ -1,28 +1,17 @@
 import {
-    Box,
     FormControl,
     FormLabel,
     Input,
-    VStack,
     SimpleGrid,
     GridItem,
     Text,
-    NumberInput,
-    NumberInputField,
-    NumberInputStepper,
-    NumberIncrementStepper,
-    NumberDecrementStepper,
-    Select,
-    InputLeftAddon,
-    InputGroup,
     Stack,
     Checkbox,
-    Flex
-
+    Flex,
+    Spacer
 } from '@chakra-ui/react'
-import React, { useState } from 'react'
 
-export default function Review() {
+export default function ReviewOfSystems() {
 
     return (
         <>
@@ -148,9 +137,7 @@ export default function Review() {
             </GridItem>
             {/* Obsterical History */}
             <GridItem colSpan={12}>
-                <Text fontSize="2xl">
-                    Obsterical History
-                </Text>
+                <Text fontSize="2xl">Obsterical History</Text>
             </GridItem>
             <GridItem colSpan={6}>
                 <FormControl>
@@ -210,13 +197,22 @@ export default function Review() {
                         </Flex>
                         <Flex>
                             <Checkbox>Duration of Menstrual bleeding</Checkbox>
+                            <Spacer />
                             <Input type="text" />
                         </Flex>
                         <Flex>
                             <Checkbox>Character of Menstrual bleeding</Checkbox>
                             <Input type="number" placeholder="no. of pads" />
-                        </Flex> 
+                        </Flex>
                     </Stack>
+                </FormControl>
+            </GridItem>
+            {/* Family Planning History */}
+            <GridItem colSpan={12}>
+                <Text fontSize="2xl">Family Planning History</Text>
+                <FormControl>
+                    <FormLabel>Previously Used Method:</FormLabel>
+                    <Input type="text" />
                 </FormControl>
             </GridItem>
         </>
