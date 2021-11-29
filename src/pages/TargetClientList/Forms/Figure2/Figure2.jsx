@@ -8,9 +8,11 @@ import {
     Button
 
 } from '@chakra-ui/react'
-import Serial from './FamilySerial'
-import Review from './ReviewOfSystems'
-import PhysicalExamination from './PhysicalExamination'
+import Serial from './FormComponents/FamilySerial'
+import Review from './FormComponents/ReviewOfSystems'
+import PhysicalExamination from './FormComponents/PhysicalExamination'
+import SideB from './FormComponents/SideB'
+import AEF from './FormComponents/AEF'
 
 
 export default function Figure2() {
@@ -33,11 +35,22 @@ export default function Figure2() {
                         <Text fontSize="4xl" textAlign="center" color="teal">Physical Examination</Text>
                     </GridItem>
                     <PhysicalExamination />
+                    <GridItem colSpan={12}>
+                        <Divider />
+                        <Text fontSize="4xl" textAlign="center" color="teal">Side B</Text>
+                    </GridItem>
+                    <SideB/>
+                    <GridItem colSpan={12}>
+                        <Divider />
+                        <Text fontSize="4xl" textAlign="center" color="teal">Physical Examination Findings</Text>
+                    </GridItem>
+                    <AEF/>
                     <GridItem colSpan={12} >
                         <Button colorScheme='green' w='full'>
                             Submit
                         </Button>
                     </GridItem>
+
                 </SimpleGrid>
             </VStack>
         </Box>
