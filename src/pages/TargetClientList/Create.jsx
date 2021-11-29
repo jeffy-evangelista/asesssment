@@ -1,17 +1,20 @@
-import { 
-  Heading, 
+import {
+  Heading,
   Box,
   Accordion,
   AccordionItem,
   AccordionButton,
   AccordionIcon,
-  AccordionPanel 
+  AccordionPanel
 } from '@chakra-ui/react'
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { Layout } from '../../components/Layout'
 import Figure1 from './Forms/Figure1'
 import Figure5 from './Forms/Figure5'
 import Figure2 from './Forms/Figure2/Figure2'
+import Figure4 from './Forms/Figure4/Figure4'
+import Figure6 from './Forms/Figure6/Figure6'
+
 import {
   collection,
   getDocs,
@@ -42,7 +45,7 @@ export default function Create() {
   const usersCollectionRef = collection(db, "client");
 
   const createClient = async () => {
-    await addDoc(usersCollectionRef, { 
+    await addDoc(usersCollectionRef, {
       birthcenter: newBcenter,
       region: newRegion,
       address: newAddress,
@@ -71,7 +74,7 @@ export default function Create() {
         {/* Figure 1 */}
         <AccordionItem>
           <h2>
-            <AccordionButton  _expanded={{ bg: "teal", color: "white" }}>
+            <AccordionButton _expanded={{ bg: "teal", color: "white" }}>
               <Box flex="1" textAlign="left">
                 Figure 1
               </Box>
@@ -79,13 +82,13 @@ export default function Create() {
             </AccordionButton>
           </h2>
           <AccordionPanel pb={4}>
-            <Figure1/>
+            <Figure1 />
           </AccordionPanel>
         </AccordionItem>
         {/* Figure 2 */}
         <AccordionItem>
           <h2>
-            <AccordionButton  _expanded={{ bg: "teal", color: "white" }}>
+            <AccordionButton _expanded={{ bg: "teal", color: "white" }}>
               <Box flex="1" textAlign="left">
                 Figure 2
               </Box>
@@ -93,13 +96,27 @@ export default function Create() {
             </AccordionButton>
           </h2>
           <AccordionPanel pb={4}>
-            <Figure2/>
+            <Figure2 />
+          </AccordionPanel>
+        </AccordionItem>
+        {/* Figure 4 */}
+        <AccordionItem>
+          <h2>
+            <AccordionButton _expanded={{ bg: "teal", color: "white" }}>
+              <Box flex="1" textAlign="left">
+                Figure 4
+              </Box>
+              <AccordionIcon />
+            </AccordionButton>
+          </h2>
+          <AccordionPanel pb={4}>
+            <Figure4 />
           </AccordionPanel>
         </AccordionItem>
         {/* Figure 5 */}
         <AccordionItem>
           <h2>
-            <AccordionButton  _expanded={{ bg: "teal", color: "white" }}>
+            <AccordionButton _expanded={{ bg: "teal", color: "white" }}>
               <Box flex="1" textAlign="left">
                 Figure 5
               </Box>
@@ -107,7 +124,21 @@ export default function Create() {
             </AccordionButton>
           </h2>
           <AccordionPanel pb={4}>
-            <Figure5/>
+            <Figure5 />
+          </AccordionPanel>
+        </AccordionItem>
+        {/* Figure 6 */}
+        <AccordionItem>
+          <h2>
+            <AccordionButton _expanded={{ bg: "teal", color: "white" }}>
+              <Box flex="1" textAlign="left">
+                Figure 6
+              </Box>
+              <AccordionIcon />
+            </AccordionButton>
+          </h2>
+          <AccordionPanel pb={4}>
+            <Figure6 />
           </AccordionPanel>
         </AccordionItem>
       </Accordion>
