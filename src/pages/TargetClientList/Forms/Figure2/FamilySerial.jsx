@@ -42,7 +42,7 @@ export default function FamilySerial() {
     const [newEducto, setNewEducto] = useState("");
     
 
-    const usersCollectionRef = collection(db, "family");
+    const usersCollectionRef = collection(db, "client");
     
     const createFamily = async () => {
         await addDoc(usersCollectionRef, { 
