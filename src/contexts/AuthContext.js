@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
-import { auth } from '../utils/init-firebase'
+import { auth,db } from '../utils/init-firebase'
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -10,6 +10,8 @@ import {
   signOut,
   confirmPasswordReset,
 } from 'firebase/auth'
+import {addDoc, collection} from "firebase/firestore";
+
 
 const AuthContext = createContext({
   currentUser: null,
@@ -43,10 +45,25 @@ export default function AuthContextProvider({ children }) {
     return signInWithEmailAndPassword(auth, email, password)
   }
 
-  function register(email, password) {
-    return createUserWithEmailAndPassword(auth, email,  password)
+  function register(email, password,displayName,barangay,districtAdministrative,districtLegislative) {
+    return createUserWithEmailAndPassword(auth, email, password,displayName,barangay,districtAdministrative,districtLegislative)
+        .then(async cred => {
+          const usersCollectionRef = collection(db, "users");
+
+          await addDoc(usersCollectionRef, {
+            displayName: displayName,
+            barangay: barangay,
+            districtAdministrative: districtAdministrative,
+            districtLegislative: districtLegislative,
+            email: email,
+            uid: cred.user.uid,
+            isAdmin: false,
+          });
+
+
+        })
+
   }
-  
   function updateProfile(displayName){
     return updateProfile(auth, displayName)
   }
