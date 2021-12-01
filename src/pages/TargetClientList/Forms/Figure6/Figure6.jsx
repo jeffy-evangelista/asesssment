@@ -5,6 +5,12 @@ import { Input, InputGroup, InputRightAddon, } from '@chakra-ui/input'
 import { Box, SimpleGrid, GridItem, VStack, HStack, Text, Divider, Stack } from '@chakra-ui/layout'
 import { Radio, RadioGroup } from '@chakra-ui/radio'
 import React, { useState } from 'react'
+import {
+    collection,
+    getDocs,
+    addDoc,
+  } from "firebase/firestore"
+  import { db } from '../../../../utils/init-firebase'
 
 export default function Figure6() {
     const [fim, setFim] = useState("");
@@ -18,6 +24,79 @@ export default function Figure6() {
     const [type, setType] = useState("");
     const [ownership, setOwnership] = useState("");
     const [birthAttendant, setBirthAttendant] = useState("");
+    const [serialNum, setSerialNum] = useState("");
+    const [first, setFirst] =useState("");
+    const [middle, setMiddle] = useState("");
+    const [last, setLast] = useState("");
+    const [address, setAddress] = useState("");
+    const [econStatus, setStatus] = useState("");
+    const [age1, setAge1] = useState("");
+    const [age2, setAge2] = useState("");
+    const [age3, setAge3] = useState("");
+    const [lmp1, setLmp1] = useState("");
+    const [lmp2, setLmp2] = useState("");
+    const [vist1, setVist1] = useState("");
+    const [vist2, setVist2] = useState("");
+    const [vist3, setVist3] = useState("");
+    const [vist4, setVist4] = useState("");
+    const [carbVist1, setCarbVist1] = useState("");
+    const [carbVist2, setCarbVist2] = useState("");
+    const [carbVist3, setCarbVist3] = useState("");
+    const [nutriAsses1, setNutriAsses1] = useState("");
+    const [nutriAsses2, setNutriAsses2] = useState("");
+    const [nutriAsses3, setNutriAsses3] = useState("");
+    const [birthweight1, setBrithWeight1] = useState("");
+    const [birthweight2, setBrithWeight2] = useState("");
+    const [facility, setFacility] = useState("");
+    const [remark, setRemark] = useState("");
+    const [tablet1, setTablet1] = useState("");
+    const [tablet2, setTablet2] = useState("");
+    const [tablet3, setTablet3] = useState("");
+    const [remark1, setRemark1] = useState("");
+    
+    const usersCollectionRef = collection(db, "test");
+
+    const createUser = async () => {
+        await addDoc(usersCollectionRef, 
+            { 
+
+            serial: serialNum, 
+            firstname: first, 
+            middlename: middle,
+            lastname: last,
+            address: address,
+            econstatus: econStatus,
+            age1: age1,
+            age2: age2,
+            age3: age3,
+            lmp1: lmp1,
+            lmp2: lmp2,
+            vist1: vist1,
+            vist2: vist2,
+            vist3: vist3,
+            vist4: vist4,
+            carbVist1: carbVist1,
+            carbVist2: carbVist2,
+            carbVist3: carbVist3,
+            nutriAsses1: nutriAsses1,
+            nutriAsses2: nutriAsses2,
+            nutriAsses3: nutriAsses3,
+            birthweight1: birthweight1,
+            birthweight2: birthweight2,
+            facility: facility,
+            remark: remark,
+            tablet1: tablet1,
+            tablet2: tablet2,
+            tablet3: tablet3,
+            remark1: remark1,
+
+        });
+      };
+
+
+
+
+
     return (
         <Box boxShadow={'lg'} p={8}>
             <VStack spacing={3} alignItems="flex-start">
@@ -36,37 +115,55 @@ export default function Figure6() {
                                     <FormLabel>
                                         Family Serial No.
                                     </FormLabel>
-                                    <Input type="text" />
+                                    <Input type="text" 
+                                    onChange={(event) => {
+                                    setSerialNum(event.target.value);
+                                    }}/>
                                 </GridItem>
                                 <GridItem colSpan={4}>
                                     <FormLabel>
                                         First Name
                                     </FormLabel>
-                                    <Input type="text" />
+                                    <Input type="text" 
+                                    onChange={(event) => {
+                                    setFirst(event.target.value);
+                                    }}/>
                                 </GridItem>
                                 <GridItem colSpan={4}>
                                     <FormLabel>
                                         Middle Name
                                     </FormLabel>
-                                    <Input type="text" />
+                                    <Input type="text" 
+                                    onChange={(event) => {
+                                    setMiddle(event.target.value);
+                                    }}/>
                                 </GridItem>
                                 <GridItem colSpan={4}>
                                     <FormLabel>
                                         Last Name
                                     </FormLabel>
-                                    <Input type="text" />
+                                    <Input type="text" 
+                                    onChange={(event) => {
+                                    setLast(event.target.value);
+                                    }}/>
                                 </GridItem>
                                 <GridItem colSpan={6}>
                                     <FormLabel>
                                         Address
                                     </FormLabel>
-                                    <Input type="text" />
+                                    <Input type="text" 
+                                    onChange={(event) => {
+                                    setAddress(event.target.value);
+                                    }}/>
                                 </GridItem>
                                 <GridItem colSpan={6}>
                                     <FormLabel>
                                         Socio-Economic Status
                                     </FormLabel>
-                                    <Input type="text" />
+                                    <Input type="text" 
+                                    onChange={(event) => {
+                                    setStatus(event.target.value);
+                                    }}/>
                                 </GridItem>
                             </SimpleGrid>
                         </GridItem>
@@ -75,9 +172,18 @@ export default function Figure6() {
                                 Age
                             </FormLabel>
                             <HStack>
-                                <Input type="text" placeholder="10-14 y/o" />
-                                <Input type="text" placeholder="15-19 y/o" />
-                                <Input type="text" placeholder="20-49 y/o" />
+                                <Input type="text" placeholder="10-14 y/o" 
+                                    onChange={(event) => {
+                                    setAge1(event.target.value);
+                                    }}/>
+                                <Input type="text" placeholder="15-19 y/o" 
+                                    onChange={(event) => {
+                                    setAge2(event.target.value);
+                                    }}/>
+                                <Input type="text" placeholder="20-49 y/o" 
+                                    onChange={(event) => {
+                                    setAge3(event.target.value);
+                                    }}/>
                             </HStack>
                             <FormHelperText>
                                 Input on the proper category
@@ -88,8 +194,14 @@ export default function Figure6() {
                                 LMP
                             </FormLabel>
                             <VStack>
-                                <Input type="text" placeholder="LMP" />
-                                <Input type="text" placeholder="G-P" />
+                                <Input type="text" placeholder="LMP" 
+                                    onChange={(event) => {
+                                    setLmp1(event.target.value);
+                                    }}/>
+                                <Input type="text" placeholder="G-P" 
+                                    onChange={(event) => {
+                                    setLmp2(event.target.value);
+                                    }}/>
                             </VStack>
                         </GridItem>
                         <GridItem colSpan={6}>
@@ -197,28 +309,40 @@ export default function Figure6() {
                                         <FormLabel>
                                             1st visit (1st tri)
                                         </FormLabel>
-                                        <Input type="number" placeholder="#" />
+                                        <Input type="text" placeholder="#" 
+                                    onChange={(event) => {
+                                    setVist1(event.target.value);
+                                    }}/>
                                         <Input type="date" />
                                     </GridItem>
                                     <GridItem colSpan={2}>
                                         <FormLabel>
                                             2nd visit (2nd tri)
                                         </FormLabel>
-                                        <Input type="number" placeholder="#" />
+                                        <Input type="text" placeholder="#" 
+                                    onChange={(event) => {
+                                    setVist2(event.target.value);
+                                    }}/>
                                         <Input type="date" />
                                     </GridItem>
                                     <GridItem colSpan={2}>
                                         <FormLabel>
                                             3rd visit (3rd tri)
                                         </FormLabel>
-                                        <Input type="number" placeholder="#" />
+                                        <Input type="text" placeholder="#" 
+                                    onChange={(event) => {
+                                    setVist3(event.target.value);
+                                    }}/>
                                         <Input type="date" />
                                     </GridItem>
                                     <GridItem colSpan={2}>
                                         <FormLabel>
                                             4th visit (3rd tri)
                                         </FormLabel>
-                                        <Input type="number" placeholder="#" />
+                                        <Input type="text" placeholder="#" 
+                                    onChange={(event) => {
+                                    setVist4(event.target.value);
+                                    }}/>
                                         <Input type="date" />
                                     </GridItem>
                                 </SimpleGrid>
@@ -232,21 +356,30 @@ export default function Figure6() {
                                         <FormLabel>
                                             2nd visit (2nd tri)
                                         </FormLabel>
-                                        <Input type="number" placeholder="#" />
+                                        <Input type="text" placeholder="#" 
+                                    onChange={(event) => {
+                                    setCarbVist1(event.target.value);
+                                    }}/>
                                         <Input type="date" />
                                     </GridItem>
                                     <GridItem colSpan={2}>
                                         <FormLabel>
                                             3rd visit (3rd tri)
                                         </FormLabel>
-                                        <Input type="number" placeholder="#" />
+                                        <Input type="text" placeholder="#" 
+                                    onChange={(event) => {
+                                    setCarbVist2(event.target.value);
+                                    }}/>
                                         <Input type="date" />
                                     </GridItem>
                                     <GridItem colSpan={2}>
                                         <FormLabel>
                                             4th visit (3rd tri)
                                         </FormLabel>
-                                        <Input type="number" placeholder="#" />
+                                        <Input type="text" placeholder="#" 
+                                    onChange={(event) => {
+                                    setCarbVist3(event.target.value);
+                                    }}/>
                                         <Input type="date" />
                                     </GridItem>
                                 </SimpleGrid>
@@ -280,19 +413,28 @@ export default function Figure6() {
                                         <FormLabel>
                                             Low
                                         </FormLabel>
-                                        <Input type="number" placeholder="< 18.5" />
+                                        <Input type="text" placeholder="< 18.5" 
+                                    onChange={(event) => {
+                                    setNutriAsses1(event.target.value);
+                                    }}/>
                                     </GridItem>
                                     <GridItem colSpan={2}>
                                         <FormLabel>
                                             Normal
                                         </FormLabel>
-                                        <Input type="number" placeholder="18.5 - 22.9" />
+                                        <Input type="text" placeholder="18.5 - 22.9" 
+                                    onChange={(event) => {
+                                    setNutriAsses2(event.target.value);
+                                    }}/>
                                     </GridItem>
                                     <GridItem colSpan={2}>
                                         <FormLabel>
                                             High
                                         </FormLabel>
-                                        <Input type="number" placeholder="≥ 23" />
+                                        <Input type="text" placeholder="≥ 23" 
+                                    onChange={(event) => {
+                                    setNutriAsses3(event.target.value);
+                                    }}/>
                                     </GridItem>
                                 </SimpleGrid>
                                 <FormHelperText>Wrtie the BMI for 1st Tri</FormHelperText>
@@ -470,7 +612,10 @@ export default function Figure6() {
                                 <GridItem colSpan={4}>
                                     <FormLabel>Low</FormLabel>
                                     <InputGroup>
-                                        <Input type="number" />
+                                        <Input type="text" 
+                                    onChange={(event) => {
+                                    setBrithWeight1(event.target.value);
+                                    }}/>
                                         <InputRightAddon children='g' />
                                     </InputGroup>
                                     <FormHelperText>{`<`} 2,500 grams</FormHelperText>
@@ -479,7 +624,10 @@ export default function Figure6() {
                                 <GridItem colSpan={4}>
                                     <FormLabel>Low</FormLabel>
                                     <InputGroup>
-                                        <Input type="number" />
+                                        <Input type="text"
+                                    onChange={(event) => {
+                                    setBrithWeight2(event.target.value);
+                                    }} />
                                         <InputRightAddon children='g' />
                                     </InputGroup>
                                     <FormHelperText>{`≥`} 2,500 grams</FormHelperText>
@@ -542,7 +690,10 @@ export default function Figure6() {
                                     <Text fontSize="xl">
                                         Non-Health Facility
                                     </Text>
-                                    <Input type="text" />
+                                    <Input type="text" 
+                                    onChange={(event) => {
+                                    setFacility(event.target.value);
+                                    }}/>
                                 </GridItem>
                             </SimpleGrid>
                         </GridItem>
@@ -564,7 +715,10 @@ export default function Figure6() {
                                 {/* Remarks */}
                                 <GridItem colSpan={6}>
                                     <FormLabel>Remarks</FormLabel>
-                                    <Input type="text" />
+                                    <Input type="text" 
+                                    onChange={(event) => {
+                                    setRemark(event.target.value);
+                                    }}/>
                                 </GridItem>
                             </SimpleGrid>
                         </GridItem>
@@ -629,7 +783,10 @@ export default function Figure6() {
                                 <GridItem colSpan={4}>
                                     <Text fontSize="md" align="center">1st month postpartum</Text>
                                     <FormLabel>No. of Tablets</FormLabel>
-                                    <Input type="number" />
+                                    <Input type="text" 
+                                    onChange={(event) => {
+                                    setTablet1(event.target.value);
+                                    }}/>
                                     <FormLabel>Date Given</FormLabel>
                                     <Input type="date" />
                                 </GridItem>
@@ -637,7 +794,10 @@ export default function Figure6() {
                                 <GridItem colSpan={4}>
                                     <Text fontSize="md" align="center">2nd month postpartum</Text>
                                     <FormLabel>No. of Tablets</FormLabel>
-                                    <Input type="number" />
+                                    <Input type="text" 
+                                    onChange={(event) => {
+                                    setTablet2(event.target.value);
+                                    }}/>
                                     <FormLabel>Date Given</FormLabel>
                                     <Input type="date" />
                                 </GridItem>
@@ -645,7 +805,10 @@ export default function Figure6() {
                                 <GridItem colSpan={4}>
                                     <Text fontSize="md" align="center">3rd month postpartum</Text>
                                     <FormLabel>No. of Tablets</FormLabel>
-                                    <Input type="number" />
+                                    <Input type="text" 
+                                    onChange={(event) => {
+                                    setTablet3(event.target.value);
+                                    }}/>
                                     <FormLabel>Date Given</FormLabel>
                                     <Input type="date" />
                                 </GridItem>
@@ -665,13 +828,16 @@ export default function Figure6() {
                                     <FormLabel>
                                         Remarks
                                     </FormLabel>
-                                    <Input type="type" />
+                                    <Input type="type" 
+                                    onChange={(event) => {
+                                    setRemark1(event.target.value);
+                                    }}/>
                                 </GridItem>
                             </SimpleGrid>
                         </GridItem>
                         {/* Submit */}
                         <GridItem colSpan={12}>
-                            <Button colorScheme="green" w='full'>
+                            <Button colorScheme="green" w='full' onClick={createUser}>
                                 Submit
                             </Button>
                         </GridItem>

@@ -19,7 +19,7 @@ import {
     getDocs,
     addDoc,
   } from "firebase/firestore"
-  import { db } from '../../../../utils/init-firebase'
+  import { db } from '../../../../../utils/init-firebase'
   import  {useState} from "react";
 
 

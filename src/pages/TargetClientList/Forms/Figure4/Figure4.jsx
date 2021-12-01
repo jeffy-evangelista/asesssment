@@ -17,9 +17,87 @@ import {
 
 } from '@chakra-ui/react'
 import React, { useState } from 'react';
+import {
+    collection,
+    getDocs,
+    addDoc,
+  } from "firebase/firestore"
+  import { db } from '../../../../utils/init-firebase'
 
 export default function Figure4() {
     const [accreditedFacility, setAccreditedFacility] = useState("");
+    const [newName, setNewName] = useState("");
+    const [newDeliverBy, setNewDeliverBy] = useState("");
+    const [newDeliverAt, setNewDeliverAt] = useState("");
+    const [newDistance, setNewDistance] = useState("");
+    const [newCost, setNewCost] = useState("");
+    const [newMode, setNewMode] = useState("");
+    const [newTransport, setNewTransport] = useState("");
+    const [newCompanion, setNewCompanion] = useState("");
+    const [newAddress, setNewAddress] = useState("");
+    const [newContact, setNewContact] = useState("");
+    const [newAccomp, setNewAccomp] = useState("");
+    const [newRelation, setNewRelation] = useState("");
+    const [newAddressOne, setNewAddressOne] = useState("");
+    const [newLandline, setNewLandline] = useState("");
+    const [newCareTaker, setNewCareTaker] = useState("");
+    const [newRelationPatient, setNewRelationPatient] = useState("");
+    const [newBloodType, setNewBloodType] = useState("");
+    const [newDonorName, setNewDonorName] = useState("");
+    const [newDonorAddress, setNewDonorAddres] = useState("");
+    const [newDonorNameOne, setNewDonorNameOne] = useState("");
+    const [newDonorAddressOne, setNewDonorAddresOne] = useState("");
+    const [newContactPerson, setNewContactPerson] = useState("");
+    const [newContactAddress, setNewContactAddress] = useState("");
+    const [newContactNumber, setNewContactNumber] = useState("");
+    const [newMaternalH, setNewMaternalH] = useState("");
+    const [newMaternalA, setNewMaternalA] = useState("");
+    const [newBornH, setNewBornH] = useState("");
+    const [newBornA, setNewBornA] = useState("");
+    const [newConform, setNewConform] = useState("");
+    
+
+
+
+
+
+    const usersCollectionRef = collection(db, "test");
+
+    const createUser = async () => {
+        await addDoc(usersCollectionRef, { 
+            name: newName, 
+            deliverBy: newDeliverBy,
+            deliverAt: newDeliverAt,
+            distance: newDistance,
+            cost: newCost,
+            mode: newMode,
+            transport: newTransport,
+            companion: newCompanion,
+            address: newAddress,
+            contact: newContact,
+            accompany: newAccomp,
+            relation: newRelation,
+            addressOne: newAddressOne,
+            landline: newLandline,
+            caretaker: newCareTaker,
+            reationPatient: newRelationPatient,
+            bloodtype: newBloodType,
+            firstdonor: newDonorName,
+            firstdonoraddres: newDonorAddress,
+            seconddonor: newDonorNameOne,
+            seconddonoraddress: newAddressOne,
+            contactperson: newContactPerson,
+            contactAddress: newContactAddress,
+            contactnumber: newContactNumber,
+            maternalH: newMaternalH,
+            maternalA: newMaternalA,
+            bornH: newBornH,
+            bornA: newBornA,
+            conform: newConform
+        });
+      };
+
+
     return (
         <Box boxShadow={'lg'} p={8}>
             <VStack spacing={3} alignItems="flex-start">
@@ -33,7 +111,10 @@ export default function Figure4() {
                                     </FormLabel>
                                 </GridItem>
                                 <GridItem colSpan={9}>
-                                    <Input type="text" />
+                                    <Input type="text" 
+                                     onChange={(event) => {
+                                     setNewName(event.target.value);
+                                    }} />
                                 </GridItem>
                             </SimpleGrid>
                         </FormControl>
@@ -60,6 +141,9 @@ export default function Figure4() {
                                     <Input
                                         type="text"
                                         placeholder="Name of Doctor/Nurse/Midwife or others. If others, pls. specify"
+                                     onChange={(event) => {
+                                        setNewDeliverBy(event.target.value);
+                                       }}
                                     />
                                 </GridItem>
                             </SimpleGrid>
@@ -77,6 +161,9 @@ export default function Figure4() {
                                     <Input
                                         type="text"
                                         placeholder="Name and location of Hospital/health center/clinic or others. If others, pls. specify"
+                                        onChange={(event) => {
+                                        setNewDeliverAt(event.target.value);
+                                        }}
                                     />
                                 </GridItem>
                             </SimpleGrid>
@@ -104,7 +191,10 @@ export default function Figure4() {
                                     </Text>
                                 </GridItem>
                                 <GridItem colSpan={3}>
-                                    <Input type="text" size="md" />
+                                    <Input type="text" size="md" 
+                                     onChange={(event) => {
+                                     setNewDistance(event.target.value);
+                                    }}/>
                                 </GridItem>
                             </SimpleGrid>
                         </FormControl>
@@ -120,7 +210,10 @@ export default function Figure4() {
                                 <FormControl>
                                     <InputGroup size="sm">
                                         <InputLeftAddon children="₱" />
-                                        <Input type="text" />
+                                        <Input type="text" 
+                                        onChange={(event) => {
+                                        setNewCost(event.target.value);
+                                        }} />
                                     </InputGroup>
                                     <FormHelperText>
                                         Inclusive of the newborn care package
@@ -139,7 +232,10 @@ export default function Figure4() {
                             <GridItem colSpan={6}>
                                 <FormControl>
                                     <InputGroup size="sm">
-                                        <Input type="text" />
+                                        <Input type="text" 
+                                        onChange={(event) => {
+                                        setNewMode(event.target.value);
+                                        }} />
                                     </InputGroup>
                                 </FormControl>
                             </GridItem>
@@ -155,7 +251,10 @@ export default function Figure4() {
                             <GridItem colSpan={6}>
                                 <FormControl>
                                     <InputGroup size="sm">
-                                        <Input type="text" />
+                                        <Input type="text" 
+                                        onChange={(event) => {
+                                        setNewTransport(event.target.value);
+                                        }}/>
                                     </InputGroup>
                                 </FormControl>
                             </GridItem>
@@ -170,7 +269,10 @@ export default function Figure4() {
                                     </Text>
                                 </GridItem>
                                 <GridItem colSpan={3} >
-                                    <Input type="text" size="sm" placeholder="Name of Companion" />
+                                    <Input type="text" size="sm" placeholder="Name of Companion"  
+                                    onChange={(event) => {
+                                    setNewCompanion(event.target.value);
+                                    }}/>
                                 </GridItem>
                                 <GridItem colSpan={2} >
                                     <Text fontSize="md">
@@ -178,7 +280,10 @@ export default function Figure4() {
                                     </Text>
                                 </GridItem>
                                 <GridItem colSpan={3} >
-                                    <Input type="text" size="sm" placeholder="Address" />
+                                    <Input type="text" size="sm" placeholder="Address" 
+                                     onChange={(event) => {
+                                    setNewAddress(event.target.value);
+                                    }}/>
                                 </GridItem>
                                 <GridItem colSpan={2} >
                                     <Text fontSize="md">
@@ -191,7 +296,10 @@ export default function Figure4() {
                                     </Text>
                                 </GridItem>
                                 <GridItem colSpan={3} >
-                                    <Input type="text" size="sm" placeholder="Landline or Cellphone" />
+                                    <Input type="text" size="sm" placeholder="Landline or Cellphone" 
+                                    onChange={(event) => {
+                                    setNewContact(event.target.value);
+                                     }} />
                                 </GridItem>
                                 <GridItem colSpan={7} >
                                     <Text fontSize="md">
@@ -211,7 +319,10 @@ export default function Figure4() {
                                 </GridItem>
                                 <GridItem colSpan={4}>
                                     <FormLabel>
-                                        <Input type="text" placeholder="Name" size="sm" />
+                                        <Input type="text" placeholder="Name" size="sm" 
+                                        onChange={(event) => {
+                                        setNewAccomp(event.target.value);
+                                        }}/>
                                     </FormLabel>
                                 </GridItem>
                                 <GridItem colSpan={2}>
@@ -221,7 +332,10 @@ export default function Figure4() {
                                 </GridItem>
                                 <GridItem colSpan={3}>
                                     <FormLabel>
-                                        <Input type="text" placeholder="Relationship to patient" size="sm" />
+                                        <Input type="text" placeholder="Relationship to patient" size="sm" 
+                                        onChange={(event) => {
+                                        setNewRelation(event.target.value);
+                                        }} />
                                     </FormLabel>
                                 </GridItem>
                                 <GridItem colSpan={2}>
@@ -231,7 +345,10 @@ export default function Figure4() {
                                 </GridItem>
                                 <GridItem colSpan={4}>
                                     <FormLabel>
-                                        <Input type="text" placeholder="Address" size="sm" />
+                                        <Input type="text" placeholder="Address" size="sm" 
+                                        onChange={(event) => {
+                                        setNewAddressOne(event.target.value);
+                                        }}/>
                                     </FormLabel>
                                 </GridItem>
                                 <GridItem colSpan={3}>
@@ -241,7 +358,10 @@ export default function Figure4() {
                                 </GridItem>
                                 <GridItem colSpan={3}>
                                     <FormLabel>
-                                        <Input type="text" placeholder="Landline or Cellphone" size="sm" />
+                                        <Input type="text" placeholder="Landline or Cellphone" size="sm" 
+                                        onChange={(event) => {
+                                        setNewLandline(event.target.value);
+                                        }}/>
                                     </FormLabel>
                                 </GridItem>
                             </SimpleGrid>
@@ -252,7 +372,10 @@ export default function Figure4() {
                             <SimpleGrid columns={12}>
                                 <GridItem colSpan={5}>
                                     <FormLabel>
-                                        <Input type="text" placeholder="Name of care taker" size="sm" />
+                                        <Input type="text" placeholder="Name of care taker" size="sm" 
+                                        onChange={(event) => {
+                                        setNewCareTaker(event.target.value);
+                                        }}/>
                                     </FormLabel>
                                 </GridItem>
                                 <GridItem colSpan={1}>
@@ -262,7 +385,10 @@ export default function Figure4() {
                                 </GridItem>
                                 <GridItem colSpan={6}>
                                     <FormLabel>
-                                        <Input type="text" placeholder="Relationship to patient" size="sm" />
+                                        <Input type="text" placeholder="Relationship to patient" size="sm" 
+                                         onChange={(event) => {
+                                        setNewRelationPatient(event.target.value);
+                                        }}/>
                                     </FormLabel>
                                 </GridItem>
                                 <GridItem colSpan={12}>
@@ -282,7 +408,10 @@ export default function Figure4() {
                                     </FormLabel>
                                 </GridItem>
                                 <GridItem colSpan={3}>
-                                    <Input type="text" />
+                                    <Input type="text" 
+                                    onChange={(event) => {
+                                    setNewBloodType(event.target.value);
+                                    }}/>
                                 </GridItem>
                                 <GridItem colSpan={6}>
                                 </GridItem>
@@ -292,16 +421,28 @@ export default function Figure4() {
                                     </FormLabel>
                                 </GridItem>
                                 <GridItem colSpan={4}>
-                                    <Input type="text" placeholder="Name" />
+                                    <Input type="text" placeholder="Name" 
+                                    onChange={(event) => {
+                                    setNewDonorName(event.target.value);
+                                    }}/>
                                 </GridItem>
                                 <GridItem colSpan={8}>
-                                    <Input type="text" placeholder="Address" />
+                                    <Input type="text" placeholder="Address" 
+                                    onChange={(event) => {
+                                    setNewDonorAddres(event.target.value);
+                                    }}/>
                                 </GridItem>
                                 <GridItem colSpan={4}>
-                                    <Input type="text" placeholder="Name" />
+                                    <Input type="text" placeholder="Name" 
+                                    onChange={(event) => {
+                                    setNewDonorNameOne(event.target.value);
+                                    }}/>
                                 </GridItem>
                                 <GridItem colSpan={8}>
-                                    <Input type="text" placeholder="Address" />
+                                    <Input type="text" placeholder="Address" 
+                                    onChange={(event) => {
+                                    setNewDonorAddresOne(event.target.value);
+                                    }}/>
                                 </GridItem>
                             </SimpleGrid>
                         </FormControl>
@@ -318,19 +459,28 @@ export default function Figure4() {
                                     <Text fontSize="md">Contact Person:</Text>
                                 </GridItem>
                                 <GridItem colSpan={9}>
-                                    <Input type="text" />
+                                    <Input type="text" 
+                                    onChange={(event) => {
+                                    setNewContactPerson(event.target.value);
+                                    }}/>
                                 </GridItem>
                                 <GridItem colSpan={3}>
                                     <Text fontSize="md">Address:</Text>
                                 </GridItem>
                                 <GridItem colSpan={9}>
-                                    <Input type="text" />
+                                    <Input type="text" 
+                                    onChange={(event) => {
+                                    setNewContactAddress(event.target.value);
+                                    }}/>
                                 </GridItem>
                                 <GridItem colSpan={3}>
                                     <Text fontSize="md">Tel. No.:</Text>
                                 </GridItem>
                                 <GridItem colSpan={9}>
-                                    <Input type="text" />
+                                    <Input type="text" 
+                                    onChange={(event) => {
+                                    setNewContactNumber(event.target.value);
+                                    }}/>
                                 </GridItem>
                             </SimpleGrid>
                         </FormControl>
@@ -347,19 +497,31 @@ export default function Figure4() {
                                     <Text fontSize="md">Maternal/Hospital:</Text>
                                 </GridItem>
                                 <GridItem colSpan={4}>
-                                    <Input type="text" placeholder="Name of Hospital" />
+                                    <Input type="text" placeholder="Name of Hospital" 
+                                    onChange={(event) => {
+                                    setNewMaternalH(event.target.value);
+                                    }}/>
                                 </GridItem>
                                 <GridItem colSpan={5}>
-                                    <Input type="text" placeholder="Address" />
+                                    <Input type="text" placeholder="Address" 
+                                    onChange={(event) => {
+                                    setNewMaternalA(event.target.value);
+                                    }}/>
                                 </GridItem>
                                 <GridItem colSpan={3}>
                                     <Text fontSize="md">Newborn Hospital:</Text>
                                 </GridItem>
                                 <GridItem colSpan={4}>
-                                    <Input type="text" placeholder="Name of Hospital" />
+                                    <Input type="text" placeholder="Name of Hospital" 
+                                    onChange={(event) => {
+                                    setNewBornH(event.target.value);
+                                    }}/>
                                 </GridItem>
                                 <GridItem colSpan={5}>
-                                    <Input type="text" placeholder="Address" />
+                                    <Input type="text" placeholder="Address" 
+                                    onChange={(event) => {
+                                    setNewBornA(event.target.value);
+                                    }}/>
                                 </GridItem>
                             </SimpleGrid>
                         </FormControl>
@@ -373,7 +535,10 @@ export default function Figure4() {
                                     </FormLabel>
                                 </GridItem>
                                 <GridItem colSpan={6}>
-                                    <Input type="text" placeholder="Signature" />
+                                    <Input type="text" placeholder="Signature" 
+                                    onChange={(event) => {
+                                    setNewConform(event.target.value);
+                                    }}/>
                                 </GridItem>
                                 <GridItem colSpan={6}>
                                     <Input type="Date" />
@@ -382,7 +547,7 @@ export default function Figure4() {
                         </FormControl>
                     </GridItem>
                     <GridItem colSpan={12}>
-                        <Button colorScheme='green' w='full'>
+                        <Button colorScheme='green' w='full' onClick={createUser}>
                             Submit
                         </Button>
                     </GridItem>
