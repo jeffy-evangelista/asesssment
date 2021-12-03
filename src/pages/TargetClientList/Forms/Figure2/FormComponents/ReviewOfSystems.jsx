@@ -10,8 +10,20 @@ import {
     Flex,
     Spacer
 } from '@chakra-ui/react'
+import {useState} from "react";
 
 export default function ReviewOfSystems() {
+    const [newHeent, setNewHeent] = useState("");
+    const [newChestHeart, setNewChestHeart] = useState("");
+    const [newAbdomen, setNewAbdomen] = useState("");
+    const [newGenital, setNewGenital] = useState("");
+    const [newExtremities, setNewSkin] = useState("");
+    const [newFamilyHistory, setNewFamilyHistory] = useState("");
+    const [newPastHealth, setNewPastHealth] = useState("");
+    const [newSocialHistory, setNewSocialHistory] = useState("");
+    const [newObstericalHistory, setNewObstericalHistory] = useState("");
+    const [newFamilyPlanningHistory, setNewFamilyPlanningHistory] = useState("");
+
 
     return (
         <>
