@@ -25,8 +25,12 @@ import {
   addDoc,
 } from "firebase/firestore"
 import { db } from '../../../utils/init-firebase'
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 export default function Figure1() {
+  const [newYear, setNewYear] = useState(new Date());
+  const [newExpected, setNewExpected] = useState(new Date());
   const [newPos, setNewPos] = useState("");
   const [newBcenter, setBcenter] = useState("");
   const [newReligion, setReligion] = useState("");
@@ -45,11 +49,24 @@ export default function Figure1() {
   const [newHealthstation, setHealthstation] = useState("");
   const [newMidwife, setMidwife] = useState("");
   const [newHealthunit, setHealthunit] = useState("");
+  const [newFirstTri, setFirstTri] = useState(new Date());
+  const [newSecondTri, setSecondTri] = useState(new Date());
+  const [newThirdTri, setThirdTri] = useState(new Date());
+  const [newForthTri, setForthTri] = useState(new Date());
+  const [newDischarge, setDischarge] = useState(new Date());
+  const [newAfterBirth, setAfterBirth] = useState(new Date());
+  const [newLiveBirth, setLiveBirth] = useState(new Date());
+  const [newMaternalDeath, setMaternalDeath] = useState(new Date());
+  const [newStillBirth, setStillBirth] = useState(new Date());
+  const [newEarlyDeath, setEarlyDeath] = useState(new Date());
+
+
 
   const usersCollectionRef = collection(db, "client");
 
   const createForm1 = async () => {
     await addDoc(usersCollectionRef, { 
+      year: newYear,
       center: newBcenter, 
       religion: newReligion, 
       address: newAddress,
@@ -67,6 +84,7 @@ export default function Figure1() {
       healthstation: newHealthstation,
       midwife: newMidwife,
       healthunit: newHealthunit,
+      expected: newExpected,
     });
   };
 
@@ -80,7 +98,7 @@ export default function Figure1() {
           <GridItem colSpan={6}>
             <FormControl>
               <FormLabel>Year</FormLabel>
-              <Input type="date" />
+              <DatePicker selected={newYear} onChange={(date) => setNewYear(date)} />
             </FormControl>
           </GridItem>
           <GridItem colSpan={6}>
@@ -220,7 +238,7 @@ export default function Figure1() {
           <GridItem colSpan={3}>
             <FormControl>
               <FormLabel>Expected Date of Delivery</FormLabel>
-              <Input type="date" />
+              <DatePicker selected={newExpected} onChange={(date) => setNewExpected(date)} />
             </FormControl>
           </GridItem>
           {/* Divider */}
@@ -234,25 +252,25 @@ export default function Figure1() {
           <GridItem colSpan={6}>
             <FormControl>
               <FormLabel>1st tri = up to 12 weeks and 6 days AOG</FormLabel>
-              <Input type="date" />
+              <DatePicker selected={newFirstTri} onChange={(date) => setFirstTri(date)} />
             </FormControl>
           </GridItem>
           <GridItem colSpan={6}>
             <FormControl>
               <FormLabel>2nd tri = 13-27 weeks and 6 days AOG</FormLabel>
-              <Input type="date" />
+              <DatePicker selected={newSecondTri} onChange={(date) => setSecondTri(date)} />
             </FormControl>
           </GridItem>
           <GridItem colSpan={6}>
             <FormControl>
               <FormLabel>3rd tri = 28 weeks AOG and more</FormLabel>
-              <Input type="date" />
+              <DatePicker selected={newThirdTri} onChange={(date) => setThirdTri(date)} />
             </FormControl>
           </GridItem>
           <GridItem colSpan={6}>
             <FormControl>
               <FormLabel>3rd tri = 28 weeks AOG and more</FormLabel>
-              <Input type="date" />
+              <DatePicker selected={newForthTri} onChange={(date) => setForthTri(date)} />
             </FormControl>
           </GridItem>
           {/* Divider */}
@@ -286,13 +304,13 @@ export default function Figure1() {
           <GridItem colSpan={6}>
             <FormControl>
               <FormLabel>Day of Discharge/24 hours after birth</FormLabel>
-              <Input type="date" />
+              <DatePicker selected={newDischarge} onChange={(date) => setDischarge(date)} />
             </FormControl>
           </GridItem>
           <GridItem colSpan={6}>
             <FormControl>
               <FormLabel>Within 7 days after birth</FormLabel>
-              <Input type="date" />
+              <DatePicker selected={newAfterBirth} onChange={(date) => setAfterBirth(date)} />
             </FormControl>
           </GridItem>
           {/* Divider */}
@@ -306,25 +324,25 @@ export default function Figure1() {
           <GridItem colSpan={6}>
             <FormControl>
               <FormLabel>Livebirth</FormLabel>
-              <Input type="date" />
+              <DatePicker selected={newLiveBirth} onChange={(date) => setLiveBirth(date)} />
             </FormControl>
           </GridItem>
           <GridItem colSpan={6}>
             <FormControl>
               <FormLabel>Maternal Death</FormLabel>
-              <Input type="date" />
+              <DatePicker selected={newMaternalDeath} onChange={(date) => setMaternalDeath(date)} />
             </FormControl>
           </GridItem>
           <GridItem colSpan={6}>
             <FormControl>
               <FormLabel>Stillbirth</FormLabel>
-              <Input type="date" />
+              <DatePicker selected={newStillBirth} onChange={(date) => setStillBirth(date)} />
             </FormControl>
           </GridItem>
           <GridItem colSpan={6}>
             <FormControl>
               <FormLabel>Early Newborn Death (0-7 days)</FormLabel>
-              <Input type="date" />
+              <DatePicker selected={newEarlyDeath} onChange={(date) => setEarlyDeath(date)} />
             </FormControl>
           </GridItem>
           {/* Divider */}

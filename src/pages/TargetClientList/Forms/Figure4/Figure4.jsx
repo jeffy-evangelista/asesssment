@@ -23,6 +23,9 @@ import {
     addDoc,
   } from "firebase/firestore"
   import { db } from '../../../../utils/init-firebase'
+  import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
 
 export default function Figure4() {
     const [accreditedFacility, setAccreditedFacility] = useState("");
@@ -55,6 +58,7 @@ export default function Figure4() {
     const [newBornH, setNewBornH] = useState("");
     const [newBornA, setNewBornA] = useState("");
     const [newConform, setNewConform] = useState("");
+    const [newDate, setNewDate] = useState(new Date());
     
 
 
@@ -93,7 +97,8 @@ export default function Figure4() {
             maternalA: newMaternalA,
             bornH: newBornH,
             bornA: newBornA,
-            conform: newConform
+            conform: newConform,
+            date: newDate,
         });
       };
 
@@ -541,7 +546,7 @@ export default function Figure4() {
                                     }}/>
                                 </GridItem>
                                 <GridItem colSpan={6}>
-                                    <Input type="Date" />
+                                <DatePicker selected={newDate} onChange={(date) => setNewDate(date)} />
                                 </GridItem>
                             </SimpleGrid>
                         </FormControl>

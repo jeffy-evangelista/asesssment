@@ -11,6 +11,9 @@ import {
     addDoc,
   } from "firebase/firestore"
   import { db } from '../../../../utils/init-firebase'
+  import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
 
 export default function Figure6() {
     const [fim, setFim] = useState("");
@@ -53,13 +56,47 @@ export default function Figure6() {
     const [tablet2, setTablet2] = useState("");
     const [tablet3, setTablet3] = useState("");
     const [remark1, setRemark1] = useState("");
+    const [dateReg, setDateReg] = useState(new Date());
+    const [edc, setEdc] = useState(new Date());
+    const [firstTri, setFirstTri] = useState(new Date());
+    const [secondTri, setSecondTri] = useState(new Date());
+    const [thirdTri, setThirdTri] = useState(new Date());
+    const [calDate1, setCalDate1] = useState(new Date());
+    const [calDate2, setCalDate2] = useState(new Date());
+    const [calDate3, setCalDate3] = useState(new Date());
+    const [td1, setTd1] = useState(new Date());
+    const [td2, setTd2] = useState(new Date());
+    const [td3, setTd3] = useState(new Date());
+    const [td4, setTd4] = useState(new Date());
+    const [td5, setTd5] = useState(new Date());
+    const [supp1, setSupp1] = useState(new Date());
+    const [supp2, setSupp2] = useState(new Date());
+    const [supp3, setSupp3] = useState(new Date());
+    const [supp4, setSupp4] = useState(new Date());
+    const [iodine, setIodine] =useState(new Date());
+    const [deworm, setDeworm] = useState(new Date());
+    const [syphilis, setSyphilis] = useState(new Date());
+    const [hepa, setHepa] = useState(new Date());
+    const [hiv, setHiv] = useState(new Date());
+    const [diabetes, setDiabetes] = useState(new Date());
+    const [blood, setBlood] = useState(new Date());
+    const [terminate, setTerminate] = useState(new Date());
+    const [dateDeliver, setDateDeliver] = useState(new Date());
+    const [hourDeliver, setHourDeliver] = useState(new Date());
+    const [dayDeliver, setDayDeliver] = useState(new Date());
+    const [supplement1, setSupplement1] = useState(new Date());
+    const [supplement2, setSupplement2] = useState(new Date());
+    const [supplement3, setSupplement3] = useState(new Date());
+    const [supplement4, setSupplement4] = useState(new Date());
+
+
     
     const usersCollectionRef = collection(db, "test");
 
     const createUser = async () => {
         await addDoc(usersCollectionRef, 
             { 
-
+            registration: dateReg,
             serial: serialNum, 
             firstname: first, 
             middlename: middle,
@@ -89,7 +126,38 @@ export default function Figure6() {
             tablet2: tablet2,
             tablet3: tablet3,
             remark1: remark1,
-
+            EDC: edc,
+            PrenatalFirst: firstTri,
+            PrenatalSecond: secondTri,
+            PrenatalThird: thirdTri,
+            TD1: td1,
+            TD2: td2,
+            TD3: td3,
+            TD4: td4,
+            TD5: td5,
+            Calcium1: calDate1,
+            Calcium2: calDate2,
+            Calcium3: calDate3,
+            Supplement1: supp1,
+            Supplement2: supp2,
+            Supplement3: supp3,
+            Supplement4: supp4,
+            iodine: iodine,
+            deworm: deworm,
+            syphilis: syphilis,
+            hepatitis: hepa,
+            HIV: hiv,
+            diabetes: diabetes,
+            blood: blood,
+            terminate: terminate,
+            dateDeliver: dateDeliver,
+            hourDeliver: hourDeliver,
+            dayDeliver: dayDeliver,
+            MicroSupplement1: supplement1,
+            MicroSupplement2: supplement2,
+            MicroSupplement3: supplement3,
+            MicroSupplement4: supplement4,
+            
         });
       };
 
@@ -109,7 +177,7 @@ export default function Figure6() {
                                     <FormLabel>
                                         Date of Registration
                                     </FormLabel>
-                                    <Input type="date" />
+                                    <DatePicker selected={dateReg} onChange={(date) => setDateReg(date)} />
                                 </GridItem>
                                 <GridItem colSpan={6}>
                                     <FormLabel>
@@ -208,7 +276,7 @@ export default function Figure6() {
                             <FormLabel>
                                 EDC
                             </FormLabel>
-                            <Input type="date" />
+                            <DatePicker selected={edc} onChange={(date) => setEdc(date)} />
                         </GridItem>
                         <GridItem colSpan={12}>
                             <Text align="center" fontSize="2xl">
@@ -219,19 +287,19 @@ export default function Figure6() {
                             <FormLabel>
                                 1st Tri
                             </FormLabel>
-                            <Input type="date" />
+                            <DatePicker selected={firstTri} onChange={(date) => setFirstTri(date)} />
                         </GridItem>
                         <GridItem colSpan={4}>
                             <FormLabel>
                                 2nd Tri
                             </FormLabel>
-                            <Input type="date" />
+                            <DatePicker selected={secondTri} onChange={(date) => setSecondTri(date)} />
                         </GridItem>
                         <GridItem colSpan={4}>
                             <FormLabel>
                                 3rd Tri
                             </FormLabel>
-                            <Input type="date" />
+                            <DatePicker selected={thirdTri} onChange={(date) => setThirdTri(date)} />
                         </GridItem>
                         {/* Figure 7 */}
                         {/* Immunization Status */}
@@ -251,31 +319,31 @@ export default function Figure6() {
                                         <FormLabel>
                                             Td1/TT1
                                         </FormLabel>
-                                        <Input type="date" />
+                                        <DatePicker selected={td1} onChange={(date) => setTd1(date)} />
                                     </GridItem>
                                     <GridItem colSpan={2}>
                                         <FormLabel>
                                             Td2/TT2
                                         </FormLabel>
-                                        <Input type="date" />
+                                        <DatePicker selected={td2} onChange={(date) => setTd2(date)} />
                                     </GridItem>
                                     <GridItem colSpan={2}>
                                         <FormLabel>
                                             Td3/TT3
                                         </FormLabel>
-                                        <Input type="date" />
+                                        <DatePicker selected={td3} onChange={(date) => setTd3(date)} />
                                     </GridItem>
                                     <GridItem colSpan={2}>
                                         <FormLabel>
                                             Td4/TT4
                                         </FormLabel>
-                                        <Input type="date" />
+                                        <DatePicker selected={td4} onChange={(date) => setTd4(date)} />
                                     </GridItem>
                                     <GridItem colSpan={2}>
                                         <FormLabel>
                                             Td5/TT5
                                         </FormLabel>
-                                        <Input type="date" />
+                                        <DatePicker selected={td5} onChange={(date) => setTd5(date)} />
                                     </GridItem>
                                 </SimpleGrid>
                                 <HStack>
@@ -313,7 +381,7 @@ export default function Figure6() {
                                     onChange={(event) => {
                                     setVist1(event.target.value);
                                     }}/>
-                                        <Input type="date" />
+                                        <DatePicker selected={supp1} onChange={(date) => setSupp1(date)} />
                                     </GridItem>
                                     <GridItem colSpan={2}>
                                         <FormLabel>
@@ -323,7 +391,7 @@ export default function Figure6() {
                                     onChange={(event) => {
                                     setVist2(event.target.value);
                                     }}/>
-                                        <Input type="date" />
+                                        <DatePicker selected={supp2} onChange={(date) => setSupp2(date)} />
                                     </GridItem>
                                     <GridItem colSpan={2}>
                                         <FormLabel>
@@ -333,7 +401,7 @@ export default function Figure6() {
                                     onChange={(event) => {
                                     setVist3(event.target.value);
                                     }}/>
-                                        <Input type="date" />
+                                        <DatePicker selected={supp3} onChange={(date) => setSupp3(date)} />
                                     </GridItem>
                                     <GridItem colSpan={2}>
                                         <FormLabel>
@@ -343,7 +411,7 @@ export default function Figure6() {
                                     onChange={(event) => {
                                     setVist4(event.target.value);
                                     }}/>
-                                        <Input type="date" />
+                                        <DatePicker selected={supp4} onChange={(date) => setSupp4(date)} />
                                     </GridItem>
                                 </SimpleGrid>
                                 <FormHelperText>Date and Number of tablets given</FormHelperText>
@@ -360,7 +428,7 @@ export default function Figure6() {
                                     onChange={(event) => {
                                     setCarbVist1(event.target.value);
                                     }}/>
-                                        <Input type="date" />
+                                       <DatePicker selected={calDate1} onChange={(date) => setCalDate1(date)} />
                                     </GridItem>
                                     <GridItem colSpan={2}>
                                         <FormLabel>
@@ -370,7 +438,7 @@ export default function Figure6() {
                                     onChange={(event) => {
                                     setCarbVist2(event.target.value);
                                     }}/>
-                                        <Input type="date" />
+                                        <DatePicker selected={calDate2} onChange={(date) => setCalDate2(date)} />
                                     </GridItem>
                                     <GridItem colSpan={2}>
                                         <FormLabel>
@@ -380,7 +448,7 @@ export default function Figure6() {
                                     onChange={(event) => {
                                     setCarbVist3(event.target.value);
                                     }}/>
-                                        <Input type="date" />
+                                        <DatePicker selected={calDate3} onChange={(date) => setCalDate3(date)} />
                                     </GridItem>
                                 </SimpleGrid>
                                 <FormHelperText>Date and Number of tablets given</FormHelperText>
@@ -393,7 +461,7 @@ export default function Figure6() {
                                         <FormLabel>
                                             1st visit
                                         </FormLabel>
-                                        <Input type="date" />
+                                        <DatePicker selected={iodine} onChange={(date) => setIodine(date)} />
                                     </GridItem>
                                 </SimpleGrid>
                                 <FormHelperText>Data 2 capsules given</FormHelperText>
@@ -451,7 +519,7 @@ export default function Figure6() {
                             <VStack spacing={3} align='stretch'>
                                 <SimpleGrid columns={6} gap={2}>
                                     <GridItem colSpan={2}>
-                                        <Input type="date" />
+                                    <DatePicker selected={deworm} onChange={(date) => setDeworm(date)} />
                                     </GridItem>
                                 </SimpleGrid>
                                 <FormHelperText>Date Given, 2nd or 3rd Tri</FormHelperText>
@@ -472,7 +540,7 @@ export default function Figure6() {
                                         Syphilis Screening
                                     </Text>
                                     <FormHelperText>RPR or RDT Result</FormHelperText>
-                                    <Input type="date" />
+                                    <DatePicker selected={syphilis} onChange={(date) => setSyphilis(date)} />
                                     <RadioGroup onChange={setSyphilisScreening} value={syphilisScreening}>
                                         <HStack>
                                             <Radio value='positive'>+ Positive</Radio>
@@ -486,7 +554,7 @@ export default function Figure6() {
                                         Hepatitis B Screening
                                     </Text>
                                     <FormHelperText>Result HBsAg Test</FormHelperText>
-                                    <Input type="date" />
+                                    <DatePicker selected={hepa} onChange={(date) => setHepa(date)} />
                                     <RadioGroup onChange={setHepatitisBScreening} value={hepatitisBScreening}>
                                         <HStack>
                                             <Radio value='positive'>+ Positive</Radio>
@@ -500,7 +568,7 @@ export default function Figure6() {
                                         HIV Screening
                                     </Text>
                                     <FormHelperText>Date screened</FormHelperText>
-                                    <Input type="date" />
+                                    <DatePicker selected={hiv} onChange={(date) => setHiv(date)} />
                                 </GridItem>
                             </SimpleGrid>
                         </GridItem>
@@ -519,7 +587,7 @@ export default function Figure6() {
                                         Gestational Diabetes
                                     </Text>
                                     <FormLabel>Date Screened</FormLabel>
-                                    <Input type="date" />
+                                    <DatePicker selected={diabetes} onChange={(date) => setDiabetes(date)} />
                                     <RadioGroup onChange={setGestationalDiabetes} value={gestationalDiabetes}>
                                         <HStack>
                                             <Radio value='positive'>+ Positive</Radio>
@@ -533,7 +601,7 @@ export default function Figure6() {
                                         CBC/Hgb {`&`} Hct Count
                                     </Text>
                                     <FormLabel>Date Screened</FormLabel>
-                                    <Input type="date" />
+                                    <DatePicker selected={blood} onChange={(date) => setBlood(date)} />
                                     <RadioGroup onChange={setCbc} value={cbc}>
                                         <HStack>
                                             <Radio value='positive'>+ Positive</Radio>
@@ -562,7 +630,7 @@ export default function Figure6() {
                                     <Text fontSize="xl">
                                         Date Terminated
                                     </Text>
-                                    <Input type="date" />
+                                    <DatePicker selected={terminate} onChange={(date) => setTerminate(date)} />
                                 </GridItem>
                                 {/* Outcome */}
                                 <GridItem colSpan={6}>
@@ -734,7 +802,7 @@ export default function Figure6() {
                                 {/* Date */}
                                 <GridItem colSpan={6}>
                                     <FormLabel>Date</FormLabel>
-                                    <Input type="date" />
+                                    <DatePicker selected={dateDeliver} onChange={(date) => setDateDeliver(date)} />
                                 </GridItem>
                                 {/* Time */}
                                 <GridItem colSpan={6}>
@@ -755,12 +823,12 @@ export default function Figure6() {
                                 {/* Within 24 hours after delivery */}
                                 <GridItem colSpan={6}>
                                     <FormLabel>Within 24 hours after delivery</FormLabel>
-                                    <Input type="date" />
+                                    <DatePicker selected={hourDeliver} onChange={(date) => setHourDeliver(date)} />
                                 </GridItem>
                                 {/* Within 7 days after delivery */}
                                 <GridItem colSpan={6}>
                                     <FormLabel>Within 7 days after delivery</FormLabel>
-                                    <Input type="date" />
+                                    <DatePicker selected={dayDeliver} onChange={(date) => setDayDeliver(date)} />
                                 </GridItem>
                             </SimpleGrid>
                         </GridItem>
@@ -788,7 +856,7 @@ export default function Figure6() {
                                     setTablet1(event.target.value);
                                     }}/>
                                     <FormLabel>Date Given</FormLabel>
-                                    <Input type="date" />
+                                    <DatePicker selected={supplement1} onChange={(date) => setSupplement1(date)} />
                                 </GridItem>
                                 {/* 2nd month postpartum */}
                                 <GridItem colSpan={4}>
@@ -799,7 +867,7 @@ export default function Figure6() {
                                     setTablet2(event.target.value);
                                     }}/>
                                     <FormLabel>Date Given</FormLabel>
-                                    <Input type="date" />
+                                    <DatePicker selected={supplement2} onChange={(date) => setSupplement2(date)} />
                                 </GridItem>
                                 {/* 3rd month postpartum */}
                                 <GridItem colSpan={4}>
@@ -810,7 +878,7 @@ export default function Figure6() {
                                     setTablet3(event.target.value);
                                     }}/>
                                     <FormLabel>Date Given</FormLabel>
-                                    <Input type="date" />
+                                    <DatePicker selected={supplement3} onChange={(date) => setSupplement3(date)} />
                                 </GridItem>
                                 <GridItem colSpan={12}>
                                     <Text fontSize="xl">
@@ -822,7 +890,7 @@ export default function Figure6() {
                                     <FormLabel>
                                         Date Given
                                     </FormLabel>
-                                    <Input type="date" />
+                                    <DatePicker selected={supplement4} onChange={(date) => setSupplement4(date)} />
                                 </GridItem>
                                 <GridItem colSpan={6}>
                                     <FormLabel>

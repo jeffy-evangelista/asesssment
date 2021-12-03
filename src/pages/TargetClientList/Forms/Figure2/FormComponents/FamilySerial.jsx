@@ -21,6 +21,9 @@ import {
   } from "firebase/firestore"
   import { db } from '../../../../../utils/init-firebase'
   import  {useState} from "react";
+  import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
 
 
 export default function FamilySerial() {
@@ -40,6 +43,8 @@ export default function FamilySerial() {
     const [newOccup, setNewOccup] = useState("");
     const [newEduc, setNewEduc] = useState("");
     const [newEducto, setNewEducto] = useState("");
+    const [cBirthday, setCBirthday] = useState(new Date());
+    const [sBirthday, setSBirthday] = useState(new Date());
     
 
     const usersCollectionRef = collection(db, "client");
@@ -61,6 +66,8 @@ export default function FamilySerial() {
             occu: newOccup,
             education: newEduc,
             educationto: newEducto,
+            SpouseBirthday: sBirthday,
+            ClientBithday: cBirthday,
             
         });
       };
@@ -109,7 +116,7 @@ export default function FamilySerial() {
             <GridItem colSpan={3}>
                 <FormControl>
                     <FormLabel>Birthday</FormLabel>
-                    <Input type="date" />
+                    <DatePicker selected={cBirthday} onChange={(date) => setCBirthday(date)} />
                 </FormControl>
             </GridItem>
             {/*  */}
@@ -225,7 +232,7 @@ export default function FamilySerial() {
             <GridItem colSpan={4}>
                 <FormControl>
                     <FormLabel>Birthday</FormLabel>
-                    <Input type="date" />
+                    <DatePicker selected={sBirthday} onChange={(date) => setSBirthday(date)} />
                 </FormControl>
             </GridItem>
             {/* Highest Education */}
