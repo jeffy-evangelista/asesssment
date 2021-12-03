@@ -12,8 +12,24 @@ import {
     VStack,
     Textarea
 } from '@chakra-ui/react'
+import {useState} from "react";
 
 export default function PhysicalExamination() {
+    const [newBlood, setNewBlood] = useState("");
+    const [newHeight, setNewHeight] = useState("");
+    const [newWeight, setNewWeight] = useState("");
+    const [newBMI, setNewBMI] = useState("");
+    const [newPulseRate, setNewPulseRate] = useState("");
+    const [newConjunctiva, setNewConjunctiva] = useState("");
+    const [newNeck, setNewNeck] = useState("");
+    const [newBreast, setNewBreast] = useState("");
+    const [newThorax, setThorax] = useState("");
+    const [newAbdomen, setNewAbdomen] = useState("");
+    const [newVaginalExam, setNewVaginalExam] = useState("");
+    const [newExtremities, setNewExtremities] = useState("");
+    const [newtoxoid, setNewtoxoid] = useState("");
+    const [newImpression, setNewImpression] = useState("");
+
 
     return (
         <>
