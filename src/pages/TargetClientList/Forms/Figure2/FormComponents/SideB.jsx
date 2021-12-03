@@ -13,8 +13,15 @@ import {
     InputLeftAddon,
     InputGroup
 } from '@chakra-ui/react'
+import {useState} from "react";
 
 export default function SideB() {
+    const [newSideBDate, setNewSideBDate] = useState("");
+    const [newComplaintsComplication, setNewComplaintsComplication] = useState("")
+    const [newMCN, setNewMCN] = useState("")
+    const [newNameSig, setNewNameSig] = useState("")
+    const [newFollowUpDate, setNewFollowUpDate] = useState("")
+
 
     return (
         <>
