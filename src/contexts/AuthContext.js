@@ -6,9 +6,10 @@ import {
   sendPasswordResetEmail,
   onAuthStateChanged,
   signInWithPopup,
+  sendSignInLinkToEmail,
   GoogleAuthProvider,
   signOut,
-  confirmPasswordReset,
+  confirmPasswordReset, getAuth,
 } from 'firebase/auth'
 import {addDoc, collection} from "firebase/firestore";
 
@@ -67,6 +68,7 @@ export default function AuthContextProvider({ children }) {
   function updateProfile(displayName){
     return updateProfile(auth, displayName)
   }
+
 
   function forgotPassword(email) {
     return sendPasswordResetEmail(auth, email, {

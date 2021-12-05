@@ -12,10 +12,10 @@ import {
   Tbody,
   Td,
 } from '@chakra-ui/react'
-import { 
-  EditIcon, 
-  ViewIcon, 
-  DeleteIcon, 
+import {
+  EditIcon,
+  ViewIcon,
+  DeleteIcon,
   AddIcon } from '@chakra-ui/icons'
 import { Layout } from '../../components/Layout'
 import { Link } from 'react-router-dom'
@@ -28,7 +28,7 @@ import { db } from '../../utils/init-firebase'
 export default function SocialWorker() {
 
   const [socialWork, setSocialWork] = useState([]);
-  const usersCollectionRef = collection(db, "socialWork");
+  const usersCollectionRef = collection(db, "users");
 
   useEffect(() => {
     const getSocialWork = async () => {
@@ -39,114 +39,73 @@ export default function SocialWorker() {
     getSocialWork();
   }, []);
 
-  
+
+
 
   return (
-    
 
-  <Layout>      
-    <Flex>
-        <Heading>Social Worker</Heading>
-        <Spacer/>
-        <Link to='/social-worker/create'>
-            <Button rightIcon={<AddIcon />} colorScheme="green">
-                Social Worker
-            </Button>
-        </Link>
-    
-    </Flex>
-    <Center py={6}>
-      <Table variant="striped" >
-        <Thead>
-          <Tr>
-            <Th>Client Name</Th>
-            <Th>Actions</Th>
-          </Tr>
-          </Thead>
-            <Tbody>
 
-                <Tr>
-                    <Td>Gene Gulanes</Td>
-                    <Td>
-                        <Stack direction="row" spacing={1}>
-                            <Button colorScheme="teal">
-                                <ViewIcon/>
-                            </Button>
-                            <Link to='/social-worker/update'>
-                              <Button colorScheme="yellow">
-                                  <EditIcon/>
+      <Layout>
+        <Flex>
+          <Heading>Social Worker</Heading>
+          <Spacer/>
+
+
+        </Flex>
+          <Table variant='striped'>
+
+              <Thead>
+                  <Tr>
+                      <Th>Name</Th>
+                      <Th>Actions</Th>
+                  </Tr>
+              </Thead>
+              <Tbody>
+        {socialWork.map((works) => {
+
+          return (
+
+              <Tr key={works.id}>
+                  <Td>{works.displayName}</Td>
+                  <Td>
+                      <Stack direction="row" spacing={1}>
+                          <Link to={{
+                                  pathname: '/social-worker/update',
+                                  state: {
+                                      userId:works.id,
+                                      Name:works.displayName,
+                                      Email:works.email,
+                                      Barangay:works.barangay,
+                                      DistrictA:works.districtAdministrative,
+                                      DistrictL:works.districtLegislative,
+                                      isAdmin:works.isAdmin,
+                                      uid:works.uid
+
+                                  }
+                              }}>
+
+
+
+
+
+
+                              <Button colorScheme="teal">
+                                  <ViewIcon/>
                               </Button>
-                            </Link>
-                            <Button colorScheme="red">
-                                <DeleteIcon/>
-                            </Button>
-                        </Stack>
-                    </Td> 
-                </Tr>
-                <Tr>
-                    <Td>Jeffy Evangelista</Td>
-                    <Td>
-                        <Stack direction="row" spacing={1}>
-                            <Button colorScheme="teal">
-                                <ViewIcon/>
-                            </Button>
-                            <Button colorScheme="yellow">
-                                <EditIcon/>
-                            </Button>
-                            <Button colorScheme="red">
-                                <DeleteIcon/>
-                            </Button>
-                        </Stack>
-                    </Td> 
-                </Tr>
-                <Tr>
-                  <Td>Jhon Kristoffer Delgado</Td>
-                  <Td>
-                    <Stack direction="row" spacing={1}>
-                      <Button colorScheme="teal">
-                        <ViewIcon/>
-                      </Button>
-                      <Button colorScheme="yellow">
-                        <EditIcon/>
-                      </Button>
-                      <Button colorScheme="red">
-                        <DeleteIcon/>
-                      </Button>
-                    </Stack>
-                  </Td> 
+                          </Link>
+
+                      </Stack>
+                  </Td>
               </Tr>
-                <Tr>
-                  <Td>Eirol Coronado</Td>
-                  <Td>
-                    <Stack direction="row" spacing={1}>
-                      <Button colorScheme="teal">
-                        <ViewIcon/>
-                      </Button>
-                      <Button colorScheme="yellow">
-                        <EditIcon/>
-                      </Button>
-                      <Button colorScheme="red">
-                        <DeleteIcon/>
-                      </Button>
-                    </Stack>
-                  </Td> 
-              </Tr>
-          </Tbody>
-        </Table>
-    </Center>
-    {socialWork.map((works) => {
-        return (
-          <div>
-            {" "}
-            <h1>Firstname: {works.first}</h1>
-            <h1>Middlename: {works.middle}</h1>
-            <h1>Lastname: {works.last}</h1>
-            <h1>Address: {works.address}</h1>
-          </div>
-        );
-      })}
-</Layout>
+
+
+
+          );
+
+        })}
+              </Tbody>
+          </Table>
+      </Layout>
 
   )
-  
 }
