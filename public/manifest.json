@@ -1,6 +1,7 @@
 {
   "theme_color": "#48a98c",
   "background_color": "#285d4d",
+  "orientation": "landscape-primary",
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
