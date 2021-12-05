@@ -49,7 +49,11 @@ export default function SocialWorker() {
         <Flex>
           <Heading>Social Worker</Heading>
           <Spacer/>
-
+          <Link to='/social-worker/create'>
+            <Button rightIcon={<AddIcon />} colorScheme="green">
+              Social Worker
+            </Button>
+          </Link>
 
         </Flex>
           <Table variant='striped'>
