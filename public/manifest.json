@@ -8,26 +8,32 @@
   "name": "FHSIS ",
   "description": "FHSIS Maternal Care Mobile Version",
   "short_name": "FHSIS Maternal Care",
+  "categories": ["healthcare", "pwa", "medical","offline-first"]
+
   "icons": [
     {
       "src": "images/192x192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
       "src": "images/256x256.png",
       "sizes": "256x256",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
       "src": "images/384x384.png",
       "sizes": "384x384",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
       "src": "images/512x512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }
