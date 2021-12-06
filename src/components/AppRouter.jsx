@@ -22,8 +22,8 @@ import TargetClientList from '../pages/TargetClientList/TargetClientList'
 import SocialWorker from '../pages/SocialWorker/SocialWorker'
   import CreateSocialWorker from '../pages/SocialWorker/Create'
   import UpdateSocialWorker from '../pages/SocialWorker/Update'
-import Reports from '../pages/Reports'
-import ReportOne from '../pages/TotalReports/ReportOne'
+import Reports from '../pages/Reports/Index'
+
 
 
 
@@ -46,7 +46,7 @@ export default function AppRouter(props) {
           <ProtectedRoute exact path='/target-client-list/create' component={CreateClient}/>
           <ProtectedRoute exact path='/target-client-list/update' component={UpdateClient}/>
           <ProtectedRoute exact path='/reports' component={Reports}/>
-          <ProtectedRoute exact path='/total-reports/report-one' component={ReportOne}/>
+
 
           <ProtectedRoute
             exact

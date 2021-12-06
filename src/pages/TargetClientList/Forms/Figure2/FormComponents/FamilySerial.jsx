@@ -16,8 +16,7 @@ import {
 } from '@chakra-ui/react'
 import {
     collection,
-    getDocs,
-    addDoc,
+    addDoc
   } from "firebase/firestore"
   import { db } from '../../../../../utils/init-firebase'
   import  {useState} from "react";

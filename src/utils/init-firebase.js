@@ -9,8 +9,8 @@ const firebaseConfig = {
   projectId: "capstone-93557",
   storageBucket: "capstone-93557.appspot.com",
   messagingSenderId: "761460351942",
-  appId: "1:761460351942:web:d734de5c6539a1a75f88c7",
-  measurementId: "G-Q5FCLLTD05"
+  appId: "1:761460351942:web:f134f7181f01b8dd5f88c7",
+  measurementId: "G-64Y9K8LQKH"
 };
 
 const app = initializeApp(firebaseConfig);

@@ -2,12 +2,12 @@ import { Button } from '@chakra-ui/button'
 import { Checkbox } from '@chakra-ui/checkbox'
 import { FormControl, FormHelperText, FormLabel, } from '@chakra-ui/form-control'
 import { Input, InputGroup, InputRightAddon, } from '@chakra-ui/input'
-import { Box, SimpleGrid, GridItem, VStack, HStack, Text, Divider, Stack } from '@chakra-ui/layout'
+import { Box, SimpleGrid, GridItem, VStack, HStack, Text, Divider} from '@chakra-ui/layout'
 import { Radio, RadioGroup } from '@chakra-ui/radio'
 import React, { useState } from 'react'
 import {
     collection,
-    getDocs,
+
     addDoc,
   } from "firebase/firestore"
   import { db } from '../../../../utils/init-firebase'

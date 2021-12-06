@@ -4,7 +4,6 @@ import {
   Stack,
   Button,
   Heading,
-  Center,
   Table,
   Thead,
   Tr,
@@ -13,9 +12,7 @@ import {
   Td,
 } from '@chakra-ui/react'
 import {
-  EditIcon,
   ViewIcon,
-  DeleteIcon,
   AddIcon } from '@chakra-ui/icons'
 import { Layout } from '../../components/Layout'
 import { Link } from 'react-router-dom'

@@ -2,16 +2,8 @@ import {
     FormControl,
     FormLabel,
     Input,
-    GridItem,
-    Text,
-    NumberInput,
-    NumberInputField,
-    NumberInputStepper,
-    NumberIncrementStepper,
-    NumberDecrementStepper,
-    Select,
-    InputLeftAddon,
-    InputGroup
+    GridItem
+
 } from '@chakra-ui/react'
 import {
     collection,
