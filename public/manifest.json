@@ -8,7 +8,7 @@
   "name": "FHSIS ",
   "description": "FHSIS Maternal Care Mobile Version",
   "short_name": "FHSIS Maternal Care",
-  "categories": ["healthcare", "pwa", "medical","offline-first"]
+  "categories": ["healthcare", "pwa", "medical","offline-first"],
 
   "icons": [
     {
