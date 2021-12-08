@@ -6,17 +6,10 @@ import {
     Heading,
     Table,
     Thead,
-    Tr,useToast,
+    Tr, useToast,
     Th,
     Tbody,
     Td,
-    Modal,
-    ModalOverlay,
-    ModalContent,
-    ModalHeader,
-    ModalFooter,
-    ModalBody,
-    ModalCloseButton,
     useDisclosure,
     Drawer,
     DrawerBody,
@@ -26,7 +19,7 @@ import {
     DrawerOverlay,
     DrawerContent,
     DrawerCloseButton,
-    FormLabel, Box, Textarea, Select, InputLeftAddon, InputGroup, Input, FormControl,
+    FormLabel,Input, FormControl, FormErrorMessage,
 } from '@chakra-ui/react'
 import { useForm } from "react-hook-form";
 import {
@@ -40,9 +33,8 @@ import {
     collection,
     getDocs, updateDoc,doc
 } from "firebase/firestore";
-import {auth, db} from '../utils/init-firebase'
-import {createUserWithEmailAndPassword} from "firebase/auth";
-
+import { db} from '../utils/init-firebase'
+import {Formik,Form,Field} from "formik";
 
 
 export default function TestPage() {
@@ -55,24 +47,9 @@ export default function TestPage() {
     const firstField = React.useRef()
 
 
- const  { register, handleSubmit } = useForm({
-        defaultValues: {
-            displayName: "bill"
-
-        }
-    });
-
-   const onSubmit = data => {
-        console.log(data)
-
-   };
 
 
 
-    function ThisClick(id) {
-
-        data2(id)
-    }
 
 
     const toast = useToast( )
@@ -123,8 +100,6 @@ export default function TestPage() {
                                         <Button   ref={btnRef} colorScheme='teal'   onClick={() => {
                                             onOpen();
 
-                                            ThisClick(works.id);
-
                                         }} >
 
                                             <ViewIcon/>
@@ -157,59 +132,87 @@ export default function TestPage() {
 
                     <DrawerBody>
                         <Stack spacing='24px'>
-                            <form onSubmit={handleSubmit(onSubmit)}>
-                                <Box>
-                                    <FormLabel >Name</FormLabel>
-                                <Input {...register("email")} />
-                                </Box>
+                            <Formik
+                                initialValues={{  }}
+                                onSubmit={(values, actions) => {
+                                    setTimeout(() => {
+                                        alert(JSON.stringify(values, null, 2))
+                                        actions.setSubmitting(false)
+                                    }, 1000)
+                                }}
+                            >
+                                {(props) => (
+                                    <Form>
+                                        <Field name='displayName' >
+                                            {({ field, form }) => (
+                                                <FormControl isInvalid={form.errors.displayName && form.touched.displayName}>
+                                                    <FormLabel htmlFor='displayName'>Display Name</FormLabel>
+                                                    <Input {...field} id='displayName' placeholder='displayName' />
+                                                    <FormErrorMessage>{form.errors.displayName}</FormErrorMessage>
+                                                </FormControl>
+                                            )}
+                                        </Field>
 
-                                <Box>
-                                    <FormLabel >Display Name</FormLabel>
-                                    <Input {...register("displayName")} />
-                                </Box>
-                                    <Box>
-                                        <FormLabel >Legislative District</FormLabel>
-                                        <Select {...register("districtLegislative", { required: true })}>
+                                        <Field name='email' >
+                                            {({ field, form }) => (
+                                                <FormControl isInvalid={form.errors.email && form.touched.email}>
+                                                    <FormLabel htmlFor='email'>Email Address</FormLabel>
+                                                    <Input {...field} id='email' placeholder='email' />
+                                                    <FormErrorMessage>{form.errors.email}</FormErrorMessage>
+                                                </FormControl>
+                                            )}
+                                        </Field>
+                                        <FormControl >
+                                        <Field as="select" name="legislativeDistrict">
+                                            <option value="red">D1</option>
+                                            <option value="green">D2</option>
+                                            <option value="blue">D3</option>
 
-                                            <option value="d2">District 2</option>
+                                        </Field></FormControl>
 
+                                            <FormControl >
+                                        <Field as="select" name="administrativeDistrict" >
 
-                                        </Select>
+                                            <option value="red">Paquibato</option>
+                                            <option value="red2">Paquibato2</option>
 
-                                    </Box>
-                                        <Box>
-                                            <FormLabel >Administrative District</FormLabel>
-                                            <Select {...register("districtAdministrative", { required: true })}>
-                                                <option value="paq">Paquibato</option>
+                                        </Field></FormControl>
+                                                <FormControl >
+                                        <Field as="select" name="barangay">
+                                            <option value="col">Colosas</option>
+                                            <option value="fat">Fatima (Benowang)</option>
+                                            <option value="lum"> Lumiad</option>
+                                            <option value="mab">Mabuhay</option>
+                                            <option value="mal">  Malabog</option>
+                                            <option value="map"> Mapula</option>
+                                            <option value="pan"> Panalum</option>
+                                            <option value="pand">  Pandaitan</option>
+                                            <option value="paq">  Paquibato Proper</option>
+                                            <option value="pare">  Paradise Embak</option>
+                                            <option value="sal">  Salapawan</option>
+                                            <option value="sumi"> Sumimao</option>
+                                            <option value="tap"> Tapak</option>
 
+                                        </Field></FormControl>
+                                                    <FormControl >
+                                        <Field as="select" name="isAdmin" >
 
-                                            </Select>
-                                        </Box>
-                                            <Box>
-                                                <FormLabel >Barangay</FormLabel>
-                                                <Select {...register("barangay", { required: true })}>
-                                                    <option value="col">Colosas</option>
-                                                    <option value="fat">Fatima (Benowang)</option>
-                                                    <option value="lum"> Lumiad</option>
-                                                        <option value="mab">Mabuhay</option>
-                                                            <option value="mal">  Malabog</option>
-                                                                <option value="map"> Mapula</option>
-                                                                <option value="pan"> Panalum</option>
-                                                                    <option value="pand">  Pandaitan</option>
-                                                                        <option value="paq">  Paquibato Proper</option>
-                                                                            <option value="pare">  Paradise Embak</option>
-                                                                                <option value="sal">  Salapawan</option>
-                                                                                    <option value="sumi"> Sumimao</option>
-                                                                                        <option value="tap"> Tapak</option>
-                                                </Select>
-                                            </Box>
-                                                <Box>
-                                                    <FormLabel >isAdmin</FormLabel>
-                                                    <Checkbox type="checkbox" {...register("isAdmin")} />
-                                                </Box>
-                                <button type="submit">Submit</button>
-                            </form>
+                                            <option value="true">isAdmin</option>
+                                            <option value="false">isNotAdmin</option>
 
+                                        </Field>
+                                                    </FormControl>
+                                        <Button
+                                            mt={4}
+                                            colorScheme='teal'
+                                            isLoading={props.isSubmitting}
+                                            type='submit'
+                                        >
+                                            Submit
+                                        </Button>
+                                    </Form>
+                                )}
+                            </Formik>
                         </Stack>
                     </DrawerBody>
 
