@@ -1,112 +1,87 @@
 import {
-  Flex,
-  Spacer,
-  Stack,
-  Button,
-  Heading,
-  Table,
-  Thead,
-  Tr,
-  Th,
-  Tbody,
-  Td,
+    Flex,
+    Spacer,
+    Stack,
+    Button,
+    Heading,
+    Table,
+    Thead,
+    Tr,
+    Th,
+    Tbody,
+    Td,
 } from '@chakra-ui/react'
 import {
-  ViewIcon,
-  AddIcon } from '@chakra-ui/icons'
+    ViewIcon,
+    AddIcon } from '@chakra-ui/icons'
 import { Layout } from '../../components/Layout'
 import { Link } from 'react-router-dom'
 import React, { useState, useEffect } from 'react'
 import {
-  collection,
-  getDocs,
+    collection,
+    getDocs,
 } from "firebase/firestore";
 import { db } from '../../utils/init-firebase'
+import Create from "./Create";
+import Update from "./Update";
 export default function SocialWorker() {
 
-  const [socialWork, setSocialWork] = useState([]);
-  const usersCollectionRef = collection(db, "users");
+    const [socialWork, setSocialWork] = useState([]);
+    const usersCollectionRef = collection(db, "users");
 
-  useEffect(() => {
-    const getSocialWork = async () => {
-      const data = await getDocs(usersCollectionRef);
-      setSocialWork(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    };
+    useEffect(() => {
+        const getSocialWork = async () => {
+            const data = await getDocs(usersCollectionRef);
+            setSocialWork(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+        };
 
-    getSocialWork();
-  }, []);
-
-
-
-
-  return (
-
-
-      <Layout>
-        <Flex>
-          <Heading>Social Worker</Heading>
-          <Spacer/>
-          <Link to='/social-worker/create'>
-            <Button rightIcon={<AddIcon />} colorScheme="green">
-              Social Worker
-            </Button>
-          </Link>
-
-        </Flex>
-          <Table variant='striped'>
-
-              <Thead>
-                  <Tr>
-                      <Th>Name</Th>
-                      <Th>Actions</Th>
-                  </Tr>
-              </Thead>
-              <Tbody>
-        {socialWork.map((works) => {
-
-          return (
-
-              <Tr key={works.id}>
-                  <Td>{works.displayName}</Td>
-                  <Td>
-                      <Stack direction="row" spacing={1}>
-                          <Link to={{
-                                  pathname: '/social-worker/update',
-                                  state: {
-                                      userId:works.id,
-                                      Name:works.displayName,
-                                      Email:works.email,
-                                      Barangay:works.barangay,
-                                      DistrictA:works.districtAdministrative,
-                                      DistrictL:works.districtLegislative,
-                                      isAdmin:works.isAdmin,
-                                      uid:works.uid
-
-                                  }
-                              }}>
+        getSocialWork();
+    }, []);
 
 
 
 
+    return (
 
 
-                              <Button colorScheme="teal">
-                                  <ViewIcon/>
-                              </Button>
-                          </Link>
+        <Layout>
+            <Flex>
+                <Heading>Social Worker</Heading>
+                <Spacer/>
 
-                      </Stack>
-                  </Td>
-              </Tr>
+                <Create/>
+            </Flex>
+            <Table variant='striped'>
+
+                <Thead>
+                    <Tr>
+                        <Th>Name</Th>
+                        <Th>Actions</Th>
+                    </Tr>
+                </Thead>
+                <Tbody>
+                    {socialWork.map((works) => {
+
+                        return (
+
+                            <Tr key={works.id}>
+                                <Td>{works.displayName}</Td>
+                                <Td>
+                                    <Stack direction="row" spacing={1}>
+                                   <Update works= {works}/>
+
+                                    </Stack>
+                                </Td>
+                            </Tr>
 
 
 
-          );
+                        );
 
-        })}
-              </Tbody>
-          </Table>
-      </Layout>
+                    })}
+                </Tbody>
+            </Table>
+        </Layout>
 
-  )
+    )
 }

@@ -1,219 +1,180 @@
+import React from 'react'
 import {
-   Button,
-    Center, chakra,
-    Container,
-    FormControl,
-    FormLabel,
-    Heading,
-    Input, Select,
-    Stack,
-  useToast
+    Drawer,
+    DrawerBody,
+    DrawerFooter,
+    DrawerHeader,
+    DrawerOverlay,
+    DrawerContent,
+    DrawerCloseButton, useDisclosure, Button, Input, FormControl, FormErrorMessage, FormLabel, Stack, Select,
 } from '@chakra-ui/react'
-import React, {useEffect, useRef, useState} from 'react'
-import { useLocation} from 'react-router-dom'
+import {Form,Field,Formik} from "formik";
+import { v4 as uuidv4 } from 'uuid';
+import { useToast } from '@chakra-ui/react'
+import {collection, doc, updateDoc, addDoc, setDoc} from "firebase/firestore";
+import {db} from "../../utils/init-firebase";
 
-import { db } from '../../utils/init-firebase'
-import { Layout } from '../../components/Layout'
-
-
-import { collection, doc,updateDoc } from "firebase/firestore";
-import {Card} from "../../components/Card";
+import {AddIcon, ViewIcon} from "@chakra-ui/icons";
 
 
 
 
-
-export default function Update() {
-    const location = useLocation()
-    const [email, setEmail] = useState(location.state.Email);
-    const [id] = useState(location.state.userId);
-    const [displayName, setName] = useState(location.state.Name)
-    const [districtLegislative, setDistrictLegislative] = useState(location.state.DistrictL)
-    const [districtAdministrative, setDistrictAdministrative] = useState(location.state.DistrictA)
-    const [barangay, setBarangay] = useState(location.state.Barangay)
-    const [uid, setUID] = useState(location.state.uid)
-    const [isAdmin, setisAdmin] = useState(location.state.isAdmin)
-    const [isSubmitting, setIsSubmitting] = useState(false)
+export default  function Update ({works}) {
+    const { isOpen, onOpen, onClose } = useDisclosure()
+    const btnRef = React.useRef()
     const toast = useToast()
-    const mounted = useRef(false)
+    const firstField = React.useRef()
 
-    async function updateUser(id,isAdmin,email,displayName,barangay,districtAdministrative,districtLegislative) {
-        const ref = doc(db, "users",id)
-       await updateDoc(
-            ref,{
-               displayName: displayName,
-               barangay: barangay,
-               districtAdministrative: districtAdministrative,
-               districtLegislative: districtLegislative,
-               email: email,
-               uid: id,
-               isAdmin: true,
-            }
-        ).then(()=>
-        {
-            alert("Data Added")
-
+    async  function updateUsers(values) {
+        const documentId = JSON.parse(JSON.stringify(values.id))
+        const userRef = doc(db, 'users', documentId);
+        await  updateDoc(userRef,{
+            id: values.id,
+            displayName:values.displayName,
+            email: values.email,
+            administrativeDistrict:values.administrativeDistrict,
+            legislativeDistrict:values.legislativeDistrict,
+            barangay:values.barangay,
+            isAdmin: values.isAdmin,
         })
-            .catch(error => {
-                alert('Nothing added',error)
-            })
-
     }
 
 
-
-    useEffect(() => {
-        mounted.current = true
-        return () => {
-            mounted.current = false
-        }
-    }, [])
-
-
-
-
-
-
-
-
     return (
+        <>
+            <Button ref={btnRef} colorScheme='teal' onClick={onOpen}>
+                <AddIcon />
+            </Button>
+            <Drawer
+                isOpen={isOpen}
+                placement='right'
+                initialFocusRef={firstField}
+                onClose={onClose}
+            >
+                <DrawerOverlay />
+                <DrawerContent>
+                    <DrawerCloseButton />
+                    <DrawerHeader borderBottomWidth='1px'>
+                        Update Social Worker Account
+                    </DrawerHeader>
 
-    <Layout>
-      <Heading>Update User Profile</Heading>
-        <Container maxW='container.lg' overflowX='auto' py={4}>
-            <Center py={12}>
-                <Card>
-
-                    <chakra.form
-                        onSubmit={async e => {
-                            e.preventDefault()
-
-                            // your register logic here
-                            setIsSubmitting(true)
-                            updateUser(id,setisAdmin,email,displayName,barangay,districtAdministrative,districtLegislative)
-                                .then(res => {  })
-                                .catch(error => {
-                                    console.log(error.message)
-
-                                    toast({
-                                        description: error.message,
-                                        status: 'error',
-                                        duration: 9000,
-                                        isClosable: true,
-                                    })
-                                })
-                                .finally(() => {
-                                    mounted.current && setIsSubmitting(false)
-
-                                })
-                        }}
-                    >
-                        <Stack spacing='6'>
-                            <FormControl id='email' isDisabled defaultValue={email}>
-                                <FormLabel>Email address</FormLabel>
-                                <Input
-
-                                    name='email'
-                                    type='email'
-                                    autoComplete='email'
-                                    required
-                                    value={email}
-                                    onChange={e => setEmail(e.target.value)}
-                                />
-                            </FormControl>
-                            <FormControl id='name'  isRequired>
-                                <FormLabel>Name</FormLabel>
-                                <Input
-
-                                    name='name'
-                                    type='name'
-                                    autoComplete='name'
-                                    value={displayName}
-                                    onChange={e => setName(e.target.value)}
-                                />
-                            </FormControl>
-
-                            <FormControl id='districtLegislative' isRequired>
-                                <FormLabel>Legislative District</FormLabel>
-
-                                <Select  value={districtLegislative}
-                                        onChange={e => setDistrictLegislative(e.target.value)}  >
-                                    <option value={"1st"}>1st District</option>
-                                    <option value={"2nd"}> 2nd District</option>
-                                    <option value={"3rd"} >3rd District</option>
-                                </Select>
-                            </FormControl>
-
-                            <FormControl id='districtAdministrative' isRequired>
-                                <FormLabel>Administrative District</FormLabel>
-                                <Select value={districtAdministrative}
-                                        onChange={e => setDistrictAdministrative(e.target.value)}  >
-                                    <option disabled="disabled" >District 1</option>
-                                    <option value={"pob"} >Poblacion</option>
-                                    <option value={"tal"}>Talomo</option>
-                                    <option disabled="disabled" >District 2</option>
-                                    <option value={"agd"}> Agdao</option>
-                                    <option value={"buh"}> Buhangin</option>
-                                    <option value={"bun"}> Bunawan</option>
-                                    <option value={"paq"}> Paquibato</option>
-                                    <option disabled="disabled" >District 3</option>
-                                    <option value={"bag"} > Baguio</option>
-                                    <option value={"cal"}>   Calinan</option>
-                                    <option value={"mar"}>Marilog</option>
-                                    <option value={"tor"}>Toril</option>
-                                    <option value={"tug"}> Tugbok</option>
+                    <DrawerBody>
+                        <Stack spacing='24px'>
+                            <Formik
+                                initialValues={{
+                                    id: works.id,
+                                    displayName:works.displayName,
+                                    email: works.email,
+                                    administrativeDistrict: works.administrativeDistrict,
+                                    legislativeDistrict: works.legislativeDistrict,
+                                    barangay: works.barangay,
+                                    isAdmin: works.isAdmin,
 
 
-                                </Select>
+                                }}
+                                onSubmit={(values, actions) => {
+                                    updateUsers(values)
+                                        .then(() => {
+                                            toast({
+                                                title: 'Success',
+                                                description: 'User Profile Updated Successfully',
+                                                status: 'info',
+                                                duration: 9000,
+                                                isClosable: true,
+                                            })
+                                            actions.setSubmitting(false)
+                                            onClose()
+                                        })
 
-
-                            </FormControl>
-
-                            <FormControl id='barangay' isRequired>
-                                <FormLabel>Barangay</FormLabel>
-
-                                <Input
-                                    name='name'
-                                    type='name'
-                                    autoComplete='name'
-                                    required
-                                    value={barangay}
-                                    onChange={e => setBarangay(e.target.value)}
-                                />
-                            </FormControl>
-
-                            <FormControl id='isAdmin' isRequired>
-                                <FormLabel>isAdmin</FormLabel>
-
-                                <Select onChange={e => setisAdmin(e.target.value)}  >
-                                    <option value={"true"}>Admin</option>
-                                    <option value={"false"}>Not an Admin</option>
-
-                                </Select>
-                            </FormControl>
-
-                            <Button
-                                type='submit'
-                                colorScheme='blue'
-                                size='lg'
-                                fontSize='md'
-                                isLoading={isSubmitting}
-
+                                }}
                             >
-                               Update
-                            </Button>
+                                {(props) => (
+                                    <Form>
+                                        <Field name='displayName' >
+                                            {({ field, form }) => (
+                                                <FormControl isInvalid={form.errors.displayName && form.touched.displayName}>
+                                                    <FormLabel htmlFor='displayName'>Display Name</FormLabel>
+                                                    <Input {...field} id='displayName' placeholder='displayName' />
+                                                    <FormErrorMessage>{form.errors.displayName}</FormErrorMessage>
+                                                </FormControl>
+                                            )}
+                                        </Field>
+
+                                        <Field name='email' >
+                                            {({ field, form }) => (
+                                                <FormControl isInvalid={form.errors.email && form.touched.email}>
+                                                    <FormLabel htmlFor='email'>Email Address</FormLabel>
+                                                    <Input {...field} id='email' placeholder='email' />
+                                                    <FormErrorMessage>{form.errors.email}</FormErrorMessage>
+                                                </FormControl>
+                                            )}
+                                        </Field>
+                                        <FormControl >
+                                            <Field as="select" name="legislativeDistrict">
+                                                <option value="red">D1</option>
+                                                <option value="green">D2</option>
+                                                <option value="blue">D3</option>
+
+                                            </Field></FormControl>
+
+                                        <FormControl >
+
+                                            <Field Select as="select" name="administrativeDistrict" >
+
+                                                <option value="red">Paquibato</option>
+                                                <option value="red2">Paquibato2</option>
+
+                                            </Field>
+
+                                        </FormControl>
+                                        <FormControl >
+                                            <Field as="select" name="barangay">
+                                                <option value="col">Colosas</option>
+                                                <option value="fat">Fatima (Benowang)</option>
+                                                <option value="lum"> Lumiad</option>
+                                                <option value="mab">Mabuhay</option>
+                                                <option value="mal">  Malabog</option>
+                                                <option value="map"> Mapula</option>
+                                                <option value="pan"> Panalum</option>
+                                                <option value="pand">  Pandaitan</option>
+                                                <option value="paq">  Paquibato Proper</option>
+                                                <option value="pare">  Paradise Embak</option>
+                                                <option value="sal">  Salapawan</option>
+                                                <option value="sumi"> Sumimao</option>
+                                                <option value="tap"> Tapak</option>
+
+                                            </Field></FormControl>
+                                        <FormControl >
+                                            <Field as="select" name="isAdmin" >
+
+                                                <option value="true">isAdmin</option>
+                                                <option value="false">isNotAdmin</option>
+
+                                            </Field>
+                                        </FormControl>
+                                        <Button
+                                            mt={4}
+                                            colorScheme='teal'
+                                            isLoading={props.isSubmitting}
+                                            type='submit'
+                                        >
+                                            Submit
+                                        </Button>
+                                    </Form>
+                                )}
+                            </Formik>
                         </Stack>
-                    </chakra.form>
+                    </DrawerBody>
+
+                    <DrawerFooter borderTopWidth='1px'>
+                        <Button variant='outline' mr={3} onClick={onClose}>
+                            Cancel
+                        </Button>
 
 
-
-
-                </Card>
-            </Center>
-        </Container>
-
-    </Layout>
-
-  )
-
+                    </DrawerFooter>
+                </DrawerContent>
+            </Drawer>
+        </>
+    )
 }
