@@ -1,21 +1,29 @@
-import { initializeApp } from 'firebase/app';
+import { initializeApp } from "firebase/app";
 import { getAuth } from 'firebase/auth';
 import { getFirestore,enableIndexedDbPersistence  } from "@firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBhOFXZr8oOvAHM29JmLe9CqvSCXEOFYJM",
-  authDomain: "capstone-93557.firebaseapp.com",
-  databaseURL: "https://capstone-93557-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "capstone-93557",
-  storageBucket: "capstone-93557.appspot.com",
-  messagingSenderId: "761460351942",
-  appId: "1:761460351942:web:f134f7181f01b8dd5f88c7",
-  measurementId: "G-64Y9K8LQKH"
+  apiKey: "AIzaSyASSwQ4BOaNEA6LhzF9e2bbF3t8YbzOJM8",
+  authDomain: "fhsismaternalcare-db852.firebaseapp.com",
+  databaseURL: "https://fhsismaternalcare-db852-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "fhsismaternalcare-db852",
+  storageBucket: "fhsismaternalcare-db852.appspot.com",
+  messagingSenderId: "555857684535",
+  appId: "1:555857684535:web:b74fabb9cb9a862a0877b2",
+  measurementId: "${config.measurementId}"
 };
 
 const app = initializeApp(firebaseConfig);
 
 export const db = getFirestore(app);
+ //enableIndexedDbPersistence();
+ async function offlineDb() {
+     await enableIndexedDbPersistence(db).then(() => {
+         console.log('Im now offline capable');
+     }).catch(err => {
+         console.log('Please Check i cant go offline', err);
+     });
 
-
+ }
+ offlineDb()
 export const auth = getAuth(app);

@@ -13,30 +13,24 @@ import { v4 as uuidv4 } from 'uuid';
 import { useToast } from '@chakra-ui/react'
 import {collection, doc, updateDoc, addDoc, setDoc} from "firebase/firestore";
 import {db} from "../../utils/init-firebase";
+import { getAuth, sendSignInLinkToEmail } from "firebase/auth";
 
 import {AddIcon, ViewIcon} from "@chakra-ui/icons";
+import {useAuth} from "../../contexts/AuthContext";
+
 
 
 
 
 export default  function Create () {
+    const { manualLogin } = useAuth()
+
+
     const { isOpen, onOpen, onClose } = useDisclosure()
     const btnRef = React.useRef()
     const toast = useToast()
     const firstField = React.useRef()
-    async  function createUsers(values) {
-        const documentId = JSON.parse(JSON.stringify(values.id))
-        const userRef = doc(db, 'users', documentId);
-        await  setDoc(userRef,{
-            id: values.id,
-            displayName:values.displayName,
-            email: values.email,
-            administrativeDistrict:values.administrativeDistrict,
-            legislativeDistrict:values.legislativeDistrict,
-            barangay:values.barangay,
-            isAdmin: values.isAdmin,
-        })
-    }
+
 
 
     return (
@@ -72,7 +66,7 @@ export default  function Create () {
 
                                 }}
                                 onSubmit={(values, actions) => {
-                                    createUsers(values)
+                                    manualLogin(values)
 
                                         .then(() => {
                                             toast({

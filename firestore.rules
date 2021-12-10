@@ -1,47 +1,9 @@
 rules_version = '2';
 service cloud.firestore {
-
-
   match /databases/{database}/documents {
-    match /users/{userId} {
-       match /{allSubcollections=**} {
-        allow read, write: if true;
-      }
+    match /{document=**} {
+      allow read, write: if
+          request.time < timestamp.date(2022, 1, 9);
     }
   }
-  match /databases/{database}/documents {
-    match /socialWork/{userId} {
-       match /{allSubcollections=**} {
-        allow read, write: if true;
-      }
-    }
-  }
-  match /databases/{database}/documents {
-    match /client/{userId} {
-       match /{allSubcollections=**} {
-        allow read, write: if true;
-      }
-    }
-  }
-  match /databases/{database}/documents {
-    match /family/{userId} {
-       match /{allSubcollections=**} {
-        allow read, write: if true;
-      }
-    }
-  }
-   match /databases/{database}/documents {
-    match /test/{userId} {
-       match /{allSubcollections=**} {
-        allow read, write: if true;
-      }
-    }
-  }
-    match /databases/{database}/documents {
-      match /Locations/{userId} {
-         match /{allSubcollections=**} {
-          allow read, write: if true;
-        }
-      }
-    }
 }

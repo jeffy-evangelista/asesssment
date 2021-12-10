@@ -7,12 +7,13 @@ import {
   onAuthStateChanged,
   signInWithPopup,
   sendSignInLinkToEmail,
-  GoogleAuthProvider,
+  GoogleAuthProvider,signInWithEmailLink,
   signOut,
+
   confirmPasswordReset, getAuth,
 } from 'firebase/auth'
-import {addDoc, collection} from "firebase/firestore";
-
+import {addDoc, collection, doc, setDoc,getDoc, query, where, getDocs} from "firebase/firestore";
+import { v4 as uuidv4 } from 'uuid';
 
 const AuthContext = createContext({
   currentUser: null,
@@ -22,6 +23,8 @@ const AuthContext = createContext({
   logout: () => Promise,
   forgotPassword: () => Promise,
   resetPassword: () => Promise,
+  manualLogin: () => Promise,
+
 })
 
 export const useAuth = () => useContext(AuthContext)
@@ -46,11 +49,13 @@ export default function AuthContextProvider({ children }) {
     return signInWithEmailAndPassword(auth, email, password)
   }
 
+
+
+
   function register(email, password,displayName,barangay,districtAdministrative,districtLegislative) {
     return createUserWithEmailAndPassword(auth, email, password,displayName,barangay,districtAdministrative,districtLegislative)
         .then(async cred => {
           const usersCollectionRef = collection(db, "users");
-
           await addDoc(usersCollectionRef, {
             displayName: displayName,
             barangay: barangay,
@@ -68,6 +73,8 @@ export default function AuthContextProvider({ children }) {
   function updateProfile(displayName){
     return updateProfile(auth, displayName)
   }
+
+
 
 
   function forgotPassword(email) {
@@ -89,6 +96,30 @@ export default function AuthContextProvider({ children }) {
     return signInWithPopup(auth, provider)
   }
 
+  function manualLogin(values) {
+     const password = "123456"
+    return createUserWithEmailAndPassword(auth, values.email, password)
+        .then(async cred => {
+          const id4 = uuidv4();
+          const documentId = JSON.parse(JSON.stringify(id4))
+          const userRef = doc(db, 'users', documentId);
+
+          await setDoc(userRef, {
+            email: values.email,
+            id: documentId,
+            displayName: values.displayName,
+            administrativeDistrict:values.administrativeDistrict,
+            legislativeDistrict:values.legislativeDistrict,
+            barangay:values.barangay,
+            isAdmin: values.isAdmin,
+
+          });
+
+
+        })
+
+  }
+
   const value = {
     currentUser,
     signInWithGoogle,
@@ -97,7 +128,10 @@ export default function AuthContextProvider({ children }) {
     logout,
     forgotPassword,
     resetPassword,
-    updateProfile
+    updateProfile,
+      manualLogin
+
+
   }
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 }

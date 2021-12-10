@@ -24,7 +24,7 @@ import {db} from "../utils/init-firebase";
 
 
 export default function Registerpage() {
-  const usersCollectionRef = collection(db, "users");
+
   const history = useHistory()
   const { signInWithGoogle, register } = useAuth()
   const [email, setEmail] = useState('')
