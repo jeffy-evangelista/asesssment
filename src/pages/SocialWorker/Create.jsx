@@ -23,14 +23,13 @@ import {useAuth} from "../../contexts/AuthContext";
 
 
 export default  function Create () {
-    const { manualLogin } = useAuth()
+    const {manualLogin } = useAuth()
 
 
     const { isOpen, onOpen, onClose } = useDisclosure()
     const btnRef = React.useRef()
     const toast = useToast()
     const firstField = React.useRef()
-
 
 
     return (
@@ -78,6 +77,16 @@ export default  function Create () {
                                             })
                                             actions.setSubmitting(false)
                                             onClose()
+                                        })
+                                        .catch(err => {
+                                            toast({
+                                                title: 'Error',
+                                                description: err.message,
+                                                status: 'error',
+                                                duration: 9000,
+                                                isClosable: true,
+                                            })
+                                            actions.setSubmitting(false)
                                         })
 
                                 }}

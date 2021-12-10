@@ -23,7 +23,8 @@ const AuthContext = createContext({
   logout: () => Promise,
   forgotPassword: () => Promise,
   resetPassword: () => Promise,
-  manualLogin: () => Promise,
+  manualLogin: () => Promise
+
 
 })
 
@@ -55,14 +56,16 @@ export default function AuthContextProvider({ children }) {
   function register(email, password,displayName,barangay,districtAdministrative,districtLegislative) {
     return createUserWithEmailAndPassword(auth, email, password,displayName,barangay,districtAdministrative,districtLegislative)
         .then(async cred => {
-          const usersCollectionRef = collection(db, "users");
-          await addDoc(usersCollectionRef, {
+          const id4 = uuidv4();
+          const documentId = JSON.parse(JSON.stringify(id4))
+          const usersCollectionRef = doc(db, 'users', documentId);
+          await setDoc(usersCollectionRef, {
             displayName: displayName,
             barangay: barangay,
             districtAdministrative: districtAdministrative,
             districtLegislative: districtLegislative,
             email: email,
-            uid: cred.user.uid,
+            id: documentId,
             isAdmin: false,
           });
 
@@ -112,12 +115,8 @@ export default function AuthContextProvider({ children }) {
             legislativeDistrict:values.legislativeDistrict,
             barangay:values.barangay,
             isAdmin: values.isAdmin,
-
-          });
-
-
+          })
         })
-
   }
 
   const value = {
@@ -129,7 +128,7 @@ export default function AuthContextProvider({ children }) {
     forgotPassword,
     resetPassword,
     updateProfile,
-      manualLogin
+    manualLogin,
 
 
   }
