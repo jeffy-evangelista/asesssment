@@ -7,25 +7,28 @@ import {
 } from '@chakra-ui/react'
 import {
     collection,
-    addDoc,
-  } from "firebase/firestore"
+    addDoc, doc,updateDoc,
+} from "firebase/firestore"
   import { db } from '../../../../../utils/init-firebase'
 import {useState} from "react";
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
 
-export default function SideB() {
+export default function SideB({works}) {
     const [newSideBDate, setNewSideBDate] = useState(new Date());
     const [newComplaintsComplication, setNewComplaintsComplication] = useState("")
     const [newMCN, setNewMCN] = useState("")
     const [newNameSig, setNewNameSig] = useState("")
     const [newFollowUpDate, setNewFollowUpDate] = useState("")
 
-    const usersCollectionRef = collection(db, "users");
+    const documentId = JSON.parse(JSON.stringify(works.id))
+
+
+    const usersCollectionRef = doc(db, 'client', documentId);
 
     const createUser = async () => {
-        await addDoc(usersCollectionRef, 
+        await updateDoc(usersCollectionRef,
             { 
                 Date: newSideBDate, 
                 Complication: newComplaintsComplication, 

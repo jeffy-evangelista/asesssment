@@ -29,7 +29,7 @@ import {
 } from '@chakra-ui/react'
 import React, { useState } from 'react'
 
-export default function Figure5() {
+export default function Figure5( {works}) {
   const [outCome, setOutCome] = useState("");
   const [attendant, setAttendant] = useState("");
   const [sex, setSex] = useState("");

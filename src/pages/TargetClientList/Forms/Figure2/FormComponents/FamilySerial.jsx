@@ -16,8 +16,8 @@ import {
 } from '@chakra-ui/react'
 import {
     collection,
-    addDoc
-  } from "firebase/firestore"
+    addDoc, updateDoc, doc
+} from "firebase/firestore"
   import { db } from '../../../../../utils/init-firebase'
   import  {useState} from "react";
   import DatePicker from "react-datepicker";
@@ -25,7 +25,7 @@ import {
 import "react-datepicker/dist/react-datepicker.css";
 
 
-export default function FamilySerial() {
+export default function FamilySerial({works}) {
     
     const [newFirstName, setNewFirstName] = useState("");
     const [newMiddleName, setNewMiddleName] = useState("");
@@ -44,12 +44,15 @@ export default function FamilySerial() {
     const [newEducto, setNewEducto] = useState("");
     const [cBirthday, setCBirthday] = useState(new Date());
     const [sBirthday, setSBirthday] = useState(new Date());
-    
 
-    const usersCollectionRef = collection(db, "client");
+
+    const documentId = JSON.parse(JSON.stringify(works.id))
+
+
+    const usersCollectionRef = doc(db, 'client', documentId);
     
     const createFamily = async () => {
-        await addDoc(usersCollectionRef, { 
+        await updateDoc(usersCollectionRef, {
             firstname: newFirstName, 
             middlename: newMiddleName, 
             lastname: newLastName,

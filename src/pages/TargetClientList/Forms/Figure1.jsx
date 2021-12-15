@@ -21,13 +21,13 @@ import {
 import React, { useState } from 'react'
 import {
   collection,
-  addDoc,
+  addDoc, doc, updateDoc,
 } from "firebase/firestore"
 import { db } from '../../../utils/init-firebase'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-export default function Figure1() {
+export default function Figure1({works}) {
   const [newYear, setNewYear] = useState(new Date());
   const [newExpected, setNewExpected] = useState(new Date());
   const [newPos, setNewPos] = useState("");
@@ -59,12 +59,13 @@ export default function Figure1() {
   const [newStillBirth, setStillBirth] = useState(new Date());
   const [newEarlyDeath, setEarlyDeath] = useState(new Date());
 
+console.log(works.id)
+  const documentId = JSON.parse(JSON.stringify(works.id))
 
 
-  const usersCollectionRef = collection(db, "client");
-
+  const usersCollectionRef = doc(db, 'client', documentId);
   const createForm1 = async () => {
-    await addDoc(usersCollectionRef, { 
+    await updateDoc(usersCollectionRef, {
       year: newYear,
       center: newBcenter, 
       religion: newReligion, 

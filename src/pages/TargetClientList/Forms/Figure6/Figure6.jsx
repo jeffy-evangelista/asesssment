@@ -7,15 +7,15 @@ import { Radio, RadioGroup } from '@chakra-ui/radio'
 import React, { useState } from 'react'
 import {
     collection,
-
-    addDoc,
-  } from "firebase/firestore"
+    updateDoc,
+    addDoc, doc,
+} from "firebase/firestore"
   import { db } from '../../../../utils/init-firebase'
   import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
 
-export default function Figure6() {
+export default function Figure6({works}) {
     const [fim, setFim] = useState("");
     const [syphilisScreening, setSyphilisScreening] = useState("");
     const [hepatitisBScreening, setHepatitisBScreening] = useState("");
@@ -89,12 +89,11 @@ export default function Figure6() {
     const [supplement3, setSupplement3] = useState(new Date());
     const [supplement4, setSupplement4] = useState(new Date());
 
-
-    
-    const usersCollectionRef = collection(db, "test");
+    const documentId = JSON.parse(JSON.stringify(works.id))
+    const usersCollectionRef = doc(db, 'client', documentId);
 
     const createUser = async () => {
-        await addDoc(usersCollectionRef, 
+        await updateDoc(usersCollectionRef,
             { 
             registration: dateReg,
             serial: serialNum, 

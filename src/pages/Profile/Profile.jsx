@@ -18,22 +18,17 @@ import Update from './Update'
 
 export default function Profile() {
    const { currentUser } = useAuth()
-   const [data,setdata]= useState([])
-
-
-
+   const [data,setData]= useState([])
 
     useEffect(async () => {
         const userData=[]
         const q = query(collection(db, "users"), where("email", "==", currentUser.email))
         const querySnapshot = await getDocs(q);
         querySnapshot.forEach((doc) => {
-            // doc.data() is never undefined for query doc snapshots
             console.log(doc.id, " => ", doc.data());
             userData.push(doc.data())
         });
-
-        setdata(userData)
+        setData(userData)
     }, []);
 
 
@@ -42,13 +37,9 @@ export default function Profile() {
 
 
   return (
-
-
-
     <Layout>
       <Heading>User Profile</Heading>
       <Container maxW='container.lg' overflowX='auto' py={4}>
-
         <Center py={12}>
       <Box
         w={'full'}
@@ -56,31 +47,18 @@ export default function Profile() {
         rounded={'md'}
         overflow={'hidden'}
         boxShadow={'lg'}>
-
         <Box p={6}>
           <Stack spacing={0} align={'center'} mb={5}>
             <Heading fontSize={'2xl'} fontWeight={500} fontFamily={'body'}>
-
-
               {data.map(item => (
                 <Flex align={'center'}>
-
                   <Text fontSize={'md'} fontWeight={500}>
                     {item.displayName}
                   </Text>
                 </Flex>
               ))}
-
-
             </Heading>
           </Stack>
-
-
-
-
-
-
-
             <Stack direction={'row'} justify={'center'} spacing={6}>
             <Stack spacing={0} align={'center'}>
               <Text fontWeight={600}>Email</Text>

@@ -10,14 +10,13 @@ import {useState} from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import {
-    collection,
-    addDoc,
-  } from "firebase/firestore"
+    updateDoc, doc,
+} from "firebase/firestore"
   import { db } from '../../../../../utils/init-firebase'
 
 
 
-export default function Aef() {
+export default function Aef({works}) {
     const [new1stMonthDate, set1stMonthDate] = useState(new Date());
     const [new1stFundic, set1stFundic] = useState("");
     const [new1stFetalHeartTones, set1stFetalHeartTones] = useState("");
@@ -128,10 +127,11 @@ export default function Aef() {
     const [newRemL4, setRemL4] = useState("");
     const [newRemUterinActivity, setRemUterinActivity] = useState("");
 
+    const documentId = JSON.parse(JSON.stringify(works.id))
 
-    const usersCollectionRef = collection(db, "users");
+    const usersCollectionRef = doc(db, 'client', documentId);
     const createUser = async () => {
-        await addDoc(usersCollectionRef, { 
+        await updateDoc(usersCollectionRef, {
             Date: new1stMonthDate, 
             Fundic: new1stFundic, 
             Heart: new1stFetalHeartTones,

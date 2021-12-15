@@ -15,7 +15,7 @@ import SideB from './FormComponents/SideB'
 import AEF from './FormComponents/AEF'
 
 
-export default function Figure2() {
+export default function Figure2({works}) {
 
     return (
         <Box boxShadow={'lg'} p={8}>

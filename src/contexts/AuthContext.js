@@ -57,13 +57,14 @@ export default function AuthContextProvider({ children }) {
 
           const usersCollectionRef = doc(db, 'users', cred.user.uid);
           await setDoc(usersCollectionRef, {
-            displayName: displayName,
-            barangay: barangay,
-            districtAdministrative: districtAdministrative,
-            districtLegislative: districtLegislative,
             email: email,
             id: cred.user.uid,
+            displayName: displayName,
+            districtAdministrative: districtAdministrative,
+            districtLegislative: districtLegislative,
+            barangay: barangay,
             isAdmin: false,
+
           });
 
 

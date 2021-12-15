@@ -13,11 +13,11 @@ import {
 import {useState} from "react";
 import {
     collection,
-    addDoc,
-  } from "firebase/firestore"
+    addDoc, updateDoc, doc
+} from "firebase/firestore"
   import { db } from '../../../../../utils/init-firebase'
 
-export default function PhysicalExamination() {
+export default function PhysicalExamination({works}) {
     const [newBlood, setNewBlood] = useState("");
     const [newHeight, setNewHeight] = useState("");
     const [newWeight, setNewWeight] = useState("");
@@ -49,14 +49,16 @@ export default function PhysicalExamination() {
     const [newVaricosities, setVaricosities] = useState(false);
     const [newPain, setPain] = useState(false);
 
-    
 
 
+    const documentId = JSON.parse(JSON.stringify(works.id))
 
 
-    const usersCollectionRef = collection(db, "users");
+    const usersCollectionRef = doc(db, 'client', documentId);
+
+
     const createUser = async () => {
-        await addDoc(usersCollectionRef, 
+        await updateDoc(usersCollectionRef,
             { 
             
             Blood: newBlood, 

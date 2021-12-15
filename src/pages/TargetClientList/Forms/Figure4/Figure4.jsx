@@ -18,15 +18,14 @@ import {
 } from '@chakra-ui/react'
 import React, { useState } from 'react';
 import {
-    collection,
-    addDoc
-  } from "firebase/firestore"
+ doc,updateDoc
+} from "firebase/firestore"
   import { db } from '../../../../utils/init-firebase'
   import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
 
-export default function Figure4() {
+export default function Figure4({works}) {
     const [accreditedFacility, setAccreditedFacility] = useState("");
     const [newName, setNewName] = useState("");
     const [newDeliverBy, setNewDeliverBy] = useState("");
@@ -58,16 +57,14 @@ export default function Figure4() {
     const [newBornA, setNewBornA] = useState("");
     const [newConform, setNewConform] = useState("");
     const [newDate, setNewDate] = useState(new Date());
-    
 
 
 
-
-
-    const usersCollectionRef = collection(db, "test");
+    const documentId = JSON.parse(JSON.stringify(works.id))
+    const usersCollectionRef = doc(db, 'client', documentId);
 
     const createUser = async () => {
-        await addDoc(usersCollectionRef, { 
+        await updateDoc(usersCollectionRef, {
             name: newName, 
             deliverBy: newDeliverBy,
             deliverAt: newDeliverAt,

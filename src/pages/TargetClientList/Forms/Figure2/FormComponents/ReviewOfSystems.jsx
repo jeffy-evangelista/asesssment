@@ -13,13 +13,13 @@ import {
 import {useState} from "react";
 import {
     collection,
-    addDoc,
-  } from "firebase/firestore"
+    addDoc, doc,updateDoc
+} from "firebase/firestore"
   import { db } from '../../../../../utils/init-firebase'
   import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-export default function ReviewOfSystems() {
+export default function ReviewOfSystems({works}) {
     const [newEpilepsy, setEpilepsy] = useState(false);
     const [newDizziness, setDizziness] = useState(false);
     const [newVisual, setVisual] = useState(false);
@@ -69,22 +69,23 @@ export default function ReviewOfSystems() {
     const [newPastMenstrual, setPastMenstrual] = useState("");
     const [newDuration, setDuration] = useState("");
     const [newCharacter, setCharacter] = useState(0);
-    const [newPrev, setPrev] = useState("") 
-
-
-    
-    
-    
+    const [newPrev, setPrev] = useState("")
 
 
 
 
 
 
-    const usersCollectionRef = collection(db, "users");
+
+
+
+    const documentId = JSON.parse(JSON.stringify(works.id))
+
+
+    const usersCollectionRef = doc(db, 'client', documentId);
 
     const createUser = async () => {
-        await addDoc(usersCollectionRef, 
+        await updateDoc(usersCollectionRef,
             { 
                 Epilepsy: newEpilepsy, 
                 Dizziness: newDizziness, 
