@@ -6,14 +6,12 @@ import {
   sendPasswordResetEmail,
   onAuthStateChanged,
   signInWithPopup,
-  sendSignInLinkToEmail,
-  GoogleAuthProvider,signInWithEmailLink,
+  GoogleAuthProvider,
   signOut,
-
   confirmPasswordReset, getAuth,
 } from 'firebase/auth'
-import {addDoc, collection, doc, setDoc,getDoc, query, where, getDocs} from "firebase/firestore";
-import { v4 as uuidv4 } from 'uuid';
+import {doc, setDoc} from "firebase/firestore";
+
 
 const AuthContext = createContext({
   currentUser: null,
@@ -105,10 +103,10 @@ export default function AuthContextProvider({ children }) {
           const userRef = doc(db, 'users', cred.user.uid);
           await setDoc(userRef, {
             email: values.email,
-            uid: cred.user.uid,
+            id: cred.user.uid,
             displayName: values.displayName,
-            administrativeDistrict:values.administrativeDistrict,
-            legislativeDistrict:values.legislativeDistrict,
+            districtAdministrative:values.administrativeDistrict,
+            districtLegislative:values.legislativeDistrict,
             barangay:values.barangay,
             isAdmin: values.isAdmin,
           })

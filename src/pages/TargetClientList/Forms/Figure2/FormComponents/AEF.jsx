@@ -4,14 +4,6 @@ import {
     Input,
     GridItem,
     Text,
-    NumberInput,
-    NumberInputField,
-    NumberInputStepper,
-    NumberIncrementStepper,
-    NumberDecrementStepper,
-    Select,
-    InputLeftAddon,
-    InputGroup,
     VStack
 } from '@chakra-ui/react'
 import {useState} from "react";

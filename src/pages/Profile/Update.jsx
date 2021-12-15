@@ -14,16 +14,13 @@ import {
     FormErrorMessage,
     FormLabel,
     Stack,
-    Select,
     useColorModeValue,
 } from '@chakra-ui/react'
 import {Form,Field,Formik} from "formik";
-import { v4 as uuidv4 } from 'uuid';
 import { useToast } from '@chakra-ui/react'
-import {collection, doc, updateDoc, addDoc, setDoc} from "firebase/firestore";
+import { doc, updateDoc} from "firebase/firestore";
 import {db} from "../../utils/init-firebase";
 
-import {AddIcon, ViewIcon} from "@chakra-ui/icons";
 
 
 

@@ -1,5 +1,5 @@
-import { Box, Center, Flex, Heading, HStack } from '@chakra-ui/react'
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
+import { Box, Center, Flex, Heading, HStack } from '@chakra-ui/layout'
+import { Tab, TabList, TabPanel, TabPanels, Tabs } from '@chakra-ui/tabs'
 import React from 'react'
 import { Layout } from '../../components/Layout'
 import T1 from './Tabs/T1'
@@ -29,7 +29,6 @@ import T24 from './Tabs/T24'
 import T25 from './Tabs/T25'
 import T26 from './Tabs/T26'
 import { Select } from '@chakra-ui/react'
-import {Table, Tbody, Td, Th, Thead, Tr} from "@chakra-ui/react";
 
 export default function Index() {
 
@@ -44,17 +43,17 @@ export default function Index() {
                 <Box p={5} borderWidth='1px' borderRadius='lg'>
                     <Tabs>
                         <HStack pb={5} spacing={10}>
-                            <Select placeholder='Select option' size='lg' borderColor='teal'>
+                            <Select placeholder='Select option'size='lg' borderColor='teal'>
                                 <option value='option1'>Option 1</option>
                                 <option value='option2'>Option 2</option>
                                 <option value='option3'>Option 3</option>
                             </Select>
-                            <Select placeholder='Select option' size='lg' borderColor='teal'>
+                            <Select placeholder='Select option'size='lg' borderColor='teal'>
                                 <option value='option1'>Option 1</option>
                                 <option value='option2'>Option 2</option>
                                 <option value='option3'>Option 3</option>
                             </Select>
-                            <Select placeholder='Select option' size='lg' borderColor='teal'>
+                            <Select placeholder='Select option'size='lg' borderColor='teal'>
                                 <option value='option1'>Option 1</option>
                                 <option value='option2'>Option 2</option>
                                 <option value='option3'>Option 3</option>
@@ -119,7 +118,6 @@ export default function Index() {
                     </Tabs>
                 </Box>
             </Center>
-
 
         </Layout>
     )

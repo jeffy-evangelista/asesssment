@@ -2,7 +2,6 @@ import {
     Flex,
     Spacer,
     Stack,
-    Button,
     Heading,
     Table,
     Thead,
@@ -11,11 +10,8 @@ import {
     Tbody,
     Td,
 } from '@chakra-ui/react'
-import {
-    ViewIcon,
-    AddIcon } from '@chakra-ui/icons'
-import { Layout } from '../../components/Layout'
-import { Link } from 'react-router-dom'
+
+
 import React, { useState, useEffect } from 'react'
 import {
     collection,
@@ -24,14 +20,16 @@ import {
 import { db } from '../../utils/init-firebase'
 import Create from "./Create";
 import Update from "./Update";
+import {Layout} from "../../components/Layout";
 export default function SocialWorker() {
 
     const [socialWork, setSocialWork] = useState([]);
-    const usersCollectionRef = collection(db, "users");
+
 
     useEffect(() => {
 
         const getSocialWork = async () => {
+            const usersCollectionRef = collection(db, "users");
             const data = await getDocs(usersCollectionRef);
             setSocialWork(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
         };

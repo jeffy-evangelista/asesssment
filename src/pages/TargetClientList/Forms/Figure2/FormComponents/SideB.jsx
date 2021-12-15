@@ -7,7 +7,6 @@ import {
 } from '@chakra-ui/react'
 import {
     collection,
-    getDocs,
     addDoc,
   } from "firebase/firestore"
   import { db } from '../../../../../utils/init-firebase'

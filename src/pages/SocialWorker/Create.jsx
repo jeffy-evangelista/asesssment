@@ -6,16 +6,14 @@ import {
     DrawerHeader,
     DrawerOverlay,
     DrawerContent,
-    DrawerCloseButton, useDisclosure, Button, Input, FormControl, FormErrorMessage, FormLabel, Stack, Select,
+    DrawerCloseButton, useDisclosure, Button, Input, FormControl, FormErrorMessage, FormLabel, Stack,
 } from '@chakra-ui/react'
 import {Form,Field,Formik} from "formik";
 import { v4 as uuidv4 } from 'uuid';
 import { useToast } from '@chakra-ui/react'
-import {collection, doc, updateDoc, addDoc, setDoc} from "firebase/firestore";
-import {db} from "../../utils/init-firebase";
-import { getAuth, sendSignInLinkToEmail } from "firebase/auth";
 
-import {AddIcon, ViewIcon} from "@chakra-ui/icons";
+
+import {AddIcon} from "@chakra-ui/icons";
 import {useAuth} from "../../contexts/AuthContext";
 
 

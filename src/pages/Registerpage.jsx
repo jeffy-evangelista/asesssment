@@ -18,8 +18,7 @@ import { Card } from '../components/Card'
 import DividerWithText from '../components/DividerWithText'
 import { Layout } from '../components/Layout'
 import { useAuth } from '../contexts/AuthContext'
-import {addDoc, collection} from "firebase/firestore";
-import {db} from "../utils/init-firebase";
+
 
 
 

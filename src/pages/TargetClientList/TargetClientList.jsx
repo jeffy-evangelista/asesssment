@@ -19,9 +19,26 @@ import {
     AddIcon } from '@chakra-ui/icons'
 import { Layout } from '../../components/Layout'
 import { Link } from 'react-router-dom'
-import React from 'react'
+import React, {useEffect, useState} from 'react'
+import {collection, getDocs} from "firebase/firestore";
+import {db} from "../../utils/init-firebase";
 
 export default function TargetClientList() {
+    const [targetClient, setTargetClient] = useState([]);
+
+
+    useEffect(() => {
+        const usersCollectionRef = collection(db, "client");
+        const getSocialWork = async () => {
+            const data = await getDocs(usersCollectionRef);
+            setTargetClient(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+        };
+
+        getSocialWork();
+    }, []);
+
+
+
   return (
     <Layout>
         

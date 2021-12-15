@@ -155,19 +155,19 @@ export default function ReviewOfSystems() {
                     <FormLabel>Heent</FormLabel>
                     <Stack spacing={1}>
                         <Checkbox onChange={() => {
-                        newEpilepsy == true ? setEpilepsy(false) : setEpilepsy(true)
+                        newEpilepsy === true ? setEpilepsy(false) : setEpilepsy(true)
                         }}>Epilepsy/Convulsion/Seizure</Checkbox>
                         <Checkbox onChange={() => {
-                        newDizziness == true ? setDizziness(false) : setDizziness(true)
+                        newDizziness === true ? setDizziness(false) : setDizziness(true)
                         }}>Severe headache/dizziness</Checkbox>
                         <Checkbox onChange={() => {
-                        newVisual == true ? setVisual(false) : setVisual(true)
+                        newVisual === true ? setVisual(false) : setVisual(true)
                         }}>Visual disturbance/blurring of vision</Checkbox>
                         <Checkbox onChange={() => {
-                        newYellowish == true ? setYellowish(false) : setYellowish(true)
+                        newYellowish === true ? setYellowish(false) : setYellowish(true)
                         }}>Yellowish conjuctiva</Checkbox>
                         <Checkbox onChange={() => {
-                        newEnlargeThyroid == true ? setEnlargThyroid(false) : setEnlargThyroid(true)
+                        newEnlargeThyroid === true ? setEnlargThyroid(false) : setEnlargThyroid(true)
                         }}>Enlarged thyroid</Checkbox>
                     </Stack>
                 </FormControl>
@@ -178,19 +178,19 @@ export default function ReviewOfSystems() {
                     <FormLabel>Chest/Heart</FormLabel>
                     <Stack spacing={1}>
                         <Checkbox onChange={() => {
-                        newEpilepsy2 == true ? setEpilepsy2(false) : setEpilepsy2(true)
+                        newEpilepsy2 === true ? setEpilepsy2(false) : setEpilepsy2(true)
                         }}>Epilepsy/Convulsion/Seizure</Checkbox>
                         <Checkbox onChange={() => {
-                        newDizziness2 == true ? setDizziness2(false) : setDizziness2(true)
+                        newDizziness2 === true ? setDizziness2(false) : setDizziness2(true)
                         }}>Severe headache/dizziness</Checkbox>
                         <Checkbox onChange={() => {
-                        newVisual2 == true ? setVisual2(false) : setVisual2(true)
+                        newVisual2 === true ? setVisual2(false) : setVisual2(true)
                         }}>Visual disturbance/blurring of vision</Checkbox>
                         <Checkbox onChange={() => {
-                        newYellowish2 == true ? setYellowish2(false) : setYellowish2(true)
+                        newYellowish2 === true ? setYellowish2(false) : setYellowish2(true)
                         }}>Yellowish conjuctiva</Checkbox>
                         <Checkbox onChange={() => {
-                        newEnlargeThyroid2 == true ? setEnlargThyroid2(false) : setEnlargThyroid2(true)
+                        newEnlargeThyroid2 === true ? setEnlargThyroid2(false) : setEnlargThyroid2(true)
                         }}>Enlarged thyroid</Checkbox>
                     </Stack>
                 </FormControl>
@@ -201,13 +201,13 @@ export default function ReviewOfSystems() {
                     <FormLabel>Abdomen</FormLabel>
                     <Stack spacing={1}>
                         <Checkbox onChange={() => {
-                        newMassAbdomen == true ? setMassAbdomen(false) : setMassAbdomen(true)
+                        newMassAbdomen === true ? setMassAbdomen(false) : setMassAbdomen(true)
                         }}>Mass in the abdomen</Checkbox>
                         <Checkbox onChange={() => {
-                        newHistoryGal == true ? setHistoryGal(false) : setHistoryGal(true)
+                        newHistoryGal === true ? setHistoryGal(false) : setHistoryGal(true)
                         }}>History of gallbladder disease</Checkbox>
                         <Checkbox onChange={() => {
-                        newHistoryLiver == true ? setHistoryLiver(false) : setHistoryLiver(true)
+                        newHistoryLiver === true ? setHistoryLiver(false) : setHistoryLiver(true)
                         }}>History of liver disease</Checkbox>
                     </Stack>
                 </FormControl>
@@ -218,16 +218,16 @@ export default function ReviewOfSystems() {
                     <FormLabel>Genital</FormLabel>
                     <Stack spacing={1}>
                         <Checkbox onChange={() => {
-                        newVDischarge == true ? setVDischarge(false) : setVDischarge(true)
+                        newVDischarge === true ? setVDischarge(false) : setVDischarge(true)
                         }}>Vaginal discharge</Checkbox>
                         <Checkbox onChange={() => {
-                        newInterBleeding == true ? setInterBleeding(false) : setInterBleeding(true)
+                        newInterBleeding === true ? setInterBleeding(false) : setInterBleeding(true)
                         }}>Intermenstrual bleeding</Checkbox>
                         <Checkbox onChange={() => {
-                        newPostBleeding == true ? setPostBleeding(false) : setPostBleeding(true)
+                        newPostBleeding === true ? setPostBleeding(false) : setPostBleeding(true)
                         }}>Postcoital bleeding</Checkbox>
                         <Checkbox onChange={() => {
-                        newUterus == true ? setUterus(false) : setUterus(true)
+                        newUterus === true ? setUterus(false) : setUterus(true)
                         }}>Mass in the uterus</Checkbox>
                     </Stack>
                 </FormControl>
@@ -238,10 +238,10 @@ export default function ReviewOfSystems() {
                     <FormLabel>Extremities</FormLabel>
                     <Stack spacing={1}>
                         <Checkbox onChange={() => {
-                        newSevere== true ? setSevere(false) : setSevere(true)
+                        newSevere=== true ? setSevere(false) : setSevere(true)
                         }}>Severe varicosities</Checkbox>
                         <Checkbox onChange={() => {
-                        newSweling == true ? setSweling(false) : setSweling(true)
+                        newSweling === true ? setSweling(false) : setSweling(true)
                         }}>Sweling or severe pain the legs not related to injuries</Checkbox>
                     </Stack>
                 </FormControl>
@@ -252,7 +252,7 @@ export default function ReviewOfSystems() {
                     <FormLabel>Skin</FormLabel>
                     <Stack spacing={1}>
                         <Checkbox onChange={() => {
-                        newSkinYellowish == true ? setSkinYellowish(false) : setSkinYellowish(true)
+                        newSkinYellowish === true ? setSkinYellowish(false) : setSkinYellowish(true)
                         }}>Yellowish skin</Checkbox>
                     </Stack>
                 </FormControl>
@@ -263,16 +263,16 @@ export default function ReviewOfSystems() {
                     <Text fontSize="2xl">Family History</Text>
                     <Stack spacing={1}>
                         <Checkbox onChange={() => {
-                        newCVA == true ? setCVA(false) : setCVA(true)
+                        newCVA === true ? setCVA(false) : setCVA(true)
                         }}>CVA (strokes)</Checkbox>
                         <Checkbox onChange={() => {
-                        newHypertension == true ? setHypertension(false) : setHypertension(true)
+                        newHypertension === true ? setHypertension(false) : setHypertension(true)
                         }}>Hypertension</Checkbox>
                         <Checkbox onChange={() => {
-                        newAsthma == true ? setAsthma(false) : setAsthma(true)
+                        newAsthma === true ? setAsthma(false) : setAsthma(true)
                         }}>Asthma</Checkbox>
                         <Checkbox onChange={() => {
-                        newDiabetes2 == true ? setDiabetes2(false) : setDiabetes2(true)
+                        newDiabetes2 === true ? setDiabetes2(false) : setDiabetes2(true)
                         }}>Diabetes</Checkbox>
                     </Stack>
                 </FormControl>
@@ -283,25 +283,25 @@ export default function ReviewOfSystems() {
                     <Text fontSize="2xl">Past Health History</Text>
                     <Stack spacing={1}>
                         <Checkbox onChange={() => {
-                        newAllergies == true ? setAllergies(false) : setAllergies(true)
+                        newAllergies === true ? setAllergies(false) : setAllergies(true)
                         }}>Allergies</Checkbox>
                         <Checkbox onChange={() => {
-                        newDrug == true ? setDrug(false) : setDrug(true)
+                        newDrug === true ? setDrug(false) : setDrug(true)
                         }}>Drug intake (anti-tuberculosis, anti-diabetic, anticonvulsant)</Checkbox>
                         <Checkbox onChange={() => {
-                        newBleedTendencies == true ? setBloodTendencies(false) : setBloodTendencies(true)
+                        newBleedTendencies === true ? setBloodTendencies(false) : setBloodTendencies(true)
                         }}>Bleeding tendencies (nose, gums, etc.)</Checkbox>
                         <Checkbox onChange={() => {
-                        newAnemia == true ? setAnemia(false) : setAnemia(true)
+                        newAnemia === true ? setAnemia(false) : setAnemia(true)
                         }}>Anemia</Checkbox>
                         <Checkbox onChange={() => {
-                        newDiabetes2 == true ? setDiabetes2(false) : setDiabetes2(true)
+                        newDiabetes2 === true ? setDiabetes2(false) : setDiabetes2(true)
                         }}>Diabetes</Checkbox>
                         <Checkbox onChange={() => {
-                        newItching == true ? setItching(false) : setItching(true)
+                        newItching === true ? setItching(false) : setItching(true)
                         }}>Itching or sores in or around vagina</Checkbox>
                         <Checkbox onChange={() => {
-                        newPain == true ? setPain(false) : setPain(true)
+                        newPain === true ? setPain(false) : setPain(true)
                         }}>Pain or burning sensation on urination</Checkbox>
                     </Stack>
                 </FormControl>
@@ -326,19 +326,19 @@ export default function ReviewOfSystems() {
                             }}/>
                         </Flex>
                         <Checkbox onChange={() => {
-                        newObesity == true ? setObesity(false) : setEnlargThyroid2(true)
+                        newObesity === true ? setObesity(false) : setEnlargThyroid2(true)
                         }}>Obesity</Checkbox>
                         <Checkbox onChange={() => {
-                        newHistoryDomestic == true ? setHistoryDomestic(false) : setHistoryDomestic(true)
+                        newHistoryDomestic === true ? setHistoryDomestic(false) : setHistoryDomestic(true)
                         }}>History of domestic violence(VAW)</Checkbox>
                         <Checkbox onChange={() => {
-                        newHistoryPsychological == true ? setHistoryPsychological(false) : setHistoryPsychological(true)
+                        newHistoryPsychological === true ? setHistoryPsychological(false) : setHistoryPsychological(true)
                         }}>History of psychological or mood discturbances</Checkbox>
                         <Checkbox onChange={() => {
-                        newRelationShip == true ? setRelationShip(false) : setRelationShip(true)
+                        newRelationShip === true ? setRelationShip(false) : setRelationShip(true)
                         }}>Unpleasant relationship with partner</Checkbox>
                         <Checkbox onChange={() => {
-                        newSTI == true ? setSTI(false) : setSTI(true)
+                        newSTI === true ? setSTI(false) : setSTI(true)
                         }}>Treated for STIs in the past </Checkbox>
                     </Stack>
                 </FormControl>

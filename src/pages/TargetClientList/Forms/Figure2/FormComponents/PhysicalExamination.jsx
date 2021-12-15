@@ -2,13 +2,11 @@ import {
     FormControl,
     FormLabel,
     Input,
-    SimpleGrid,
     GridItem,
     Text,
     Stack,
     Checkbox,
     Flex,
-    Spacer,
     VStack,
     Textarea
 } from '@chakra-ui/react'
@@ -135,10 +133,10 @@ export default function PhysicalExamination() {
                     <FormLabel>Conjunctiva</FormLabel>
                     <Stack spacing={1}>
                         <Checkbox onChange={() => {
-                        newPale == true ? setPale(false) : setPale(true)
+                        newPale === true ? setPale(false) : setPale(true)
                         }}>Pale</Checkbox>
                         <Checkbox onChange={() => {
-                        newYellowish == true ? setYellowish(false) : setYellowish(true)
+                        newYellowish === true ? setYellowish(false) : setYellowish(true)
                         }}>Yellowish</Checkbox>
                     </Stack>
                 </FormControl>
@@ -149,10 +147,10 @@ export default function PhysicalExamination() {
                     <FormLabel>Neck</FormLabel>
                     <Stack spacing={1}>
                         <Checkbox onChange={() => {
-                        newThyroid == true ? setThyroid(false) : setThyroid(true)
+                        newThyroid === true ? setThyroid(false) : setThyroid(true)
                         }}>Enlarged thyroid nodes</Checkbox>
                         <Checkbox onChange={() => {
-                        newLymp == true ? setLymp(false) : setLymp(true)
+                        newLymp === true ? setLymp(false) : setLymp(true)
                         }}>Enlarged lymph</Checkbox>
                     </Stack>
                 </FormControl>
@@ -163,16 +161,16 @@ export default function PhysicalExamination() {
                     <FormLabel>Breast</FormLabel>
                     <Stack spacing={1}>
                         <Checkbox onChange={() => {
-                        newMass == true ? setMass(false) : setMass(true)
+                        newMass === true ? setMass(false) : setMass(true)
                         }}>Mass</Checkbox>
                         <Checkbox onChange={() => {
-                        newNipple == true ? setNipple(false) : setNipple(true)
+                        newNipple === true ? setNipple(false) : setNipple(true)
                         }}>Nipple discharge</Checkbox>
                         <Checkbox onChange={() => {
-                        newSkin == true ? setSkin(false) : setSkin(true)
+                        newSkin === true ? setSkin(false) : setSkin(true)
                         }}>Skin - orange peel or dimpling</Checkbox>
                         <Checkbox onChange={() => {
-                        newEnlarge == true ? setEnlarge(false) : setEnlarge(true)
+                        newEnlarge === true ? setEnlarge(false) : setEnlarge(true)
                         }}>Enlarged axillary lymph nodes</Checkbox>
                     </Stack>
                 </FormControl>
@@ -183,10 +181,10 @@ export default function PhysicalExamination() {
                     <FormLabel>Thorax</FormLabel>
                     <Stack spacing={1}>
                         <Checkbox onChange={() => {
-                        newAbnormalHeart == true ? setAbnormalHeart(false) : setAbnormalHeart(true)
+                        newAbnormalHeart === true ? setAbnormalHeart(false) : setAbnormalHeart(true)
                         }}>Abnormal heart sounds / rate / rhythm</Checkbox>
                         <Checkbox onChange={() => {
-                        newAbnormalBreath == true ? setAbnormalBreath(false) : setAbnormalBreath(true)
+                        newAbnormalBreath === true ? setAbnormalBreath(false) : setAbnormalBreath(true)
                         }}>Abnormal breath sounds/ respiratory rate</Checkbox>
                     </Stack>
                 </FormControl>
@@ -197,16 +195,16 @@ export default function PhysicalExamination() {
                     <FormLabel>Abdomen</FormLabel>
                     <Stack spacing={1}>
                         <Checkbox onChange={() => {
-                        newEnlargeLiver == true ? setEnlargeLiver(false) : setEnlargeLiver(true)
+                        newEnlargeLiver === true ? setEnlargeLiver(false) : setEnlargeLiver(true)
                         }}>Enlarged liver</Checkbox>
                         <Checkbox onChange={() => {
-                        newTinderness == true ? setTinderness(false) : setTinderness(true)
+                        newTinderness === true ? setTinderness(false) : setTinderness(true)
                         }}>Tenderness</Checkbox>
                         <Checkbox onChange={() => {
-                        newMass2 == true ? setMass2(false) : setMass2(true)
+                        newMass2 === true ? setMass2(false) : setMass2(true)
                         }}>Mass</Checkbox>
                         <Checkbox onChange={() => {
-                        newScar == true ? setScar(false) : setScar(true)
+                        newScar === true ? setScar(false) : setScar(true)
                         }}>Scar</Checkbox>
                     </Stack>
                 </FormControl>
@@ -217,22 +215,22 @@ export default function PhysicalExamination() {
                     <FormLabel>Vaginal Examination</FormLabel>
                     <Stack spacing={1}>
                         <Checkbox onChange={() => {
-                        newBleeding == true ? setBleeding(false) : setBleeding(true)
+                        newBleeding === true ? setBleeding(false) : setBleeding(true)
                         }}>Bleeding</Checkbox>
                         <Checkbox onChange={() => {
-                        newDischarges == true ? setDischarges(false) : setDischarges(true)
+                        newDischarges === true ? setDischarges(false) : setDischarges(true)
                         }}>Discharges</Checkbox>
                         <Checkbox onChange={() => {
-                        newMass2 == true ? setMass2(false) : setMass2(true)
+                        newMass2 === true ? setMass2(false) : setMass2(true)
                         }}>Cyst/mass</Checkbox>
                         <Checkbox onChange={() => {
-                        newScar2 == true ? setScar2(false) : setScar2(true)
+                        newScar2 === true ? setScar2(false) : setScar2(true)
                         }}>Scars</Checkbox>
                         <Checkbox onChange={() => {
-                        newWarts == true ? setWarts(false) : setWarts(true)
+                        newWarts === true ? setWarts(false) : setWarts(true)
                         }}>Warts</Checkbox>
                         <Checkbox onChange={() => {
-                        newLaceration == true ? setLaceration(false) : setLaceration(true)
+                        newLaceration === true ? setLaceration(false) : setLaceration(true)
                         }}>Laceration</Checkbox>
                         <Flex>
                             <Checkbox>Other, Specify </Checkbox>
@@ -247,13 +245,13 @@ export default function PhysicalExamination() {
                     <FormLabel>Extremities</FormLabel>
                     <Stack spacing={1}>
                         <Checkbox onChange={() => {
-                        newEdema == true ? setEdema(false) : setEdema(true)
+                        newEdema === true ? setEdema(false) : setEdema(true)
                         }}>Edema</Checkbox>
                         <Checkbox onChange={() => {
-                        newVaricosities == true ? setVaricosities(false) : setVaricosities(true)
+                        newVaricosities === true ? setVaricosities(false) : setVaricosities(true)
                         }}>Varicosities</Checkbox>
                         <Checkbox onChange={() => {
-                        newPain == true ? setPain(false) : setPain(true)
+                        newPain === true ? setPain(false) : setPain(true)
                         }}>Pain on force dorsiflexion</Checkbox>
                     </Stack>
                 </FormControl>
