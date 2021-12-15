@@ -25,7 +25,7 @@ import {
 import "react-datepicker/dist/react-datepicker.css";
 
 
-export default function FamilySerial({works}) {
+export default function FamilySerial({data}) {
     
     const [newFirstName, setNewFirstName] = useState("");
     const [newMiddleName, setNewMiddleName] = useState("");
@@ -46,7 +46,7 @@ export default function FamilySerial({works}) {
     const [sBirthday, setSBirthday] = useState(new Date());
 
 
-    const documentId = JSON.parse(JSON.stringify(works.id))
+    const documentId = JSON.parse(JSON.stringify(data.id))
 
 
     const usersCollectionRef = doc(db, 'client', documentId);

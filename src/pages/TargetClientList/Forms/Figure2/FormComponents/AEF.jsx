@@ -16,7 +16,7 @@ import {
 
 
 
-export default function Aef({works}) {
+export default function Aef({data}) {
     const [new1stMonthDate, set1stMonthDate] = useState(new Date());
     const [new1stFundic, set1stFundic] = useState("");
     const [new1stFetalHeartTones, set1stFetalHeartTones] = useState("");
@@ -127,7 +127,7 @@ export default function Aef({works}) {
     const [newRemL4, setRemL4] = useState("");
     const [newRemUterinActivity, setRemUterinActivity] = useState("");
 
-    const documentId = JSON.parse(JSON.stringify(works.id))
+    const documentId = JSON.parse(JSON.stringify(data.id))
 
     const usersCollectionRef = doc(db, 'client', documentId);
     const createUser = async () => {

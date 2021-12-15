@@ -17,7 +17,7 @@ import {
 } from "firebase/firestore"
   import { db } from '../../../../../utils/init-firebase'
 
-export default function PhysicalExamination({works}) {
+export default function PhysicalExamination({data}) {
     const [newBlood, setNewBlood] = useState("");
     const [newHeight, setNewHeight] = useState("");
     const [newWeight, setNewWeight] = useState("");
@@ -51,7 +51,7 @@ export default function PhysicalExamination({works}) {
 
 
 
-    const documentId = JSON.parse(JSON.stringify(works.id))
+    const documentId = JSON.parse(JSON.stringify(data.id))
 
 
     const usersCollectionRef = doc(db, 'client', documentId);

@@ -13,10 +13,11 @@ import Review from './FormComponents/ReviewOfSystems'
 import PhysicalExamination from './FormComponents/PhysicalExamination'
 import SideB from './FormComponents/SideB'
 import AEF from './FormComponents/AEF'
+import {useState} from "react";
 
 
 export default function Figure2({works}) {
-
+    const [passData] = useState(works);
     return (
         <Box boxShadow={'lg'} p={8}>
             <VStack spacing={3} alignItems="flex-start">
@@ -24,27 +25,27 @@ export default function Figure2({works}) {
                     <GridItem colSpan={12}>
                         <Text fontSize="4xl" textAlign="center" color="teal">Family Serial NO.</Text>
                     </GridItem>
-                    <Serial />
+                    <Serial data={passData}/>
                     <GridItem colSpan={12}>
                         <Divider />
                         <Text fontSize="4xl" textAlign="center" color="teal">Medical History</Text>
                     </GridItem>
-                    <Review />
+                    <Review data={passData} />
                     <GridItem colSpan={12}>
                         <Divider />
                         <Text fontSize="4xl" textAlign="center" color="teal">Physical Examination</Text>
                     </GridItem>
-                    <PhysicalExamination />
+                    <PhysicalExamination data={passData} />
                     <GridItem colSpan={12}>
                         <Divider />
                         <Text fontSize="4xl" textAlign="center" color="teal">Side B</Text>
                     </GridItem>
-                    <SideB/>
+                    <SideB data={passData}/>
                     <GridItem colSpan={12}>
-                        <Divider />
+                        <Divider data={passData}/>
                         <Text fontSize="4xl" textAlign="center" color="teal">Physical Examination Findings</Text>
                     </GridItem>
-                    <AEF/>
+                    <AEF data={passData}/>
                     <GridItem colSpan={12} >
                         <Button colorScheme='green' w='full'>
                             Submit

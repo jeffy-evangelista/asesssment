@@ -19,7 +19,7 @@ import {
   import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-export default function ReviewOfSystems({works}) {
+export default function ReviewOfSystems({data}) {
     const [newEpilepsy, setEpilepsy] = useState(false);
     const [newDizziness, setDizziness] = useState(false);
     const [newVisual, setVisual] = useState(false);
@@ -79,7 +79,7 @@ export default function ReviewOfSystems({works}) {
 
 
 
-    const documentId = JSON.parse(JSON.stringify(works.id))
+    const documentId = JSON.parse(JSON.stringify(data.id))
 
 
     const usersCollectionRef = doc(db, 'client', documentId);

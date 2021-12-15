@@ -15,14 +15,14 @@ import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
 
-export default function SideB({works}) {
+export default function SideB({data}) {
     const [newSideBDate, setNewSideBDate] = useState(new Date());
     const [newComplaintsComplication, setNewComplaintsComplication] = useState("")
     const [newMCN, setNewMCN] = useState("")
     const [newNameSig, setNewNameSig] = useState("")
     const [newFollowUpDate, setNewFollowUpDate] = useState("")
 
-    const documentId = JSON.parse(JSON.stringify(works.id))
+    const documentId = JSON.parse(JSON.stringify(data.id))
 
 
     const usersCollectionRef = doc(db, 'client', documentId);
