@@ -56,16 +56,15 @@ export default function AuthContextProvider({ children }) {
   function register(email, password,displayName,barangay,districtAdministrative,districtLegislative) {
     return createUserWithEmailAndPassword(auth, email, password,displayName,barangay,districtAdministrative,districtLegislative)
         .then(async cred => {
-          const id4 = uuidv4();
-          const documentId = JSON.parse(JSON.stringify(id4))
-          const usersCollectionRef = doc(db, 'users', documentId);
+
+          const usersCollectionRef = doc(db, 'users', cred.user.uid);
           await setDoc(usersCollectionRef, {
             displayName: displayName,
             barangay: barangay,
             districtAdministrative: districtAdministrative,
             districtLegislative: districtLegislative,
             email: email,
-            id: documentId,
+            id: cred.user.uid,
             isAdmin: false,
           });
 
@@ -103,13 +102,10 @@ export default function AuthContextProvider({ children }) {
      const password = "123456"
     return createUserWithEmailAndPassword(auth, values.email, password)
         .then(async cred => {
-          const id4 = uuidv4();
-          const documentId = JSON.parse(JSON.stringify(id4))
-          const userRef = doc(db, 'users', documentId);
-
+          const userRef = doc(db, 'users', cred.user.uid);
           await setDoc(userRef, {
             email: values.email,
-            id: documentId,
+            uid: cred.user.uid,
             displayName: values.displayName,
             administrativeDistrict:values.administrativeDistrict,
             legislativeDistrict:values.legislativeDistrict,

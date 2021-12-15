@@ -69,8 +69,6 @@ export default  function Update ({works}) {
                                     legislativeDistrict: works.legislativeDistrict,
                                     barangay: works.barangay,
                                     isAdmin: works.isAdmin,
-
-
                                 }}
                                 onSubmit={(values, actions) => {
                                     updateUsers(values)

@@ -1,30 +1,60 @@
-import {  
-          Container, 
-          Heading,
-          Avatar,
-          Box,
-          Center,
-          Image,
-          Text,
-          Flex,
-          Stack,
-          Button,
-          useColorModeValue
-        } from '@chakra-ui/react'
+import {
+    Container,
+    Heading,
+    Avatar,
+    Box,
+    Center,
+    Image,
+    Text,
+    Flex,
+    Stack,
+    Button,
+    useColorModeValue, Table, Thead, Tr, Th, Tbody, Td
+} from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { Layout } from '../../components/Layout'
  import { useAuth } from '../../contexts/AuthContext'
+import { collection, query, where,getDocs,onSnapshot ,} from "firebase/firestore";
+import { db } from '../../utils/init-firebase'
+
+import Update from './Update'
 
 export default function Profile() {
    const { currentUser } = useAuth()
+   const [data,setdata]= useState([])
+
+
+
+
+    useEffect(async () => {
+           const userData=[]
+
+        const q = query(collection(db, "users"), where("email", "==", currentUser.email))
+
+
+        const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc) => {
+            // doc.data() is never undefined for query doc snapshots
+            console.log(doc.id, " => ", doc.data());
+            userData.push(doc.data())
+        });
+
+        setdata(userData)
+    }, []);
+
+
+
+
+
+
   return (
+
+
+
     <Layout>
       <Heading>User Profile</Heading>
       <Container maxW='container.lg' overflowX='auto' py={4}>
-        {/* <chakra.pre p={4}>
-          {currentUser && <pre> {JSON.stringify(currentUser, null, 2)}</pre>}
-        </chakra.pre>*/}
 
         <Center py={12}>
       <Box
@@ -33,36 +63,32 @@ export default function Profile() {
         rounded={'md'}
         overflow={'hidden'}
         boxShadow={'lg'}>
-          
-        <Image
-          h={'120px'}
-          w={'full'}
-          src={
-            'https://images.unsplash.com/photo-1612865547334-09cb8cb455da?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80'
-          }
-          objectFit={'cover'}
-        />
-        <Flex justify={'center'} mt={-12}>
-          <Avatar
-            size={'xl'}
-            src={
-              'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ'
-            }
-            alt={'Author'}
-            css={{
-              border: '2px solid white',
-            }}
-          />
-        </Flex>
 
         <Box p={6}>
           <Stack spacing={0} align={'center'} mb={5}>
             <Heading fontSize={'2xl'} fontWeight={500} fontFamily={'body'}>
-              {currentUser.displayName}
+
+
+              {data.map(item => (
+                <Flex align={'center'}>
+
+                  <Text fontSize={'md'} fontWeight={500}>
+                    {item.displayName}
+                  </Text>
+                </Flex>
+              ))}
+
+
             </Heading>
           </Stack>
 
-          <Stack direction={'row'} justify={'center'} spacing={6}>
+
+
+
+
+
+
+            <Stack direction={'row'} justify={'center'} spacing={6}>
             <Stack spacing={0} align={'center'}>
               <Text fontWeight={600}>Email</Text>
               <Text fontSize={'sm'} color={'gray.500'}>
@@ -70,35 +96,31 @@ export default function Profile() {
               </Text>
             </Stack>
             <Stack spacing={0} align={'center'}>
-              <Text fontWeight={600}>Location</Text>
+              <Text fontWeight={600}>Last Login</Text>
               <Text fontSize={'sm'} color={'gray.500'}>
-              location here...
+                  {currentUser.metadata.lastSignInTime}
               </Text>
             </Stack>
             <Stack spacing={0} align={'center'}>
-              <Text fontWeight={600}>Date Created</Text>
+              <Text fontWeight={600}>Date Account Created</Text>
               <Text fontSize={'sm'} color={'gray.500'}>
-              {currentUser.createdAt}
+              {currentUser.metadata.creationTime}
               </Text>
             </Stack>
           </Stack>
 
-            
-          <Link to='/profile/edit'>
-            <Button
-              w={'full'}
-              mt={8}
-              bg={useColorModeValue('#151f21', 'gray.900')}
-              color={'white'}
-              rounded={'md'}
-              _hover={{
-                transform: 'translateY(-2px)',
-                boxShadow: 'lg',
-              }}
-              >
-                Edit User
-            </Button>   
-          </Link>
+
+          <Stack direction={'row'} justify={'center'} spacing={6}>
+
+              {data.map(item => (
+                  <Flex align={'center'}>
+
+                      <Update id={ item}> </Update>
+                  </Flex>
+              ))}
+
+
+          </Stack>
         </Box>
       </Box>
     </Center>
