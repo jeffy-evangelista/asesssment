@@ -1,21 +1,17 @@
 import {
     Container,
     Heading,
-    Avatar,
     Box,
     Center,
-    Image,
     Text,
     Flex,
     Stack,
-    Button,
-    useColorModeValue, Table, Thead, Tr, Th, Tbody, Td
+    useColorModeValue
 } from '@chakra-ui/react'
-import { Link } from 'react-router-dom'
 import React, {useEffect, useState} from 'react'
 import { Layout } from '../../components/Layout'
  import { useAuth } from '../../contexts/AuthContext'
-import { collection, query, where,getDocs,onSnapshot ,} from "firebase/firestore";
+import { collection, query, where,getDocs,onSnapshot } from "firebase/firestore";
 import { db } from '../../utils/init-firebase'
 
 import Update from './Update'
@@ -28,11 +24,8 @@ export default function Profile() {
 
 
     useEffect(async () => {
-           const userData=[]
-
+        const userData=[]
         const q = query(collection(db, "users"), where("email", "==", currentUser.email))
-
-
         const querySnapshot = await getDocs(q);
         querySnapshot.forEach((doc) => {
             // doc.data() is never undefined for query doc snapshots
