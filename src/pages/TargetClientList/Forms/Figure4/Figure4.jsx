@@ -6,8 +6,10 @@ import TextField from '../../../components/Fields/TextField';
 import Radio from '../../../components/Fields/Radio';
 import HigherLabel from '../../../components/Labels/HigherLabel';
 import DatePicker from '../../../components/Fields/DatePicker';
+import {doc, updateDoc} from "firebase/firestore";
+import {db} from "../../../../utils/init-firebase";
 
-export default function Figure4() {
+export default function Figure4({works}) {
     const [data, setData] = useState({
         attendantName: "",
         deliveryLocation: "",
@@ -62,7 +64,17 @@ export default function Figure4() {
     const [currentStep, setCurrentStep] = useState(0);
     const makeRequest = (formData) => {
         console.log("Form Submitted", formData);
+        updateUsers(formData);
     };
+
+    async  function updateUsers(formData) {
+        const documentId = JSON.parse(JSON.stringify(works.id))
+        const userRef = doc(db, 'client', documentId);
+        await  updateDoc(userRef,{
+            Figure4: formData
+        })
+    }
+
 
     const handleNextStep = (newData, final = false) => {
         setData((prev) => ({ ...prev, ...newData }));

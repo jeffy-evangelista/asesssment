@@ -8,8 +8,10 @@ import HigherLabel from '../../../components/Labels/HigherLabel';
 import YearPicker from '../../../components/Fields/YearPicker';
 import DatePicker from '../../../components/Fields/DatePicker';
 import Radio from '../../../components/Fields/Radio';
+import {addDoc, collection, doc, updateDoc} from "firebase/firestore";
+import {db} from "../../../../utils/init-firebase";
 
-export default function Figure1() {
+export default function Figure1({works}) {
 
   const [data, setData] = useState({
     year: null,
@@ -50,7 +52,18 @@ export default function Figure1() {
   const [currentStep, setCurrentStep] = useState(0);
   const makeRequest = (formData) => {
     console.log("Form Submitted", formData);
+    updateUsers(formData)
   };
+console.log( works.id,"This id on figure1")
+  async  function updateUsers(formData) {
+    const documentId = JSON.parse(JSON.stringify(works.id))
+    const userRef = doc(db, 'client', documentId);
+    await  updateDoc(userRef,{
+        Figure1: formData
+    })
+  }
+
+
 
   const handleNextStep = (newData, final = false) => {
     setData((prev) => ({ ...prev, ...newData }));

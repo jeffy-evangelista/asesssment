@@ -11,9 +11,11 @@ import Radio from '../../../components/Fields/Radio';
 import Select from '../../../components/Fields/Select';
 import Checkbox from '../../../components/Fields/Checkbox';
 import TextArea from '../../../components/Fields/TextArea';
+import {doc, updateDoc} from "firebase/firestore";
+import {db} from "../../../../utils/init-firebase";
 
 
-export default function Figure2() {
+export default function Figure2({works}) {
     const [data, setData] = useState({
         sideA: {
             familySerial: {
@@ -44,7 +46,7 @@ export default function Figure2() {
                     chestHeart: [],
                     abdomen: [],
                     genital: [],
-                    genital: [],
+
                     extremeties: [],
                     skin: [],
                 },
@@ -222,7 +224,19 @@ export default function Figure2() {
     const [currentStep, setCurrentStep] = useState(0);
     const makeRequest = (formData) => {
         console.log("Form Submitted", formData);
+  updateUsers(formData);
     };
+
+    async  function updateUsers(formData) {
+        const documentId = JSON.parse(JSON.stringify(works.id))
+        const userRef = doc(db, 'client', documentId);
+        await  updateDoc(userRef,{
+            Figure2: formData
+        })
+    }
+
+
+
 
     const handleNextStep = (newData, final = false) => {
         setData((prev) => ({ ...prev, ...newData }));
@@ -488,7 +502,7 @@ const stepThreeValidationSchema = Yup.object({
                 chestHeart: Yup.array(),
                 abdomen: Yup.array(),
                 genital: Yup.array(),
-                genital: Yup.array(),
+
                 extremeties: Yup.array(),
                 skin: Yup.array(),
             }),
