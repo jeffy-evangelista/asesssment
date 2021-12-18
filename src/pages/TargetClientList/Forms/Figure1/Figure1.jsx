@@ -1,5 +1,5 @@
 import { Box, Button, FormControl, GridItem, HStack, SimpleGrid, Spacer} from '@chakra-ui/react';
-import React, { useState } from 'react'
+import React, {useEffect, useState} from 'react'
 import * as Yup from "yup";
 import { Form, Formik } from 'formik';
 import TextField from '../../../components/Fields/TextField';
@@ -8,34 +8,41 @@ import HigherLabel from '../../../components/Labels/HigherLabel';
 import YearPicker from '../../../components/Fields/YearPicker';
 import DatePicker from '../../../components/Fields/DatePicker';
 import Radio from '../../../components/Fields/Radio';
-import {addDoc, collection, doc, updateDoc} from "firebase/firestore";
+import {collection, doc, getDocs, query, updateDoc, where} from "firebase/firestore";
 import {db} from "../../../../utils/init-firebase";
 
-export default function Figure1({works}) {
+
+
+
+export default  function Figure1({works}) {
+  const data2 = JSON.parse(JSON.stringify({works}))
+
+
 
   const [data, setData] = useState({
-    year: null,
-    region: "",
-    province: "",
-    municipality: "",
-    barangay: "",
-    birthingCenter: "",
-    birthingCenterAddress: "",
-    referralCenter: "",
-    referralCenterAddress: "",
 
-    lastName: "",
-    firstName: "",
-    middleName: "",
-    age: "",
-    gravidity: "",
-    parity: "",
+    year:  null,
+    region:  data2.works.Figure1.region ,
+    province: data2.works.Figure1.province,
+    municipality: data2.works.Figure1.municipality,
+    barangay:  data2.works.Figure1.barangay,
+    birthingCenter: data2.works.Figure1.birthingCenter,
+    birthingCenterAddress: data2.works.Figure1.birthingCenterAddress,
+    referralCenter:  data2.works.Figure1.referralCenter,
+    referralCenterAddress: data2.works.Figure1.referralCenterAddress,
+
+    lastName: data2.works.last,
+    firstName: data2.works.first,
+    middleName: data2.works.middle,
+    age: data2.works.age,
+    gravidity:data2.works.Figure1.gravidity,
+    parity: data2.works.Figure1.parity,
     expDateOfDel: "",
 
     firstTri: "",
     secondTri: "",
     thirdTri: "",
-    pregOutcome: "",
+    pregOutcome: data2.works.Figure1.pregOutcome,
 
     dayOfDischarge: "",
     withinSevDays: "",
@@ -45,28 +52,30 @@ export default function Figure1({works}) {
     earlyNewborn: "",
 
     nameOfBhw: "",
-    barHealthStat: "",
-    nameOfMidwife: "",
-    ruralHealthUnit: "",
+    barHealthStat: data2.works.Figure1.barHealthStat,
+    nameOfMidwife: data2.works.Figure1.nameOfMidwife,
+    ruralHealthUnit: data2.works.Figure1.ruralHealthUnit,
   });
   const [currentStep, setCurrentStep] = useState(0);
   const makeRequest = (formData) => {
-    console.log("Form Submitted", formData);
     updateUsers(formData)
   };
-console.log( works.id,"This id on figure1")
-  async  function updateUsers(formData) {
+
+  async function updateUsers(formData) {
+
     const documentId = JSON.parse(JSON.stringify(works.id))
     const userRef = doc(db, 'client', documentId);
-    await  updateDoc(userRef,{
-        Figure1: formData
-    })
+    await updateDoc(userRef, {
+      Figure1: formData,
+    }).then(() => {
+      alert("Form Updated Successfully")
+    }).catch(function (error) {
+      console.error("Error writing document: ", error);
+    });
   }
 
-
-
   const handleNextStep = (newData, final = false) => {
-    setData((prev) => ({ ...prev, ...newData }));
+    setData((prev) => ({...prev, ...newData}));
     if (final) {
       makeRequest(newData);
       return;
@@ -74,17 +83,18 @@ console.log( works.id,"This id on figure1")
     setCurrentStep((prev) => prev + 1);
   };
   const handlePrevStep = (newData) => {
-    setData((prev) => ({ ...prev, ...newData }));
+    setData((prev) => ({...prev, ...newData}));
     setCurrentStep((prev) => prev - 1);
   };
   const steps = [
-    <StepOne next={handleNextStep} data={data} />,
-    <StepTwo next={handleNextStep} prev={handlePrevStep} data={data} />,
-    <StepThree next={handleNextStep} prev={handlePrevStep} data={data} />,
-    <StepFour next={handleNextStep} prev={handlePrevStep} data={data} />,
-    <StepFive next={handleNextStep} prev={handlePrevStep} data={data} />
+
+    <StepOne next={handleNextStep} works={works} data={data}/>,
+    <StepTwo next={handleNextStep} prev={handlePrevStep} data={data}/>,
+    <StepThree next={handleNextStep} prev={handlePrevStep} data={data}/>,
+    <StepFour next={handleNextStep} prev={handlePrevStep} data={data}/>,
+    <StepFive next={handleNextStep} prev={handlePrevStep} data={data}/>
   ];
-  // console.log("data", data);
+
   return <div className="App">{steps[currentStep]}</div>;
 }
 
@@ -99,13 +109,32 @@ const stepOneValidationSchema = Yup.object({
   referralCenter: Yup.string().required('Required'),
   referralCenterAddress: Yup.string().required('Required'),
 });
+
+
+
+
 const StepOne = (props) => {
+
   const handleSubmit = (values) => {
     props.next(values);
   };
+
   return (
     <Box boxShadow={'lg'} p={10}>
-      <Formik validationSchema={stepOneValidationSchema} initialValues={props.data} onSubmit={handleSubmit}>
+      <Formik validationSchema={stepOneValidationSchema}
+       initialValues={
+       {
+         year:null,
+         region:props.works.Figure1.region ||"",
+         province: props.works.Figure1.province||"",
+         municipality: props.works.Figure1.municipality||"",
+         barangay: props.works.Figure1.barangay||"",
+         birthingCenter: props.works.Figure1.birthingCenter||"",
+         birthingCenterAddress: props.works.Figure1.birthingCenterAddress||"",
+         referralCenter: props.works.Figure1.referralCenter||"",
+         referralCenterAddress: props.works.Figure1.referralCenterAddress||"",
+       }
+       } onSubmit={handleSubmit}>
         {() => (
           <Form>
             <FormControl>
@@ -203,7 +232,7 @@ const StepTwo = (props) => {
                   <ErrorMessaging name="firstName" />
                 </GridItem>
                 <GridItem colSpan={4}>
-                  <TextField label="Middle Name" name="middleName" />
+                  <TextField label="Middle Name" name="middleName"  />
                   <ErrorMessaging name="middleName" />
                 </GridItem>
                 <GridItem colSpan={6}>
