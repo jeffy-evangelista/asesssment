@@ -1,14 +1,14 @@
-import React, { createContext, useContext, useEffect, useState } from 'react'
-import { auth,db } from '../utils/init-firebase'
+import React, {createContext, useContext, useEffect, useState} from 'react'
+import {auth, db} from '../utils/init-firebase'
 import {
+  confirmPasswordReset,
   createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  sendPasswordResetEmail,
-  onAuthStateChanged,
-  signInWithPopup,
   GoogleAuthProvider,
+  onAuthStateChanged,
+  sendPasswordResetEmail,
+  signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
-  confirmPasswordReset, getAuth,
 } from 'firebase/auth'
 import {doc, setDoc} from "firebase/firestore";
 

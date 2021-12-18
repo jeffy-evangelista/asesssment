@@ -8,10 +8,8 @@ import {
     ModalBody,
     ModalCloseButton, Button,  useDisclosure,
 } from '@chakra-ui/react'
-import {AddIcon} from "@chakra-ui/icons";
-import React, {useEffect, useState} from 'react'
-import {collection, getDocs, query, where,doc,getDoc} from "firebase/firestore";
-import {db} from "../../utils/init-firebase";
+
+import React from 'react'
 
 
 

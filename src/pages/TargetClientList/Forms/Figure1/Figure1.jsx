@@ -1,17 +1,15 @@
-import { Box, Button, FormControl, GridItem, HStack, SimpleGrid, Spacer} from '@chakra-ui/react';
-import React, {useEffect, useState} from 'react'
+import {Box, Button, FormControl, GridItem, HStack, SimpleGrid, Spacer} from '@chakra-ui/react';
+import React, {useState} from 'react'
 import * as Yup from "yup";
-import { Form, Formik } from 'formik';
+import {Form, Formik} from 'formik';
 import TextField from '../../../components/Fields/TextField';
 import ErrorMessaging from '../../../components/Fields/ErrorMessaging';
 import HigherLabel from '../../../components/Labels/HigherLabel';
 import YearPicker from '../../../components/Fields/YearPicker';
 import DatePicker from '../../../components/Fields/DatePicker';
 import Radio from '../../../components/Fields/Radio';
-import {collection, doc, getDocs, query, updateDoc, where} from "firebase/firestore";
+import {doc, updateDoc} from "firebase/firestore";
 import {db} from "../../../../utils/init-firebase";
-
-
 
 
 export default  function Figure1({works}) {

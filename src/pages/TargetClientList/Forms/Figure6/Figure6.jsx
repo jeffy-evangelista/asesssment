@@ -6,9 +6,9 @@ import { Box, SimpleGrid, GridItem, VStack, HStack, Text, Divider} from '@chakra
 import { Radio, RadioGroup } from '@chakra-ui/radio'
 import React, { useState } from 'react'
 import {
-    collection,
+
     updateDoc,
-    addDoc, doc,
+   doc,
 } from "firebase/firestore"
   import { db } from '../../../../utils/init-firebase'
   import DatePicker from "react-datepicker";

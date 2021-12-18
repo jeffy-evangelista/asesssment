@@ -1,18 +1,9 @@
-import {
-    Container,
-    Heading,
-    Box,
-    Center,
-    Text,
-    Flex,
-    Stack,
-    useColorModeValue
-} from '@chakra-ui/react'
+import {Box, Center, Container, Flex, Heading, Stack, Text, useColorModeValue} from '@chakra-ui/react'
 import React, {useEffect, useState} from 'react'
-import { Layout } from '../../components/Layout'
- import { useAuth } from '../../contexts/AuthContext'
-import { collection, query, where,getDocs,onSnapshot } from "firebase/firestore";
-import { db } from '../../utils/init-firebase'
+import {Layout} from '../../components/Layout'
+import {useAuth} from '../../contexts/AuthContext'
+import {collection, getDocs, query, where} from "firebase/firestore";
+import {db} from '../../utils/init-firebase'
 
 import Update from './Update'
 

@@ -2,22 +2,18 @@ import {
     Box,
     Button,
     Divider,
-    Flex,
     FormControl,
     FormHelperText,
-    Grid,
     GridItem,
     HStack,
     SimpleGrid,
     Spacer,
-    Stack,
     Text,
-
 } from '@chakra-ui/react';
 
-import React, { useState } from 'react'
+import React, {useState} from 'react'
 import * as Yup from "yup";
-import { Form, Formik } from 'formik';
+import {Form, Formik} from 'formik';
 import TextField from '../../../components/Fields/TextField';
 import Radio from '../../../components/Fields/Radio';
 import HigherLabel from '../../../components/Labels/HigherLabel';

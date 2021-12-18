@@ -1,6 +1,5 @@
-
-import { Box, Container, Flex, Heading, HStack, VStack, Wrap, WrapItem, Text, SimpleGrid, Grid, GridItem, Center, Square } from '@chakra-ui/layout'
-import { Stat, StatGroup, StatHelpText, StatLabel, StatNumber } from '@chakra-ui/stat'
+import {Center, Grid, GridItem, SimpleGrid, Text} from '@chakra-ui/layout'
+import {Stat, StatGroup, StatHelpText, StatLabel, StatNumber} from '@chakra-ui/stat'
 import React from 'react'
 
 export default function T8() {

@@ -19,7 +19,6 @@ import {
 } from '@chakra-ui/react'
 import {Form,Field,Formik} from "formik";
 import { useToast } from '@chakra-ui/react'
-import {AddIcon} from "@chakra-ui/icons";
 import { db } from '../../utils/init-firebase'
 import {
   collection,
@@ -495,7 +494,7 @@ async function createClient(values){
                           {({ field, form }) => (
                               <FormControl isInvalid={form.errors.age && form.touched.age}>
                                 <FormLabel htmlFor='firstname'>Age</FormLabel>
-                                <NumberInput defaultValue={15} min={10} max={20}>
+                                <NumberInput  >
                                   <NumberInputField {...field} id='age' placeholder='age'  />
 
                                 </NumberInput>

@@ -10,7 +10,7 @@ const firebaseConfig = {
   storageBucket: "fhsismaternalcare-db852.appspot.com",
   messagingSenderId: "555857684535",
   appId: "1:555857684535:web:b74fabb9cb9a862a0877b2",
-  measurementId: "${config.measurementId}"
+  measurementId: "G-ZLFDX7NSQQ"
 };
 
 const app = initializeApp(firebaseConfig);

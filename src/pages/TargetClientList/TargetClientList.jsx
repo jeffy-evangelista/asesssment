@@ -9,20 +9,20 @@ import {
     Tr,
     Th,
     Tbody,
-    Td, Text,
+    Td,
 } from '@chakra-ui/react'
 
 import { Layout } from '../../components/Layout'
 
 import React, {useEffect, useState} from 'react'
-import {collection, getDocs, query, where} from "firebase/firestore";
+import {collection, getDocs, } from "firebase/firestore";
 import {db} from "../../utils/init-firebase";
 
 
 import TempModal from "./tempModal";
 import WorkModal from "./WorkModal";
 import Create from "./Create";
-import {useAuth} from "../../contexts/AuthContext";
+
 
 export default function TargetClientList() {
     const [targetClient, setTargetClient] = useState([]);

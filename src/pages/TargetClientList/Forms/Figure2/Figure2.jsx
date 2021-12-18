@@ -16,29 +16,31 @@ import {db} from "../../../../utils/init-firebase";
 
 
 export default function Figure2({works}) {
+    const data3 = JSON.parse(JSON.stringify({works}))
+    console.log(data3,"my data3")
     const [data, setData] = useState({
         sideA: {
             familySerial: {
                 client: {
                     birthday: null,
-                    highestEducation: "",
-                    occupation: "",
-                    addressStreet: "",
-                    addressBarangay: "",
-                    addressMunicipality: "",
-                    addressProvince: "",
+                    highestEducation: data3.works.Figure2.sideA.familySerial.client.highestEducation,
+                    occupation: data3.works.Figure2.sideA.familySerial.client.occupation,
+                    addressStreet: data3.works.Figure2.sideA.familySerial.client.addressStreet,
+                    addressBarangay:data3.works.Figure2.sideA.familySerial.client.addressBarangay,
+                    addressMunicipality: data3.works.Figure2.sideA.familySerial.client.addressMunicipality,
+                    addressProvince: data3.works.Figure2.sideA.familySerial.client.addressProvince,
                 },
                 spouse: {
-                    firstName: "",
-                    middleName: "",
-                    lastName: "",
+                    firstName: data3.works.Figure2.sideA.familySerial.spouse.firstName,
+                    middleName: data3.works.Figure2.sideA.familySerial.spouse.middleName,
+                    lastName: data3.works.Figure2.sideA.familySerial.spouse.lastName,
                     birthday: null,
-                    highestEducation: "",
-                    occupation: ""
+                    highestEducation: data3.works.Figure2.sideA.familySerial.spouse.highestEducation,
+                    occupation: data3.works.Figure2.sideA.familySerial.spouse.occupation
                 },
-                avgFamilyIncome: "",
-                noOfChildren: "",
-                birthPlan: ""
+                avgFamilyIncome: data3.works.Figure2.sideA.familySerial.avgFamilyIncome,
+                noOfChildren: data3.works.Figure2.sideA.familySerial.noOfChildren,
+                birthPlan: data3.works.Figure2.sideA.familySerial.birthPlan
             },
             medicalHistory: {
                 reviewOfSystems: {

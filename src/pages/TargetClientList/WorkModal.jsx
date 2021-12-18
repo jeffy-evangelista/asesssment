@@ -17,10 +17,7 @@ import {
     AccordionIcon,
     AccordionPanel,
 } from '@chakra-ui/react'
-import {AddIcon} from "@chakra-ui/icons";
-import React, {useEffect, useState} from 'react'
-import {collection, getDocs, query, where,doc,getDoc} from "firebase/firestore";
-import {db} from "../../utils/init-firebase";
+import React, {useState} from 'react'
 import Figure1 from "./Forms/Figure1/Figure1";
 import Figure2 from "./Forms/Figure2/Figure2";
 import Figure4 from "./Forms/Figure4/Figure4";
