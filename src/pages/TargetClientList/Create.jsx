@@ -335,7 +335,240 @@ async function createClient(values){
                  date: null
              }
          },
-        // Figure6:values.Figure6,
+        Figure5:{
+            dateOfVisit: null,
+            physicalExamination: {
+                dateOfDelivery: null,
+                attendant: "",
+                sex: "",
+                typeOfDelivery: "",
+                placeOfDelivery: "",
+                amtsl: {
+                    steps: {
+                        noOne: "",
+                        noTwo: "",
+                        noThree: ""
+                    },
+                    isProvided: ""
+                }
+            },
+            assessment: {
+                postPartumMother: {
+                    dangerSigns: {
+                        unconscious: [],
+                        VaginalBleeding: {
+                            hrs: "",
+                            days: "",
+                            otherVisit: ""
+                        },
+                        severeAbdominalPain: [],
+                        looksVeryIll: [],
+                        severeHeadache: [],
+                        severeDiffOfBreath: [],
+                        severeVomiting: [],
+                        postPartumDepression: [],
+                    },
+                    pelvicExamFindings: {
+                        uterus: {
+                            contracted: [],
+                            relaxed: []
+                        },
+                        vaginalBleeding: {
+                            profuse: [],
+                            moderate: [],
+                            scanty: []
+                        },
+                        vaginalDischarge: {
+                            color: [],
+                            odor: []
+                        },
+                        vaginalLaceration: {
+                            firstDegree: [],
+                            secondDegree: [],
+                            thirdDegree: [],
+                            lacerationSutured: ""
+                        },
+                        ifCs: []
+                    }
+                },
+                newborn: {
+                    withPoorSuck: [],
+                    ifBreathing: [],
+                    severeChestIndrawing: [],
+                    grunting: [],
+                    convulsions: [],
+                    floppyStiffExtremities: [],
+                    temp: [],
+                    severeJaundice: [],
+                    bleedingFromUmbilicalStumpOrCut: [],
+                    umbilicusDraining: [],
+                    foulSmellingDischarge: [],
+                    skinPostules: [],
+                    essentialNewbornCare: {
+                        one: "",
+                        two: "",
+                        three: "",
+                        four: "",
+                        earlyEncGiven: ""
+                    },
+                    breastFeeding: [],
+                    otherEncGiven: {
+                        vitKInjection: [],
+                        eyePropylaxis: [],
+                        newbornScreening: [],
+                        others: []
+                    },
+                    newbornScreeningDone: []
+                }
+            },
+            supplementation: {
+                noOfTabletsGven: {
+                    no: "",
+                    dateGiven: ""
+                },
+                vitaminA: {
+                    no: "",
+                    dateGiven: ""
+                }
+            },
+            records: [
+                {
+                    date: "",
+                    complaints: "",
+                    mncServicesGiven: "",
+                    nameOfProviderAndSignature: "",
+                    nextFollowUpSchedule: "",
+                },
+            ]
+        },
+         Figure6: {
+             dateOfRegistration: null,
+             familySerialNo: "",
+             sociEconomicStatus: "",
+             age: "",
+             lmp: {
+                 lmp: null,
+                 gp: null,
+             },
+             edc: null,
+             datesOfPrenatalCheckUps: {
+                 firstTri: null,
+                 secondTri: null,
+                 thirdTri: null
+             },
+             immunizationStatus: {
+                 tetanusDiptheria: {
+                     td1: null,
+                     td2: null,
+                     td3: null,
+                     td4: null,
+                     td5: null
+                 },
+                 fimStatus: ""
+             },
+             micronutrientSupplementation1: {
+                 ironSulfate: {
+                     firstVisit: {
+                         date: null,
+                         no: ""
+                     },
+                     secondVisit: {
+                         date: null,
+                         no: ""
+                     },
+                     thirdVisit: {
+                         date: null,
+                         no: ""
+                     },
+                     fourthVisit: {
+                         date: null,
+                         no: ""
+                     }
+                 },
+                 calciumCarbonate: {
+                     secondVisit: {
+                         date: null,
+                         no: ""
+                     },
+                     thirdVisit: {
+                         date: null,
+                         no: ""
+                     },
+                     fourthVisit: {
+                         date: null,
+                         no: ""
+                     }
+                 },
+                 iodineCapsules: null
+             },
+             nutritionalAssessment: {
+                 low: "",
+                 normal: "",
+                 high: ""
+             },
+             dewormingTablet: null,
+             infectiousDiseaseSurveillance: {
+                 syphilisScreening: {
+                     date: null,
+                     result: "",
+                 },
+                 hepatitisBScreening: {
+                     date: null,
+                     result: "",
+                 },
+                 hivScreening: {
+                     date: null,
+                 }
+             },
+             laboratoryScreening: {
+                 gestationalDiabetes: {
+                     dateScreened: null,
+                     result: ""
+                 },
+                 cbc: {
+                     dateScreened: null,
+                     result: "",
+                     givenIron: ""
+                 }
+             },
+             birthWeight: {
+                 low: "",
+                 normal: "",
+                 unknown: ""
+             },
+             placeOfDelivery: {
+                 healthFacility: {
+                     type: "",
+                     bemonc: "",
+                     ownership: ""
+                 },
+                 nonHealthFacility: "",
+                 remarks: ""
+             },
+             dateTimeOfDelivery: null,
+             MomAndNewbornPostPartumCheckUps: {
+                 withinTwentyFourHours: null,
+                 withinSevenDays: null
+             },
+             micronutrientSupplementation2: {
+                 ironWithFolicAcid: {
+                     firstMonth: {
+                         no: "",
+                         date: null
+                     },
+                     secondMonth: {
+                         no: "",
+                         date: null
+                     },
+                     thirdMonth: {
+                         no: "",
+                         date: null
+                     }
+                 },
+                 vitaminA: null
+             },
+             remarks: ""
+         },
     });
 
 }
