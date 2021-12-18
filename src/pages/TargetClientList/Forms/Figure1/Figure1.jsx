@@ -65,36 +65,8 @@ console.log(data2,"This is data2")
     const documentId = JSON.parse(JSON.stringify(works.id))
     const userRef = doc(db, 'client', documentId);
     await  updateDoc(userRef,{
-      year: formData.year,
-      region: formData.region,
-      province: formData.province,
-      municipality: formData.municipality,
-      barangay: formData.barangay,
-      birthingCenter: formData.birthingCenter,
-      birthingCenterAddress: formData.birthingCenterAddress,
-      referralCenter: formData.referralCenter,
-      referralCenterAddress: formData.referralCenterAddress,
-      lastName: formData.lastName,
-      firstName: formData.firstName,
-      middleName: formData.middleName,
-      age: formData.age,
-      gravidity: formData.gravidity,
-      parity: formData.parity,
-      expDateOfDel: formData.expDateOfDel,
-      firstTri: formData.firstTri,
-      secondTri: formData.secondTri,
-      thirdTri: formData.thirdTri,
-      pregOutcome: formData.pregOutcome,
-      dayOfDischarge: formData.dayOfDischarge,
-      withinSevDays: formData.withinSevDays,
-      liveBirth: formData.liveBirth,
-      maternalDeath: formData.maternalDeath,
-      stillBirth: formData.stillBirth,
-      earlyNewborn: formData.earlyNewborn,
-      nameOfBhw: formData.nameOfBhw,
-      barHealthStat: formData.barHealthStat,
-      nameOfMidwife: formData.nameOfMidwife,
-      ruralHealthUnit: formData.ruralHealthUnit,
+      Figure1: formData,
+
     }).then(() => {
       alert("Form Updated Successfully")
     }).catch(function (error) {
