@@ -2,7 +2,6 @@ import {
     Flex,
     Spacer,
     Stack,
-    Button,
     Heading,
     Center,
     Table,
@@ -10,26 +9,23 @@ import {
     Tr,
     Th,
     Tbody,
-    Td,
+    Td, Text,
 } from '@chakra-ui/react'
-import {
-    EditIcon,
-    ViewIcon,
-    DeleteIcon,
-    AddIcon } from '@chakra-ui/icons'
+
 import { Layout } from '../../components/Layout'
-import { Link } from 'react-router-dom'
+
 import React, {useEffect, useState} from 'react'
-import {collection, getDocs} from "firebase/firestore";
+import {collection, getDocs, query, where} from "firebase/firestore";
 import {db} from "../../utils/init-firebase";
+
 
 import TempModal from "./tempModal";
 import WorkModal from "./WorkModal";
 import Create from "./Create";
+import {useAuth} from "../../contexts/AuthContext";
 
 export default function TargetClientList() {
     const [targetClient, setTargetClient] = useState([]);
-console.log(targetClient,"Client Data");
 
     useEffect(() => {
         const usersCollectionRef = collection(db, "client");
@@ -39,6 +35,11 @@ console.log(targetClient,"Client Data");
         };
         getClientList();
     }, []);
+
+
+
+
+
 
 
 
@@ -60,7 +61,6 @@ console.log(targetClient,"Client Data");
                     </Tr>
                 </Thead>
                 <Tbody>
-
 
 
 

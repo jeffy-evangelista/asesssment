@@ -32,7 +32,7 @@ import Figure6 from "./Forms/Figure6/Figure6";
 
 export default function WorkModal({works}) {
     const [ setData] = useState(works);
-console.log(setData,"SetData on Workmodal")
+
 
 
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -72,7 +72,7 @@ console.log(setData,"SetData on Workmodal")
                                     </AccordionButton>
                                 </h2>
                                 <AccordionPanel pb={4}>
-                                    <Figure2 works= {works} />
+                                    <Figure2 works= {setData} />
                                 </AccordionPanel>
                             </AccordionItem>
                             {/* Figure 4 */}
@@ -86,7 +86,7 @@ console.log(setData,"SetData on Workmodal")
                                     </AccordionButton>
                                 </h2>
                                 <AccordionPanel pb={4}>
-                                    <Figure4 works= {works} />
+                                    <Figure4 works= {setData} />
                                 </AccordionPanel>
                             </AccordionItem>
                             {/* Figure 5 */}
@@ -100,7 +100,7 @@ console.log(setData,"SetData on Workmodal")
                                     </AccordionButton>
                                 </h2>
                                 <AccordionPanel pb={4}>
-                                    <Figure5  works= {works} />
+                                    <Figure5  works= {setData} />
                                 </AccordionPanel>
                             </AccordionItem>
                             {/* Figure 6 */}
@@ -114,7 +114,7 @@ console.log(setData,"SetData on Workmodal")
                                     </AccordionButton>
                                 </h2>
                                 <AccordionPanel pb={4}>
-                                    <Figure6 works= {works} />
+                                    <Figure6 works= {setData} />
                                 </AccordionPanel>
                             </AccordionItem>
                         </Accordion>

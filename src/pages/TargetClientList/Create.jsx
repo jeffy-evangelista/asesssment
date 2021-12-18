@@ -6,7 +6,16 @@ import {
   DrawerHeader,
   DrawerOverlay,
   DrawerContent,
-  DrawerCloseButton, useDisclosure, Button, Input, FormControl, FormErrorMessage, FormLabel, Stack,
+  DrawerCloseButton,
+  useDisclosure,
+  Button,
+  Input,
+  FormControl,
+  FormErrorMessage,
+  FormLabel,
+  Stack,
+  NumberInput,
+  NumberInputField,
 } from '@chakra-ui/react'
 import {Form,Field,Formik} from "formik";
 import { useToast } from '@chakra-ui/react'
@@ -16,6 +25,7 @@ import {
   collection,
   addDoc
 } from "firebase/firestore"
+import Select from "../components/Fields/Select";
 
 
 
@@ -32,6 +42,301 @@ async function createClient(values){
       administrativeDistrict: values.administrativeDistrict,
       legislativeDistrict: values.legislativeDistrict,
       barangay: values.barangay,
+      age:values.age,
+      gender:values.gender,
+         Figure1: {
+             year:  null,
+             region: '' ,
+             province: '',
+             municipality:'' ,
+             barangay:''  ,
+             birthingCenter: '',
+             birthingCenterAddress:'' ,
+             referralCenter: '',
+             referralCenterAddress: '',
+
+             lastName: '',
+             firstName:'' ,
+             middleName: '',
+             age: '',
+             gravidity: "",
+             parity: "",
+             expDateOfDel: "",
+
+             firstTri: "",
+             secondTri: "",
+             thirdTri: "",
+             pregOutcome: "",
+
+             dayOfDischarge: "",
+             withinSevDays: "",
+             liveBirth: "",
+             maternalDeath: "",
+             stillBirth: "",
+             earlyNewborn: "",
+
+             nameOfBhw: "",
+             barHealthStat: "",
+             nameOfMidwife: "",
+             ruralHealthUnit: "",
+         },
+        Figure2:{
+            sideA: {
+                familySerial: {
+                    client: {
+                        birthday: null,
+                        highestEducation: "",
+                        occupation: "",
+                        addressStreet: "",
+                        addressBarangay: "",
+                        addressMunicipality: "",
+                        addressProvince: "",
+                    },
+                    spouse: {
+                        firstName: "",
+                        middleName: "",
+                        lastName: "",
+                        birthday: null,
+                        highestEducation: "",
+                        occupation: ""
+                    },
+                    avgFamilyIncome: "",
+                    noOfChildren: "",
+                    birthPlan: ""
+                },
+                medicalHistory: {
+                    reviewOfSystems: {
+                        heent: [],
+                        chestHeart: [],
+                        abdomen: [],
+                        genital: [],
+
+                        extremeties: [],
+                        skin: [],
+                    },
+                    familyHistory: "",
+                    pastHealthHistory: "",
+                    socialHistory: "",
+                    obstericalHistory: {
+                        historyOfPreviousDeliveries: "",
+                        menstrualHistory: "",
+                    },
+                    familyPlanningHistory: {
+                        previouslyUsedMethod: ""
+                    }
+                },
+                physicalExamination: {
+                    vitalSigns: {
+                        bloodPressure: "",
+                        weight: "",
+                        height: "",
+                        bmi: "",
+                        pulseRate: ""
+                    },
+                    conjunctiva: [],
+                    neck: [],
+                    breast: [],
+                    thorax: [],
+                    abdomen: [],
+                    vaginalExamination: [],
+                    extremities: [],
+                    toxoidVaccineStatus: "",
+                    impressionDiagnosis: ""
+                }
+            },
+
+            sideB: {
+                records: [
+                    {
+                        date: "",
+                        complaints: "",
+                        mncServicesGiven: "",
+                        nameOfProviderAndSignature: "",
+                        nextFollowUpSchedule: "",
+                    },
+                ],
+                abdominalExamFindings: {
+                    firstTrimester: {
+                        firstMonth: {
+                            date: null,
+                            fundicHeight: "",
+                            fetalHeartTomes: "",
+                            aog: "",
+                            leopolds: "",
+                            lOne: "",
+                            lTwo: "",
+                            lThree: "",
+                            lFour: "",
+                            uterineAcitivty: ""
+                        },
+                        secondMonth: {
+                            date: null,
+                            fundicHeight: "",
+                            fetalHeartTomes: "",
+                            aog: "",
+                            leopolds: "",
+                            lOne: "",
+                            lTwo: "",
+                            lThree: "",
+                            lFour: "",
+                            uterineAcitivty: ""
+                        },
+                        thirdMonth: {
+                            date: null,
+                            fundicHeight: "",
+                            fetalHeartTomes: "",
+                            aog: "",
+                            leopolds: "",
+                            lOne: "",
+                            lTwo: "",
+                            lThree: "",
+                            lFour: "",
+                            uterineAcitivty: ""
+                        }
+                    },
+                    secondTrimester: {
+                        fourthMonth: {
+                            date: null,
+                            fundicHeight: "",
+                            fetalHeartTomes: "",
+                            aog: "",
+                            leopolds: "",
+                            lOne: "",
+                            lTwo: "",
+                            lThree: "",
+                            lFour: "",
+                            uterineAcitivty: ""
+                        },
+                        fifthMonth: {
+                            date: null,
+                            fundicHeight: "",
+                            fetalHeartTomes: "",
+                            aog: "",
+                            leopolds: "",
+                            lOne: "",
+                            lTwo: "",
+                            lThree: "",
+                            lFour: "",
+                            uterineAcitivty: ""
+                        },
+                        sixthMonth: {
+                            date: null,
+                            fundicHeight: "",
+                            fetalHeartTomes: "",
+                            aog: "",
+                            leopolds: "",
+                            lOne: "",
+                            lTwo: "",
+                            lThree: "",
+                            lFour: "",
+                            uterineAcitivty: ""
+                        }
+                    },
+                    thirdTrimester: {
+                        seventhMonth: {
+                            date: null,
+                            fundicHeight: "",
+                            fetalHeartTomes: "",
+                            aog: "",
+                            leopolds: "",
+                            lOne: "",
+                            lTwo: "",
+                            lThree: "",
+                            lFour: "",
+                            uterineAcitivty: ""
+                        },
+                        eightMonth: {
+                            date: null,
+                            fundicHeight: "",
+                            fetalHeartTomes: "",
+                            aog: "",
+                            leopolds: "",
+                            lOne: "",
+                            lTwo: "",
+                            lThree: "",
+                            lFour: "",
+                            uterineAcitivty: ""
+                        },
+                        ninethMonth: {
+                            date: null,
+                            fundicHeight: "",
+                            fetalHeartTomes: "",
+                            aog: "",
+                            leopolds: "",
+                            lOne: "",
+                            lTwo: "",
+                            lThree: "",
+                            lFour: "",
+                            uterineAcitivty: ""
+                        }
+                    },
+                    remarks: {
+                        date: "",
+                        fundicHeight: "",
+                        fetalHeartTomes: "",
+                        aog: "",
+                        leopolds: "",
+                        lOne: "",
+                        lTwo: "",
+                        lThree: "",
+                        lFour: "",
+                        uterineAcitivty: ""
+                    }
+                }
+            }
+        },
+         Figure4: {
+             attendantName: "",
+             deliveryLocation: "",
+             accreditationStatus: "",
+             distanceFromResidence: "",
+             estimatedCost: "",
+             modeOfPayment: "",
+
+             availableTransportation: "",
+             bringer: {
+                 Name: "",
+                 Address: "",
+                 Number: "",
+             },
+             companion: {
+                 Name: "",
+                 Relationship: "",
+                 Address: "",
+                 Number: "",
+             },
+             careTaker: {
+                 Name: "",
+                 Relationship: "",
+             },
+
+             bloodType: "",
+             donors: {
+                 donorName1: "",
+                 donorAddress1: "",
+                 donorName2: "",
+                 donorAddress2: ""
+             },
+             complicationReferral: {
+                 name: "",
+                 address: "",
+                 number: ""
+             },
+
+             maternalHostpital: {
+                 name: "",
+                 address: "",
+             },
+             newbornHostpital: {
+                 name: "",
+                 address: "",
+             },
+             conforme: {
+                 signature: "",
+                 date: null
+             }
+         },
+        // Figure6:values.Figure6,
     });
 
 }
@@ -42,6 +347,41 @@ async function createClient(values){
   const btnRef = React.useRef()
   const toast = useToast()
   const firstField = React.useRef()
+  const highestEducationOptions = [
+    { key: 'Select an option', value: '' },
+    { key: 'Paquibato', value: 'paquibato' }
+
+  ]
+    const gender = [
+        { key: 'Select an option', value: '' },
+        { key: 'Male', value: 'male' },
+        { key: 'Female', value: 'female' }
+
+    ]
+  const legislativeDistrict = [
+    { key: 'Select an option', value: '' },
+    { key: 'District1', value: 'd1' },
+    { key: 'District2', value: 'd2' },
+    { key: 'District3', value: 'd3' }
+
+  ]
+  const barangay = [
+        { key: 'Select an option', value: '' },
+        { key: 'Colosas', value: 'colosas' },
+        { key: 'Fatima (Benowang)', value: 'fatima' },
+        { key: 'Lumiad', value: 'lumiad' },
+        { key: 'Mabuhay', value: 'mabuhay' },
+        { key: 'Malabog', value: 'malabog' },
+        { key: 'Mapula', value: 'mapula' },
+        { key: 'Panalum', value: 'panalum' },
+        { key: 'Pandaitan', value: 'pandaitan' },
+        { key: 'Paquibato Proper', value: 'paquibatop' },
+        { key: ' Paradise Embak', value: 'Paradisee' },
+        { key: 'Salapawan', value: 'salapawan' },
+        { key: 'Salapawan', value: 'salapawan' },
+        { key: 'Tapak', value: 'tapak' }
+
+      ]
 
 
   return (
@@ -125,41 +465,46 @@ async function createClient(values){
                               </FormControl>
                           )}
                         </Field>
-                        <FormControl >
-                          <Field as="select" name="legislativeDistrict">
-                            <option value="d1">D1</option>
-                            <option value="d2">D2</option>
-                            <option value="d3">D3</option>
+                        <Select
+                            label="Legislative District"
+                            name="legislativeDistrict"
+                            options={legislativeDistrict} />
 
-                          </Field></FormControl>
 
-                        <FormControl >
 
-                          <Field Select as="select" name="administrativeDistrict" >
+                        <Select
+                            label="Administrative District"
+                            name="administrativeDistrict"
+                            options={highestEducationOptions} />
 
-                            <option value="red">Paquibato</option>
-                            <option value="red2">Paquibato2</option>
 
-                          </Field>
+                        <Select
+                            label="Barangay"
+                            name="barangay"
+                            options={barangay} />
 
-                        </FormControl>
-                        <FormControl >
-                          <Field as="select" name="barangay">
-                            <option value="col">Colosas</option>
-                            <option value="fat">Fatima (Benowang)</option>
-                            <option value="lum"> Lumiad</option>
-                            <option value="mab">Mabuhay</option>
-                            <option value="mal">  Malabog</option>
-                            <option value="map"> Mapula</option>
-                            <option value="pan"> Panalum</option>
-                            <option value="pand">  Pandaitan</option>
-                            <option value="paq">  Paquibato Proper</option>
-                            <option value="pare">  Paradise Embak</option>
-                            <option value="sal">  Salapawan</option>
-                            <option value="sumi"> Sumimao</option>
-                            <option value="tap"> Tapak</option>
 
-                          </Field></FormControl>
+                          <Select
+                              label="Gender"
+                              name="gender"
+                              options={gender} />
+
+
+
+                        <Field name='age' >
+                          {({ field, form }) => (
+                              <FormControl isInvalid={form.errors.age && form.touched.age}>
+                                <FormLabel htmlFor='firstname'>Age</FormLabel>
+                                <NumberInput defaultValue={15} min={10} max={20}>
+                                  <NumberInputField {...field} id='age' placeholder='age'  />
+
+                                </NumberInput>
+
+                                <FormErrorMessage>{form.errors.age}</FormErrorMessage>
+                              </FormControl>
+                          )}
+                        </Field>
+
 
 
                         <Button
