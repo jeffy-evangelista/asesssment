@@ -5,7 +5,6 @@ import { FieldArray, Form, Formik } from 'formik';
 import TextField from '../../../components/Fields/TextField';
 import ErrorMessaging from '../../../components/Fields/ErrorMessaging';
 import HigherLabel from '../../../components/Labels/HigherLabel';
-import YearPicker from '../../../components/Fields/YearPicker';
 import DatePicker from '../../../components/Fields/DatePicker';
 import Radio from '../../../components/Fields/Radio';
 import Select from '../../../components/Fields/Select';
@@ -1021,7 +1020,7 @@ const StepFive = (props) => {
                                                 </FormLabel>
                                             </Center>
                                         </GridItem>
-                                        <GridItem colSpan={1}></GridItem>
+
                                     </SimpleGrid>
                                 </GridItem>
                                 <GridItem>

@@ -248,7 +248,7 @@ const StepTwo = (props) => {
                 {({ values }) => (
                     <Form>
                         <FormControl>
-                            <SimpleGrid spacingY={4} spacingY={5}>
+                            <SimpleGrid spacingY={5}>
                                 <SimpleGrid columns={3} spacingX={4}>
                                     <GridItem >
                                         <TextField
@@ -401,7 +401,7 @@ const StepThree = (props) => {
                 {({ values }) => (
                     <Form>
                         <FormControl>
-                            <SimpleGrid spacingY={4} spacingY={5}>
+                            <SimpleGrid  spacingY={5}>
                                 <GridItem>
                                     <TextField
                                         name="bloodType"

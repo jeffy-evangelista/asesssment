@@ -26,7 +26,7 @@ export default function T3() {
                         </StatGroup>
                     </Center>
                 </GridItem>
-                <GridItem bg="cyan.200" borderWidth='1px' borderRadius="lg" p={5} colSpan={2} rowSpan={2} colSpan={4} >
+                <GridItem bg="cyan.200" borderWidth='1px' borderRadius="lg" p={5}  rowSpan={2} colSpan={4} >
                     <Text align="center" fontSize="2xl" pb={5}>Pregnant women seen during the 1st trimester according to their Body Mass Index (BMI)</Text>
                 <SimpleGrid columns={3} gap={3}>
                         <GridItem colSpan={1}>

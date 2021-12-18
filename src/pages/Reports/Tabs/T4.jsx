@@ -26,7 +26,7 @@ export default function T4() {
                         </StatGroup>
                     </Center>
                 </GridItem>
-                <GridItem bg="cyan.200" borderWidth='1px' borderRadius="lg" p={5} colSpan={2} rowSpan={2} colSpan={4} >
+                <GridItem bg="cyan.200" borderWidth='1px' borderRadius="lg" p={5} rowSpan={2} colSpan={4} >
                     <Text fontSize="lg" align="center"  pb={5}>Iron with Folic Acid Supplementation</Text>
                     <SimpleGrid columns={4} gap={3}>
                         <GridItem colSpan={3}>

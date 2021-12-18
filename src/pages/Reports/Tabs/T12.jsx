@@ -26,7 +26,7 @@ export default function T12() {
                         </StatGroup>
                     </Center>
                 </GridItem>
-                <GridItem bg="cyan.200" borderWidth='1px' borderRadius="lg" p={5} colSpan={2} rowSpan={2} colSpan={4} >
+                <GridItem bg="cyan.200" borderWidth='1px' borderRadius="lg" p={5}  rowSpan={2} colSpan={4} >
                 <SimpleGrid columns={2} gap={3}>
                         <GridItem colSpan={1}>
                             <Text fontSize="lg" align="center" pb={5}>Screened for Gestational Diabetes</Text>
