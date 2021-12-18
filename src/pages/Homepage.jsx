@@ -41,6 +41,7 @@ export default function Homepage() {
         </Badge>
       </Heading>
       <OrderedList fontSize='3xl' my={4}>
+        return <button onClick={methodDoesNotExist}>Break the world</button>;
         <ListItem>Email password authentication (Register/Login)</ListItem>
         <ListItem>Google Sign in</ListItem>
         <ListItem>Forgot Password</ListItem>

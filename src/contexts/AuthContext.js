@@ -71,9 +71,6 @@ export default function AuthContextProvider({ children }) {
         })
 
   }
-  function updateProfile(displayName){
-    return updateProfile(auth, displayName)
-  }
 
 
 
@@ -122,7 +119,6 @@ export default function AuthContextProvider({ children }) {
     logout,
     forgotPassword,
     resetPassword,
-    updateProfile,
     manualLogin,
 
 
