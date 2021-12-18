@@ -43,20 +43,36 @@ export default function Index() {
                 <Box p={5} borderWidth='1px' borderRadius='lg'>
                     <Tabs>
                         <HStack pb={5} spacing={10}>
-                            <Select placeholder='Select option'size='lg' borderColor='teal'>
-                                <option value='option1'>Option 1</option>
-                                <option value='option2'>Option 2</option>
-                                <option value='option3'>Option 3</option>
+                            <Select placeholder='Select Legislative Districts' size='lg' borderColor='teal'>
+
+                                <option value='district2'>District 2</option>
+
                             </Select>
-                            <Select placeholder='Select option'size='lg' borderColor='teal'>
-                                <option value='option1'>Option 1</option>
-                                <option value='option2'>Option 2</option>
-                                <option value='option3'>Option 3</option>
+                            <Select placeholder='Select Administrative Districts' size='lg' borderColor='teal'>
+                                <option value='Paquibato'>Paquibato</option>
                             </Select>
-                            <Select placeholder='Select option'size='lg' borderColor='teal'>
-                                <option value='option1'>Option 1</option>
-                                <option value='option2'>Option 2</option>
-                                <option value='option3'>Option 3</option>
+                            <Select placeholder='Select Barangays' size='lg' borderColor='teal'>
+                                <option value='Colosas'>  Colosas</option>
+                                <option value='Fatima'>Fatima (Benowang) </option>
+                                <option value='Lumiad'> Lumiad</option>
+                                <option value='Mabuhay'>Mabuhay</option>
+                                <option value='Malabog'> Malabog</option>
+                                <option value='Mapula'> Mapula</option>
+                                <option value='Panalum'> Panalum</option>
+                                <option value='Pandaitan'>Pandaitan</option>
+                                <option value='Paquibato'> Paquibato Proper</option>
+                                <option value='Paradise'> Paradise Embak</option>
+                                <option value='Salapawan'>Salapawan</option>
+                                <option value='Sumimao'> Sumimao</option>
+                                <option value='Tapak'>Tapak</option>
+
+
+                            </Select>
+                            <Select placeholder='Select Quarter' size='lg' borderColor='teal'>
+                                <option value='Q1'>Quarter 1</option>
+                                <option value='Q2'>Quarter 2</option>
+                                <option value='Q3'>Quarter 3</option>
+                                <option value='Q4'>Quarter 3</option>
                             </Select>
                         </HStack>
                         <TabList>

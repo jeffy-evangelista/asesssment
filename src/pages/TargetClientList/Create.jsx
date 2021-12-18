@@ -29,6 +29,9 @@ async function createClient(values){
       first: values.firstname,
       middle: values.middlename,
       last: values.lastname,
+      administrativeDistrict: values.administrativeDistrict,
+      legislativeDistrict: values.legislativeDistrict,
+      barangay: values.barangay,
     });
 
 }
@@ -44,7 +47,7 @@ async function createClient(values){
   return (
       <>
         <Button ref={btnRef} colorScheme='teal' onClick={onOpen}>
-          <AddIcon />
+    Add New Maternal Records
         </Button>
         <Drawer
             isOpen={isOpen}
@@ -97,7 +100,7 @@ async function createClient(values){
                         <Field name='firstname' >
                           {({ field, form }) => (
                               <FormControl isInvalid={form.errors.firstname && form.touched.firstname}>
-                                <FormLabel htmlFor='firstname'>Display Name</FormLabel>
+                                <FormLabel htmlFor='firstname'>First Name</FormLabel>
                                 <Input {...field} id='firstname' placeholder='firstname' />
                                 <FormErrorMessage>{form.errors.firstname}</FormErrorMessage>
                               </FormControl>
@@ -107,7 +110,7 @@ async function createClient(values){
                         <Field name='middlename' >
                           {({ field, form }) => (
                               <FormControl isInvalid={form.errors.middlename && form.touched.middlename}>
-                                <FormLabel htmlFor='middlename'>Display Name</FormLabel>
+                                <FormLabel htmlFor='middlename'>Middle Name Name</FormLabel>
                                 <Input {...field} id='middlename' placeholder='middlename' />
                                 <FormErrorMessage>{form.errors.middlename}</FormErrorMessage>
                               </FormControl>
@@ -116,12 +119,47 @@ async function createClient(values){
                         <Field name='lastname' >
                           {({ field, form }) => (
                               <FormControl isInvalid={form.errors.lastname && form.touched.lastname}>
-                                <FormLabel htmlFor='lastname'>Display Name</FormLabel>
+                                <FormLabel htmlFor='lastname'>Last Name</FormLabel>
                                 <Input {...field} id='lastname' placeholder='lastname' />
                                 <FormErrorMessage>{form.errors.lastname}</FormErrorMessage>
                               </FormControl>
                           )}
                         </Field>
+                        <FormControl >
+                          <Field as="select" name="legislativeDistrict">
+                            <option value="d1">D1</option>
+                            <option value="d2">D2</option>
+                            <option value="d3">D3</option>
+
+                          </Field></FormControl>
+
+                        <FormControl >
+
+                          <Field Select as="select" name="administrativeDistrict" >
+
+                            <option value="red">Paquibato</option>
+                            <option value="red2">Paquibato2</option>
+
+                          </Field>
+
+                        </FormControl>
+                        <FormControl >
+                          <Field as="select" name="barangay">
+                            <option value="col">Colosas</option>
+                            <option value="fat">Fatima (Benowang)</option>
+                            <option value="lum"> Lumiad</option>
+                            <option value="mab">Mabuhay</option>
+                            <option value="mal">  Malabog</option>
+                            <option value="map"> Mapula</option>
+                            <option value="pan"> Panalum</option>
+                            <option value="pand">  Pandaitan</option>
+                            <option value="paq">  Paquibato Proper</option>
+                            <option value="pare">  Paradise Embak</option>
+                            <option value="sal">  Salapawan</option>
+                            <option value="sumi"> Sumimao</option>
+                            <option value="tap"> Tapak</option>
+
+                          </Field></FormControl>
 
 
                         <Button

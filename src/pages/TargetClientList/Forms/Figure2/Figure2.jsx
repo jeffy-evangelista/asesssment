@@ -232,7 +232,11 @@ export default function Figure2({works}) {
         const userRef = doc(db, 'client', documentId);
         await  updateDoc(userRef,{
             Figure2: formData
-        })
+        }).then(() => {
+            alert("Form Updated Successfully")
+        }).catch(function (error) {
+            console.error("Error writing document: ", error);
+        });
     }
 
 

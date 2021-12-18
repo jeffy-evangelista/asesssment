@@ -112,9 +112,9 @@ export default  function Create () {
                                         </Field>
                                         <FormControl >
                                             <Field as="select" name="legislativeDistrict">
-                                                <option value="red">D1</option>
-                                                <option value="green">D2</option>
-                                                <option value="blue">D3</option>
+                                                <option value="d1">D1</option>
+                                                <option value="d2">D2</option>
+                                                <option value="d3">D3</option>
 
                                             </Field></FormControl>
 

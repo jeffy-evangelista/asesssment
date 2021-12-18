@@ -1,4 +1,20 @@
-import { Box, Button, Divider, Flex, FormControl, FormHelperText, Grid, GridItem, HStack, SimpleGrid, Spacer, Stack, Text } from '@chakra-ui/react';
+import {
+    Box,
+    Button,
+    Divider,
+    Flex,
+    FormControl,
+    FormHelperText,
+    Grid,
+    GridItem,
+    HStack,
+    SimpleGrid,
+    Spacer,
+    Stack,
+    Text,
+
+} from '@chakra-ui/react';
+
 import React, { useState } from 'react'
 import * as Yup from "yup";
 import { Form, Formik } from 'formik';
@@ -10,6 +26,7 @@ import {doc, updateDoc} from "firebase/firestore";
 import {db} from "../../../../utils/init-firebase";
 
 export default function Figure4({works}) {
+
     const [data, setData] = useState({
         attendantName: "",
         deliveryLocation: "",
@@ -72,8 +89,16 @@ export default function Figure4({works}) {
         const userRef = doc(db, 'client', documentId);
         await  updateDoc(userRef,{
             Figure4: formData
-        })
+
+        }).then(() => {
+            alert("Form Updated Successfully")
+        }).catch(function (error) {
+            console.error("Error writing document: ", error);
+        });
+        //create alert
+
     }
+
 
 
     const handleNextStep = (newData, final = false) => {
@@ -555,7 +580,7 @@ const StepFour = (props) => {
                                 <Button
                                     type="button"
                                     colorScheme='blue'
-                                    onClick={() => props.prev(values)}
+                                    onClick={() => {  props.prev(values)}}
                                 >
                                     Back
                                 </Button>

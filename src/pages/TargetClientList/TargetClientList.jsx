@@ -12,10 +12,10 @@ import {
     Tbody,
     Td,
 } from '@chakra-ui/react'
-import { 
-    EditIcon, 
-    ViewIcon, 
-    DeleteIcon, 
+import {
+    EditIcon,
+    ViewIcon,
+    DeleteIcon,
     AddIcon } from '@chakra-ui/icons'
 import { Layout } from '../../components/Layout'
 import { Link } from 'react-router-dom'
@@ -29,7 +29,7 @@ import Create from "./Create";
 
 export default function TargetClientList() {
     const [targetClient, setTargetClient] = useState([]);
-
+console.log(targetClient,"Client Data");
 
     useEffect(() => {
         const usersCollectionRef = collection(db, "client");
@@ -60,14 +60,24 @@ export default function TargetClientList() {
                     </Tr>
                 </Thead>
                 <Tbody>
+
+
+
+
+
                     {targetClient.map((works) => {
+
                         return (
+
                             <Tr key={works.id}>
-                                <Td>{works.first}</Td>
+                                <Td>{works.first} {works.middle} {works.last}</Td>
                                 <Td>
                                     <Stack direction="row" spacing={1}>
                                         <TempModal  works= {works}/>
                                     </Stack>
+                                </Td>
+                                <Td>
+
                                 </Td>
                                 <Td>
                                     <Stack direction="row" spacing={1}>
@@ -75,11 +85,7 @@ export default function TargetClientList() {
                                 </Stack>
                                 </Td>
                             </Tr>
-
-
-
                         );
-
                     })}
 
 

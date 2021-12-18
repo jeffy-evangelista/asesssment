@@ -31,8 +31,9 @@ import Figure6 from "./Forms/Figure6/Figure6";
 
 
 export default function WorkModal({works}) {
-    const [ setData,setNewData] = useState(works);
-console.log(works.id,"this is the id")
+    const [ setData] = useState(works);
+console.log(setData,"SetData on Workmodal")
+
 
     const { isOpen, onOpen, onClose } = useDisclosure()
     return (
@@ -57,7 +58,7 @@ console.log(works.id,"this is the id")
                                     </AccordionButton>
                                 </h2>
                                 <AccordionPanel pb={4}>
-                                    <Figure1  works= {works} />
+                                    <Figure1  works= {setData} />
                                 </AccordionPanel>
                             </AccordionItem>
                             {/* Figure 2 */}
