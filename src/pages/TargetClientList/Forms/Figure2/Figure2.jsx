@@ -4,7 +4,7 @@ import * as Yup from "yup";
 import { FieldArray, Form, Formik } from 'formik';
 import TextField from '../../../components/Fields/TextField';
 import ErrorMessaging from '../../../components/Fields/ErrorMessaging';
-import HigherLabel from '../../../components/Labels/HigherLabel';
+import FormHeading from '../../../components/Labels/FormHeading';
 import DatePicker from '../../../components/Fields/DatePicker';
 import Radio from '../../../components/Fields/Radio';
 import Select from '../../../components/Fields/Select';
@@ -613,7 +613,7 @@ const StepThree = (props) => {
                         <FormControl>
                             <SimpleGrid columns={2} spacing={5}>
                                 <GridItem colSpan={2}>
-                                    <HigherLabel text='Medical History' />
+                                    <FormHeading text='Medical History' />
                                 </GridItem>
                                 <GridItem colSpan={1}>
                                     <Box borderWidth='1px' borderRadius='lg' padding={5}>
@@ -836,7 +836,7 @@ const StepFour = (props) => {
                         <FormControl>
                             <SimpleGrid spacing={5}>
                                 <GridItem >
-                                    <HigherLabel text='Physical Examination' />
+                                    <FormHeading text='Physical Examination' />
                                 </GridItem>
                                 <GridItem >
                                     <Box borderWidth='1px' borderRadius='lg' padding={5}>

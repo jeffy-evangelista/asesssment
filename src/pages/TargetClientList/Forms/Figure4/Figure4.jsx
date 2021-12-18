@@ -16,7 +16,7 @@ import * as Yup from "yup";
 import {Form, Formik} from 'formik';
 import TextField from '../../../components/Fields/TextField';
 import Radio from '../../../components/Fields/Radio';
-import HigherLabel from '../../../components/Labels/HigherLabel';
+import FormHeading from '../../../components/Labels/FormHeading';
 import DatePicker from '../../../components/Fields/DatePicker';
 import {doc, updateDoc} from "firebase/firestore";
 import {db} from "../../../../utils/init-firebase";
@@ -145,7 +145,7 @@ const StepOne = (props) => {
                     <Form>
                         <FormControl>
                             <SimpleGrid columns={1} spacingY={4}>
-                                <HigherLabel text="BIRTH PLAN" />
+                                <FormHeading text="BIRTH PLAN" />
                                 <Text>
                                     I know that any complication can develop at any time in the course of
                                     this pregnancy, childbirth and after birth. I know that the best place

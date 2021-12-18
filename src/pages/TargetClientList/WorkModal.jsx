@@ -21,7 +21,7 @@ import React, {useState} from 'react'
 import Figure1 from "./Forms/Figure1/Figure1";
 import Figure2 from "./Forms/Figure2/Figure2";
 import Figure4 from "./Forms/Figure4/Figure4";
-import Figure5 from "./Forms/Figure5";
+import Figure5 from "./Forms/Figure5/Figure5";
 import Figure6 from "./Forms/Figure6/Figure6";
 
 

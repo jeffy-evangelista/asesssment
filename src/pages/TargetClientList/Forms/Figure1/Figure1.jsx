@@ -4,7 +4,7 @@ import * as Yup from "yup";
 import {Form, Formik} from 'formik';
 import TextField from '../../../components/Fields/TextField';
 import ErrorMessaging from '../../../components/Fields/ErrorMessaging';
-import HigherLabel from '../../../components/Labels/HigherLabel';
+import FormHeading from '../../../components/Labels/FormHeading';
 import YearPicker from '../../../components/Fields/YearPicker';
 import DatePicker from '../../../components/Fields/DatePicker';
 import Radio from '../../../components/Fields/Radio';
@@ -293,7 +293,7 @@ const StepThree = (props) => {
             <FormControl>
               <SimpleGrid columns={2} spacing={5}>
                 <GridItem colSpan={2}>
-                  <HigherLabel text="Antenatal Care Check-Ups" />
+                  <FormHeading text="Antenatal Care Check-Ups" />
                 </GridItem>
                 <GridItem colSpan={1}>
                   <DatePicker name="firstTri" label="1st tri = up to 12 weeks and 6 days AOG" />
@@ -347,7 +347,7 @@ const StepFour = (props) => {
           <Form>
             <FormControl>
               <GridItem>
-                <HigherLabel text="Mother and Child Postnatal Check-ups" />
+                <FormHeading text="Mother and Child Postnatal Check-ups" />
               </GridItem>
               <GridItem>
                 <SimpleGrid columns={12} spacingX={5}>
@@ -360,7 +360,7 @@ const StepFour = (props) => {
                 </SimpleGrid>
               </GridItem>
               <GridItem>
-                <HigherLabel text="Civil Registration" />
+                <FormHeading text="Civil Registration" />
               </GridItem>
               <GridItem>
                 <SimpleGrid columns={12} spacingX={5}>
