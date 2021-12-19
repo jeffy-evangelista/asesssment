@@ -2,7 +2,7 @@ import {Box, Center, Container, Flex, Heading, Stack, Text, useColorModeValue} f
 import React, {useEffect, useState} from 'react'
 import {Layout} from '../../components/Layout'
 import {useAuth} from '../../contexts/AuthContext'
-import {collection, getDocs, query, where} from "firebase/firestore";
+import {collection, getDocs, onSnapshot, query, where} from "firebase/firestore";
 import {db} from '../../utils/init-firebase'
 
 import Update from './Update'
@@ -11,8 +11,24 @@ export default function Profile() {
    const { currentUser } = useAuth()
    const [data,setData]= useState([])
 
-    useEffect(async () => {
-        const userData=[]
+    // useEffect(async () => {
+    //     const userData=[]
+    //     const q = query(collection(db, "users"), where("email", "==", currentUser.email))
+    //     const querySnapshot = await getDocs(q);
+    //     querySnapshot.forEach((doc) => {
+    //         console.log(doc.id, " => ", doc.data());
+    //         userData.push(doc.data())
+    //     });
+    //
+    // }, []);
+
+
+    useEffect(() => {
+        fetchData().then(r => console.log("this is user data"));
+    }, []);
+
+    const fetchData = async () => {
+        const userData = []
         const q = query(collection(db, "users"), where("email", "==", currentUser.email))
         const querySnapshot = await getDocs(q);
         querySnapshot.forEach((doc) => {
@@ -20,8 +36,7 @@ export default function Profile() {
             userData.push(doc.data())
         });
         setData(userData)
-    }, []);
-
+    };
 
 
 
