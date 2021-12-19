@@ -16,10 +16,39 @@ export default  function Figure1({works}) {
   const data2 = JSON.parse(JSON.stringify({works}))
 
 
+  const newYear = data2.works.Figure1.year.seconds
+  const newDate = new Date(newYear*1000)
+  const newYear2 = newDate.getFullYear()
+
+  const exp = data2.works.Figure1.expDateOfDel.seconds
+  const newexp = new Date(exp*1000)
+
+  const triFirst =data2.works.Figure1.firstTri.seconds
+  const triSecond =data2.works.Figure1.secondTri.seconds
+  const trithird =data2.works.Figure1.thirdTri.seconds
+
+  const onetri = new Date(triFirst*1000)
+  const twotri = new Date(triSecond*1000)
+  const threetri = new Date(trithird*1000)
+
+  const discharge = data2.works.Figure1.dayOfDischarge.seconds
+  const sevendays = data2.works.Figure1.withinSevDays.seconds
+  const live = data2.works.Figure1.liveBirth.seconds
+  const maternal = data2.works.Figure1.maternalDeath.seconds
+  const still = data2.works.Figure1.stillBirth.seconds
+  const newb = data2.works.Figure1.earlyNewborn.seconds
+
+
+  const daydischarge = new Date(discharge*1000)
+  const onseven = new Date(sevendays*1000)
+  const liveday = new Date(live*1000)
+  const maternalday = new Date(maternal*1000)
+  const stillday = new Date(still*1000)
+  const newbday = new Date(newb*1000)
 
   const [data, setData] = useState({
 
-    year:  null,
+    year:  newYear2,
     region:  data2.works.Figure1.region ,
     province: data2.works.Figure1.province,
     municipality: data2.works.Figure1.municipality,
@@ -35,21 +64,23 @@ export default  function Figure1({works}) {
     age: data2.works.age,
     gravidity:data2.works.Figure1.gravidity,
     parity: data2.works.Figure1.parity,
-    expDateOfDel: "",
+    expDateOfDel: newexp,
 
-    firstTri: "",
-    secondTri: "",
-    thirdTri: "",
+    firstTri: onetri,
+    secondTri: twotri,
+    thirdTri: threetri,
     pregOutcome: data2.works.Figure1.pregOutcome,
 
-    dayOfDischarge: "",
-    withinSevDays: "",
-    liveBirth: "",
-    maternalDeath: "",
-    stillBirth: "",
-    earlyNewborn: "",
 
-    nameOfBhw: "",
+
+    dayOfDischarge: daydischarge,
+    withinSevDays: onseven,
+    liveBirth: liveday,
+    maternalDeath: maternalday,
+    stillBirth: stillday,
+    earlyNewborn: newbday,
+
+    nameOfBhw: data2.works.Figure1.nameOfBhw,
     barHealthStat: data2.works.Figure1.barHealthStat,
     nameOfMidwife: data2.works.Figure1.nameOfMidwife,
     ruralHealthUnit: data2.works.Figure1.ruralHealthUnit,
@@ -121,17 +152,8 @@ const StepOne = (props) => {
     <Box boxShadow={'lg'} p={10}>
       <Formik validationSchema={stepOneValidationSchema}
        initialValues={
-       {
-         year:null,
-         region:props.works.Figure1.region ||"",
-         province: props.works.Figure1.province||"",
-         municipality: props.works.Figure1.municipality||"",
-         barangay: props.works.Figure1.barangay||"",
-         birthingCenter: props.works.Figure1.birthingCenter||"",
-         birthingCenterAddress: props.works.Figure1.birthingCenterAddress||"",
-         referralCenter: props.works.Figure1.referralCenter||"",
-         referralCenterAddress: props.works.Figure1.referralCenterAddress||"",
-       }
+        props.data
+
        } onSubmit={handleSubmit}>
         {() => (
           <Form>
@@ -325,11 +347,11 @@ const StepThree = (props) => {
 
 const stepFourValidationSchema = Yup.object({
   dayOfDischarge: Yup.date().required('Required').nullable(),
-  withinSevDays: Yup.date().required('Required').nullable(),
-  liveBirth: Yup.date().required('Required').nullable(),
-  maternalDeath: Yup.date().required('Required').nullable(),
-  stillBirth: Yup.date().required('Required').nullable(),
-  earlyNewborn: Yup.date().required('Required').nullable()
+  withinSevDays: Yup.date().nullable(),
+  liveBirth: Yup.date().nullable(),
+  maternalDeath: Yup.date().nullable(),
+  stillBirth: Yup.date().nullable(),
+  earlyNewborn: Yup.date().nullable()
 
 });
 const StepFour = (props) => {
