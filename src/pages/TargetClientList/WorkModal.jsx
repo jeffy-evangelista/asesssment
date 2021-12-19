@@ -36,7 +36,7 @@ export default function WorkModal({works}) {
     return (
         <>
             <Button   onClick={() => { onOpen()}} >Update Details</Button>
-            <Modal isOpen={isOpen} onClose={onClose} size={'xl'}>
+            <Modal isOpen={isOpen} onClose={onClose} size={'full'}>
                 <ModalOverlay />
                 <ModalContent>
                     <ModalHeader>Modal Title</ModalHeader>

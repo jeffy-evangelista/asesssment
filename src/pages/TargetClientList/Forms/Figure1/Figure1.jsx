@@ -117,7 +117,7 @@ export default  function Figure1({works}) {
   };
   const steps = [
 
-    <StepOne next={handleNextStep} works={works} data={data}/>,
+    <StepOne next={handleNextStep}  data={data}/>,
     <StepTwo next={handleNextStep} prev={handlePrevStep} data={data}/>,
     <StepThree next={handleNextStep} prev={handlePrevStep} data={data}/>,
     <StepFour next={handleNextStep} prev={handlePrevStep} data={data}/>,

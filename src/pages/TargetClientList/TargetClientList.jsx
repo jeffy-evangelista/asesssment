@@ -15,7 +15,7 @@ import {
 import { Layout } from '../../components/Layout'
 
 import React, {useEffect, useState} from 'react'
-import {collection, getDocs, } from "firebase/firestore";
+import {collection, getDocs, serverTimestamp,doc,onSnapshot} from "firebase/firestore";
 import {db} from "../../utils/init-firebase";
 
 
@@ -25,23 +25,36 @@ import Create from "./Create";
 
 
 export default function TargetClientList() {
-    const [targetClient, setTargetClient] = useState([]);
+
+     const [targetClient, setTargetClient] = useState([]);
+
+    // useEffect(() => {
+    //     const usersCollectionRef = collection(db, "client");
+    //     const getClientList = async () => {
+    //
+    //         const data = await getDocs(usersCollectionRef);
+    //
+    //         setTargetClient(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    //     };
+    //     getClientList();
+    // }, []);
+
 
     useEffect(() => {
-        const usersCollectionRef = collection(db, "client");
-        const getClientList = async () => {
-            const data = await getDocs(usersCollectionRef);
-            setTargetClient(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-        };
-        getClientList();
+        fetchData();
     }, []);
 
+    const fetchData = () => {
+        const usersCollectionRef = collection(db, "client");
+        onSnapshot(usersCollectionRef, (snapshot) => {
+            let userData = []
+            snapshot.docs.forEach(doc => {
+                userData.push({ ...doc.data(), id: doc.id })
+            })
+            setTargetClient(userData)
+        })
 
-
-
-
-
-
+    };
 
   return (
     <Layout>

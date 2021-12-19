@@ -16,12 +16,22 @@ import {db} from "../../../../utils/init-firebase";
 
 export default function Figure2({works}) {
     const data3 = JSON.parse(JSON.stringify({works}))
-    console.log(data3,"my data3")
+
+    const birty = data3.works.Figure2.sideA.familySerial.client.birthday.seconds
+    const newbirty = new Date(birty*1000)
+
+    const sbirty = data3.works.Figure2.sideA.familySerial.spouse.birthday.seconds
+    const newsbirty = new Date(birty*1000)
+
+const idk =JSON.parse(JSON.stringify( data3.works.Figure2.sideA.medicalHistory.reviewOfSystems.heent))
+    console.log(idk,"help")
+
+
     const [data, setData] = useState({
         sideA: {
             familySerial: {
                 client: {
-                    birthday: null,
+                    birthday: newbirty,
                     highestEducation: data3.works.Figure2.sideA.familySerial.client.highestEducation,
                     occupation: data3.works.Figure2.sideA.familySerial.client.occupation,
                     addressStreet: data3.works.Figure2.sideA.familySerial.client.addressStreet,
@@ -33,7 +43,7 @@ export default function Figure2({works}) {
                     firstName: data3.works.Figure2.sideA.familySerial.spouse.firstName,
                     middleName: data3.works.Figure2.sideA.familySerial.spouse.middleName,
                     lastName: data3.works.Figure2.sideA.familySerial.spouse.lastName,
-                    birthday: null,
+                    birthday: newsbirty,
                     highestEducation: data3.works.Figure2.sideA.familySerial.spouse.highestEducation,
                     occupation: data3.works.Figure2.sideA.familySerial.spouse.occupation
                 },
@@ -43,20 +53,19 @@ export default function Figure2({works}) {
             },
             medicalHistory: {
                 reviewOfSystems: {
-                    heent: [],
-                    chestHeart: [],
-                    abdomen: [],
-                    genital: [],
-
-                    extremeties: [],
-                    skin: [],
+                    heent: JSON.parse(JSON.stringify( data3.works.Figure2.sideA.medicalHistory.reviewOfSystems.heent)),
+                    chestHeart: JSON.parse(JSON.stringify( data3.works.Figure2.sideA.medicalHistory.reviewOfSystems.chestHeart)),
+                    abdomen: JSON.parse(JSON.stringify( data3.works.Figure2.sideA.medicalHistory.reviewOfSystems.abdomen)),
+                    genital: JSON.parse(JSON.stringify( data3.works.Figure2.sideA.medicalHistory.reviewOfSystems.genital)),
+                    extremeties: JSON.parse(JSON.stringify( data3.works.Figure2.sideA.medicalHistory.reviewOfSystems.extremeties)),
+                    skin: JSON.parse(JSON.stringify( data3.works.Figure2.sideA.medicalHistory.reviewOfSystems.skin)),
                 },
-                familyHistory: "",
-                pastHealthHistory: "",
-                socialHistory: "",
+                familyHistory: data3.works.Figure2.sideA.medicalHistory.familyHistory,
+                pastHealthHistory: data3.works.Figure2.sideA.medicalHistory.pastHealthHistory,
+                socialHistory: data3.works.Figure2.sideA.medicalHistory.socialHistory,
                 obstericalHistory: {
-                    historyOfPreviousDeliveries: "",
-                    menstrualHistory: "",
+                    historyOfPreviousDeliveries: data3.works.Figure2.sideA.medicalHistory.obstericalHistory.historyOfPreviousDeliveries,
+                    menstrualHistory: data3.works.Figure2.sideA.medicalHistory.obstericalHistory.menstrualHistory,
                 },
                 familyPlanningHistory: {
                     previouslyUsedMethod: ""
@@ -477,7 +486,7 @@ const StepTwo = (props) => {
                                         <GridItem colSpan={1}>
                                             <Radio
                                                 label="Birth Plan"
-                                                name="sidaA.familySerial.noOfChildren"
+                                                name="sideA.familySerial.noOfChildren"
                                                 options={birthPlanOptions} />
                                         </GridItem>
                                     </SimpleGrid>
@@ -500,14 +509,13 @@ const StepTwo = (props) => {
 
 
 const stepThreeValidationSchema = Yup.object({
-    sidA: Yup.object({
+    sideA: Yup.object({
         medicalHistory: Yup.object({
             reviewOfSystems: Yup.object({
                 heent: Yup.array(),
                 chestHeart: Yup.array(),
                 abdomen: Yup.array(),
                 genital: Yup.array(),
-
                 extremeties: Yup.array(),
                 skin: Yup.array(),
             }),

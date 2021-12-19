@@ -23,55 +23,61 @@ import {db} from "../../../../utils/init-firebase";
 
 export default function Figure4({works}) {
 
-    const [data, setData] = useState({
-        attendantName: "",
-        deliveryLocation: "",
-        accreditationStatus: "",
-        distanceFromResidence: "",
-        estimatedCost: "",
-        modeOfPayment: "",
 
-        availableTransportation: "",
+    const data5 = JSON.parse(JSON.stringify({works}))
+
+    const conf =     data5.works.Figure4.conforme.date.seconds
+    const newconf = new Date(conf*1000)
+
+    const [data, setData] = useState({
+        attendantName:  data5.works.Figure4.attendantName,
+        deliveryLocation: data5.works.Figure4.deliveryLocation,
+        accredationStatus: data5.works.Figure4.accredationStatus,
+        distanceFromResidence: data5.works.Figure4.distanceFromResidence,
+        estimatedCost: data5.works.Figure4.estimatedCost,
+        modeOfPayment: data5.works.Figure4.modeOfPayment,
+
+        availableTransportation: data5.works.Figure4.availableTransportation,
         bringer: {
-            Name: "",
-            Address: "",
-            Number: "",
+            Name: data5.works.Figure4.bringer.Name,
+            Address: data5.works.Figure4.bringer.Address,
+            Number: data5.works.Figure4.bringer.Number,
         },
         companion: {
-            Name: "",
-            Relationship: "",
-            Address: "",
-            Number: "",
+            Name: data5.works.Figure4.companion.Name,
+            Relationship: data5.works.Figure4.companion.Relationship,
+            Address: data5.works.Figure4.companion.Address,
+            Number: data5.works.Figure4.companion.Number,
         },
         careTaker: {
-            Name: "",
-            Relationship: "",
+            Name: data5.works.Figure4.careTaker.Name,
+            Relationship: data5.works.Figure4.careTaker.Relationship,
         },
 
-        bloodType: "",
+        bloodType: data5.works.Figure4.bloodType,
         donors: {
-            donorName1: "",
-            donorAddress1: "",
-            donorName2: "",
-            donorAddress2: ""
+            donorName1: data5.works.Figure4.donors.donorName1,
+            donorAddress1:  data5.works.Figure4.donors.donorAddress1,
+            donorName2:  data5.works.Figure4.donors.donorName2,
+            donorAddress2:  data5.works.Figure4.donors.donorAddress2
         },
         complicationReferral: {
-            name: "",
-            address: "",
-            number: ""
+            name:  data5.works.Figure4.complicationReferral.name,
+            address: data5.works.Figure4.complicationReferral.address,
+            number: data5.works.Figure4.complicationReferral.number
         },
 
         maternalHostpital: {
-            name: "",
-            address: "",
+            name: data5.works.Figure4.maternalHostpital.name,
+            address: data5.works.Figure4.maternalHostpital.address,
         },
         newbornHostpital: {
-            name: "",
-            address: "",
+            name: data5.works.Figure4.newbornHostpital.name,
+            address: data5.works.Figure4.newbornHostpital.address,
         },
         conforme: {
-            signature: "",
-            date: null
+            signature: data5.works.Figure4.conforme.signature,
+            date: newconf
         }
     });
     const [currentStep, setCurrentStep] = useState(0);
@@ -259,7 +265,7 @@ const StepTwo = (props) => {
                                     <GridItem colSpan={2}>
                                         <TextField
                                             label="I have contacted "
-                                            name="bringer.name"
+                                            name="bringer.Name"
                                         />
                                         <FormHelperText>
                                             Name of Companion
@@ -269,7 +275,7 @@ const StepTwo = (props) => {
                                         <div>
                                             <TextField
                                                 label="residing at"
-                                                name="bringer.address"
+                                                name="bringer.Address"
                                             />
                                             <FormHelperText>
                                                 Address
@@ -280,7 +286,7 @@ const StepTwo = (props) => {
                                         <div>
                                             <TextField
                                                 label="and with contact number at"
-                                                name="bringer.number"
+                                                name="bringer.Number"
                                             />
                                             <FormHelperText>
                                                 Landline or Cellphone
@@ -298,7 +304,7 @@ const StepTwo = (props) => {
                                     <GridItem colSpan={2}>
                                         <TextField
                                             label="I will be accompanied by"
-                                            name="companion.name"
+                                            name="companion.Name"
                                         />
                                         <FormHelperText>
                                             Name
@@ -307,7 +313,7 @@ const StepTwo = (props) => {
                                     <GridItem >
                                         <TextField
                                             label="who is my "
-                                            name="companion.relationship"
+                                            name="companion.Relationship"
                                         />
                                         <FormHelperText>
                                             Relationship to patient
@@ -316,7 +322,7 @@ const StepTwo = (props) => {
                                     <GridItem colSpan={2}>
                                         <TextField
                                             label="residing at"
-                                            name="companion.address"
+                                            name="companion.Address"
                                         />
                                         <FormHelperText>
                                             Address
@@ -325,7 +331,7 @@ const StepTwo = (props) => {
                                     <GridItem>
                                         <TextField
                                             label="with contact number at"
-                                            name="companion.number"
+                                            name="companion.Number"
                                         />
                                         <FormHelperText>
                                             Landline or Cellphone
@@ -337,13 +343,13 @@ const StepTwo = (props) => {
                                     <GridItem colSpan={2}>
                                         <TextField
                                             label="Name of care taker"
-                                            name="careTaker.name"
+                                            name="careTaker.Name"
                                         />
                                     </GridItem>
                                     <GridItem >
                                         <TextField
                                             label="my"
-                                            name="careTaker.name"
+                                            name="careTaker.Name"
                                         />
                                         <FormHelperText>
                                             Relationship to patient
@@ -556,13 +562,13 @@ const StepFour = (props) => {
 
                                     <GridItem>
                                         <TextField
-                                            name="newbornHostpital.name"
+                                            name="conforme.signature"
                                             label="Signature"
                                         />
                                     </GridItem>
                                     <GridItem>
                                         <DatePicker
-                                            name="conforme.signature"
+                                            name="conforme.date"
                                             label="Date"
                                         />
                                     </GridItem>

@@ -12,118 +12,167 @@ import Select from '../../../components/Fields/Select';
 import Checkbox from '../../../components/Fields/Checkbox';
 import TextArea from '../../../components/Fields/TextArea';
 import SubHeading from '../../../components/Labels/SubHeading';
+import {doc, updateDoc} from "firebase/firestore";
+import {db} from "../../../../utils/init-firebase";
 
-export default function Figure5() {
+export default function Figure5({works}) {
+  const data6 = JSON.parse(JSON.stringify({works}))
+
+
+  const datevisit =     data6.works.Figure5.dateOfVisit.seconds
+  const newdatevisit = new Date(datevisit*1000)
+
+  const dateDelivery =     data6.works.Figure5.physicalExamination.dateOfDelivery.seconds
+  const newdateDelivery = new Date(dateDelivery*1000)
+
+  const dateGiven =    data6.works.Figure5.supplementation.noOfTabletsGiven.dateGiven.seconds
+   const newdatedateGivenNo = new Date(dateGiven*1000)
+
+
+  const dateGivenA = data6.works.Figure5.supplementation.vitaminA.dateGiven.seconds
+  const newdatedateGivenVitaminA = new Date(dateGivenA*1000)
+
+
+
+  //   const recordDate = data6.works.Figure5.records.date.seconds
+  // console.log(recordDate,"recordDate")
+  //   const newrecordDate = new Date(recordDate*1000)
+  // console.log(newrecordDate,"newrecordDate")
   const [data, setData] = useState({
-    dateOfVisit: null,
+    dateOfVisit: newdatevisit,
     physicalExamination: {
-      dateOfDelivery: null,
-      attendant: "",
-      sex: "",
-      typeOfDelivery: "",
-      placeOfDelivery: "",
+      dateOfDelivery: newdateDelivery,
+      attendant:  data6.works.Figure5.physicalExamination.attendant,
+      sex: data6.works.Figure5.physicalExamination.sex,
+      typeOfDelivery: data6.works.Figure5.physicalExamination.typeOfDelivery,
+      placeOfDelivery: data6.works.Figure5.physicalExamination.placeOfDelivery,
       amtsl: {
         steps: {
-          noOne: "",
-          noTwo: "",
-          noThree: ""
+          noOne: data6.works.Figure5.physicalExamination.amtsl.steps.noOne,
+          noTwo: data6.works.Figure5.physicalExamination.amtsl.steps.noTwo,
+          noThree: data6.works.Figure5.physicalExamination.amtsl.steps.noThree
         },
-        isProvided: ""
+        isProvided: data6.works.Figure5.physicalExamination.amtsl.isProvided
       }
     },
     assessment: {
       postPartumMother: {
         dangerSigns: {
-          unconscious: [],
+
+          unconscious: JSON.parse(JSON.stringify(data6.works.Figure5.assessment.postPartumMother.dangerSigns.unconscious)),
           VaginalBleeding: {
-            hrs: "",
-            days: "",
-            otherVisit: ""
+            hrs: data6.works.Figure5.assessment.postPartumMother.dangerSigns.VaginalBleeding.hrs,
+            days: data6.works.Figure5.assessment.postPartumMother.dangerSigns.VaginalBleeding.days,
+            otherVisit: data6.works.Figure5.assessment.postPartumMother.dangerSigns.VaginalBleeding.otherVisit
           },
-          severeAbdominalPain: [],
-          looksVeryIll: [],
-          severeHeadache: [],
-          severeDiffOfBreath: [],
-          severeVomiting: [],
-          postPartumDepression: [],
+          severeAbdominalPain: JSON.parse(JSON.stringify(data6.works.Figure5.assessment.postPartumMother.dangerSigns.severeAbdominalPain)),
+          looksVeryIll: JSON.parse(JSON.stringify(data6.works.Figure5.assessment.postPartumMother.dangerSigns.looksVeryIll)),
+          severeHeadache: JSON.parse(JSON.stringify(data6.works.Figure5.assessment.postPartumMother.dangerSigns.severeHeadache)),
+          severeDiffOfBreath: JSON.parse(JSON.stringify(data6.works.Figure5.assessment.postPartumMother.dangerSigns.severeDiffOfBreath)),
+          severeVomiting: JSON.parse(JSON.stringify(data6.works.Figure5.assessment.postPartumMother.dangerSigns.severeVomiting)),
+          postPartumDepression: JSON.parse(JSON.stringify(data6.works.Figure5.assessment.postPartumMother.dangerSigns.postPartumDepression)),
         },
         pelvicExamFindings: {
           uterus: {
-            contracted: [],
-            relaxed: []
+            contracted: JSON.parse(JSON.stringify(data6.works.Figure5.assessment.postPartumMother.pelvicExamFindings.uterus.contracted)),
+            relaxed: JSON.parse(JSON.stringify(data6.works.Figure5.assessment.postPartumMother.pelvicExamFindings.uterus.relaxed))
           },
           vaginalBleeding: {
-            profuse: [],
-            moderate: [],
-            scanty: []
+            profuse: JSON.parse(JSON.stringify(data6.works.Figure5.assessment.postPartumMother.pelvicExamFindings.vaginalBleeding.profuse)),
+            moderate: JSON.parse(JSON.stringify(data6.works.Figure5.assessment.postPartumMother.pelvicExamFindings.vaginalBleeding.moderate)),
+            scanty: JSON.parse(JSON.stringify(data6.works.Figure5.assessment.postPartumMother.pelvicExamFindings.vaginalBleeding.scanty))
           },
           vaginalDischarge: {
-            color: [],
-            odor: []
+            color: JSON.parse(JSON.stringify(data6.works.Figure5.assessment.postPartumMother.pelvicExamFindings.vaginalDischarge.color)),
+            odor:  JSON.parse(JSON.stringify(data6.works.Figure5.assessment.postPartumMother.pelvicExamFindings.vaginalDischarge.odor))
           },
           vaginalLaceration: {
-            firstDegree: [],
-            secondDegree: [],
-            thirdDegree: [],
-            lacerationSutured: ""
+            firstDegree: JSON.parse(JSON.stringify(data6.works.Figure5.assessment.postPartumMother.pelvicExamFindings.vaginalLaceration.firstDegree)),
+            secondDegree: JSON.parse(JSON.stringify(data6.works.Figure5.assessment.postPartumMother.pelvicExamFindings.vaginalLaceration.secondDegree)),
+            thirdDegree: JSON.parse(JSON.stringify(data6.works.Figure5.assessment.postPartumMother.pelvicExamFindings.vaginalLaceration.thirdDegree)),
+            lacerationSutured: data6.works.Figure5.assessment.postPartumMother.pelvicExamFindings.vaginalLaceration.lacerationSutured
           },
-          ifCs: []
+          ifCs: JSON.parse(JSON.stringify(data6.works.Figure5.assessment.postPartumMother.pelvicExamFindings.ifCs)),
         }
       },
       newborn: {
-        withPoorSuck: [],
-        ifBreathing: [],
-        severeChestIndrawing: [],
-        grunting: [],
-        convulsions: [],
-        floppyStiffExtremities: [],
-        temp: [],
-        severeJaundice: [],
-        bleedingFromUmbilicalStumpOrCut: [],
-        umbilicusDraining: [],
-        foulSmellingDischarge: [],
-        skinPostules: [],
+        withPoorSuck: JSON.parse(JSON.stringify(data6.works.Figure5.assessment.newborn.withPoorSuck)),
+        ifBreathing: JSON.parse(JSON.stringify(data6.works.Figure5.assessment.newborn.ifBreathing)),
+        severeChestIndrawing: JSON.parse(JSON.stringify(data6.works.Figure5.assessment.newborn.severeChestIndrawing)),
+        grunting: JSON.parse(JSON.stringify(data6.works.Figure5.assessment.newborn.grunting)),
+        convulsions: JSON.parse(JSON.stringify(data6.works.Figure5.assessment.newborn.convulsions)),
+        floppyStiffExtremities: JSON.parse(JSON.stringify(data6.works.Figure5.assessment.newborn.floppyStiffExtremities)),
+        temp: JSON.parse(JSON.stringify(data6.works.Figure5.assessment.newborn.temp)),
+        severeJaundice: JSON.parse(JSON.stringify(data6.works.Figure5.assessment.newborn.severeJaundice)),
+        bleedingFromUmbilicalStumpOrCut:JSON.parse(JSON.stringify(data6.works.Figure5.assessment.newborn.bleedingFromUmbilicalStumpOrCut)) ,
+        umbilicusDraining: JSON.parse(JSON.stringify(data6.works.Figure5.assessment.newborn.umbilicusDraining)),
+        foulSmellingDischarge: JSON.parse(JSON.stringify(data6.works.Figure5.assessment.newborn.foulSmellingDischarge)),
+        skinPostules: JSON.parse(JSON.stringify(data6.works.Figure5.assessment.newborn.skinPostules)),
         essentialNewbornCare: {
-          one: "",
-          two: "",
-          three: "",
-          four: "",
-          earlyEncGiven: ""
+          one: data6.works.Figure5.assessment.newborn.essentialNewbornCare.one,
+          two: data6.works.Figure5.assessment.newborn.essentialNewbornCare.two,
+          three: data6.works.Figure5.assessment.newborn.essentialNewbornCare.three,
+          four: data6.works.Figure5.assessment.newborn.essentialNewbornCare.four,
+          earlyEncGiven: data6.works.Figure5.assessment.newborn.essentialNewbornCare.earlyEncGiven
         },
-        breastFeeding: [],
+        breastFeeding: JSON.parse(JSON.stringify(data6.works.Figure5.assessment.newborn.breastFeeding)),
         otherEncGiven: {
-          vitKInjection: [],
-          eyePropylaxis: [],
-          newbornScreening: [],
-          others: []
+          vitKInjection: JSON.parse(JSON.stringify(data6.works.Figure5.assessment.newborn.otherEncGiven.vitKInjection)) ,
+          eyePropylaxis: JSON.parse(JSON.stringify(data6.works.Figure5.assessment.newborn.otherEncGiven.eyePropylaxis)),
+          newbornScreening: JSON.parse(JSON.stringify(data6.works.Figure5.assessment.newborn.otherEncGiven.newbornScreening)),
+          others: JSON.parse(JSON.stringify(data6.works.Figure5.assessment.newborn.otherEncGiven.others))
         },
-        newbornScreeningDone: []
+        newbornScreeningDone: JSON.parse(JSON.stringify(data6.works.Figure5.assessment.newborn.newbornScreeningDone))
       }
     },
     supplementation: {
-      noOfTabletsGven: {
-        no: "",
-        dateGiven: ""
+      noOfTabletsGiven: {
+        no: data6.works.Figure5.supplementation.noOfTabletsGiven.no,
+        dateGiven: newdatedateGivenNo
       },
       vitaminA: {
-        no: "",
-        dateGiven: ""
+        no: data6.works.Figure5.supplementation.vitaminA.no,
+        dateGiven: newdatedateGivenVitaminA
       }
     },
-    records: [
-      {
-        date: "",
-        complaints: "",
-        mncServicesGiven: "",
-        nameOfProviderAndSignature: "",
-        nextFollowUpSchedule: "",
-      },
-    ]
+    records:  {
+      date: null,
+      complaints: data6.works.Figure5.records.complaints,
+      mncServicesGiven: data6.works.Figure5.records.mncServicesGiven,
+      nameOfProviderAndSignature: data6.works.Figure5.records.nameOfProviderAndSignature,
+      nextFollowUpSchedule: data6.works.Figure5.records.nextFollowUpSchedule,
+    },
+
+
+
+
   });
   const [currentStep, setCurrentStep] = useState(0);
+
+
   const makeRequest = (formData) => {
     console.log("Form Submitted", formData);
+    updateUsers(formData);
   };
+
+  async  function updateUsers(formData) {
+    const documentId = JSON.parse(JSON.stringify(works.id))
+    const userRef = doc(db, 'client', documentId);
+    await  updateDoc(userRef,{
+      Figure5: formData
+
+    }).then(() => {
+      alert("Form Updated Successfully")
+    }).catch(function (error) {
+      console.error("Error writing document: ", error);
+    });
+    //create alert
+
+  }
+
+
+
+
 
   const handleNextStep = (newData, final = false) => {
     setData((prev) => ({ ...prev, ...newData }));

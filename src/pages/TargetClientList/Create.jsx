@@ -22,9 +22,10 @@ import { useToast } from '@chakra-ui/react'
 import { db } from '../../utils/init-firebase'
 import {
   collection,
-  addDoc
+  addDoc,serverTimestamp
 } from "firebase/firestore"
 import Select from "../components/Fields/Select";
+import listClient from "./TargetClientList";
 
 
 
@@ -33,6 +34,7 @@ export default  function Create () {
 
 
 async function createClient(values){
+
   const usersCollectionRef = collection(db, "client");
     await addDoc(usersCollectionRef, {
       first: values.firstname,
@@ -44,7 +46,7 @@ async function createClient(values){
       age:values.age,
       gender:values.gender,
          Figure1: {
-             year:  null,
+             year:new Date(),
              region: '' ,
              province: '',
              municipality:'' ,
@@ -79,29 +81,30 @@ async function createClient(values){
              nameOfMidwife: "",
              ruralHealthUnit: "",
          },
+
         Figure2:{
             sideA: {
                 familySerial: {
                     client: {
-                        birthday: null,
-                        highestEducation: "",
-                        occupation: "",
-                        addressStreet: "",
-                        addressBarangay: "",
-                        addressMunicipality: "",
-                        addressProvince: "",
+                        birthday: new Date(),
+                        highestEducation: '',
+                        occupation: '',
+                        addressStreet: '',
+                        addressBarangay:'',
+                        addressMunicipality: '',
+                        addressProvince:'',
                     },
                     spouse: {
-                        firstName: "",
-                        middleName: "",
-                        lastName: "",
-                        birthday: null,
-                        highestEducation: "",
-                        occupation: ""
+                        firstName: '',
+                        middleName:'',
+                        lastName:'',
+                        birthday: new Date(),
+                        highestEducation: '',
+                        occupation: ''
                     },
-                    avgFamilyIncome: "",
-                    noOfChildren: "",
-                    birthPlan: ""
+                    avgFamilyIncome: '',
+                    noOfChildren: '',
+                    birthPlan:''
                 },
                 medicalHistory: {
                     reviewOfSystems: {
@@ -157,7 +160,7 @@ async function createClient(values){
                 abdominalExamFindings: {
                     firstTrimester: {
                         firstMonth: {
-                            date: null,
+                            date: new Date(),
                             fundicHeight: "",
                             fetalHeartTomes: "",
                             aog: "",
@@ -169,7 +172,7 @@ async function createClient(values){
                             uterineAcitivty: ""
                         },
                         secondMonth: {
-                            date: null,
+                            date: new Date(),
                             fundicHeight: "",
                             fetalHeartTomes: "",
                             aog: "",
@@ -181,7 +184,7 @@ async function createClient(values){
                             uterineAcitivty: ""
                         },
                         thirdMonth: {
-                            date: null,
+                            date: new Date(),
                             fundicHeight: "",
                             fetalHeartTomes: "",
                             aog: "",
@@ -195,7 +198,7 @@ async function createClient(values){
                     },
                     secondTrimester: {
                         fourthMonth: {
-                            date: null,
+                            date: new Date(),
                             fundicHeight: "",
                             fetalHeartTomes: "",
                             aog: "",
@@ -207,7 +210,7 @@ async function createClient(values){
                             uterineAcitivty: ""
                         },
                         fifthMonth: {
-                            date: null,
+                            date: new Date(),
                             fundicHeight: "",
                             fetalHeartTomes: "",
                             aog: "",
@@ -219,7 +222,7 @@ async function createClient(values){
                             uterineAcitivty: ""
                         },
                         sixthMonth: {
-                            date: null,
+                            date: new Date(),
                             fundicHeight: "",
                             fetalHeartTomes: "",
                             aog: "",
@@ -233,7 +236,7 @@ async function createClient(values){
                     },
                     thirdTrimester: {
                         seventhMonth: {
-                            date: null,
+                            date: new Date(),
                             fundicHeight: "",
                             fetalHeartTomes: "",
                             aog: "",
@@ -245,7 +248,7 @@ async function createClient(values){
                             uterineAcitivty: ""
                         },
                         eightMonth: {
-                            date: null,
+                            date: new Date(),
                             fundicHeight: "",
                             fetalHeartTomes: "",
                             aog: "",
@@ -257,7 +260,7 @@ async function createClient(values){
                             uterineAcitivty: ""
                         },
                         ninethMonth: {
-                            date: null,
+                            date: new Date(),
                             fundicHeight: "",
                             fetalHeartTomes: "",
                             aog: "",
@@ -282,8 +285,10 @@ async function createClient(values){
                         uterineAcitivty: ""
                     }
                 }
-            }
+            },
         },
+
+
          Figure4: {
              attendantName: "",
              deliveryLocation: "",
@@ -332,13 +337,13 @@ async function createClient(values){
              },
              conforme: {
                  signature: "",
-                 date: null
+                 date:  new Date()
              }
          },
         Figure5:{
-            dateOfVisit: null,
+            dateOfVisit:  new Date(),
             physicalExamination: {
-                dateOfDelivery: null,
+                dateOfDelivery: new Date(),
                 attendant: "",
                 sex: "",
                 typeOfDelivery: "",
@@ -422,111 +427,113 @@ async function createClient(values){
                 }
             },
             supplementation: {
-                noOfTabletsGven: {
+                noOfTabletsGiven: {
                     no: "",
-                    dateGiven: ""
+                    dateGiven: new Date()
                 },
                 vitaminA: {
                     no: "",
-                    dateGiven: ""
+                    dateGiven: new Date()
                 }
             },
-            records: [
+            records:
                 {
-                    date: "",
+                    date: new Date(),
                     complaints: "",
                     mncServicesGiven: "",
                     nameOfProviderAndSignature: "",
-                    nextFollowUpSchedule: "",
+                    nextFollowUpSchedule: new Date(),
                 },
-            ]
+
+
+
         },
          Figure6: {
-             dateOfRegistration: null,
+             dateOfRegistration: new Date(),
              familySerialNo: "",
              sociEconomicStatus: "",
              age: "",
              lmp: {
-                 lmp: null,
-                 gp: null,
+                 lmp: new Date(),
+                 gp: new Date(),
              },
-             edc: null,
+             edc: new Date(),
              datesOfPrenatalCheckUps: {
-                 firstTri: null,
-                 secondTri: null,
-                 thirdTri: null
+                 firstTri: new Date(),
+                 secondTri: new Date(),
+                 thirdTri: new Date()
              },
              immunizationStatus: {
                  tetanusDiptheria: {
-                     td1: null,
-                     td2: null,
-                     td3: null,
-                     td4: null,
-                     td5: null
+                     td1: new Date(),
+                     td2: new Date(),
+                     td3: new Date(),
+                     td4: new Date(),
+                     td5: new Date()
                  },
                  fimStatus: ""
              },
              micronutrientSupplementation1: {
                  ironSulfate: {
                      firstVisit: {
-                         date: null,
+                         date: new Date(),
                          no: ""
                      },
                      secondVisit: {
-                         date: null,
+                         date: new Date(),
                          no: ""
                      },
                      thirdVisit: {
-                         date: null,
+                         date: new Date(),
                          no: ""
                      },
                      fourthVisit: {
-                         date: null,
+                         date: new Date(),
                          no: ""
                      }
                  },
                  calciumCarbonate: {
                      secondVisit: {
-                         date: null,
+                         date: new Date(),
                          no: ""
                      },
                      thirdVisit: {
-                         date: null,
+                         date: new Date(),
                          no: ""
                      },
                      fourthVisit: {
-                         date: null,
+                         date: new Date(),
                          no: ""
                      }
                  },
-                 iodineCapsules: null
+                 iodineCapsules: new Date()
              },
              nutritionalAssessment: {
                  low: "",
                  normal: "",
                  high: ""
              },
-             dewormingTablet: null,
+             dewormingTablet: new Date(),
              infectiousDiseaseSurveillance: {
                  syphilisScreening: {
-                     date: null,
+                     date: new Date(),
                      result: "",
                  },
                  hepatitisBScreening: {
-                     date: null,
+                     date: new Date(),
                      result: "",
                  },
                  hivScreening: {
-                     date: null,
+                     date: new Date(),
                  }
              },
              laboratoryScreening: {
                  gestationalDiabetes: {
-                     dateScreened: null,
+                     dateScreened: new Date(),
                      result: ""
                  },
                  cbc: {
-                     dateScreened: null,
+                     dateScreened: new Date(),
                      result: "",
                      givenIron: ""
                  }
@@ -545,27 +552,27 @@ async function createClient(values){
                  nonHealthFacility: "",
                  remarks: ""
              },
-             dateTimeOfDelivery: null,
+             dateTimeOfDelivery: new Date(),
              MomAndNewbornPostPartumCheckUps: {
-                 withinTwentyFourHours: null,
-                 withinSevenDays: null
+                 withinTwentyFourHours: new Date(),
+                 withinSevenDays: new Date()
              },
              micronutrientSupplementation2: {
                  ironWithFolicAcid: {
                      firstMonth: {
                          no: "",
-                         date: null
+                         date:new Date()
                      },
                      secondMonth: {
                          no: "",
-                         date: null
+                         date: new Date()
                      },
                      thirdMonth: {
                          no: "",
-                         date: null
+                         date: new Date()
                      }
                  },
-                 vitaminA: null
+                 vitaminA: new Date()
              },
              remarks: ""
          },
