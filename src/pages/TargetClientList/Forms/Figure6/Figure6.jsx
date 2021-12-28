@@ -261,6 +261,7 @@ export default function Figure6({works}) {
     };
 
     async  function updateUsers(formData) {
+        //create alert
         const documentId = JSON.parse(JSON.stringify(works.id))
         const userRef = doc(db, 'client', documentId);
         await  updateDoc(userRef,{
@@ -269,9 +270,9 @@ export default function Figure6({works}) {
         }).then(() => {
             alert("Form Updated Successfully")
         }).catch(function (error) {
-            console.error("Error writing document: ", error);
+            console.error("Error writing document: In Figure 6 ", error);
         });
-        //create alert
+
 
     }
 

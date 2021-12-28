@@ -245,7 +245,7 @@ const idk =JSON.parse(JSON.stringify( data3.works.Figure2.sideA.medicalHistory.r
         }).then(() => {
             alert("Form Updated Successfully")
         }).catch(function (error) {
-            console.error("Error writing document: ", error);
+            console.error("Error writing document: In Figure 2 ", error);
         });
     }
 
