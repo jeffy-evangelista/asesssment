@@ -2,7 +2,7 @@ import {Box, Center, Container, Flex, Heading, Stack, Text, useColorModeValue} f
 import React, {useEffect, useState} from 'react'
 import {Layout} from '../../components/Layout'
 import {useAuth} from '../../contexts/AuthContext'
-import {collection, getDocs, onSnapshot, query, where} from "firebase/firestore";
+import {collection, getDocs, query, where} from "firebase/firestore";
 import {db} from '../../utils/init-firebase'
 
 import Update from './Update'

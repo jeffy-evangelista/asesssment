@@ -22,10 +22,10 @@ import { useToast } from '@chakra-ui/react'
 import { db } from '../../utils/init-firebase'
 import {
   collection,
-  addDoc,serverTimestamp
+  addDoc
 } from "firebase/firestore"
 import Select from "../components/Fields/Select";
-import listClient from "./TargetClientList";
+
 
 
 
