@@ -1,13 +1,12 @@
 import { Box, Button, Center, FormControl, FormHelperText, FormLabel, GridItem, HStack, ListItem, SimpleGrid, Spacer, Text, UnorderedList } from '@chakra-ui/react';
 import React, { useState } from 'react'
 import * as Yup from "yup";
-import { FieldArray, Form, Formik } from 'formik';
+import { Form, Formik } from 'formik';
 import TextField from '../../../components/Fields/TextField';
 import FormHeading from '../../../components/Labels/FormHeading';
 import DatePicker from '../../../components/Fields/DatePicker';
 import Radio from '../../../components/Fields/Radio';
 import Checkbox from '../../../components/Fields/Checkbox';
-import TextArea from '../../../components/Fields/TextArea';
 import SubHeading from '../../../components/Labels/SubHeading';
 import {doc, updateDoc} from "firebase/firestore";
 import {db} from "../../../../utils/init-firebase";
@@ -132,13 +131,36 @@ export default function Figure5({works}) {
         dateGiven: newdatedateGivenVitaminA
       }
     },
-    records:  {
-      date: newrecordDate,
-      complaints: data6.works.Figure5.records.complaints,
-      mncServicesGiven: data6.works.Figure5.records.mncServicesGiven,
-      nameOfProviderAndSignature: data6.works.Figure5.records.nameOfProviderAndSignature,
-      nextFollowUpSchedule: data6.works.Figure5.records.nextFollowUpSchedule,
-    },
+    records: {
+      row1: {
+        date: "",
+        complaints: "",
+        mncServicesGiven: "",
+        nameOfProviderAndSignature: "",
+        nextFollowUpSchedule: ""
+      },
+      row2: {
+        date: "",
+        complaints: "",
+        mncServicesGiven: "",
+        nameOfProviderAndSignature: "",
+        nextFollowUpSchedule: ""
+      },
+      row3: {
+        date: "",
+        complaints: "",
+        mncServicesGiven: "",
+        nameOfProviderAndSignature: "",
+        nextFollowUpSchedule: ""
+      },
+      row4: {
+        date: "",
+        complaints: "",
+        mncServicesGiven: "",
+        nameOfProviderAndSignature: "",
+        nextFollowUpSchedule: ""
+      }
+    }
   });
   const [currentStep, setCurrentStep] = useState(0);
 
@@ -674,10 +696,6 @@ const StepFour = (props) => {
     { key: 'w/in 3-7 days', value: 'w/in3-7days' },
     { key: 'Other visits', value: 'otherVisits' }
   ];
-  const encOpt = [
-    { key: 'Yes', value: 'yes' },
-    { key: 'No', value: 'no' }
-  ];
   return (
     <Box boxShadow={'lg'} p={10}>
       <Formik
@@ -948,110 +966,78 @@ const StepSix = (props) => {
         {({ values }) => (
           <Form>
             <FormControl>
-              <SimpleGrid spacingY={5}>
-                <GridItem>
-                  <SimpleGrid columns={12} spacingX={3}>
-                    <GridItem colSpan={2}>
-                      <Center>
-                        <FormLabel>
-                          DATE
-                        </FormLabel>
-                      </Center>
-                    </GridItem>
-                    <GridItem colSpan={3}>
-                      <UnorderedList>
-                        <ListItem>Complaints/complication</ListItem>
-                        <ListItem>Medical Observation</ListItem>
-                        <ListItem>PE Findings including pelvic examination</ListItem>
-                        <ListItem>laboratory</ListItem>
-                        <ListItem>Other important comments</ListItem>
-                      </UnorderedList>
-                    </GridItem>
-                    <GridItem colSpan={2}>
-                      <Center>
-                        <FormLabel>
-                          MCN SERVICES GIVEN
-                        </FormLabel>
-                      </Center>
-                    </GridItem>
-                    <GridItem colSpan={2}>
-                      <Center>
-                        <FormLabel>
-                          NAME OF PROVIDER AND SIGNATURE
-                        </FormLabel>
-                      </Center>
-                    </GridItem>
-                    <GridItem colSpan={2}>
-                      <Center>
-                        <FormLabel>
-                          NEXT Follow-Up Schedule
-                        </FormLabel>
-                      </Center>
-                    </GridItem>
-                    <GridItem colSpan={1}></GridItem>
-                  </SimpleGrid>
-                </GridItem>
-                <GridItem>
-                  <FieldArray name="records">
-                    {
-                      ({ insert, remove, push }) => (
-                        <div>
-                          {values.records.length > 0 &&
-                            values.records.map((record, index) => (
-                              <SimpleGrid columns={12} spacingX={3}>
-
-                                <GridItem colSpan={2}>
-                                  <DatePicker name={`records.${index}.date`} />
-                                </GridItem>
-                                <GridItem colSpan={3}>
-                                  <TextArea label="" name={`records.${index}.complaints`} />
-                                </GridItem>
-                                <GridItem colSpan={2}>
-                                  <TextField label="" name={`records.${index}.mncServicesGiven`} />
-                                </GridItem>
-                                <GridItem colSpan={2}>
-                                  <TextField label="" name={`records.${index}.nameOfProviderAndSignature`} />
-                                </GridItem>
-                                <GridItem colSpan={2}>
-                                  <DatePicker name={`records.${index}.nextFollowUpSchedule`} />
-                                </GridItem>
-
-                                {/* {index > 0 && ( */}
-                                <Button
-                                  m='auto'
-                                  isFullWidth="true"
-                                  // type='button'
-                                  onClick={() => remove(index)}
-                                >
-                                  -
-                                </Button>
-                                {/* )} */}
-
-                              </SimpleGrid>
-                            ))
-                          }
-                          <HStack>
-                            <Spacer />
-                            <Button
-                              w={63.66}
-                              type='button'
-                              onClick={() => push({
-                                date: null,
-                                complaints: '',
-                                mncServicesGiven: '',
-                                nameOfProviderAndSignature: '',
-                                nextFollowUpSchedule: null
-                              })}
-                            >
-                              +
-                            </Button>
-                          </HStack>
-                        </div>
-                      )
-
-                    }
-                  </FieldArray>
-                </GridItem>
+            <SimpleGrid spacingY={5}>
+                <SimpleGrid columns={12} spacingX={3}>
+                  <GridItem colSpan={2}>
+                    <Center>
+                      <FormLabel>
+                        DATE
+                      </FormLabel>
+                    </Center>
+                  </GridItem>
+                  <GridItem colSpan={3}>
+                    <UnorderedList>
+                      <ListItem>Complaints/complication</ListItem>
+                      <ListItem>Medical Observation</ListItem>
+                      <ListItem>PE Findings including pelvic examination</ListItem>
+                      <ListItem>laboratory</ListItem>
+                      <ListItem>Other important comments</ListItem>
+                    </UnorderedList>
+                  </GridItem>
+                  <GridItem colSpan={3}>
+                    <Center>
+                      <FormLabel>
+                        MCN SERVICES GIVEN
+                      </FormLabel>
+                    </Center>
+                  </GridItem>
+                  <GridItem colSpan={2}>
+                    <Center>
+                      <FormLabel>
+                        NAME OF PROVIDER AND SIGNATURE
+                      </FormLabel>
+                    </Center>
+                  </GridItem>
+                  <GridItem colSpan={2}>
+                    <Center>
+                      <FormLabel>
+                        NEXT Follow-Up Schedule
+                      </FormLabel>
+                    </Center>
+                  </GridItem>
+                </SimpleGrid>
+                <SimpleGrid columns={12} spacingX={3}>
+                  <GridItem colSpan={2}>
+                    <DatePicker label="" name="sideB.records.row1.date" />
+                    <DatePicker label="" name="sideB.records.row2.date" />
+                    <DatePicker label="" name="sideB.records.row3.date" />
+                    <DatePicker label="" name="sideB.records.row4.date" />
+                  </GridItem>
+                  <GridItem colSpan={3}>
+                    <TextField label="" name="sideB.records.row1.complaints" />
+                    <TextField label="" name="sideB.records.row2.complaints" />
+                    <TextField label="" name="sideB.records.row3.complaints" />
+                    <TextField label="" name="sideB.records.row4.complaints" />
+                  </GridItem>
+                  <GridItem colSpan={3}>
+                    <TextField label="" name="sideB.records.row1.mncServicesGiven" />
+                    <TextField label="" name="sideB.records.row2.mncServicesGiven" />
+                    <TextField label="" name="sideB.records.row3.mncServicesGiven" />
+                    <TextField label="" name="sideB.records.row4.mncServicesGiven" />
+                  </GridItem>
+                  <GridItem colSpan={2}>
+                    <TextField label="" name="sideB.records.row1.nameOfProviderAndSignature" />
+                    <TextField label="" name="sideB.records.row2.nameOfProviderAndSignature" />
+                    <TextField label="" name="sideB.records.row3.nameOfProviderAndSignature" />
+                    <TextField label="" name="sideB.records.row4.nameOfProviderAndSignature" />
+                  </GridItem>
+                  <GridItem colSpan={2}>
+                    <DatePicker label="" name="sideB.records.row1.nextFollowUpSchedule" />
+                    <DatePicker label="" name="sideB.records.row2.nextFollowUpSchedule" />
+                    <DatePicker label="" name="sideB.records.row3.nextFollowUpSchedule" />
+                    <DatePicker label="" name="sideB.records.row4.nextFollowUpSchedule" />
+                  </GridItem>
+                </SimpleGrid>
               </SimpleGrid>
               <HStack mt={5}>
                 <Spacer />

@@ -1,15 +1,13 @@
 import { Box, Button, Center, FormControl, FormLabel, GridItem, HStack, ListItem, SimpleGrid, Spacer, Text, UnorderedList, VStack } from '@chakra-ui/react';
 import React, { useState } from 'react'
 import * as Yup from "yup";
-import { FieldArray, Form, Formik } from 'formik';
+import { Form, Formik } from 'formik';
 import TextField from '../../../components/Fields/TextField';
-import ErrorMessaging from '../../../components/Fields/ErrorMessaging';
 import FormHeading from '../../../components/Labels/FormHeading';
 import DatePicker from '../../../components/Fields/DatePicker';
 import Radio from '../../../components/Fields/Radio';
 import Select from '../../../components/Fields/Select';
 import Checkbox from '../../../components/Fields/Checkbox';
-import TextArea from '../../../components/Fields/TextArea';
 import {doc, updateDoc} from "firebase/firestore";
 import {db} from "../../../../utils/init-firebase";
 
@@ -92,15 +90,36 @@ const idk =JSON.parse(JSON.stringify( data3.works.Figure2.sideA.medicalHistory.r
         },
 
         sideB: {
-            records: [
-                {
+            records: {
+                row1: {
                     date: "",
                     complaints: "",
                     mncServicesGiven: "",
                     nameOfProviderAndSignature: "",
-                    nextFollowUpSchedule: "",
+                    nextFollowUpSchedule: ""
                 },
-            ],
+                row2: {
+                    date: "",
+                    complaints: "",
+                    mncServicesGiven: "",
+                    nameOfProviderAndSignature: "",
+                    nextFollowUpSchedule: ""
+                },
+                row3: {
+                    date: "",
+                    complaints: "",
+                    mncServicesGiven: "",
+                    nameOfProviderAndSignature: "",
+                    nextFollowUpSchedule: ""
+                },
+                row4: {
+                    date: "",
+                    complaints: "",
+                    mncServicesGiven: "",
+                    nameOfProviderAndSignature: "",
+                    nextFollowUpSchedule: ""
+                }
+            },
             abdominalExamFindings: {
                 firstTrimester: {
                     firstMonth: {
@@ -277,19 +296,7 @@ const idk =JSON.parse(JSON.stringify( data3.works.Figure2.sideA.medicalHistory.r
 }
 
 const stepOneValidationSchema = Yup.object({
-    sideA: Yup.object({
-        familySerial: Yup.object({
-            client: Yup.object({
-                birthday: Yup.date().nullable(),
-                highestEducation: Yup.string(),
-                occupation: Yup.string(),
-                addressStreet: Yup.string(),
-                addressBarangay: Yup.string(),
-                addressMunicipality: Yup.string(),
-                addressProvince: Yup.string(),
-            })
-        })
-    })
+
 });
 const StepOne = (props) => {
     const handleSubmit = (values) => {
@@ -332,36 +339,27 @@ const StepOne = (props) => {
                                     <TextField
                                         name="sideA.familySerial.client.occupation"
                                         label="Occupation" />
-                                    <ErrorMessaging
-                                        name="sideA.familySerial.client.occupation" />
                                 </GridItem>
                                 <GridItem colSpan={3}>
                                     <TextField
                                         name="sideA.familySerial.client.addressStreet"
                                         label="Street" />
-                                    <ErrorMessaging
-                                        name="sideA.familySerial.client.addressStreet" />
+
                                 </GridItem>
                                 <GridItem colSpan={3}>
                                     <TextField
                                         name="sideA.familySerial.client.addressBarangay"
                                         label="Barangay" />
-                                    <ErrorMessaging
-                                        name="sideA.familySerial.client.addressBarangay" />
                                 </GridItem>
                                 <GridItem colSpan={3}>
                                     <TextField
                                         name="sideA.familySerial.client.addressMunicipality"
                                         label="Municipality" />
-                                    <ErrorMessaging
-                                        name="sideA.familySerial.client.addressMunicipality" />
                                 </GridItem>
                                 <GridItem colSpan={3}>
                                     <TextField
                                         name="sideA.familySerial.client.addressProvince"
                                         label="Province" />
-                                    <ErrorMessaging
-                                        name="sideA.familySerial.client.addressProvince" />
                                 </GridItem>
                             </SimpleGrid>
                         </FormControl>
@@ -377,20 +375,6 @@ const StepOne = (props) => {
 };
 
 const stepTwoValidationSchema = Yup.object({
-    sideA: Yup.object({
-        familySerial: Yup.object({
-            spouse: Yup.object({
-                spouseFirstName: Yup.string(),
-                spouseMiddleName: Yup.string(),
-                spouseLastName: Yup.string(),
-                spouseBirthday: null,
-                spouseHighestEducation: Yup.string(),
-                spouseOccupation: Yup.string()
-            }),
-            avgFamilyIncome: Yup.string(),
-            noOfChildren: Yup.string()
-        })
-    })
 });
 const StepTwo = (props) => {
     const handleSubmit = (values) => {
@@ -407,7 +391,7 @@ const StepTwo = (props) => {
         { key: 'Hospital', value: 'hospital' },
         { key: 'RHU', value: 'rhu' },
         { key: 'LIC', value: 'lic' },
-        { key: 'Home', value: 'Home' }
+        { key: 'Home', value: 'home' }
     ];
     return (
         <Box boxShadow={'lg'} p={10}>
@@ -428,42 +412,39 @@ const StepTwo = (props) => {
                                         <GridItem colSpan={4}>
                                             <TextField
                                                 name="sideA.familySerial.spouse.lastName"
-                                                label="Last Name" />
-                                            <ErrorMessaging
-                                                name="sideA.familySerial.spouse.lastName"
+                                                label="Last Name"
                                             />
                                         </GridItem>
                                         <GridItem colSpan={4}>
                                             <TextField
                                                 name="sideA.familySerial.spouse.firstName"
-                                                label="First Name" />
-                                            <ErrorMessaging
-                                                name="sideA.familySerial.spouse.firstName" />
+                                                label="First Name"
+                                            />
                                         </GridItem>
                                         <GridItem colSpan={4}>
                                             <TextField
                                                 name="sideA.familySerial.spouse.middleName"
-                                                label="Middle Name" />
-                                            <ErrorMessaging
-                                                name="sideA.familySerial.spouse.middleName" />
+                                                label="Middle Name"
+                                            />
                                         </GridItem>
                                         <GridItem colSpan={4}>
                                             <DatePicker
                                                 name="sideA.familySerial.spouse.birthday"
-                                                label="Birthday" />
+                                                label="Birthday"
+                                            />
                                         </GridItem>
                                         <GridItem colSpan={4}>
                                             <Select
                                                 label="Highest Education"
                                                 name="sideA.familySerial.spouse.highestEducation"
-                                                options={highestEducationOptions} />
+                                                options={highestEducationOptions}
+                                            />
                                         </GridItem>
                                         <GridItem colSpan={4}>
                                             <TextField
                                                 name="sideA.familySerial.spouse.occupation"
-                                                label="Occupation" />
-                                            <ErrorMessaging
-                                                name="sideA.familySerial.spouse.occupation" />
+                                                label="Occupation"
+                                            />
                                         </GridItem>
                                     </SimpleGrid>
                                 </GridItem>
@@ -472,22 +453,21 @@ const StepTwo = (props) => {
                                         <GridItem colSpan={1}>
                                             <TextField
                                                 name="sideA.familySerial.avgFamilyIncome"
-                                                label="Average Family Income" />
-                                            <ErrorMessaging
-                                                name="sideA.familySerial.avgFamilyIncome" />
+                                                label="Average Family Income"
+                                            />
                                         </GridItem>
                                         <GridItem colSpan={1}>
                                             <TextField
                                                 name="sideA.familySerial.noOfChildren"
-                                                label="No. of Children" />
-                                            <ErrorMessaging
-                                                name="sideA.familySerial.noOfChildren" />
+                                                label="No. of Children"
+                                            />
                                         </GridItem>
                                         <GridItem colSpan={1}>
                                             <Radio
                                                 label="Birth Plan"
-                                                name="sideA.familySerial.noOfChildren"
-                                                options={birthPlanOptions} />
+                                                name="sideA.familySerial.birthPlan"
+                                                options={birthPlanOptions}
+                                            />
                                         </GridItem>
                                     </SimpleGrid>
                                 </GridItem>
@@ -509,30 +489,7 @@ const StepTwo = (props) => {
 
 
 const stepThreeValidationSchema = Yup.object({
-    sideA: Yup.object({
-        medicalHistory: Yup.object({
-            reviewOfSystems: Yup.object({
-                heent: Yup.array(),
-                chestHeart: Yup.array(),
-                abdomen: Yup.array(),
-                genital: Yup.array(),
-                extremeties: Yup.array(),
-                skin: Yup.array(),
-            }),
-            familyHistory: Yup.array(),
-            pastHealthHistory: Yup.array(),
-            medicalHistory: Yup.object({
-                socialHistory: Yup.array(),
-                obstericalHistory: Yup.object({
-                    historyOfPreviousDeliveries: Yup.array(),
-                    menstrualHistory: Yup.array(),
-                }),
-                familyPlanningHistory: Yup.object({
-                    previouslyUsedMethod: Yup.string()
-                })
-            })
-        })
-    })
+
 });
 const StepThree = (props) => {
     const handleSubmit = (values) => {
@@ -577,7 +534,7 @@ const StepThree = (props) => {
         { key: 'Diabetes', value: 'diabetes' }
     ];
     const pastHealthHistorySelections = [
-        { key: 'Allergies', value: 'cvaStrokes' },
+        { key: 'Allergies', value: 'allergies' },
         { key: 'Drug intake (anti-tuberculosis, anti-diabetic, anticonvulsant)', value: 'drugIntake' },
         { key: 'Bleeding tendencies (nose, gums, etc.)', value: 'bleedingTendencies' },
         { key: 'Anemia', value: 'anemia' },
@@ -607,7 +564,7 @@ const StepThree = (props) => {
         { key: 'Last menstrual period', value: 'lastMenstrualPeriod' },
         { key: 'Past menstrual period', value: 'pastMenstrualPeriod' },
         { key: 'Duration of menstrual Bleeding', value: 'durationOfMenstrualBleeding' },
-        { key: 'Character of Menstrual bleeding', value: 'CharacterOfMenstrualBleeding' }
+        { key: 'Character of Menstrual bleeding', value: 'characterOfMenstrualBleeding' }
     ];
     return (
         <Box boxShadow={'lg'} p={10}>
@@ -631,32 +588,32 @@ const StepThree = (props) => {
                                             </Text>
                                             <Checkbox
                                                 label="Heent"
-                                                name="heent"
+                                                name="sideA.medicalHistory.reviewOfSystems.heent"
                                                 options={heentSelections}
                                             />
                                             <Checkbox
                                                 label="Chest/Heart"
-                                                name="chestHeart"
+                                                name="sideA.medicalHistory.reviewOfSystems.chestHeart"
                                                 options={chestHeartSelections}
                                             />
                                             <Checkbox
                                                 label="Abdomen"
-                                                name="abdomen"
+                                                name="sideA.medicalHistory.reviewOfSystems.abdomen"
                                                 options={abdomenSelections}
                                             />
                                             <Checkbox
                                                 label="Genital"
-                                                name="genital"
+                                                name="sideA.medicalHistory.reviewOfSystems.genital"
                                                 options={genitalSelections}
                                             />
                                             <Checkbox
                                                 label="Extremities"
-                                                name="extremities"
+                                                name="sideA.medicalHistory.reviewOfSystems.extremities"
                                                 options={extremitiesSelections}
                                             />
                                             <Checkbox
                                                 label="Skin"
-                                                name="skin"
+                                                name="sideA.medicalHistory.reviewOfSystems.skin"
                                                 options={skinSelections}
                                             />
                                         </VStack >
@@ -675,7 +632,7 @@ const StepThree = (props) => {
                                                 </Text>
                                                 <Checkbox
                                                     label=""
-                                                    name="familyHistory"
+                                                    name="sideA.medicalHistory.familyHistory"
                                                     options={familyHistorySelections}
                                                 />
                                             </Box>
@@ -691,7 +648,7 @@ const StepThree = (props) => {
                                                 </Text>
                                                 <Checkbox
                                                     label=""
-                                                    name="pastHealthHistory"
+                                                    name="sideA.medicalHistory.pastHealthHistory"
                                                     options={pastHealthHistorySelections}
                                                 />
                                             </Box>
@@ -706,7 +663,7 @@ const StepThree = (props) => {
                                                 </Text>
                                                 <Checkbox
                                                     label=""
-                                                    name="socialHistory"
+                                                    name="sideA.medicalHistory.socialHistory"
                                                     options={socialHistorySelections}
                                                 />
                                             </Box>
@@ -719,7 +676,7 @@ const StepThree = (props) => {
                                         borderRadius='lg'
                                         padding={5}
                                     >
-                                        <SimpleGrid columns={2} spacingX={5}>
+                                        <SimpleGrid columns={3} spacingX={5}>
                                             <GridItem colSpan={3}>
                                                 <Text fontSize='xl'>
                                                     Obsterical History:
@@ -728,25 +685,28 @@ const StepThree = (props) => {
                                             <GridItem colSpan={1}>
                                                 <Checkbox
                                                     label=""
-                                                    name="obstericalHistory"
+                                                    name="sideA.medicalHistory.obsterical.obstericalHistory"
                                                     options={obstericalHistorySelections}
-
                                                 />
                                             </GridItem>
                                             <GridItem colSpan={1}>
                                                 <Checkbox
                                                     label="History of Previous Deliveries"
-                                                    name="historyOfPreviousDeliveries"
+                                                    name="sideA.medicalHistory.obsterical.historyOfPreviousDeliveries"
                                                     options={historyOfPreviouDeliveriesSelections}
-
                                                 />
                                             </GridItem>
                                             <GridItem colSpan={1}>
                                                 <Checkbox
                                                     label="Menstrual History"
-                                                    name="menstrualHistory"
+                                                    name="sideA.medicalHistory.obsterical.menstrualHistory"
                                                     options={menstrualHistorySelections}
-
+                                                />
+                                            </GridItem>
+                                            <GridItem colSpan={3}>
+                                                <TextField
+                                                    label="Previously used method"
+                                                    name="sideA.medicalHistory.familyPlanningHistory.previouslyUsedMethod"
                                                 />
                                             </GridItem>
                                         </SimpleGrid>
@@ -769,26 +729,6 @@ const StepThree = (props) => {
 };
 
 const stepFourValidationSchema = Yup.object({
-    sidA: Yup.object({
-        physicalExamination: Yup.object({
-            vitalSigns: Yup.object({
-                bloodPressure: Yup.string(),
-                weight: Yup.string(),
-                height: Yup.string(),
-                bmi: Yup.string(),
-                pulseRate: Yup.string()
-            }),
-            conjunctiva: Yup.array(),
-            neck: Yup.array(),
-            breast: Yup.array(),
-            thorax: Yup.array(),
-            abdomen: Yup.array(),
-            vaginalExamination: Yup.array(),
-            extremities: Yup.array(),
-            toxoidVaccineStatus: Yup.string(),
-            impressionDiagnosis: Yup.string()
-        })
-    })
 });
 const StepFour = (props) => {
     const handleSubmit = (values) => {
@@ -825,7 +765,7 @@ const StepFour = (props) => {
         { key: 'Scars', value: 'scars' },
         { key: 'Warts', value: 'warts' },
         { key: 'Lacerations', value: 'lacerations' },
-        { key: 'others, specify', value: 'scars' }
+        { key: 'others, specify', value: 'others' }
     ];
     const extremitiesSelections = [
         { key: 'Edema', value: 'edema' },
@@ -855,31 +795,31 @@ const StepFour = (props) => {
                                                     <GridItem>
                                                         <TextField
                                                             label='Blood pressure'
-                                                            name="bloodPressure"
+                                                            name="sideA.physicalExamination.vitalSigns.bloodPressure"
                                                         />
                                                     </GridItem>
                                                     <GridItem>
                                                         <TextField
                                                             label='Weight'
-                                                            name="weight"
+                                                            name="sideA.physicalExamination.vitalSigns.weight"
                                                         />
                                                     </GridItem>
                                                     <GridItem>
                                                         <TextField
                                                             label='Height'
-                                                            name="height"
+                                                            name="sideA.physicalExamination.vitalSigns.height"
                                                         />
                                                     </GridItem>
                                                     <GridItem>
                                                         <TextField
                                                             label='Body Mass Index'
-                                                            name="bmi"
+                                                            name="sideA.physicalExamination.vitalSigns.bmi"
                                                         />
                                                     </GridItem>
                                                     <GridItem>
                                                         <TextField
                                                             label='Pulse Rate'
-                                                            name="pulseRate"
+                                                            name="sideA.physicalExamination.vitalSigns.pulseRate"
                                                         />
                                                     </GridItem>
                                                 </SimpleGrid>
@@ -889,56 +829,56 @@ const StepFour = (props) => {
                                                     <GridItem>
                                                         <Checkbox
                                                             label="Conjunctiva"
-                                                            name="conjunctiva"
+                                                            name="sideA.physicalExamination.conjunctiva"
                                                             options={conjunctivaSelections}
                                                         />
                                                     </GridItem>
                                                     <GridItem>
                                                         <Checkbox
                                                             label="Neck"
-                                                            name="neck"
+                                                            name="sideA.physicalExamination.neck"
                                                             options={neckSelections}
                                                         />
                                                     </GridItem>
                                                     <GridItem>
                                                         <Checkbox
                                                             label="Breast"
-                                                            name="breast"
+                                                            name="sideA.physicalExamination.breast"
                                                             options={breastSelections}
                                                         />
                                                     </GridItem>
                                                     <GridItem>
                                                         <Checkbox
                                                             label="Thorax"
-                                                            name="thorax"
+                                                            name="sideA.physicalExamination.thorax"
                                                             options={thoraxSelections}
                                                         />
                                                     </GridItem>
                                                     <GridItem>
                                                         <Checkbox
                                                             label="Abdomen"
-                                                            name="abdomen"
+                                                            name="sideA.physicalExamination.abdomen"
                                                             options={abdomenSelections}
                                                         />
                                                     </GridItem>
                                                     <GridItem>
                                                         <Checkbox
                                                             label="Vaginal Examination"
-                                                            name="vaginalExamination"
+                                                            name="sideA.physicalExamination.vaginalExamination"
                                                             options={vaginalExaminationSelections}
                                                         />
                                                     </GridItem>
                                                     <GridItem>
                                                         <Checkbox
                                                             label="Extremities"
-                                                            name="extremities"
+                                                            name="sideA.physicalExamination.extremities"
                                                             options={extremitiesSelections}
                                                         />
                                                     </GridItem>
                                                     <GridItem>
                                                         <TextField
                                                             label="Td toxoid vaccine Status:"
-                                                            name="toxoidVaccineStatus"
+                                                            name="sideA.physicalExamination.toxoidVaccineStatus"
                                                         />
                                                     </GridItem>
                                                 </SimpleGrid>
@@ -951,7 +891,7 @@ const StepFour = (props) => {
                                         <Text fontSize='xl'>Impression/Diagnosis:</Text>
                                         <TextField
                                             label=""
-                                            name="impressionDiagnosis"
+                                            name="sideA.physicalExamination.impressionDiagnosis"
                                         />
                                     </Box>
                                 </GridItem>
@@ -988,110 +928,78 @@ const StepFive = (props) => {
                 {({ values }) => (
                     <Form>
                         <FormControl>
-                            <SimpleGrid spacingY={5}>
-                                <GridItem>
-                                    <SimpleGrid columns={12} spacingX={3}>
-                                        <GridItem colSpan={2}>
-                                            <Center>
-                                                <FormLabel>
-                                                    DATE
-                                                </FormLabel>
-                                            </Center>
-                                        </GridItem>
-                                        <GridItem colSpan={3}>
-                                            <UnorderedList>
-                                                <ListItem>Complaints/complication</ListItem>
-                                                <ListItem>Medical Observation</ListItem>
-                                                <ListItem>PE Findings including pelvic examination</ListItem>
-                                                <ListItem>laboratory</ListItem>
-                                                <ListItem>Other important comments</ListItem>
-                                            </UnorderedList>
-                                        </GridItem>
-                                        <GridItem colSpan={2}>
-                                            <Center>
-                                                <FormLabel>
-                                                    MCN SERVICES GIVEN
-                                                </FormLabel>
-                                            </Center>
-                                        </GridItem>
-                                        <GridItem colSpan={2}>
-                                            <Center>
-                                                <FormLabel>
-                                                    NAME OF PROVIDER AND SIGNATURE
-                                                </FormLabel>
-                                            </Center>
-                                        </GridItem>
-                                        <GridItem colSpan={2}>
-                                            <Center>
-                                                <FormLabel>
-                                                    NEXT Follow-Up Schedule
-                                                </FormLabel>
-                                            </Center>
-                                        </GridItem>
-
-                                    </SimpleGrid>
-                                </GridItem>
-                                <GridItem>
-                                    <FieldArray name="sideB.records">
-                                        {
-                                            ({ insert, remove, push }) => (
-                                                <div>
-                                                    {values.sideB.records.length > 0 &&
-                                                        values.sideB.records.map((record, index) => (
-                                                            <SimpleGrid columns={12} spacingX={3}>
-
-                                                                <GridItem colSpan={2}>
-                                                                    <DatePicker name={`sideB.records.${index}.date`} />
-                                                                </GridItem>
-                                                                <GridItem colSpan={3}>
-                                                                    <TextArea label="" name={`sideB.records.${index}.complaints`} />
-                                                                </GridItem>
-                                                                <GridItem colSpan={2}>
-                                                                    <TextField label="" name={`sideB.records.${index}.mncServicesGiven`} />
-                                                                </GridItem>
-                                                                <GridItem colSpan={2}>
-                                                                    <TextField label="" name={`sideB.records.${index}.nameOfProviderAndSignature`} />
-                                                                </GridItem>
-                                                                <GridItem colSpan={2}>
-                                                                    <DatePicker name={`sideB.records.${index}.nextFollowUpSchedule`} />
-                                                                </GridItem>
-
-                                                                {/* {index > 0 && ( */}
-                                                                <Button
-                                                                    m='auto'
-                                                                    isFullWidth="true"
-                                                                    // type='button'
-                                                                    onClick={() => remove(index)}
-                                                                >
-                                                                    -
-                                                                </Button>
-                                                                {/* )} */}
-
-                                                            </SimpleGrid>
-                                                        ))
-                                                    }
-                                                    <HStack>
-                                                        <Spacer />
-                                                        <Button
-                                                            w={63.66}
-                                                            type='button'
-                                                            onClick={() => push({
-                                                                date: null,
-                                                                complaints: '',
-                                                                mncServicesGiven: '',
-                                                                nameOfProviderAndSignature: '',
-                                                                nextFollowUpSchedule: null
-                                                            })}
-                                                        >
-                                                            +
-                                                        </Button>
-                                                    </HStack>
-                                                </div>
-                                            )
-
-                                        }
-                                    </FieldArray>
-                                </GridItem>
+                        <SimpleGrid spacingY={5}>
+                                <SimpleGrid columns={12} spacingX={3}>
+                                    <GridItem colSpan={2}>
+                                        <Center>
+                                            <FormLabel>
+                                                DATE
+                                            </FormLabel>
+                                        </Center>
+                                    </GridItem>
+                                    <GridItem colSpan={3}>
+                                        <UnorderedList>
+                                            <ListItem>Complaints/complication</ListItem>
+                                            <ListItem>Medical Observation</ListItem>
+                                            <ListItem>PE Findings including pelvic examination</ListItem>
+                                            <ListItem>laboratory</ListItem>
+                                            <ListItem>Other important comments</ListItem>
+                                        </UnorderedList>
+                                    </GridItem>
+                                    <GridItem colSpan={3}>
+                                        <Center>
+                                            <FormLabel>
+                                                MCN SERVICES GIVEN
+                                            </FormLabel>
+                                        </Center>
+                                    </GridItem>
+                                    <GridItem colSpan={2}>
+                                        <Center>
+                                            <FormLabel>
+                                                NAME OF PROVIDER AND SIGNATURE
+                                            </FormLabel>
+                                        </Center>
+                                    </GridItem>
+                                    <GridItem colSpan={2}>
+                                        <Center>
+                                            <FormLabel>
+                                                NEXT Follow-Up Schedule
+                                            </FormLabel>
+                                        </Center>
+                                    </GridItem>
+                                </SimpleGrid>
+                                <SimpleGrid columns={12} spacingX={3}>
+                                    <GridItem colSpan={2}>
+                                        <DatePicker label="" name="sideB.records.row1.date" />
+                                        <DatePicker label="" name="sideB.records.row2.date" />
+                                        <DatePicker label="" name="sideB.records.row3.date" />
+                                        <DatePicker label="" name="sideB.records.row4.date" />
+                                    </GridItem>
+                                    <GridItem colSpan={3}>
+                                        <TextField label="" name="sideB.records.row1.complaints" />
+                                        <TextField label="" name="sideB.records.row2.complaints" />
+                                        <TextField label="" name="sideB.records.row3.complaints" />
+                                        <TextField label="" name="sideB.records.row4.complaints" />
+                                    </GridItem>
+                                    <GridItem colSpan={3}>
+                                        <TextField label="" name="sideB.records.row1.mncServicesGiven" />
+                                        <TextField label="" name="sideB.records.row2.mncServicesGiven" />
+                                        <TextField label="" name="sideB.records.row3.mncServicesGiven" />
+                                        <TextField label="" name="sideB.records.row4.mncServicesGiven" />
+                                    </GridItem>
+                                    <GridItem colSpan={2}>
+                                        <TextField label="" name="sideB.records.row1.nameOfProviderAndSignature" />
+                                        <TextField label="" name="sideB.records.row2.nameOfProviderAndSignature" />
+                                        <TextField label="" name="sideB.records.row3.nameOfProviderAndSignature" />
+                                        <TextField label="" name="sideB.records.row4.nameOfProviderAndSignature" />
+                                    </GridItem>
+                                    <GridItem colSpan={2}>
+                                        <DatePicker label="" name="sideB.records.row1.nextFollowUpSchedule" />
+                                        <DatePicker label="" name="sideB.records.row2.nextFollowUpSchedule" />
+                                        <DatePicker label="" name="sideB.records.row3.nextFollowUpSchedule" />
+                                        <DatePicker label="" name="sideB.records.row4.nextFollowUpSchedule" />
+                                    </GridItem>
+                                </SimpleGrid>
                             </SimpleGrid>
                             <HStack mt={5}>
                                 <Spacer />
@@ -1121,6 +1029,7 @@ const StepSix = (props) => {
                 initialValues={props.data}
                 onSubmit={handleSubmit}
             >
+                
                 {({ values }) => (
                     <Form>
                         <FormControl>
@@ -1633,7 +1542,7 @@ const StepSix = (props) => {
                                             </GridItem>
                                             <GridItem>
                                                 <VStack spacing='3px'>
-                                                <TextField
+                                                    <TextField
                                                         label=""
                                                         name="sideB.abdominalExamFindings.remarks.date"
                                                     />
