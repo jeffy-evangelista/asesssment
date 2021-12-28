@@ -95,10 +95,12 @@ export default function Figure4({works}) {
         }).then(() => {
             alert("Form Updated Successfully")
         }).catch(function (error) {
-            console.error("Error writing document: In Figure 5 ", error);
+            console.error("Error writing document: ", error);
         });
+        //create alert
+
     }
-    //create alert
+
 
 
     const handleNextStep = (newData, final = false) => {
@@ -192,7 +194,7 @@ const StepOne = (props) => {
                                 <SimpleGrid columns={3} spacingX={3}>
                                     <GridItem colSpan={2} >
                                         <TextField
-                                            label="The estimated cost of the 
+                                            label="The estimated cost of the
                                             maternity package in this facility is"
                                             name="accredationStatus"
                                         />
@@ -597,5 +599,4 @@ const StepFour = (props) => {
         </Box>
     );
 };
-
 

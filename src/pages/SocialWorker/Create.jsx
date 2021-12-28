@@ -6,9 +6,9 @@ import {
     DrawerHeader,
     DrawerOverlay,
     DrawerContent,
-    DrawerCloseButton, useDisclosure, Button, Stack
+    DrawerCloseButton, useDisclosure, Button, Stack, FormControl, FormLabel, Input, FormErrorMessage
 } from '@chakra-ui/react'
-import { Form, Formik } from "formik";
+import { Field, Form, Formik } from "formik";
 import { v4 as uuidv4 } from 'uuid';
 import { useToast } from '@chakra-ui/react'
 import { AddIcon } from "@chakra-ui/icons";
@@ -98,30 +98,31 @@ export default function Create() {
                                         })
 
                                         .catch(err => {
-                                            toast({
-                                                title: 'Error',
-                                                description: err.message,
-                                                status: 'error',
-                                                duration: 9000,
-                                                isClosable: true,
-                                            })
-                                            actions.setSubmitting(false)
-                                        }
+                                                toast({
+                                                    title: 'Error',
+                                                    description: err.message,
+                                                    status: 'error',
+                                                    duration: 9000,
+                                                    isClosable: true,
+                                                })
+                                                actions.setSubmitting(false)
+                                            }
                                         )
                                 }
                                 }
                             >
                                 {(props) => (
+
                                     <Form>
-                                        <TextField
+                                        {/* <TextField
                                             name="displayName"
                                             label="Name"
                                         />
                                         <TextField
                                             name="email"
                                             label="Email"
-                                        />
-                                        {/* <Field name='displayName' >
+                                        /> */}
+                                        <Field name='displayName' >
                                             {({ field, form }) => (
                                                 <FormControl isInvalid={form.errors.displayName && form.touched.displayName}>
                                                     <FormLabel htmlFor='displayName'>Display Name</FormLabel>
@@ -139,7 +140,7 @@ export default function Create() {
                                                     <FormErrorMessage>{form.errors.email}</FormErrorMessage>
                                                 </FormControl>
                                             )}
-                                        </Field> */}
+                                        </Field>
                                         <Select
                                             label="Legislative District"
                                             name="legislativeDistrict"

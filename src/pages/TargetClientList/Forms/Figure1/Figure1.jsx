@@ -99,7 +99,7 @@ export default  function Figure1({works}) {
     }).then(() => {
       alert("Form Updated Successfully")
     }).catch(function (error) {
-      console.error("Error writing document: In Figure 1 ", error);
+      console.error("Error writing document: ", error);
     });
   }
 
@@ -149,73 +149,73 @@ const StepOne = (props) => {
   };
 
   return (
-    <Box boxShadow={'lg'} p={10}>
-      <Formik validationSchema={stepOneValidationSchema}
-       initialValues={
-        props.data
+      <Box boxShadow={'lg'} p={10}>
+        <Formik validationSchema={stepOneValidationSchema}
+                initialValues={
+                  props.data
 
-       } onSubmit={handleSubmit}>
-        {() => (
-          <Form>
-            <FormControl>
-              <SimpleGrid columns={1} spacingY={4}>
-                <GridItem colSpan={1}>
-                  <SimpleGrid columns={12} spacingX={5}>
-                    <GridItem colSpan={6}>
-                      <YearPicker name="year" label="Year" />
+                } onSubmit={handleSubmit}>
+          {() => (
+              <Form>
+                <FormControl>
+                  <SimpleGrid columns={1} spacingY={4}>
+                    <GridItem colSpan={1}>
+                      <SimpleGrid columns={12} spacingX={5}>
+                        <GridItem colSpan={6}>
+                          <YearPicker name="year" label="Year" />
+                        </GridItem>
+                        <GridItem colSpan={6}>
+                          <TextField label="Region" name="region" />
+                          <ErrorMessaging name="region" />
+                        </GridItem>
+                        <GridItem colSpan={4}>
+                          <TextField label="Province" name="province" />
+                          <ErrorMessaging name="province" />
+                        </GridItem>
+                        <GridItem colSpan={4}>
+                          <TextField label="Municipality" name="municipality" />
+                          <ErrorMessaging name="municipality" />
+                        </GridItem>
+                        <GridItem colSpan={4}>
+                          <TextField label="Barangay" name="barangay" />
+                          <ErrorMessaging name="barangay" />
+                        </GridItem>
+                      </SimpleGrid>
                     </GridItem>
-                    <GridItem colSpan={6}>
-                      <TextField label="Region" name="region" />
-                      <ErrorMessaging name="region" />
+                    <GridItem colSpan={1}>
+                      <SimpleGrid columns={12} spacingX={5}>
+                        <GridItem colSpan={6}>
+                          <TextField label="Birthing Center" name="birthingCenter" />
+                          <ErrorMessaging name="birthingCenter" />
+                        </GridItem>
+                        <GridItem colSpan={6}>
+                          <TextField label="Address" name="birthingCenterAddress" />
+                          <ErrorMessaging name="birthingCenterAddress" />
+                        </GridItem>
+                      </SimpleGrid>
                     </GridItem>
-                    <GridItem colSpan={4}>
-                      <TextField label="Province" name="province" />
-                      <ErrorMessaging name="province" />
-                    </GridItem>
-                    <GridItem colSpan={4}>
-                      <TextField label="Municipality" name="municipality" />
-                      <ErrorMessaging name="municipality" />
-                    </GridItem>
-                    <GridItem colSpan={4}>
-                      <TextField label="Barangay" name="barangay" />
-                      <ErrorMessaging name="barangay" />
+                    <GridItem colSpan={1}>
+                      <SimpleGrid columns={12} spacingX={5}>
+                        <GridItem colSpan={6}>
+                          <TextField label="Referral Center" name="referralCenter" />
+                          <ErrorMessaging name="referralCenter" />
+                        </GridItem>
+                        <GridItem colSpan={6}>
+                          <TextField label="Address" name="referralCenterAddress" />
+                          <ErrorMessaging name="referralCenterAddress" />
+                        </GridItem>
+                      </SimpleGrid>
                     </GridItem>
                   </SimpleGrid>
-                </GridItem>
-                <GridItem colSpan={1}>
-                  <SimpleGrid columns={12} spacingX={5}>
-                    <GridItem colSpan={6}>
-                      <TextField label="Birthing Center" name="birthingCenter" />
-                      <ErrorMessaging name="birthingCenter" />
-                    </GridItem>
-                    <GridItem colSpan={6}>
-                      <TextField label="Address" name="birthingCenterAddress" />
-                      <ErrorMessaging name="birthingCenterAddress" />
-                    </GridItem>
-                  </SimpleGrid>
-                </GridItem>
-                <GridItem colSpan={1}>
-                  <SimpleGrid columns={12} spacingX={5}>
-                    <GridItem colSpan={6}>
-                      <TextField label="Referral Center" name="referralCenter" />
-                      <ErrorMessaging name="referralCenter" />
-                    </GridItem>
-                    <GridItem colSpan={6}>
-                      <TextField label="Address" name="referralCenterAddress" />
-                      <ErrorMessaging name="referralCenterAddress" />
-                    </GridItem>
-                  </SimpleGrid>
-                </GridItem>
-              </SimpleGrid>
-            </FormControl>
-            <HStack mt={5}>
-              <Spacer />
-              <Button type="submit" colorScheme='blue'>Next</Button>
-            </HStack>
-          </Form>
-        )}
-      </Formik>
-    </Box>
+                </FormControl>
+                <HStack mt={5}>
+                  <Spacer />
+                  <Button type="submit" colorScheme='blue'>Next</Button>
+                </HStack>
+              </Form>
+          )}
+        </Formik>
+      </Box>
   );
 };
 
@@ -233,56 +233,56 @@ const StepTwo = (props) => {
     props.next(values);
   };
   return (
-    <Box boxShadow={'lg'} p={10}>
-      <Formik
-        validationSchema={stepTwoValidationSchema}
-        initialValues={props.data}
-        onSubmit={handleSubmit}
-      >
-        {({ values }) => (
-          <Form>
-            <FormControl>
-              <SimpleGrid columns={12} spacingX={5}>
-                <GridItem colSpan={4}>
-                  <TextField label="Last Name" name="lastName" />
-                  <ErrorMessaging name="lastName" />
-                </GridItem>
-                <GridItem colSpan={4}>
-                  <TextField label="First Name" name="firstName" />
-                  <ErrorMessaging name="firstName" />
-                </GridItem>
-                <GridItem colSpan={4}>
-                  <TextField label="Middle Name" name="middleName"  />
-                  <ErrorMessaging name="middleName" />
-                </GridItem>
-                <GridItem colSpan={6}>
-                  <TextField label="Age" name="age" />
-                  <ErrorMessaging name="age" />
-                </GridItem>
-                <GridItem colSpan={6}>
-                  <TextField label="Gravidity" name="gravidity" />
-                  <ErrorMessaging name="gravidity" />
-                </GridItem>
-                <GridItem colSpan={6}>
-                  <TextField label="Parity" name="parity" />
-                  <ErrorMessaging name="parity" />
-                </GridItem>
-                <GridItem colSpan={6}>
-                  <DatePicker name="expDateOfDel" label="Expected Date of Delivery" />
-                </GridItem>
-              </SimpleGrid>
-              <HStack mt={5}>
-                <Spacer />
-                <Button type="button" colorScheme='blue' onClick={() => props.prev(values)} >
-                  Back
-                </Button>
-                <Button type="submit" colorScheme='blue'>Next</Button>
-              </HStack>
-            </FormControl>
-          </Form>
-        )}
-      </Formik>
-    </Box>
+      <Box boxShadow={'lg'} p={10}>
+        <Formik
+            validationSchema={stepTwoValidationSchema}
+            initialValues={props.data}
+            onSubmit={handleSubmit}
+        >
+          {({ values }) => (
+              <Form>
+                <FormControl>
+                  <SimpleGrid columns={12} spacingX={5}>
+                    <GridItem colSpan={4}>
+                      <TextField label="Last Name" name="lastName" />
+                      <ErrorMessaging name="lastName" />
+                    </GridItem>
+                    <GridItem colSpan={4}>
+                      <TextField label="First Name" name="firstName" />
+                      <ErrorMessaging name="firstName" />
+                    </GridItem>
+                    <GridItem colSpan={4}>
+                      <TextField label="Middle Name" name="middleName"  />
+                      <ErrorMessaging name="middleName" />
+                    </GridItem>
+                    <GridItem colSpan={6}>
+                      <TextField label="Age" name="age" />
+                      <ErrorMessaging name="age" />
+                    </GridItem>
+                    <GridItem colSpan={6}>
+                      <TextField label="Gravidity" name="gravidity" />
+                      <ErrorMessaging name="gravidity" />
+                    </GridItem>
+                    <GridItem colSpan={6}>
+                      <TextField label="Parity" name="parity" />
+                      <ErrorMessaging name="parity" />
+                    </GridItem>
+                    <GridItem colSpan={6}>
+                      <DatePicker name="expDateOfDel" label="Expected Date of Delivery" />
+                    </GridItem>
+                  </SimpleGrid>
+                  <HStack mt={5}>
+                    <Spacer />
+                    <Button type="button" colorScheme='blue' onClick={() => props.prev(values)} >
+                      Back
+                    </Button>
+                    <Button type="submit" colorScheme='blue'>Next</Button>
+                  </HStack>
+                </FormControl>
+              </Form>
+          )}
+        </Formik>
+      </Box>
   );
 };
 
@@ -304,44 +304,44 @@ const StepThree = (props) => {
     { key: 'Abortion', value: 'abortion' }
   ];
   return (
-    <Box boxShadow={'lg'} p={10}>
-      <Formik
-        validationSchema={stepThreeValidationSchema}
-        initialValues={props.data}
-        onSubmit={handleSubmit}
-      >
-        {({ values }) => (
-          <Form>
-            <FormControl>
-              <SimpleGrid columns={2} spacing={5}>
-                <GridItem colSpan={2}>
-                  <FormHeading text="Antenatal Care Check-Ups" />
-                </GridItem>
-                <GridItem colSpan={1}>
-                  <DatePicker name="firstTri" label="1st tri = up to 12 weeks and 6 days AOG" />
-                </GridItem>
-                <GridItem colSpan={1}>
-                  <DatePicker name="secondTri" label="2nd tri = 13-27 weeks and 6 days AOG" />
-                </GridItem>
-                <GridItem colSpan={1}>
-                  <DatePicker name="thirdTri" label="3rd tri = 28 weeks AOG and more" />
-                </GridItem>
-                <GridItem colSpan={1}>
-                  <Radio label="Pregnancy Outcome" name="pregOutcome" options={pregOutcomeOpt} />
-                </GridItem>
-              </SimpleGrid>
-              <HStack mt={5}>
-                <Spacer />
-                <Button type="button" colorScheme='blue' onClick={() => props.prev(values)} >
-                  Back
-                </Button>
-                <Button type="submit" colorScheme='blue'>Next</Button>
-              </HStack>
-            </FormControl>
-          </Form>
-        )}
-      </Formik>
-    </Box>
+      <Box boxShadow={'lg'} p={10}>
+        <Formik
+            validationSchema={stepThreeValidationSchema}
+            initialValues={props.data}
+            onSubmit={handleSubmit}
+        >
+          {({ values }) => (
+              <Form>
+                <FormControl>
+                  <SimpleGrid columns={2} spacing={5}>
+                    <GridItem colSpan={2}>
+                      <FormHeading text="Antenatal Care Check-Ups" />
+                    </GridItem>
+                    <GridItem colSpan={1}>
+                      <DatePicker name="firstTri" label="1st tri = up to 12 weeks and 6 days AOG" />
+                    </GridItem>
+                    <GridItem colSpan={1}>
+                      <DatePicker name="secondTri" label="2nd tri = 13-27 weeks and 6 days AOG" />
+                    </GridItem>
+                    <GridItem colSpan={1}>
+                      <DatePicker name="thirdTri" label="3rd tri = 28 weeks AOG and more" />
+                    </GridItem>
+                    <GridItem colSpan={1}>
+                      <Radio label="Pregnancy Outcome" name="pregOutcome" options={pregOutcomeOpt} />
+                    </GridItem>
+                  </SimpleGrid>
+                  <HStack mt={5}>
+                    <Spacer />
+                    <Button type="button" colorScheme='blue' onClick={() => props.prev(values)} >
+                      Back
+                    </Button>
+                    <Button type="submit" colorScheme='blue'>Next</Button>
+                  </HStack>
+                </FormControl>
+              </Form>
+          )}
+        </Formik>
+      </Box>
   );
 };
 
@@ -359,59 +359,59 @@ const StepFour = (props) => {
     props.next(values);
   };
   return (
-    <Box boxShadow={'lg'} p={10}>
-      <Formik
-        validationSchema={stepFourValidationSchema}
-        initialValues={props.data}
-        onSubmit={handleSubmit}
-      >
-        {({ values }) => (
-          <Form>
-            <FormControl>
-              <GridItem>
-                <FormHeading text="Mother and Child Postnatal Check-ups" />
-              </GridItem>
-              <GridItem>
-                <SimpleGrid columns={12} spacingX={5}>
-                  <GridItem colSpan={6}>
-                    <DatePicker name="dayOfDischarge" label="Day of Discharge / 24 hours after birth" />
+      <Box boxShadow={'lg'} p={10}>
+        <Formik
+            validationSchema={stepFourValidationSchema}
+            initialValues={props.data}
+            onSubmit={handleSubmit}
+        >
+          {({ values }) => (
+              <Form>
+                <FormControl>
+                  <GridItem>
+                    <FormHeading text="Mother and Child Postnatal Check-ups" />
                   </GridItem>
-                  <GridItem colSpan={6}>
-                    <DatePicker name="withinSevDays" label="Day of Discharge / 24 hours after birth" />
+                  <GridItem>
+                    <SimpleGrid columns={12} spacingX={5}>
+                      <GridItem colSpan={6}>
+                        <DatePicker name="dayOfDischarge" label="Day of Discharge / 24 hours after birth" />
+                      </GridItem>
+                      <GridItem colSpan={6}>
+                        <DatePicker name="withinSevDays" label="Day of Discharge / 24 hours after birth" />
+                      </GridItem>
+                    </SimpleGrid>
                   </GridItem>
-                </SimpleGrid>
-              </GridItem>
-              <GridItem>
-                <FormHeading text="Civil Registration" />
-              </GridItem>
-              <GridItem>
-                <SimpleGrid columns={12} spacingX={5}>
-                  <GridItem colSpan={6}>
-                    <DatePicker name="liveBirth" label="Livebirth" />
+                  <GridItem>
+                    <FormHeading text="Civil Registration" />
                   </GridItem>
-                  <GridItem colSpan={6}>
-                    <DatePicker name="maternalDeath" label="Maternal Death" />
+                  <GridItem>
+                    <SimpleGrid columns={12} spacingX={5}>
+                      <GridItem colSpan={6}>
+                        <DatePicker name="liveBirth" label="Livebirth" />
+                      </GridItem>
+                      <GridItem colSpan={6}>
+                        <DatePicker name="maternalDeath" label="Maternal Death" />
+                      </GridItem>
+                      <GridItem colSpan={6}>
+                        <DatePicker name="stillBirth" label="Stillbirth" />
+                      </GridItem>
+                      <GridItem colSpan={6}>
+                        <DatePicker name="earlyNewborn" label="Early Newborn Death (0-7 days)" />
+                      </GridItem>
+                    </SimpleGrid>
                   </GridItem>
-                  <GridItem colSpan={6}>
-                    <DatePicker name="stillBirth" label="Stillbirth" />
-                  </GridItem>
-                  <GridItem colSpan={6}>
-                    <DatePicker name="earlyNewborn" label="Early Newborn Death (0-7 days)" />
-                  </GridItem>
-                </SimpleGrid>
-              </GridItem>
-              <HStack mt={5}>
-                <Spacer />
-                <Button type="button" colorScheme='blue' onClick={() => props.prev(values)} >
-                  Back
-                </Button>
-                <Button type="submit" colorScheme='blue'>Next</Button>
-              </HStack>
-            </FormControl>
-          </Form>
-        )}
-      </Formik>
-    </Box>
+                  <HStack mt={5}>
+                    <Spacer />
+                    <Button type="button" colorScheme='blue' onClick={() => props.prev(values)} >
+                      Back
+                    </Button>
+                    <Button type="submit" colorScheme='blue'>Next</Button>
+                  </HStack>
+                </FormControl>
+              </Form>
+          )}
+        </Formik>
+      </Box>
   );
 };
 
@@ -427,50 +427,49 @@ const StepFive = (props) => {
     props.next(values, true);
   };
   return (
-    <Box boxShadow={'lg'} p={10}>
-      <Formik
-        validationSchema={stepFiveValidationSchema}
-        initialValues={props.data}
-        onSubmit={handleSubmit}
-      >
-        {({ values }) => (
-          <Form>
-            <FormControl>
-              <SimpleGrid columns={1} spacingY={5}>
-                <GridItem>
-                  <SimpleGrid columns={12} spacingX={5}>
-                    <GridItem colSpan={6}>
-                      <TextField label="Name of BHW" name="nameOfBhw" />
-                      <ErrorMessaging name="nameOfBhw" />
-                    </GridItem>
-                    <GridItem colSpan={6}>
-                      <TextField label="Barangay Health Station" name="barHealthStat" />
-                      <ErrorMessaging name="barHealthStat" />
-                    </GridItem>
-                    <GridItem colSpan={6}>
-                      <TextField label="Name of Midwife" name="nameOfMidwife" />
-                      <ErrorMessaging name="nameOfMidwife" />
-                    </GridItem>
-                    <GridItem colSpan={6}>
-                      <TextField label="Rural Health Unit" name="ruralHealthUnit" />
-                      <ErrorMessaging name="ruralHealthUnit" />
+      <Box boxShadow={'lg'} p={10}>
+        <Formik
+            validationSchema={stepFiveValidationSchema}
+            initialValues={props.data}
+            onSubmit={handleSubmit}
+        >
+          {({ values }) => (
+              <Form>
+                <FormControl>
+                  <SimpleGrid columns={1} spacingY={5}>
+                    <GridItem>
+                      <SimpleGrid columns={12} spacingX={5}>
+                        <GridItem colSpan={6}>
+                          <TextField label="Name of BHW" name="nameOfBhw" />
+                          <ErrorMessaging name="nameOfBhw" />
+                        </GridItem>
+                        <GridItem colSpan={6}>
+                          <TextField label="Barangay Health Station" name="barHealthStat" />
+                          <ErrorMessaging name="barHealthStat" />
+                        </GridItem>
+                        <GridItem colSpan={6}>
+                          <TextField label="Name of Midwife" name="nameOfMidwife" />
+                          <ErrorMessaging name="nameOfMidwife" />
+                        </GridItem>
+                        <GridItem colSpan={6}>
+                          <TextField label="Rural Health Unit" name="ruralHealthUnit" />
+                          <ErrorMessaging name="ruralHealthUnit" />
+                        </GridItem>
+                      </SimpleGrid>
                     </GridItem>
                   </SimpleGrid>
-                </GridItem>
-              </SimpleGrid>
-              <HStack mt={5}>
-                <Spacer />
-                <Button type="button" colorScheme='blue' onClick={() => props.prev(values)} >
-                  Back
-                </Button>
-                <Button type="submit" colorScheme='green'>Submit</Button>
-              </HStack>
-            </FormControl >
-          </Form>
-        )}
-      </Formik>
-    </Box>
+                  <HStack mt={5}>
+                    <Spacer />
+                    <Button type="button" colorScheme='blue' onClick={() => props.prev(values)} >
+                      Back
+                    </Button>
+                    <Button type="submit" colorScheme='green'>Submit</Button>
+                  </HStack>
+                </FormControl >
+              </Form>
+          )}
+        </Formik>
+      </Box>
   );
 };
-
 
