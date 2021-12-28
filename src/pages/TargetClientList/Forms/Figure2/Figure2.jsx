@@ -19,7 +19,7 @@ export default function Figure2({works}) {
     const newbirty = new Date(birty*1000)
 
     const sbirty = data3.works.Figure2.sideA.familySerial.spouse.birthday.seconds
-    const newsbirty = new Date(birty*1000)
+    const newsbirty = new Date(sbirty*1000)
 
 const idk =JSON.parse(JSON.stringify( data3.works.Figure2.sideA.medicalHistory.reviewOfSystems.heent))
     console.log(idk,"help")
@@ -264,7 +264,7 @@ const idk =JSON.parse(JSON.stringify( data3.works.Figure2.sideA.medicalHistory.r
         }).then(() => {
             alert("Form Updated Successfully")
         }).catch(function (error) {
-            console.error("Error writing document: ", error);
+            console.error("Error writing document: In Figure 2 ", error);
         });
     }
 

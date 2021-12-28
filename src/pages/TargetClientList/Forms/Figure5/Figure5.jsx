@@ -175,14 +175,11 @@ export default function Figure5({works}) {
     const userRef = doc(db, 'client', documentId);
     await  updateDoc(userRef,{
       Figure5: formData
-
     }).then(() => {
       alert("Form Updated Successfully")
     }).catch(function (error) {
-      console.error("Error writing document: ", error);
+      console.error("Error updating document: in Figure 5 ", error);
     });
-    //create alert
-
   }
 
 
@@ -966,6 +963,7 @@ const StepSix = (props) => {
         {({ values }) => (
           <Form>
             <FormControl>
+<<<<<<< HEAD
             <SimpleGrid spacingY={5}>
                 <SimpleGrid columns={12} spacingX={3}>
                   <GridItem colSpan={2}>
@@ -1038,6 +1036,111 @@ const StepSix = (props) => {
                     <DatePicker label="" name="sideB.records.row4.nextFollowUpSchedule" />
                   </GridItem>
                 </SimpleGrid>
+=======
+              <SimpleGrid spacingY={5}>
+                <GridItem>
+                  <SimpleGrid columns={12} spacingX={3}>
+                    <GridItem colSpan={2}>
+                      <Center>
+                        <FormLabel>
+                          DATE
+                        </FormLabel>
+                      </Center>
+                    </GridItem>
+                    <GridItem colSpan={3}>
+                      <UnorderedList>
+                        <ListItem>Complaints/complication</ListItem>
+                        <ListItem>Medical Observation</ListItem>
+                        <ListItem>PE Findings including pelvic examination</ListItem>
+                        <ListItem>laboratory</ListItem>
+                        <ListItem>Other important comments</ListItem>
+                      </UnorderedList>
+                    </GridItem>
+                    <GridItem colSpan={2}>
+                      <Center>
+                        <FormLabel>
+                          MCN SERVICES GIVEN
+                        </FormLabel>
+                      </Center>
+                    </GridItem>
+                    <GridItem colSpan={2}>
+                      <Center>
+                        <FormLabel>
+                          NAME OF PROVIDER AND SIGNATURE
+                        </FormLabel>
+                      </Center>
+                    </GridItem>
+                    <GridItem colSpan={2}>
+                      <Center>
+                        <FormLabel>
+                          NEXT Follow-Up Schedule
+                        </FormLabel>
+                      </Center>
+                    </GridItem>
+                  </SimpleGrid>
+                </GridItem>
+                <GridItem>
+                  <FieldArray name="records">
+                    {
+                      ({ insert, remove, push }) => (
+                        <div>
+                          {values.records.length > 0 &&
+                            values.records.map((record, index) => (
+                              <SimpleGrid columns={12} spacingX={3}>
+
+                                <GridItem colSpan={2}>
+                                  <DatePicker name={`records.${index}.date`} />
+                                </GridItem>
+                                <GridItem colSpan={3}>
+                                  <TextArea label="" name={`records.${index}.complaints`} />
+                                </GridItem>
+                                <GridItem colSpan={2}>
+                                  <TextField label="" name={`records.${index}.mncServicesGiven`} />
+                                </GridItem>
+                                <GridItem colSpan={2}>
+                                  <TextField label="" name={`records.${index}.nameOfProviderAndSignature`} />
+                                </GridItem>
+                                <GridItem colSpan={2}>
+                                  <DatePicker name={`records.${index}.nextFollowUpSchedule`} />
+                                </GridItem>
+
+                                {/* {index > 0 && ( */}
+                                <Button
+                                  m='auto'
+                                  isFullWidth="true"
+                                  // type='button'
+                                  onClick={() => remove(index)}
+                                >
+                                  -
+                                </Button>
+                                {/* )} */}
+
+                              </SimpleGrid>
+                            ))
+                          }
+                          <HStack>
+                            <Spacer />
+                            <Button
+                              w={63.66}
+                              type='button'
+                              onClick={() => push({
+                                date: null,
+                                complaints: '',
+                                mncServicesGiven: '',
+                                nameOfProviderAndSignature: '',
+                                nextFollowUpSchedule: null
+                              })}
+                            >
+                              +
+                            </Button>
+                          </HStack>
+                        </div>
+                      )
+
+                    }
+                  </FieldArray>
+                </GridItem>
+>>>>>>> 9513c8bce27a7c15355a0764c9c9f54d5af2c1bb
               </SimpleGrid>
               <HStack mt={5}>
                 <Spacer />
