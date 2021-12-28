@@ -1,14 +1,11 @@
-import { Box, Button, Center, FormControl, FormHelperText, Divider, FormLabel, GridItem, HStack, ListItem, SimpleGrid, Spacer, Text, UnorderedList, VStack, Heading } from '@chakra-ui/react';
+import { Box, Button, Center, FormControl, FormHelperText, FormLabel, GridItem, HStack, ListItem, SimpleGrid, Spacer, Text, UnorderedList } from '@chakra-ui/react';
 import React, { useState } from 'react'
 import * as Yup from "yup";
 import { FieldArray, Form, Formik } from 'formik';
 import TextField from '../../../components/Fields/TextField';
-import ErrorMessaging from '../../../components/Fields/ErrorMessaging';
 import FormHeading from '../../../components/Labels/FormHeading';
-import YearPicker from '../../../components/Fields/YearPicker';
 import DatePicker from '../../../components/Fields/DatePicker';
 import Radio from '../../../components/Fields/Radio';
-import Select from '../../../components/Fields/Select';
 import Checkbox from '../../../components/Fields/Checkbox';
 import TextArea from '../../../components/Fields/TextArea';
 import SubHeading from '../../../components/Labels/SubHeading';
@@ -34,10 +31,10 @@ export default function Figure5({works}) {
 
 
 
-  //   const recordDate = data6.works.Figure5.records.date.seconds
-  // console.log(recordDate,"recordDate")
-  //   const newrecordDate = new Date(recordDate*1000)
-  // console.log(newrecordDate,"newrecordDate")
+    const recordDate = data6.works.Figure5.records.date.seconds
+
+   const newrecordDate = new Date(recordDate*1000)
+
   const [data, setData] = useState({
     dateOfVisit: newdatevisit,
     physicalExamination: {
@@ -136,16 +133,12 @@ export default function Figure5({works}) {
       }
     },
     records:  {
-      date: null,
+      date: newrecordDate,
       complaints: data6.works.Figure5.records.complaints,
       mncServicesGiven: data6.works.Figure5.records.mncServicesGiven,
       nameOfProviderAndSignature: data6.works.Figure5.records.nameOfProviderAndSignature,
       nextFollowUpSchedule: data6.works.Figure5.records.nextFollowUpSchedule,
     },
-
-
-
-
   });
   const [currentStep, setCurrentStep] = useState(0);
 
