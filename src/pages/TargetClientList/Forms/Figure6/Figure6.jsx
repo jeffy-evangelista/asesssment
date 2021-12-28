@@ -1,4 +1,4 @@
-import { AbsoluteCenter, Box, Button, Center, Divider, Flex, FormControl, FormHelperText, FormLabel, Grid, GridItem, HStack, SimpleGrid, Spacer, Stack, Text } from '@chakra-ui/react';
+import {  Box, Button, Center, FormControl,  FormLabel, GridItem, HStack, SimpleGrid, Spacer } from '@chakra-ui/react';
 import React, { useState } from 'react'
 import * as Yup from "yup";
 import { Form, Formik } from 'formik';
@@ -10,7 +10,6 @@ import DatePicker from '../../../components/Fields/DatePicker';
 import DateTimePicker from '../../../components/Fields/DateTimePicker';
 import Checkbox from '../../../components/Fields/Checkbox';
 import SubHeading from '../../../components/Labels/SubHeading'
-import TimePicker from '../../../components/Fields/TimePicker'
 import NumberField from '../../../components/Fields/NumberField'
 import {doc, updateDoc} from "firebase/firestore";
 import {db} from "../../../../utils/init-firebase";
@@ -22,89 +21,89 @@ export default function Figure6({works}) {
 
      const dateRegis =     data7.works.Figure6.dateOfRegistration.seconds
      const newdateRegis = new Date(dateRegis*1000)
-  console.log(newdateRegis, "newdateRegis")
+
 
     const datelmp =     data7.works.Figure6.lmp.lmp.seconds
     const newdatelmp = new Date(datelmp*1000)
-console.log(newdatelmp, "newdatelmp")
+
     const dategp = data7.works.Figure6.lmp.gp.seconds
     const newdatedategp = new Date(dategp*1000)
-console.log(newdatedategp, "newdatedategp")
+
     const dateedc = data7.works.Figure6.edc.seconds
     const newdatedatedateedc = new Date(dateedc*1000)
-console.log(newdatedatedateedc, "newdatedatedateedc")
+
     const datefirstTri = data7.works.Figure6.datesOfPrenatalCheckUps.firstTri.seconds
     const newdatedatedatefirstTri = new Date(datefirstTri*1000)
-console.log(newdatedatedatefirstTri, "newdatedatedatefirstTri")
+
     const datesecondTri = data7.works.Figure6.datesOfPrenatalCheckUps.firstTri.seconds
     const newdatedatedatesecondTri = new Date(datesecondTri*1000)
-console.log(newdatedatedatesecondTri, "newdatedatedatesecondTri")
+
     const datethirdTri = data7.works.Figure6.datesOfPrenatalCheckUps.firstTri.seconds
     const newdatedatedatethirdTri = new Date(datethirdTri*1000)
-console.log(newdatedatedatethirdTri, "newdatedatedatethirdTri")
+
     const datetd1 = data7.works.Figure6.immunizationStatus.tetanusDiptheria.td1.seconds
     const newdatetd1 = new Date(datetd1*1000)
-console.log(newdatetd1, "newdatetd1")
+
     const datetd2 = data7.works.Figure6.immunizationStatus.tetanusDiptheria.td2.seconds
     const newdatetd2 = new Date(datetd2*1000)
-console.log(newdatetd2, "newdatetd2")
+
     const datetd3 = data7.works.Figure6.immunizationStatus.tetanusDiptheria.td3.seconds
     const newdatetd3 = new Date(datetd3*1000)
-console.log(newdatetd3, "newdatetd3")
+
     const datetd4 = data7.works.Figure6.immunizationStatus.tetanusDiptheria.td4.seconds
     const newdatetd4 = new Date(datetd4*1000)
-console.log(newdatetd4, "newdatetd4")
+
     const datetd5 = data7.works.Figure6.immunizationStatus.tetanusDiptheria.td5.seconds
     const newdatetd5 = new Date(datetd5*1000)
-console.log(newdatetd5, "newdatetd5")
+
     const datefirst = data7.works.Figure6.micronutrientSupplementation1.ironSulfate.firstVisit.date.seconds
     const newdatefirst = new Date(datefirst*1000)
-console.log(newdatefirst, "newdatefirst")
+
     const datesecond = data7.works.Figure6.micronutrientSupplementation1.ironSulfate.secondVisit.date.seconds
     const newdatesecond = new Date(datesecond*1000)
-console.log(newdatesecond, "newdatesecond")
+
     const datethird = data7.works.Figure6.micronutrientSupplementation1.ironSulfate.thirdVisit.date.seconds
     const newdatethird = new Date(datethird*1000)
-console.log(newdatethird, "newdatethird")
+
     const datefourth = data7.works.Figure6.micronutrientSupplementation1.ironSulfate.fourthVisit.date.seconds
     const newdatefourth  = new Date(datefourth*1000)
-console.log(newdatefourth, "newdatefourth")
+
     const cal2nd = data7.works.Figure6.micronutrientSupplementation1.calciumCarbonate.secondVisit.date.seconds
     const newcal2nd =new Date(cal2nd*1000)
-console.log(newcal2nd, "newcal2nd")
+
     const cal3rd = data7.works.Figure6.micronutrientSupplementation1.calciumCarbonate.secondVisit.date.seconds
     const newcal3rd =new Date(cal3rd*1000)
-console.log(newcal3rd, "newcal3rd")
+
     const cal4th = data7.works.Figure6.micronutrientSupplementation1.calciumCarbonate.secondVisit.date.seconds
     const newcal4th =new Date(cal4th*1000)
-console.log(newcal4th, "newcal4th")
+
     const deworm = data7.works.Figure6.dewormingTablet.seconds
     const newdeworm =new Date(deworm*1000)
-console.log(newdeworm, "newdeworm")
+
     const syp = data7.works.Figure6.infectiousDiseaseSurveillance.syphilisScreening.date.seconds
     const newsyp =new Date(syp*1000)
-console.log(newsyp, "newsyp")
+
     const hep = data7.works.Figure6.infectiousDiseaseSurveillance.hepatitisBScreening.date.seconds
     const newhep =new Date(hep*1000)
-console.log(newhep, "newhep")
+
     const hiv = data7.works.Figure6.infectiousDiseaseSurveillance.hivScreening.date.seconds
     const newhiv =new Date(hiv*1000)
-console.log(newhiv, "newhiv")
+
     const screendate = data7.works.Figure6.laboratoryScreening.gestationalDiabetes.dateScreened.seconds
     const newscreendate =new Date(screendate*1000)
-console.log(newscreendate, "newscreendate")
+
     const cbc = data7.works.Figure6.laboratoryScreening.cbc.dateScreened.seconds
     const newcbc =new Date(cbc*1000)
-console.log(newcbc, "newcbc")
+
     const timeDev = data7.works.Figure6.dateTimeOfDelivery.seconds
     const newTimeDev =new Date(timeDev*1000)
-console.log(newTimeDev, "newTimeDev")
+
     const twenty = data7.works.Figure6.MomAndNewbornPostPartumCheckUps.withinTwentyFourHours.seconds
     const newTwenty =new Date(twenty*1000)
-console.log(newTwenty, "newTwenty")
+
     const seven = data7.works.Figure6.MomAndNewbornPostPartumCheckUps.withinSevenDays.seconds
     const newseven =new Date(seven*1000)
-console.log(newseven, "newseven")
+
     const m1 = data7.works.Figure6.micronutrientSupplementation2.ironWithFolicAcid.firstMonth.date.seconds
     const m2 = data7.works.Figure6.micronutrientSupplementation2.ironWithFolicAcid.secondMonth.date.seconds
     const m3 = data7.works.Figure6.micronutrientSupplementation2.ironWithFolicAcid.thirdMonth.date.seconds
@@ -112,15 +111,12 @@ console.log(newseven, "newseven")
     const newm1 =new Date(m1*1000)
     const newm2 =new Date(m2*1000)
     const newm3 =new Date(m3*1000)
-console.log(newm1, "newm1")
-console.log(newm2, "newm2")
-console.log(newm3, "newm3")
     const vitaA = data7.works.Figure6.micronutrientSupplementation2.vitaminA.seconds
     const newVitaA=new Date(vitaA*1000)
 
     const iodineDate = data7.works.Figure6.micronutrientSupplementation1.iodineCapsules.seconds
     const newIodineDate =new Date(iodineDate*1000)
-console.log(newVitaA, "newVitaA")
+
     const [data, setData] = useState({
         dateOfRegistration: newdateRegis,
         familySerialNo: data7.works.Figure6.familySerialNo,
