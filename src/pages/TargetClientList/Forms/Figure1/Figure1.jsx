@@ -99,7 +99,7 @@ export default  function Figure1({works}) {
     }).then(() => {
       alert("Form Updated Successfully")
     }).catch(function (error) {
-      console.error("Error writing document: ", error);
+      console.error("Error writing document: In Figure 1 ", error);
     });
   }
 

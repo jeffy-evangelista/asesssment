@@ -153,14 +153,11 @@ export default function Figure5({works}) {
     const userRef = doc(db, 'client', documentId);
     await  updateDoc(userRef,{
       Figure5: formData
-
     }).then(() => {
       alert("Form Updated Successfully")
     }).catch(function (error) {
-      console.error("Error writing document: ", error);
+      console.error("Error updating document: in Figure 5 ", error);
     });
-    //create alert
-
   }
 
 
@@ -988,7 +985,6 @@ const StepSix = (props) => {
                             </FormLabel>
                           </Center>
                         </GridItem>
-                        <GridItem colSpan={1}></GridItem>
                       </SimpleGrid>
                     </GridItem>
                     <GridItem>

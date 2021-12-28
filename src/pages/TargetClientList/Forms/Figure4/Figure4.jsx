@@ -95,12 +95,10 @@ export default function Figure4({works}) {
         }).then(() => {
             alert("Form Updated Successfully")
         }).catch(function (error) {
-            console.error("Error writing document: ", error);
+            console.error("Error writing document: In Figure 5 ", error);
         });
-        //create alert
-
     }
-
+    //create alert
 
 
     const handleNextStep = (newData, final = false) => {

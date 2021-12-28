@@ -21,7 +21,7 @@ export default function Figure2({works}) {
     const sbirty = data3.works.Figure2.sideA.familySerial.spouse.birthday.seconds
     const newsbirty = new Date(sbirty*1000)
 
-const idk =JSON.parse(JSON.stringify( data3.works.Figure2.sideA.medicalHistory.reviewOfSystems.heent))
+    const idk =JSON.parse(JSON.stringify( data3.works.Figure2.sideA.medicalHistory.reviewOfSystems.heent))
     console.log(idk,"help")
 
 
@@ -253,7 +253,7 @@ const idk =JSON.parse(JSON.stringify( data3.works.Figure2.sideA.medicalHistory.r
     const [currentStep, setCurrentStep] = useState(0);
     const makeRequest = (formData) => {
         console.log("Form Submitted", formData);
-  updateUsers(formData);
+        updateUsers(formData);
     };
 
     async  function updateUsers(formData) {
@@ -928,7 +928,7 @@ const StepFive = (props) => {
                 {({ values }) => (
                     <Form>
                         <FormControl>
-                        <SimpleGrid spacingY={5}>
+                            <SimpleGrid spacingY={5}>
                                 <SimpleGrid columns={12} spacingX={3}>
                                     <GridItem colSpan={2}>
                                         <Center>
@@ -1029,7 +1029,7 @@ const StepSix = (props) => {
                 initialValues={props.data}
                 onSubmit={handleSubmit}
             >
-                
+
                 {({ values }) => (
                     <Form>
                         <FormControl>
@@ -1603,5 +1603,4 @@ const StepSix = (props) => {
         </Box>
     );
 };
-
 
