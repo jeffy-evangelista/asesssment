@@ -117,6 +117,9 @@ console.log(newm2, "newm2")
 console.log(newm3, "newm3")
     const vitaA = data7.works.Figure6.micronutrientSupplementation2.vitaminA.seconds
     const newVitaA=new Date(vitaA*1000)
+
+    const iodineDate = data7.works.Figure6.micronutrientSupplementation1.iodineCapsules.seconds
+    const newIodineDate =new Date(iodineDate*1000)
 console.log(newVitaA, "newVitaA")
     const [data, setData] = useState({
         dateOfRegistration: newdateRegis,
@@ -146,37 +149,43 @@ console.log(newVitaA, "newVitaA")
         micronutrientSupplementation1: {
             ironSulfate: {
                 firstVisit: {
-                    date: newdatefirst,
+
+                 date: newdatefirst,
                     no: data7.works.Figure6.micronutrientSupplementation1.ironSulfate.firstVisit.no
                 },
                 secondVisit: {
-                    date: newdatesecond,
+
+                 date: newdatesecond,
                     no: data7.works.Figure6.micronutrientSupplementation1.ironSulfate.secondVisit.no
                 },
                 thirdVisit: {
-                    date: newdatethird,
+
+                 date: newdatethird,
                     no: data7.works.Figure6.micronutrientSupplementation1.ironSulfate.thirdVisit.no
                 },
                 fourthVisit: {
-                    date: newdatefourth,
+                   date: newdatefourth,
                     no: data7.works.Figure6.micronutrientSupplementation1.ironSulfate.fourthVisit.no
                 }
             },
             calciumCarbonate: {
                 secondVisit: {
-                    date: newcal2nd,
+
+                  date: newcal2nd,
                     no: data7.works.Figure6.micronutrientSupplementation1.calciumCarbonate.secondVisit.no
                 },
                 thirdVisit: {
-                    date: newcal3rd,
+
+                     date: newcal3rd,
                     no: data7.works.Figure6.micronutrientSupplementation1.calciumCarbonate.thirdVisit.no
                 },
                 fourthVisit: {
+
                     date: newcal4th,
                     no: data7.works.Figure6.micronutrientSupplementation1.calciumCarbonate.fourthVisit.no
                 }
             },
-            iodineCapsules: data7.works.Figure6.micronutrientSupplementation1.iodineCapsules
+            iodineCapsules: newIodineDate
         },
         nutritionalAssessment: {
 

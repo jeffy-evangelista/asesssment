@@ -15,7 +15,7 @@ import {
 import { Layout } from '../../components/Layout'
 
 import React, {useEffect, useState} from 'react'
-import {collection, getDocs, serverTimestamp,doc,onSnapshot} from "firebase/firestore";
+import {collection,onSnapshot} from "firebase/firestore";
 import {db} from "../../utils/init-firebase";
 
 
@@ -28,16 +28,6 @@ export default function TargetClientList() {
 
      const [targetClient, setTargetClient] = useState([]);
 
-    // useEffect(() => {
-    //     const usersCollectionRef = collection(db, "client");
-    //     const getClientList = async () => {
-    //
-    //         const data = await getDocs(usersCollectionRef);
-    //
-    //         setTargetClient(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    //     };
-    //     getClientList();
-    // }, []);
 
 
     useEffect(() => {

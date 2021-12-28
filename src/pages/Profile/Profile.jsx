@@ -11,17 +11,6 @@ export default function Profile() {
    const { currentUser } = useAuth()
    const [data,setData]= useState([])
 
-    // useEffect(async () => {
-    //     const userData=[]
-    //     const q = query(collection(db, "users"), where("email", "==", currentUser.email))
-    //     const querySnapshot = await getDocs(q);
-    //     querySnapshot.forEach((doc) => {
-    //         console.log(doc.id, " => ", doc.data());
-    //         userData.push(doc.data())
-    //     });
-    //
-    // }, []);
-
 
     useEffect(() => {
         fetchData().then(r => console.log("this is user data"));
