@@ -1,13 +1,13 @@
 import { Box, Button, Center, FormControl, FormHelperText, FormLabel, GridItem, HStack, ListItem, SimpleGrid, Spacer, Text, UnorderedList } from '@chakra-ui/react';
 import React, { useState } from 'react'
 import * as Yup from "yup";
-import { FieldArray, Form, Formik } from 'formik';
+import {  Form, Formik } from 'formik';
 import TextField from '../../../components/Fields/TextField';
 import FormHeading from '../../../components/Labels/FormHeading';
 import DatePicker from '../../../components/Fields/DatePicker';
 import Radio from '../../../components/Fields/Radio';
 import Checkbox from '../../../components/Fields/Checkbox';
-import TextArea from '../../../components/Fields/TextArea';
+
 import SubHeading from '../../../components/Labels/SubHeading';
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from "../../../../utils/init-firebase";
@@ -152,14 +152,14 @@ export default function Figure5({ works }) {
                 date: newrecord1Date,
                 complaints: data6.works.Figure5.records.row1.complaints,
                 mncServicesGiven:  data6.works.Figure5.records.row1.mncServicesGiven,
-                nameOfProviderAndSignature:  data6.works.Figure5.records.row1.nameOfProviderAndSignature
+                nameOfProviderAndSignature:  data6.works.Figure5.records.row1.nameOfProviderAndSignature,
                 nextFollowUpSchedule: newfollowUp1
             },
             row2: {
                 date: newrecord2Date,
                 complaints: data6.works.Figure5.records.row2.complaints,
                 mncServicesGiven: data6.works.Figure5.records.row2.mncServicesGiven,
-                nameOfProviderAndSignature: data6.works.Figure5.records.row2.nameOfProviderAndSignature
+                nameOfProviderAndSignature: data6.works.Figure5.records.row2.nameOfProviderAndSignature,
                 nextFollowUpSchedule: newfollowUp2
             },
             row3: {
