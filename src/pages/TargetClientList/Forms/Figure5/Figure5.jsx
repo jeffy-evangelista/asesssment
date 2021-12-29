@@ -31,9 +31,17 @@ export default function Figure5({ works }) {
 
 
 
-    const recordDate = data6.works.Figure5.records.date.seconds
+    const record1Date = data6.works.Figure5.records.row1.date.seconds
+    const record2Date = data6.works.Figure5.records.row2.date.seconds
+    const record3Date = data6.works.Figure5.records.row3.date.seconds
+    const record4Date = data6.works.Figure5.records.row4.date.seconds
 
-    const newrecordDate = new Date(recordDate * 1000)
+    const newrecord1Date = new Date(record1Date * 1000)
+    const newrecord2Date = new Date(record2Date * 1000)
+    const newrecord3Date = new Date(record3Date * 1000)
+    const newrecord4Date = new Date(record4Date * 1000)
+
+
 
     const [data, setData] = useState({
         dateOfVisit: newdatevisit,
@@ -134,28 +142,28 @@ export default function Figure5({ works }) {
         },
         records: {
             row1: {
-                date: null,
+                date: newrecord1Date,
                 complaints: "",
                 mncServicesGiven: "",
                 nameOfProviderAndSignature: "",
                 nextFollowUpSchedule: null
             },
             row2: {
-                date: null,
+                date: newrecord2Date,
                 complaints: "",
                 mncServicesGiven: "",
                 nameOfProviderAndSignature: "",
                 nextFollowUpSchedule: null
             },
             row3: {
-                date: null,
+                date: newrecord3Date,
                 complaints: "",
                 mncServicesGiven: "",
                 nameOfProviderAndSignature: "",
                 nextFollowUpSchedule: null
             },
             row4: {
-                date: null,
+                date: newrecord4Date,
                 complaints: "",
                 mncServicesGiven: "",
                 nameOfProviderAndSignature: "",

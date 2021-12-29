@@ -457,14 +457,36 @@ export default  function Create () {
                         dateGiven: new Date()
                     }
                 },
-                records:
-                    {
+                records: {
+                    row1: {
                         date: new Date(),
                         complaints: "",
                         mncServicesGiven: "",
                         nameOfProviderAndSignature: "",
-                        nextFollowUpSchedule: new Date(),
+                        nextFollowUpSchedule: null
                     },
+                    row2: {
+                        date: new Date(),
+                        complaints: "",
+                        mncServicesGiven: "",
+                        nameOfProviderAndSignature: "",
+                        nextFollowUpSchedule: new Date()
+                    },
+                    row3: {
+                        date: new Date(),
+                        complaints: "",
+                        mncServicesGiven: "",
+                        nameOfProviderAndSignature: "",
+                        nextFollowUpSchedule: new Date()
+                    },
+                    row4: {
+                        date: new Date(),
+                        complaints: "",
+                        mncServicesGiven: "",
+                        nameOfProviderAndSignature: "",
+                        nextFollowUpSchedule: new Date()
+                    }
+                },
 
 
 
