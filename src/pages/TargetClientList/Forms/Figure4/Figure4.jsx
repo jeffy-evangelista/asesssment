@@ -347,7 +347,7 @@ const StepTwo = (props) => {
                                     <GridItem >
                                         <TextField
                                             label="my"
-                                            name="careTaker.Name"
+                                            name="careTaker.relationship"
                                         />
                                         <FormHelperText>
                                             Relationship to patient
