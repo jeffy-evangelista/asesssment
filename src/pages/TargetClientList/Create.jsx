@@ -609,7 +609,20 @@ export default  function Create () {
     const firstField = React.useRef()
     const highestEducationOptions = [
         { key: 'Select an option', value: '' },
-        { key: 'Paquibato', value: 'paquibato' }
+        { key: 'Poblacion', value: 'Poblacion' },
+        { key: 'Talomo', value: 'Talomo' },
+        { key: 'Agdao', value: 'Agdao' },
+        { key: 'Buhangin', value: 'Buhangin' },
+        { key: 'Bunawan', value: 'Bunawan' },
+        { key: 'Paquibato', value: 'paquibato' },
+        { key: 'Baguio', value: 'Baguio' },
+        { key: 'Calinan', value: 'Calinan' },
+        { key: 'Marilog', value: 'Marilog' },
+        { key: 'Bunawan', value: 'Bunawan' },
+        { key: 'Toril', value: 'Toril' },
+        { key: 'Tugbok', value: 'Tugbok' },
+
+
 
     ]
     const gender = [
@@ -734,7 +747,7 @@ export default  function Create () {
                                         <Select
                                             label="Administrative District"
                                             name="administrativeDistrict"
-                                            options={highestEducationOptions} />
+                                            options={administrativeDistricts} />
 
 
                                         <Select
