@@ -134,32 +134,32 @@ export default function Figure5({ works }) {
         },
         records: {
             row1: {
-                date: "",
+                date: null,
                 complaints: "",
                 mncServicesGiven: "",
                 nameOfProviderAndSignature: "",
-                nextFollowUpSchedule: ""
+                nextFollowUpSchedule: null
             },
             row2: {
-                date: "",
+                date: null,
                 complaints: "",
                 mncServicesGiven: "",
                 nameOfProviderAndSignature: "",
-                nextFollowUpSchedule: ""
+                nextFollowUpSchedule: null
             },
             row3: {
-                date: "",
+                date: null,
                 complaints: "",
                 mncServicesGiven: "",
                 nameOfProviderAndSignature: "",
-                nextFollowUpSchedule: ""
+                nextFollowUpSchedule: null
             },
             row4: {
-                date: "",
+                date: null,
                 complaints: "",
                 mncServicesGiven: "",
                 nameOfProviderAndSignature: "",
-                nextFollowUpSchedule: ""
+                nextFollowUpSchedule: null
             }
         }
     });
