@@ -14,14 +14,13 @@ import {
 
 import React, { useState, useEffect } from 'react'
 import {
-    collection,
-    getDocs, onSnapshot,
+    collection, onSnapshot,
 } from "firebase/firestore";
 import { db } from '../../utils/init-firebase'
 import Create from "./Create";
 import Update from "./Update";
 import {Layout} from "../../components/Layout";
-import {DeleteIcon, ViewIcon} from "@chakra-ui/icons";
+import {DeleteIcon} from "@chakra-ui/icons";
 export default function SocialWorker() {
 
     const [socialWork, setSocialWork] = useState([]);

@@ -84,9 +84,6 @@ export default function AuthContextProvider({ children }) {
   function resetPassword(oobCode, newPassword) {
     return confirmPasswordReset(auth, oobCode, newPassword)
   }
-  function deleteUser(oobCode, newPassword) {
-    return confirmPasswordReset(auth, oobCode, newPassword)
-  }
 
   function logout() {
     return signOut(auth)

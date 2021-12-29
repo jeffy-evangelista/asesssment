@@ -14,7 +14,7 @@ export default function Profile() {
 
     useEffect(() => {
         fetchData().then(r => console.log("this is user data"));
-    }, []);
+    }, );
 
     const fetchData = async () => {
         const userData = []

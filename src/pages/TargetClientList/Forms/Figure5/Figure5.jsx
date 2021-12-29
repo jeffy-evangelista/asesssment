@@ -677,10 +677,6 @@ const StepFour = (props) => {
     { key: 'w/in 3-7 days', value: 'w/in3-7days' },
     { key: 'Other visits', value: 'otherVisits' }
   ];
-  const encOpt = [
-    { key: 'Yes', value: 'yes' },
-    { key: 'No', value: 'no' }
-  ];
   return (
       <Box boxShadow={'lg'} p={10}>
         <Formik
