@@ -49,12 +49,9 @@ export default function AuthContextProvider({ children }) {
   }
 
 
-
-
   function register(email, password,displayName,barangay,districtAdministrative,districtLegislative) {
     return createUserWithEmailAndPassword(auth, email, password,displayName,barangay,districtAdministrative,districtLegislative)
         .then(async cred => {
-
           const usersCollectionRef = doc(db, 'users', cred.user.uid);
           await setDoc(usersCollectionRef, {
             email: email,
@@ -64,12 +61,8 @@ export default function AuthContextProvider({ children }) {
             districtLegislative: districtLegislative,
             barangay: barangay,
             isAdmin: false,
-
           });
-
-
         })
-
   }
 
 

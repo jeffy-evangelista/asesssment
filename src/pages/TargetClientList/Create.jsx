@@ -362,7 +362,7 @@ export default  function Create () {
                 }
             },
             Figure5:{
-                dateOfVisit:  new Date(),
+                dateOfVisit:new Date(),
                 physicalExamination: {
                     dateOfDelivery: new Date(),
                     attendant: "",

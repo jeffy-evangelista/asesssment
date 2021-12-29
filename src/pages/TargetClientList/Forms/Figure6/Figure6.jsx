@@ -256,7 +256,7 @@ export default function Figure6({works}) {
 
 
     const makeRequest = (formData) => {
-        console.log("Form Submitted", formData);
+
         updateUsers(formData);
     };
 
@@ -265,7 +265,7 @@ export default function Figure6({works}) {
         const documentId = JSON.parse(JSON.stringify(works.id))
         const userRef = doc(db, 'client', documentId);
         await  updateDoc(userRef,{
-            Figure5: formData
+            Figure6: formData
 
         }).then(() => {
             alert("Form Updated Successfully")
@@ -300,7 +300,7 @@ export default function Figure6({works}) {
         <StepFour next={handleNextStep} prev={handlePrevStep} data={data} />,
         <StepFive next={handleNextStep} prev={handlePrevStep} data={data} />
     ];
-    console.log("data", data);
+
     return <div className="App">{steps[currentStep]}</div>;
 }
 

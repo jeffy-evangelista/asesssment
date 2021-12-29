@@ -302,7 +302,7 @@ export default function Figure2({works}) {
 
     const [currentStep, setCurrentStep] = useState(0);
     const makeRequest = (formData) => {
-        console.log("Form Submitted", formData);
+
         updateUsers(formData);
     };
 
@@ -341,7 +341,7 @@ export default function Figure2({works}) {
         <StepFive next={handleNextStep} prev={handlePrevStep} data={data} />,
         <StepSix next={handleNextStep} prev={handlePrevStep} data={data} />
     ];
-    console.log("data", data);
+
     return <div className="App">{steps[currentStep]}</div>;
 }
 

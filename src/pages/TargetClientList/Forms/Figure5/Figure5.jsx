@@ -14,7 +14,6 @@ import { db } from "../../../../utils/init-firebase";
 
 export default function Figure5({ works }) {
     const data6 = JSON.parse(JSON.stringify({ works }))
-    console.log(data6, "this is data6")
 
     const datevisit = data6.works.Figure5.dateOfVisit.seconds
     const newdatevisit = new Date(datevisit * 1000)
@@ -70,6 +69,7 @@ export default function Figure5({ works }) {
         assessment: {
             postPartumMother: {
                 dangerSigns: {
+
                     unconscious: JSON.parse(JSON.stringify(data6.works.Figure5.assessment.postPartumMother.dangerSigns.unconscious)),
                     VaginalBleeding: {
                         hrs: data6.works.Figure5.assessment.postPartumMother.dangerSigns.VaginalBleeding.hrs,
@@ -181,16 +181,13 @@ export default function Figure5({ works }) {
 
 
     const makeRequest = (formData) => {
-        console.log("Form Submitted", formData);
         updateUsers(formData);
     };
 
     async function updateUsers(formData) {
 
         const documentId = JSON.parse(JSON.stringify(works.id))
-
         const userRef = doc(db, 'client', documentId);
-
         await updateDoc(userRef, {
             Figure5: formData
 
@@ -227,7 +224,7 @@ export default function Figure5({ works }) {
         <StepFive next={handleNextStep} prev={handlePrevStep} data={data} />,
         <StepSix next={handleNextStep} prev={handlePrevStep} data={data} />
     ];
-    console.log("data", data);
+
     return <div className="App">{steps[currentStep]}</div>;
 }
 
