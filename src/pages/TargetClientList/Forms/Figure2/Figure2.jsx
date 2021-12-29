@@ -293,7 +293,7 @@ export default function Figure2({works}) {
                     lOne: data3.works.Figure2.sideB.abdominalExamFindings.remarks.lOne,
                     lTwo: data3.works.Figure2.sideB.abdominalExamFindings.remarks.lTwo,
                     lThree: data3.works.Figure2.sideB.abdominalExamFindings.remarks.lThree,
-                    lFour: data3.works.Figure2.sideB.abdominalExamFindings.remarks.lThree,
+                    lFour: data3.works.Figure2.sideB.abdominalExamFindings.remarks.lFour,
                     uterineAcitivty: data3.works.Figure2.sideB.abdominalExamFindings.remarks.uterineAcitivty
                 }
             }
