@@ -70,7 +70,6 @@ export default function Figure5({ works }) {
         assessment: {
             postPartumMother: {
                 dangerSigns: {
-
                     unconscious: JSON.parse(JSON.stringify(data6.works.Figure5.assessment.postPartumMother.dangerSigns.unconscious)),
                     VaginalBleeding: {
                         hrs: data6.works.Figure5.assessment.postPartumMother.dangerSigns.VaginalBleeding.hrs,

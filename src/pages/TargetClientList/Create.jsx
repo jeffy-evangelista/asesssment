@@ -463,7 +463,7 @@ export default  function Create () {
                         complaints: "",
                         mncServicesGiven: "",
                         nameOfProviderAndSignature: "",
-                        nextFollowUpSchedule: null
+                        nextFollowUpSchedule: new Date()
                     },
                     row2: {
                         date: new Date(),
