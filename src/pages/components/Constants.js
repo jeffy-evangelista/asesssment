@@ -20,19 +20,19 @@ export const administrativeDistricts = [
 ]
 
 export const barangayOptions = [
-    { key: 'Colosas', value: 'cold' },
-    { key: 'Fatima (Benowang)', value: 'fat' },
-    { key: 'Lumiad', value: 'lum' },
-    { key: 'Mabuhay', value: 'mab' },
-    { key: 'Malabog', value: 'mal' },
-    { key: 'Mapula', value: 'map' },
-    { key: 'Panalum', value: 'pan' },
-    { key: 'Pandaitan', value: 'pand' },
-    { key: 'Paquibato Proper', value: 'paq' },
-    { key: 'Paradise Embak', value: 'pare' },
-    { key: 'Salapawan', value: 'sal' },
-    { key: 'Sumimao', value: 'sumi' },
-    { key: 'Tapak', value: 'tap' }
+    { key: 'Colosas', value: 'Colosas' },
+    { key: 'Fatima (Benowang)', value: 'Fatima' },
+    { key: 'Lumiad', value: 'Lumiad' },
+    { key: 'Mabuhay', value: 'Mabuhay' },
+    { key: 'Malabog', value: 'Malabog' },
+    { key: 'Mapula', value: 'Mapula' },
+    { key: 'Panalum', value: 'Panalum' },
+    { key: 'Pandaitan', value: 'Pandaitan' },
+    { key: 'Paquibato Proper', value: 'Paquibato' },
+    { key: 'Paradise Embak', value: 'Paradise' },
+    { key: 'Salapawan', value: 'Salapawan' },
+    { key: 'Sumimao', value: 'Sumimao' },
+    { key: 'Tapak', value: 'Tapak' }
 ];
 export const positionOptions = [
     { key: 'Admin', value: 'admin' },

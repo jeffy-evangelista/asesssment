@@ -45,7 +45,6 @@ export default  function Create () {
             legislativeDistrict: values.legislativeDistrict,
             barangay: values.barangay,
             age:values.age,
-            gender:values.gender,
             Figure1: {
                 year:new Date(),
                 region: '' ,
