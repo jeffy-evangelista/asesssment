@@ -10,6 +10,8 @@ import DatePicker from '../../../components/Fields/DatePicker';
 import Radio from '../../../components/Fields/Radio';
 import {doc, updateDoc} from "firebase/firestore";
 import {db} from "../../../../utils/init-firebase";
+import Select from "../../../components/Fields/Select";
+import {barangayOptions, provinceOptions, regionOptions} from "../../../components/Constants";
 
 
 export default  function Figure1({works}) {
@@ -165,19 +167,31 @@ const StepOne = (props) => {
                           <YearPicker name="year" label="Year" />
                         </GridItem>
                         <GridItem colSpan={6}>
-                          <TextField label="Region" name="region" />
+                          <Select
+                              label="Region District"
+                              name="region"
+                              options={regionOptions} />
                           <ErrorMessaging name="region" />
                         </GridItem>
                         <GridItem colSpan={4}>
-                          <TextField label="Province" name="province" />
+                          <Select
+                              label="Province"
+                              name="province"
+                              options={provinceOptions} />
                           <ErrorMessaging name="province" />
                         </GridItem>
                         <GridItem colSpan={4}>
-                          <TextField label="Municipality" name="municipality" />
+                          <Select
+                              label="Municipality"
+                              name="municipality"
+                              options={provinceOptions} />
                           <ErrorMessaging name="municipality" />
                         </GridItem>
                         <GridItem colSpan={4}>
-                          <TextField label="Barangay" name="barangay" />
+                          <Select
+                              label="Barangay"
+                              name="barangay"
+                              options={barangayOptions} />
                           <ErrorMessaging name="barangay" />
                         </GridItem>
                       </SimpleGrid>

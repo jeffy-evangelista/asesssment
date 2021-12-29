@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from 'firebase/auth';
-import { getFirestore,enableIndexedDbPersistence ,initializeFirestore,CACHE_SIZE_UNLIMITED  } from "@firebase/firestore";
+import { getFirestore,enableIndexedDbPersistence  } from "@firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyASSwQ4BOaNEA6LhzF9e2bbF3t8YbzOJM8",
@@ -21,12 +21,11 @@ enableIndexedDbPersistence(db).catch((err) => {
     if (err.code === 'failed-precondition') {
         // Multiple tabs open, persistence can only be enabled
         // in one tab at a a time.
-        // ...
+
         console.log("You have Violated The law only use 1 Tab")
     } else if (err.code === 'unimplemented') {
         // The current browser does not support all of the
         // features required to enable persistence
-        // ...
         console.log("Browser does not support IndexedDB")
     }
 });

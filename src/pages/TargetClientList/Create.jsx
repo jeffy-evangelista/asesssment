@@ -34,7 +34,7 @@ import Select from "../components/Fields/Select";
 export default  function Create () {
 
 
-    async function createClient(values){
+ async function createClient(values){
 
         const usersCollectionRef = collection(db, "client");
         await addDoc(usersCollectionRef, {
@@ -47,7 +47,7 @@ export default  function Create () {
             age:values.age,
             Figure1: {
                 year:new Date(),
-                region: '' ,
+                region: '11' ,
                 province: '',
                 municipality:'' ,
                 barangay:''  ,
@@ -714,6 +714,7 @@ export default  function Create () {
                                             )}
                                         </Field>
                                         <Select
+
                                             label="Legislative District"
                                             name="legislativeDistrict"
                                             options={legislativeDistrictOptions} />
