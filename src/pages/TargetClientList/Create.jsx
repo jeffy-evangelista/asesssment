@@ -621,9 +621,6 @@ export default  function Create () {
         { key: 'Bunawan', value: 'Bunawan' },
         { key: 'Toril', value: 'Toril' },
         { key: 'Tugbok', value: 'Tugbok' },
-
-
-
     ]
     const gender = [
         { key: 'Select an option', value: '' },

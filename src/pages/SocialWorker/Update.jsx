@@ -14,7 +14,8 @@ import { useToast } from '@chakra-ui/react'
 import { doc, updateDoc} from "firebase/firestore";
 import {db} from "../../utils/init-firebase";
 
-import {AddIcon} from "@chakra-ui/icons";
+import { ViewIcon} from "@chakra-ui/icons";
+import Select from "../components/Fields/Select";
 
 
 
@@ -39,11 +40,51 @@ export default  function Update ({works}) {
         })
     }
 
+    const legislativeDistrictOptions = [
+        { key: 'D1', value: 'd1' },
+        { key: 'D2', value: 'd2' },
+        { key: 'D3', value: 'd3' }
+    ];
+    const administrativeDistricts = [
+        { key: 'Select an option', value: '' },
+        { key: 'Poblacion', value: 'Poblacion' },
+        { key: 'Talomo', value: 'Talomo' },
+        { key: 'Agdao', value: 'Agdao' },
+        { key: 'Buhangin', value: 'Buhangin' },
+        { key: 'Bunawan', value: 'Bunawan' },
+        { key: 'Paquibato', value: 'paquibato' },
+        { key: 'Baguio', value: 'Baguio' },
+        { key: 'Calinan', value: 'Calinan' },
+        { key: 'Marilog', value: 'Marilog' },
+        { key: 'Bunawan', value: 'Bunawan' },
+        { key: 'Toril', value: 'Toril' },
+        { key: 'Tugbok', value: 'Tugbok' },
+    ]
+
+    const barangayOptions = [
+        { key: 'Colosas', value: 'cold' },
+        { key: 'Fatima (Benowang)', value: 'fat' },
+        { key: 'Lumiad', value: 'lum' },
+        { key: 'Mabuhay', value: 'mab' },
+        { key: 'Malabog', value: 'mal' },
+        { key: 'Mapula', value: 'map' },
+        { key: 'Panalum', value: 'pan' },
+        { key: 'Pandaitan', value: 'pand' },
+        { key: 'Paquibato Proper', value: 'paq' },
+        { key: 'Paradise Embak', value: 'pare' },
+        { key: 'Salapawan', value: 'sal' },
+        { key: 'Sumimao', value: 'sumi' },
+        { key: 'Tapak', value: 'tap' }
+    ];
+    const positionOptions = [
+        { key: 'Admin', value: 'admin' },
+        { key: 'Not Admin', value: 'notAdmin' }
+    ];
 
     return (
         <>
             <Button ref={btnRef} colorScheme='teal' onClick={onOpen}>
-                <AddIcon />
+                <ViewIcon />
             </Button>
             <Drawer
                 isOpen={isOpen}
@@ -107,49 +148,30 @@ export default  function Update ({works}) {
                                                 </FormControl>
                                             )}
                                         </Field>
-                                        <FormControl >
-                                            <Field as="select" name="legislativeDistrict">
-                                                <option value="red">D1</option>
-                                                <option value="green">D2</option>
-                                                <option value="blue">D3</option>
+                                        <Select
+                                            label="Legislative District"
+                                            name="legislativeDistrict"
+                                            options={legislativeDistrictOptions}
+                                        />
+                                        <Select
+                                            label="Administrative District"
+                                            name="administrativeDistrict"
+                                            options={administrativeDistricts}
+                                        />
+                                        <Select
+                                            label="Barangay"
+                                            name="barangay"
+                                            options={barangayOptions}
+                                        />
+                                        <Select
+                                            label="Position"
+                                            name="isAdmin"
+                                            options={positionOptions}
+                                        />
 
-                                            </Field></FormControl>
 
-                                        <FormControl >
 
-                                            <Field Select as="select" name="administrativeDistrict" >
 
-                                                <option value="red">Paquibato</option>
-                                                <option value="red2">Paquibato2</option>
-
-                                            </Field>
-
-                                        </FormControl>
-                                        <FormControl >
-                                            <Field as="select" name="barangay">
-                                                <option value="col">Colosas</option>
-                                                <option value="fat">Fatima (Benowang)</option>
-                                                <option value="lum"> Lumiad</option>
-                                                <option value="mab">Mabuhay</option>
-                                                <option value="mal">  Malabog</option>
-                                                <option value="map"> Mapula</option>
-                                                <option value="pan"> Panalum</option>
-                                                <option value="pand">  Pandaitan</option>
-                                                <option value="paq">  Paquibato Proper</option>
-                                                <option value="pare">  Paradise Embak</option>
-                                                <option value="sal">  Salapawan</option>
-                                                <option value="sumi"> Sumimao</option>
-                                                <option value="tap"> Tapak</option>
-
-                                            </Field></FormControl>
-                                        <FormControl >
-                                            <Field as="select" name="isAdmin" >
-
-                                                <option value="true">isAdmin</option>
-                                                <option value="false">isNotAdmin</option>
-
-                                            </Field>
-                                        </FormControl>
                                         <Button
                                             mt={4}
                                             colorScheme='teal'

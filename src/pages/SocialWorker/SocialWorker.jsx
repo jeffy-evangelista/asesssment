@@ -8,34 +8,40 @@ import {
     Tr,
     Th,
     Tbody,
-    Td,
+    Td, Button,
 } from '@chakra-ui/react'
 
 
 import React, { useState, useEffect } from 'react'
 import {
     collection,
-    getDocs,
+    getDocs, onSnapshot,
 } from "firebase/firestore";
 import { db } from '../../utils/init-firebase'
 import Create from "./Create";
 import Update from "./Update";
 import {Layout} from "../../components/Layout";
+import {DeleteIcon, ViewIcon} from "@chakra-ui/icons";
 export default function SocialWorker() {
 
     const [socialWork, setSocialWork] = useState([]);
 
-
     useEffect(() => {
-
-        const getSocialWork = async () => {
-            const usersCollectionRef = collection(db, "users");
-            const data = await getDocs(usersCollectionRef);
-            setSocialWork(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-        };
-
-        getSocialWork();
+        fetchData();
     }, []);
+
+    const fetchData = () => {
+        const usersCollectionRef = collection(db, "users");
+        onSnapshot(usersCollectionRef, (snapshot) => {
+            let userData = []
+            snapshot.docs.forEach(doc => {
+                userData.push({ ...doc.data(), id: doc.id })
+            })
+            setSocialWork(userData)
+        })
+
+    };
+
 
 
 
@@ -68,6 +74,9 @@ export default function SocialWorker() {
                                 <Td>
                                     <Stack direction="row" spacing={1}>
                                    <Update works= {works}/>
+                                        <Button colorScheme='blue'  >
+                                            <DeleteIcon />
+                                        </Button>
 
                                     </Stack>
                                 </Td>

@@ -110,8 +110,8 @@ export default function Figure2({works}) {
                 pastHealthHistory: data3.works.Figure2.sideA.medicalHistory.pastHealthHistory,
                 socialHistory: data3.works.Figure2.sideA.medicalHistory.socialHistory,
                 obstericalHistory: {
-                    historyOfPreviousDeliveries: data3.works.Figure2.sideA.medicalHistory.obstericalHistory.historyOfPreviousDeliveries,
-                    menstrualHistory: data3.works.Figure2.sideA.medicalHistory.obstericalHistory.menstrualHistory,
+                    historyOfPreviousDeliveries: JSON.parse(JSON.stringify(data3.works.Figure2.sideA.medicalHistory.obstericalHistory.historyOfPreviousDeliveries)),
+                    menstrualHistory: JSON.parse(JSON.stringify(data3.works.Figure2.sideA.medicalHistory.obstericalHistory.menstrualHistory)),
                 },
                 familyPlanningHistory: {
                     previouslyUsedMethod: data3.works.Figure2.sideA.medicalHistory.familyPlanningHistory.previouslyUsedMethod
@@ -742,14 +742,14 @@ const StepThree = (props) => {
                                             <GridItem colSpan={1}>
                                                 <Checkbox
                                                     label="History of Previous Deliveries"
-                                                    name="sideA.medicalHistory.obsterical.historyOfPreviousDeliveries"
+                                                    name="sideA.medicalHistory.obstericalHistory.historyOfPreviousDeliveries"
                                                     options={historyOfPreviouDeliveriesSelections}
                                                 />
                                             </GridItem>
                                             <GridItem colSpan={1}>
                                                 <Checkbox
                                                     label="Menstrual History"
-                                                    name="sideA.medicalHistory.obsterical.menstrualHistory"
+                                                    name="sideA.medicalHistory.obstericalHistory.menstrualHistory"
                                                     options={menstrualHistorySelections}
                                                 />
                                             </GridItem>

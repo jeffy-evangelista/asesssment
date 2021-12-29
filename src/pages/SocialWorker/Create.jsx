@@ -28,10 +28,21 @@ export default function Create() {
         { key: 'D2', value: 'd2' },
         { key: 'D3', value: 'd3' }
     ];
-    const administrativeDistrictOptions = [
-        { key: 'Paquibato 1', value: 'paquibato1' },
-        { key: 'Paquibato 2', value: 'paquibato2' }
-    ];
+    const administrativeDistricts = [
+        { key: 'Select an option', value: '' },
+        { key: 'Poblacion', value: 'Poblacion' },
+        { key: 'Talomo', value: 'Talomo' },
+        { key: 'Agdao', value: 'Agdao' },
+        { key: 'Buhangin', value: 'Buhangin' },
+        { key: 'Bunawan', value: 'Bunawan' },
+        { key: 'Paquibato', value: 'paquibato' },
+        { key: 'Baguio', value: 'Baguio' },
+        { key: 'Calinan', value: 'Calinan' },
+        { key: 'Marilog', value: 'Marilog' },
+        { key: 'Bunawan', value: 'Bunawan' },
+        { key: 'Toril', value: 'Toril' },
+        { key: 'Tugbok', value: 'Tugbok' },
+    ]
     const barangayOptions = [
         { key: 'Colosas', value: 'cold' },
         { key: 'Fatima (Benowang)', value: 'fat' },
@@ -149,7 +160,7 @@ export default function Create() {
                                         <Select
                                             label="Administrative District"
                                             name="administrativeDistrict"
-                                            options={administrativeDistrictOptions}
+                                            options={administrativeDistricts}
                                         />
                                         <Select
                                             label="Barangay"
