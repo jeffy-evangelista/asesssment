@@ -185,21 +185,21 @@ export default function Figure5({ works }) {
         console.log("Form Submitted", formData);
         updateUsers(formData);
     };
-    //   const handleChange = (event) => {
+
     async function updateUsers(formData) {
-        // console.log("Form Submitted", formData);
+
         const documentId = JSON.parse(JSON.stringify(works.id))
-        //
+
         const userRef = doc(db, 'client', documentId);
-        //
+
         await updateDoc(userRef, {
             Figure5: formData
-            //
+
         }).then(() => {
-            // console.log("Document successfully updated!");
+
             alert("Form Updated Successfully")
         }).catch(function (error) {
-            // The document probably doesn't exist.
+
             console.error("Error updating document: in Figure 5 ", error);
         });
     }
