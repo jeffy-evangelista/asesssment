@@ -607,7 +607,7 @@ export default  function Create () {
     const btnRef = React.useRef()
     const toast = useToast()
     const firstField = React.useRef()
-    const highestEducationOptions = [
+    const administrativeDistricts = [
         { key: 'Select an option', value: '' },
         { key: 'Poblacion', value: 'Poblacion' },
         { key: 'Talomo', value: 'Talomo' },
