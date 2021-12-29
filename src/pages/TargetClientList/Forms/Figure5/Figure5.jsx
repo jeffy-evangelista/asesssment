@@ -14,8 +14,6 @@ import {db} from "../../../../utils/init-firebase";
 
 export default function Figure5({works}) {
   const data6 = JSON.parse(JSON.stringify({works}))
-console.log(data6, "this is data6")
-
   const datevisit =     data6.works.Figure5.dateOfVisit.seconds
   const newdatevisit = new Date(datevisit*1000)
 
