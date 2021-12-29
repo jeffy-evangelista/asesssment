@@ -197,7 +197,7 @@ const StepOne = (props) => {
                                     <GridItem>
                                         <TextField
                                             label="The mode of payment is"
-                                            name="modeofPayment"
+                                            name="modeOfPayment"
                                         />
                                     </GridItem>
                                 </SimpleGrid>
@@ -215,22 +215,7 @@ const StepOne = (props) => {
 };
 
 const stepTwoValidationSchema = Yup.object({
-    // availableTransportation: Yup.string(),
-    // bringer: Yup.object({
-    //     Name: Yup.string(),
-    //     Address: Yup.string(),
-    //     Number: Yup.string(),
-    // }),
-    // companion: Yup.object({
-    //     Name: Yup.string(),
-    //     Relationship: Yup.string(),
-    //     Address: Yup.string(),
-    //     Number: Yup.string(),
-    // }),
-    // careTaker: Yup.object({
-    //     Name: Yup.string(),
-    //     Relationship: Yup.string(),
-    // })
+
 });
 const StepTwo = (props) => {
     const handleSubmit = (values) => {
