@@ -203,7 +203,7 @@ const StepOne = (props) => {
                                     <GridItem>
                                         <TextField
                                             label="The mode of payment is"
-                                            name="distanceFromResidence"
+                                            name="modeofPayment"
                                         />
                                     </GridItem>
                                 </SimpleGrid>
