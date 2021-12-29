@@ -41,7 +41,14 @@ export default function Figure5({ works }) {
     const newrecord3Date = new Date(record3Date * 1000)
     const newrecord4Date = new Date(record4Date * 1000)
 
-
+    const followUp1 = data6.works.Figure5.records.row1.nextFollowUpSchedule.seconds
+    const newfollowUp1 = new Date(followUp1 * 1000)
+    const followUp2 = data6.works.Figure5.records.row2.nextFollowUpSchedule.seconds
+    const newfollowUp2 = new Date(followUp2 * 1000)
+    const followUp3 = data6.works.Figure5.records.row3.nextFollowUpSchedule.seconds
+    const newfollowUp3 = new Date(followUp3 * 1000)
+    const followUp4= data6.works.Figure5.records.row4.nextFollowUpSchedule.seconds
+    const newfollowUp4 = new Date(followUp4 * 1000)
 
     const [data, setData] = useState({
         dateOfVisit: newdatevisit,
@@ -143,31 +150,31 @@ export default function Figure5({ works }) {
         records: {
             row1: {
                 date: newrecord1Date,
-                complaints: "",
-                mncServicesGiven: "",
-                nameOfProviderAndSignature: "",
-                nextFollowUpSchedule: null
+                complaints: data6.works.Figure5.records.row1.complaints,
+                mncServicesGiven:  data6.works.Figure5.records.row1.mncServicesGiven,
+                nameOfProviderAndSignature:  data6.works.Figure5.records.row1.nameOfProviderAndSignature
+                nextFollowUpSchedule: newfollowUp1
             },
             row2: {
                 date: newrecord2Date,
-                complaints: "",
-                mncServicesGiven: "",
-                nameOfProviderAndSignature: "",
-                nextFollowUpSchedule: null
+                complaints: data6.works.Figure5.records.row2.complaints,
+                mncServicesGiven: data6.works.Figure5.records.row2.mncServicesGiven,
+                nameOfProviderAndSignature: data6.works.Figure5.records.row2.nameOfProviderAndSignature
+                nextFollowUpSchedule: newfollowUp2
             },
             row3: {
                 date: newrecord3Date,
-                complaints: "",
-                mncServicesGiven: "",
-                nameOfProviderAndSignature: "",
-                nextFollowUpSchedule: null
+                complaints: data6.works.Figure5.records.row3.complaints,
+                mncServicesGiven: data6.works.Figure5.records.row3.mncServicesGiven,
+                nameOfProviderAndSignature: data6.works.Figure5.records.row3.nameOfProviderAndSignature,
+                nextFollowUpSchedule: newfollowUp3
             },
             row4: {
                 date: newrecord4Date,
-                complaints: "",
-                mncServicesGiven: "",
-                nameOfProviderAndSignature: "",
-                nextFollowUpSchedule: null
+                complaints: data6.works.Figure5.records.row4.complaints,
+                mncServicesGiven: data6.works.Figure5.records.row4.mncServicesGiven,
+                nameOfProviderAndSignature: data6.works.Figure5.records.row4.nameOfProviderAndSignature,
+                nextFollowUpSchedule: newfollowUp4
             }
         }
     });
