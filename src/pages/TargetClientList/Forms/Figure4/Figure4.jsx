@@ -98,7 +98,7 @@ export default function Figure4({works}) {
             console.error("Error writing document: In Figure 5 ", error);
         });
     }
-    //create alert
+
 
 
     const handleNextStep = (newData, final = false) => {
@@ -124,12 +124,6 @@ export default function Figure4({works}) {
 }
 
 const stepOneValidationSchema = Yup.object({
-    // attendantName: Yup.string(),
-    // deliveryLocation: Yup.string(),
-    // accreditationStatus: Yup.string(),
-    // distanceFromResidence: Yup.string(),
-    // estimatedCost: Yup.string(),
-    // modeOfPayment: Yup.string(),
 });
 const StepOne = (props) => {
     const handleSubmit = (values) => {
