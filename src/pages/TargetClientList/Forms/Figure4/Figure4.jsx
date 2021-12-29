@@ -34,7 +34,7 @@ export default function Figure4({works}) {
         deliveryLocation: data5.works.Figure4.deliveryLocation,
         accredationStatus: data5.works.Figure4.accredationStatus,
         distanceFromResidence: data5.works.Figure4.distanceFromResidence,
-        estimatedCost: data5.works.Figure4.estimatedCost,
+        estimatedCost: data5.works.Figure4.estimatedCost    ,
         modeOfPayment: data5.works.Figure4.modeOfPayment,
 
         availableTransportation: data5.works.Figure4.availableTransportation,
@@ -188,7 +188,7 @@ const StepOne = (props) => {
                                         <TextField
                                             label="The estimated cost of the
                                             maternity package in this facility is"
-                                            name="accredationStatus"
+                                            name="estimatedCost"
                                         />
                                         <FormHelperText>
                                             Inclusive of the newborn care package
