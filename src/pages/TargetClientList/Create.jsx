@@ -148,15 +148,36 @@ export default  function Create () {
                 },
 
                 sideB: {
-                    records: [
-                        {
-                            date: "",
+                    records: {
+                        row1: {
+                            date: new Date(),
                             complaints: "",
                             mncServicesGiven: "",
                             nameOfProviderAndSignature: "",
-                            nextFollowUpSchedule: "",
+                            nextFollowUpSchedule: new Date()
                         },
-                    ],
+                        row2: {
+                            date: new Date(),
+                            complaints: "",
+                            mncServicesGiven: "",
+                            nameOfProviderAndSignature: "",
+                            nextFollowUpSchedule: new Date()
+                        },
+                        row3: {
+                            date: new Date(),
+                            complaints: "",
+                            mncServicesGiven: "",
+                            nameOfProviderAndSignature: "",
+                            nextFollowUpSchedule: new Date()
+                        },
+                        row4: {
+                            date: new Date(),
+                            complaints: "",
+                            mncServicesGiven: "",
+                            nameOfProviderAndSignature: "",
+                            nextFollowUpSchedule: new Date()
+                        }
+                    },
                     abdominalExamFindings: {
                         firstTrimester: {
                             firstMonth: {
@@ -273,7 +294,7 @@ export default  function Create () {
                             }
                         },
                         remarks: {
-                            date: "",
+                            date: new Date(),
                             fundicHeight: "",
                             fetalHeartTomes: "",
                             aog: "",
@@ -606,18 +627,17 @@ export default  function Create () {
     ]
     const barangay = [
         { key: 'Select an option', value: '' },
-        { key: 'Colosas', value: 'colosas' },
-        { key: 'Fatima (Benowang)', value: 'fatima' },
-        { key: 'Lumiad', value: 'lumiad' },
-        { key: 'Mabuhay', value: 'mabuhay' },
-        { key: 'Malabog', value: 'malabog' },
-        { key: 'Mapula', value: 'mapula' },
-        { key: 'Panalum', value: 'panalum' },
-        { key: 'Pandaitan', value: 'pandaitan' },
-        { key: 'Paquibato Proper', value: 'paquibatop' },
-        { key: ' Paradise Embak', value: 'Paradisee' },
-        { key: 'Salapawan', value: 'salapawan' },
-        { key: 'Salapawan', value: 'salapawan' },
+        { key: 'Colosas', value: 'Colosas' },
+        { key: 'Fatima (Benowang)', value: 'Fatima' },
+        { key: 'Lumiad', value: 'Lumiad' },
+        { key: 'Mabuhay', value: 'Mabuhay' },
+        { key: 'Malabog', value: 'Malabog' },
+        { key: 'Mapula', value: 'Mapula' },
+        { key: 'Panalum', value: 'Panalum' },
+        { key: 'Pandaitan', value: 'Pandaitan' },
+        { key: 'Paquibato Proper', value: 'Paquibatop' },
+        { key: 'Paradise Embak', value: 'Paradisee' },
+        { key: 'Salapawan', value: 'Salapawan' },
         { key: 'Tapak', value: 'tapak' }
 
     ]

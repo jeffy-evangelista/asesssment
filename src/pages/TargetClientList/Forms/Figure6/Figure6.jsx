@@ -265,7 +265,7 @@ export default function Figure6({works}) {
         const documentId = JSON.parse(JSON.stringify(works.id))
         const userRef = doc(db, 'client', documentId);
         await  updateDoc(userRef,{
-            Figure6: formData
+            Figure5: formData
 
         }).then(() => {
             alert("Form Updated Successfully")

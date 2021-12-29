@@ -21,8 +21,56 @@ export default function Figure2({works}) {
     const sbirty = data3.works.Figure2.sideA.familySerial.spouse.birthday.seconds
     const newsbirty = new Date(sbirty*1000)
 
-    const idk =JSON.parse(JSON.stringify( data3.works.Figure2.sideA.medicalHistory.reviewOfSystems.heent))
-    console.log(idk,"help")
+
+    const row1 = data3.works.Figure2.sideB.records.row1.date.seconds
+    const newrow1 = new Date(row1*1000)
+
+    const row4 = data3.works.Figure2.sideB.records.row4.date.seconds
+    const newrow4 = new Date(row4*1000)
+
+
+    const row2 = data3.works.Figure2.sideB.records.row2.date.seconds
+    const newrow2 = new Date(row2*1000)
+
+    const row3 = data3.works.Figure2.sideB.records.row3.date.seconds
+    const newrow3 = new Date(row3*1000)
+
+
+    const nextrow1 = data3.works.Figure2.sideB.records.row1.nextFollowUpSchedule.seconds
+    const newnextrow1 = new Date(nextrow1*1000)
+
+    const nextrow2 = data3.works.Figure2.sideB.records.row2.nextFollowUpSchedule.seconds
+    const newnextrow2 = new Date(nextrow2*1000)
+
+    const nextrow3 = data3.works.Figure2.sideB.records.row3.nextFollowUpSchedule.seconds
+    const newnextrow3 = new Date(nextrow3*1000)
+
+
+    const nextrow4 = data3.works.Figure2.sideB.records.row4.nextFollowUpSchedule.seconds
+    const newnextrow4 = new Date(nextrow4*1000)
+
+
+    const fmonth = data3.works.Figure2.sideB.abdominalExamFindings.firstTrimester.firstMonth.date.seconds
+    const f2month = data3.works.Figure2.sideB.abdominalExamFindings.firstTrimester.secondMonth.date.seconds
+    const f3month = data3.works.Figure2.sideB.abdominalExamFindings.firstTrimester.thirdMonth.date.seconds
+    const f4month = data3.works.Figure2.sideB.abdominalExamFindings.secondTrimester.fourthMonth.date.seconds
+    const f5month = data3.works.Figure2.sideB.abdominalExamFindings.secondTrimester.fifthMonth.date.seconds
+    const f6month = data3.works.Figure2.sideB.abdominalExamFindings.secondTrimester.sixthMonth.date.seconds
+    const f7month = data3.works.Figure2.sideB.abdominalExamFindings.thirdTrimester.seventhMonth.date.seconds
+    const f8month = data3.works.Figure2.sideB.abdominalExamFindings.thirdTrimester.eightMonth.date.seconds
+    const f9month = data3.works.Figure2.sideB.abdominalExamFindings.thirdTrimester.ninethMonth.date.seconds
+    const frmonth = data3.works.Figure2.sideB.abdominalExamFindings.remarks.date.seconds
+
+    const new1month = new Date(fmonth*1000)
+    const new2month = new Date(f2month*1000)
+    const new3month = new Date(f3month*1000)
+    const new4month = new Date(f4month*1000)
+    const new5month = new Date(f5month*1000)
+    const new6month = new Date(f6month*1000)
+    const new7month = new Date(f7month*1000)
+    const new8month = new Date(f8month*1000)
+    const new9month = new Date(f9month*1000)
+    const newrmonth = new Date(frmonth*1000)
 
 
     const [data, setData] = useState({
@@ -66,190 +114,192 @@ export default function Figure2({works}) {
                     menstrualHistory: data3.works.Figure2.sideA.medicalHistory.obstericalHistory.menstrualHistory,
                 },
                 familyPlanningHistory: {
-                    previouslyUsedMethod: ""
+                    previouslyUsedMethod: data3.works.Figure2.sideA.medicalHistory.familyPlanningHistory.previouslyUsedMethod
                 }
             },
             physicalExamination: {
                 vitalSigns: {
-                    bloodPressure: "",
-                    weight: "",
-                    height: "",
-                    bmi: "",
-                    pulseRate: ""
+                    bloodPressure: data3.works.Figure2.sideA.physicalExamination.vitalSigns.bloodPressure,
+                    weight: data3.works.Figure2.sideA.physicalExamination.vitalSigns.weight,
+                    height: data3.works.Figure2.sideA.physicalExamination.vitalSigns.height,
+                    bmi: data3.works.Figure2.sideA.physicalExamination.vitalSigns.bmi,
+                    pulseRate: data3.works.Figure2.sideA.physicalExamination.vitalSigns.pulseRate
                 },
-                conjunctiva: [],
-                neck: [],
-                breast: [],
-                thorax: [],
-                abdomen: [],
-                vaginalExamination: [],
-                extremities: [],
-                toxoidVaccineStatus: "",
-                impressionDiagnosis: ""
+                conjunctiva: JSON.parse(JSON.stringify(data3.works.Figure2.sideA.physicalExamination.conjunctiva)),
+                neck: JSON.parse(JSON.stringify(data3.works.Figure2.sideA.physicalExamination.neck)),
+                breast: JSON.parse(JSON.stringify(data3.works.Figure2.sideA.physicalExamination.breast)),
+                thorax: JSON.parse(JSON.stringify(data3.works.Figure2.sideA.physicalExamination.thorax)),
+                abdomen: JSON.parse(JSON.stringify(data3.works.Figure2.sideA.physicalExamination.abdomen)),
+                vaginalExamination: JSON.parse(JSON.stringify(data3.works.Figure2.sideA.physicalExamination.vaginalExamination)),
+                extremities: JSON.parse(JSON.stringify(data3.works.Figure2.sideA.physicalExamination.extremities)),
+                toxoidVaccineStatus: data3.works.Figure2.sideA.physicalExamination.toxoidVaccineStatus,
+                impressionDiagnosis: data3.works.Figure2.sideA.physicalExamination.impressionDiagnosis
             }
         },
 
         sideB: {
             records: {
                 row1: {
-                    date: "",
-                    complaints: "",
-                    mncServicesGiven: "",
-                    nameOfProviderAndSignature: "",
-                    nextFollowUpSchedule: ""
+                    date: newrow1,
+                    complaints: data3.works.Figure2.sideB.records.row1.complaints,
+                    mncServicesGiven: data3.works.Figure2.sideB.records.row1.mncServicesGiven,
+                    nameOfProviderAndSignature: data3.works.Figure2.sideB.records.row1.nameOfProviderAndSignature,
+                    nextFollowUpSchedule: newnextrow1
                 },
                 row2: {
-                    date: "",
-                    complaints: "",
-                    mncServicesGiven: "",
-                    nameOfProviderAndSignature: "",
-                    nextFollowUpSchedule: ""
+                    date: newrow2,
+                    complaints: data3.works.Figure2.sideB.records.row2.complaints,
+                    mncServicesGiven: data3.works.Figure2.sideB.records.row2.mncServicesGiven,
+                    nameOfProviderAndSignature: data3.works.Figure2.sideB.records.row2.nameOfProviderAndSignature,
+                    nextFollowUpSchedule: newnextrow2
                 },
                 row3: {
-                    date: "",
-                    complaints: "",
-                    mncServicesGiven: "",
-                    nameOfProviderAndSignature: "",
-                    nextFollowUpSchedule: ""
+                    date: newrow3,
+                    complaints: data3.works.Figure2.sideB.records.row3.complaints,
+                    mncServicesGiven: data3.works.Figure2.sideB.records.row3.mncServicesGiven,
+                    nameOfProviderAndSignature: data3.works.Figure2.sideB.records.row3.nameOfProviderAndSignature,
+                    nextFollowUpSchedule: newnextrow3
                 },
                 row4: {
-                    date: "",
-                    complaints: "",
-                    mncServicesGiven: "",
-                    nameOfProviderAndSignature: "",
-                    nextFollowUpSchedule: ""
+                    date: newrow4,
+                    complaints: data3.works.Figure2.sideB.records.row4.complaints,
+                    mncServicesGiven: data3.works.Figure2.sideB.records.row4.mncServicesGiven,
+                    nameOfProviderAndSignature: data3.works.Figure2.sideB.records.row4.nameOfProviderAndSignature,
+                    nextFollowUpSchedule: newnextrow4
                 }
             },
             abdominalExamFindings: {
                 firstTrimester: {
                     firstMonth: {
-                        date: null,
-                        fundicHeight: "",
-                        fetalHeartTomes: "",
-                        aog: "",
-                        leopolds: "",
-                        lOne: "",
-                        lTwo: "",
-                        lThree: "",
-                        lFour: "",
-                        uterineAcitivty: ""
+                        date: new1month,
+                        fundicHeight:  data3.works.Figure2.sideB.abdominalExamFindings.firstTrimester.firstMonth.fundicHeight,
+                        fetalHeartTomes: data3.works.Figure2.sideB.abdominalExamFindings.firstTrimester.firstMonth.fetalHeartTomes,
+                        aog: data3.works.Figure2.sideB.abdominalExamFindings.firstTrimester.firstMonth.aog,
+                        leopolds: data3.works.Figure2.sideB.abdominalExamFindings.firstTrimester.firstMonth.leopolds,
+                        lOne: data3.works.Figure2.sideB.abdominalExamFindings.firstTrimester.firstMonth.lOne,
+                        lTwo: data3.works.Figure2.sideB.abdominalExamFindings.firstTrimester.firstMonth.lTwo,
+                        lThree: data3.works.Figure2.sideB.abdominalExamFindings.firstTrimester.firstMonth.lThree,
+                        lFour: data3.works.Figure2.sideB.abdominalExamFindings.firstTrimester.firstMonth.lFour,
+                        uterineAcitivty: data3.works.Figure2.sideB.abdominalExamFindings.firstTrimester.firstMonth.uterineAcitivty
                     },
                     secondMonth: {
-                        date: null,
-                        fundicHeight: "",
-                        fetalHeartTomes: "",
-                        aog: "",
-                        leopolds: "",
-                        lOne: "",
-                        lTwo: "",
-                        lThree: "",
-                        lFour: "",
-                        uterineAcitivty: ""
+                        date: new2month,
+                        fundicHeight:  data3.works.Figure2.sideB.abdominalExamFindings.firstTrimester.secondMonth.fundicHeight,
+                        fetalHeartTomes: data3.works.Figure2.sideB.abdominalExamFindings.firstTrimester.secondMonth.fetalHeartTomes,
+                        aog: data3.works.Figure2.sideB.abdominalExamFindings.firstTrimester.secondMonth.aog,
+                        leopolds: data3.works.Figure2.sideB.abdominalExamFindings.firstTrimester.secondMonth.leopolds,
+                        lOne: data3.works.Figure2.sideB.abdominalExamFindings.firstTrimester.secondMonth.lOne,
+                        lTwo: data3.works.Figure2.sideB.abdominalExamFindings.firstTrimester.secondMonth.lTwo,
+                        lThree: data3.works.Figure2.sideB.abdominalExamFindings.firstTrimester.secondMonth.lThree,
+                        lFour: data3.works.Figure2.sideB.abdominalExamFindings.firstTrimester.secondMonth.lFour,
+                        uterineAcitivty: data3.works.Figure2.sideB.abdominalExamFindings.firstTrimester.secondMonth.uterineAcitivty
                     },
                     thirdMonth: {
-                        date: null,
-                        fundicHeight: "",
-                        fetalHeartTomes: "",
-                        aog: "",
-                        leopolds: "",
-                        lOne: "",
-                        lTwo: "",
-                        lThree: "",
-                        lFour: "",
-                        uterineAcitivty: ""
+                        date: new3month,
+                        fundicHeight:  data3.works.Figure2.sideB.abdominalExamFindings.firstTrimester.thirdMonth.fundicHeight,
+                        fetalHeartTomes: data3.works.Figure2.sideB.abdominalExamFindings.firstTrimester.thirdMonth.fetalHeartTomes,
+                        aog: data3.works.Figure2.sideB.abdominalExamFindings.firstTrimester.thirdMonth.aog,
+                        leopolds: data3.works.Figure2.sideB.abdominalExamFindings.firstTrimester.thirdMonth.leopolds,
+                        lOne: data3.works.Figure2.sideB.abdominalExamFindings.firstTrimester.thirdMonth.lOne,
+                        lTwo: data3.works.Figure2.sideB.abdominalExamFindings.firstTrimester.thirdMonth.lTwo,
+                        lThree: data3.works.Figure2.sideB.abdominalExamFindings.firstTrimester.thirdMonth.lThree,
+                        lFour: data3.works.Figure2.sideB.abdominalExamFindings.firstTrimester.thirdMonth.lFour,
+                        uterineAcitivty: data3.works.Figure2.sideB.abdominalExamFindings.firstTrimester.thirdMonth.uterineAcitivty
+
                     }
                 },
                 secondTrimester: {
                     fourthMonth: {
-                        date: null,
-                        fundicHeight: "",
-                        fetalHeartTomes: "",
-                        aog: "",
-                        leopolds: "",
-                        lOne: "",
-                        lTwo: "",
-                        lThree: "",
-                        lFour: "",
-                        uterineAcitivty: ""
+                        date: new4month,
+                        fundicHeight:  data3.works.Figure2.sideB.abdominalExamFindings.secondTrimester.fourthMonth.fundicHeight,
+                        fetalHeartTomes: data3.works.Figure2.sideB.abdominalExamFindings.secondTrimester.fourthMonth.fetalHeartTomes,
+                        aog: data3.works.Figure2.sideB.abdominalExamFindings.secondTrimester.fourthMonth.aog,
+                        leopolds: data3.works.Figure2.sideB.abdominalExamFindings.secondTrimester.fourthMonth.leopolds,
+                        lOne: data3.works.Figure2.sideB.abdominalExamFindings.secondTrimester.fourthMonth.lOne,
+                        lTwo: data3.works.Figure2.sideB.abdominalExamFindings.secondTrimester.fourthMonth.lTwo,
+                        lThree: data3.works.Figure2.sideB.abdominalExamFindings.secondTrimester.fourthMonth.lThree,
+                        lFour: data3.works.Figure2.sideB.abdominalExamFindings.secondTrimester.fourthMonth.lFour,
+                        uterineAcitivty: data3.works.Figure2.sideB.abdominalExamFindings.secondTrimester.fourthMonth.uterineAcitivty
                     },
                     fifthMonth: {
-                        date: null,
-                        fundicHeight: "",
-                        fetalHeartTomes: "",
-                        aog: "",
-                        leopolds: "",
-                        lOne: "",
-                        lTwo: "",
-                        lThree: "",
-                        lFour: "",
-                        uterineAcitivty: ""
+                        date: new5month,
+                        fundicHeight:  data3.works.Figure2.sideB.abdominalExamFindings.secondTrimester.fifthMonth.fundicHeight,
+                        fetalHeartTomes: data3.works.Figure2.sideB.abdominalExamFindings.secondTrimester.fifthMonth.fetalHeartTomes,
+                        aog: data3.works.Figure2.sideB.abdominalExamFindings.secondTrimester.fifthMonth.aog,
+                        leopolds: data3.works.Figure2.sideB.abdominalExamFindings.secondTrimester.fifthMonth.leopolds,
+                        lOne: data3.works.Figure2.sideB.abdominalExamFindings.secondTrimester.fifthMonth.lOne,
+                        lTwo: data3.works.Figure2.sideB.abdominalExamFindings.secondTrimester.fifthMonth.lTwo,
+                        lThree: data3.works.Figure2.sideB.abdominalExamFindings.secondTrimester.fifthMonth.lThree,
+                        lFour: data3.works.Figure2.sideB.abdominalExamFindings.secondTrimester.fifthMonth.lFour,
+                        uterineAcitivty: data3.works.Figure2.sideB.abdominalExamFindings.secondTrimester.fifthMonth.uterineAcitivty
                     },
                     sixthMonth: {
-                        date: null,
-                        fundicHeight: "",
-                        fetalHeartTomes: "",
-                        aog: "",
-                        leopolds: "",
-                        lOne: "",
-                        lTwo: "",
-                        lThree: "",
-                        lFour: "",
-                        uterineAcitivty: ""
+                        date: new6month,
+                        fundicHeight:  data3.works.Figure2.sideB.abdominalExamFindings.secondTrimester.sixthMonth.fundicHeight,
+                        fetalHeartTomes: data3.works.Figure2.sideB.abdominalExamFindings.secondTrimester.sixthMonth.fetalHeartTomes,
+                        aog: data3.works.Figure2.sideB.abdominalExamFindings.secondTrimester.sixthMonth.aog,
+                        leopolds: data3.works.Figure2.sideB.abdominalExamFindings.secondTrimester.sixthMonth.leopolds,
+                        lOne: data3.works.Figure2.sideB.abdominalExamFindings.secondTrimester.sixthMonth.lOne,
+                        lTwo: data3.works.Figure2.sideB.abdominalExamFindings.secondTrimester.sixthMonth.lTwo,
+                        lThree: data3.works.Figure2.sideB.abdominalExamFindings.secondTrimester.sixthMonth.lThree,
+                        lFour: data3.works.Figure2.sideB.abdominalExamFindings.secondTrimester.sixthMonth.lFour,
+                        uterineAcitivty: data3.works.Figure2.sideB.abdominalExamFindings.secondTrimester.sixthMonth.uterineAcitivty
                     }
                 },
                 thirdTrimester: {
                     seventhMonth: {
-                        date: null,
-                        fundicHeight: "",
-                        fetalHeartTomes: "",
-                        aog: "",
-                        leopolds: "",
-                        lOne: "",
-                        lTwo: "",
-                        lThree: "",
-                        lFour: "",
-                        uterineAcitivty: ""
+                        date: new7month,
+                        fundicHeight:  data3.works.Figure2.sideB.abdominalExamFindings.thirdTrimester.seventhMonth.fundicHeight,
+                        fetalHeartTomes: data3.works.Figure2.sideB.abdominalExamFindings.thirdTrimester.seventhMonth.fetalHeartTomes,
+                        aog: data3.works.Figure2.sideB.abdominalExamFindings.thirdTrimester.seventhMonth.aog,
+                        leopolds: data3.works.Figure2.sideB.abdominalExamFindings.thirdTrimester.seventhMonth.leopolds,
+                        lOne: data3.works.Figure2.sideB.abdominalExamFindings.thirdTrimester.seventhMonth.lOne,
+                        lTwo: data3.works.Figure2.sideB.abdominalExamFindings.thirdTrimester.seventhMonth.lTwo,
+                        lThree: data3.works.Figure2.sideB.abdominalExamFindings.thirdTrimester.seventhMonth.lThree,
+                        lFour: data3.works.Figure2.sideB.abdominalExamFindings.thirdTrimester.seventhMonth.lFour,
+                        uterineAcitivty: data3.works.Figure2.sideB.abdominalExamFindings.thirdTrimester.seventhMonth.uterineAcitivty
                     },
                     eightMonth: {
-                        date: null,
-                        fundicHeight: "",
-                        fetalHeartTomes: "",
-                        aog: "",
-                        leopolds: "",
-                        lOne: "",
-                        lTwo: "",
-                        lThree: "",
-                        lFour: "",
-                        uterineAcitivty: ""
+                        date: new8month,
+                        fundicHeight:  data3.works.Figure2.sideB.abdominalExamFindings.thirdTrimester.eightMonth.fundicHeight,
+                        fetalHeartTomes: data3.works.Figure2.sideB.abdominalExamFindings.thirdTrimester.eightMonth.fetalHeartTomes,
+                        aog: data3.works.Figure2.sideB.abdominalExamFindings.thirdTrimester.eightMonth.aog,
+                        leopolds: data3.works.Figure2.sideB.abdominalExamFindings.thirdTrimester.eightMonth.leopolds,
+                        lOne: data3.works.Figure2.sideB.abdominalExamFindings.thirdTrimester.eightMonth.lOne,
+                        lTwo: data3.works.Figure2.sideB.abdominalExamFindings.thirdTrimester.eightMonth.lTwo,
+                        lThree: data3.works.Figure2.sideB.abdominalExamFindings.thirdTrimester.eightMonth.lThree,
+                        lFour: data3.works.Figure2.sideB.abdominalExamFindings.thirdTrimester.eightMonth.lFour,
+                        uterineAcitivty: data3.works.Figure2.sideB.abdominalExamFindings.thirdTrimester.eightMonth.uterineAcitivty
                     },
                     ninethMonth: {
-                        date: null,
-                        fundicHeight: "",
-                        fetalHeartTomes: "",
-                        aog: "",
-                        leopolds: "",
-                        lOne: "",
-                        lTwo: "",
-                        lThree: "",
-                        lFour: "",
-                        uterineAcitivty: ""
+                        date: new9month,
+                        fundicHeight:  data3.works.Figure2.sideB.abdominalExamFindings.thirdTrimester.ninethMonth.fundicHeight,
+                        fetalHeartTomes: data3.works.Figure2.sideB.abdominalExamFindings.thirdTrimester.ninethMonth.fetalHeartTomes,
+                        aog: data3.works.Figure2.sideB.abdominalExamFindings.thirdTrimester.ninethMonth.aog,
+                        leopolds: data3.works.Figure2.sideB.abdominalExamFindings.thirdTrimester.ninethMonth.leopolds,
+                        lOne: data3.works.Figure2.sideB.abdominalExamFindings.thirdTrimester.ninethMonth.lOne,
+                        lTwo: data3.works.Figure2.sideB.abdominalExamFindings.thirdTrimester.ninethMonth.lTwo,
+                        lThree: data3.works.Figure2.sideB.abdominalExamFindings.thirdTrimester.ninethMonth.lThree,
+                        lFour: data3.works.Figure2.sideB.abdominalExamFindings.thirdTrimester.ninethMonth.lFour,
+                        uterineAcitivty: data3.works.Figure2.sideB.abdominalExamFindings.thirdTrimester.ninethMonth.uterineAcitivty
                     }
                 },
                 remarks: {
-                    date: "",
-                    fundicHeight: "",
-                    fetalHeartTomes: "",
-                    aog: "",
-                    leopolds: "",
-                    lOne: "",
-                    lTwo: "",
-                    lThree: "",
-                    lFour: "",
-                    uterineAcitivty: ""
+                    date: newrmonth,
+                    fundicHeight: data3.works.Figure2.sideB.abdominalExamFindings.remarks.fundicHeight,
+                    fetalHeartTomes: data3.works.Figure2.sideB.abdominalExamFindings.remarks.fetalHeartTomes,
+                    aog: data3.works.Figure2.sideB.abdominalExamFindings.remarks.aog,
+                    leopolds: data3.works.Figure2.sideB.abdominalExamFindings.remarks.leopolds,
+                    lOne: data3.works.Figure2.sideB.abdominalExamFindings.remarks.lOne,
+                    lTwo: data3.works.Figure2.sideB.abdominalExamFindings.remarks.lTwo,
+                    lThree: data3.works.Figure2.sideB.abdominalExamFindings.remarks.lThree,
+                    lFour: data3.works.Figure2.sideB.abdominalExamFindings.remarks.lThree,
+                    uterineAcitivty: data3.works.Figure2.sideB.abdominalExamFindings.remarks.uterineAcitivty
                 }
             }
         }
     });
+
     const [currentStep, setCurrentStep] = useState(0);
     const makeRequest = (formData) => {
         console.log("Form Submitted", formData);
@@ -1603,4 +1653,5 @@ const StepSix = (props) => {
         </Box>
     );
 };
+
 
