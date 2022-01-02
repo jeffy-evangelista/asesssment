@@ -1,49 +1,37 @@
 //Temporary Modal To Create Client Information
-import {
-    Modal,
-    ModalOverlay,
-    ModalContent,
-    ModalHeader,
-    ModalFooter,
-    ModalBody,
-    ModalCloseButton,
-    Button,
-    useDisclosure,
-    Heading,
-    Accordion,
-    AccordionItem,
-    AccordionButton,
-    Box,
-    AccordionIcon,
-    AccordionPanel,
-} from '@chakra-ui/react'
-import React, {useState} from 'react'
+import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, Button, useDisclosure, Heading, Accordion, AccordionItem, AccordionButton, Box, AccordionIcon, AccordionPanel, Tooltip } from '@chakra-ui/react'
+import React, { useState } from 'react'
 import Figure1 from "./Forms/Figure1/Figure1";
 import Figure2 from "./Forms/Figure2/Figure2";
 import Figure4 from "./Forms/Figure4/Figure4";
 import Figure5 from "./Forms/Figure5/Figure5";
 import Figure6 from "./Forms/Figure6/Figure6";
 
+import { EditIcon } from '@chakra-ui/icons'
 
-
-
-export default function WorkModal({works}) {
-    const [ setData] = useState(works);
-
-
-
+export default function WorkModal({ works }) {
+    const [setData] = useState(works);
     const { isOpen, onOpen, onClose } = useDisclosure()
     return (
         <>
-            <Button   onClick={() => { onOpen()}} >Update Details</Button>
+            <Tooltip
+                label="Update Client"
+                aria-label='A tooltip'
+            >
+                <Button
+                    colorScheme='yellow'
+                    onClick={() => { onOpen() }}
+                >
+                    <EditIcon />
+                </Button>
+            </Tooltip>
             <Modal isOpen={isOpen} onClose={onClose} size={'full'}>
                 <ModalOverlay />
                 <ModalContent>
-                    <ModalHeader>Modal Title</ModalHeader>
+                    <ModalHeader>Update Client</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>
-                        <Heading mb={5}>Add New Client</Heading>
-                        <Accordion allowToggle >
+                        <Accordion allowToggle defaultIndex={[0]} >
                             {/* Figure 1 */}
                             <AccordionItem>
                                 <h2>
@@ -55,7 +43,7 @@ export default function WorkModal({works}) {
                                     </AccordionButton>
                                 </h2>
                                 <AccordionPanel pb={4}>
-                                    <Figure1  works= {setData} />
+                                    <Figure1 works={setData} />
                                 </AccordionPanel>
                             </AccordionItem>
                             {/* Figure 2 */}
@@ -69,7 +57,7 @@ export default function WorkModal({works}) {
                                     </AccordionButton>
                                 </h2>
                                 <AccordionPanel pb={4}>
-                                    <Figure2 works= {setData} />
+                                    <Figure2 works={setData} />
                                 </AccordionPanel>
                             </AccordionItem>
                             {/* Figure 4 */}
@@ -83,7 +71,7 @@ export default function WorkModal({works}) {
                                     </AccordionButton>
                                 </h2>
                                 <AccordionPanel pb={4}>
-                                    <Figure4 works= {setData} />
+                                    <Figure4 works={setData} />
                                 </AccordionPanel>
                             </AccordionItem>
                             {/* Figure 5 */}
@@ -97,7 +85,7 @@ export default function WorkModal({works}) {
                                     </AccordionButton>
                                 </h2>
                                 <AccordionPanel pb={4}>
-                                    <Figure5  works= {setData} />
+                                    <Figure5 works={setData} />
                                 </AccordionPanel>
                             </AccordionItem>
                             {/* Figure 6 */}
@@ -111,7 +99,7 @@ export default function WorkModal({works}) {
                                     </AccordionButton>
                                 </h2>
                                 <AccordionPanel pb={4}>
-                                    <Figure6 works= {setData} />
+                                    <Figure6 works={setData} />
                                 </AccordionPanel>
                             </AccordionItem>
                         </Accordion>

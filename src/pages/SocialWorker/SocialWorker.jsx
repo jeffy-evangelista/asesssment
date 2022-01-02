@@ -10,8 +10,6 @@ import {
     Tbody,
     Td, Button,
 } from '@chakra-ui/react'
-
-
 import React, { useState, useEffect } from 'react'
 import {
     collection, onSnapshot,
@@ -22,7 +20,6 @@ import Update from "./Update";
 import {Layout} from "../../components/Layout";
 import {DeleteIcon} from "@chakra-ui/icons";
 export default function SocialWorker() {
-
     const [socialWork, setSocialWork] = useState([]);
 
     useEffect(() => {
@@ -41,22 +38,15 @@ export default function SocialWorker() {
 
     };
 
-
-
-
-
     return (
-
 
         <Layout>
             <Flex>
                 <Heading>Social Worker</Heading>
                 <Spacer/>
-
                 <Create/>
             </Flex>
             <Table variant='striped'>
-
                 <Thead>
                     <Tr>
                         <Th>Name</Th>
@@ -73,7 +63,7 @@ export default function SocialWorker() {
                                 <Td>
                                     <Stack direction="row" spacing={1}>
                                    <Update works= {works}/>
-                                        <Button colorScheme='blue'  >
+                                        <Button colorScheme='red'  >
                                             <DeleteIcon />
                                         </Button>
 

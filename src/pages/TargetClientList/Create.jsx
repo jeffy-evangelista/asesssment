@@ -17,16 +17,20 @@ import {
     NumberInput,
     NumberInputField,
 } from '@chakra-ui/react'
+import {
+    legislativeDistrictOptions,
+    administrativeDistricts,
+    barangayOptions
+} from "../components/Constants";
 import {Form,Field,Formik} from "formik";
 import { useToast } from '@chakra-ui/react'
 import { db } from '../../utils/init-firebase'
-import {legislativeDistrictOptions,administrativeDistricts,barangayOptions} from "../components/Constants";
 import {
     collection,
     addDoc
 } from "firebase/firestore"
 import Select from "../components/Fields/Select";
-
+import { AddIcon } from '@chakra-ui/icons'
 
 
 
@@ -634,8 +638,8 @@ export default  function Create () {
 
     return (
         <>
-            <Button ref={btnRef} colorScheme='teal' onClick={onOpen}>
-                Add New Maternal Records
+            <Button ref={btnRef} leftIcon={<AddIcon/>} colorScheme='green' onClick={onOpen}>
+            Add New Record
             </Button>
             <Drawer
                 isOpen={isOpen}

@@ -10,22 +10,15 @@ import {
   useToast,
 } from '@chakra-ui/react'
 
-
 import React, { useEffect, useRef, useState } from 'react'
-import { FaGoogle } from 'react-icons/fa'
 import { useHistory } from 'react-router-dom'
 import { Card } from '../components/Card'
-import DividerWithText from '../components/DividerWithText'
 import { Layout } from '../components/Layout'
 import { useAuth } from '../contexts/AuthContext'
 
-
-
-
 export default function Registerpage() {
-
   const history = useHistory()
-  const { signInWithGoogle, register } = useAuth()
+  const { register } = useAuth()
   const [email, setEmail] = useState('')
   const [displayName, setName] = useState('')
   const [districtLegislative, setDistrictLegislative] = useState('')
@@ -36,25 +29,12 @@ export default function Registerpage() {
   const toast = useToast()
   const mounted = useRef(false)
 
-
-
-
-
   useEffect(() => {
     mounted.current = true
     return () => {
       mounted.current = false
     }
   }, [])
-
-
-
-
-
-
-
-
-
 
   return (
       <Layout>
@@ -116,10 +96,8 @@ export default function Registerpage() {
                     onChange={e => setName(e.target.value)}
                 />
               </FormControl>
-
               <FormControl id='districtLegislative' isRequired>
                 <FormLabel>Legislative District</FormLabel>
-
                 <Select placeholder='Select Legislative District' value={districtLegislative}
                         onChange={e => setDistrictLegislative(e.target.value)}  >
                   <option value={"1d"}>1st District</option>
@@ -127,7 +105,6 @@ export default function Registerpage() {
                   <option value={"3d"}>3rd District</option>
                 </Select>
               </FormControl>
-
               <FormControl id='districtAdministrative' isRequired>
                 <FormLabel>Administrative District</FormLabel>
                 <Select placeholder='Select Administrative District' value={districtAdministrative}
@@ -146,13 +123,8 @@ export default function Registerpage() {
                   <option value={"mar"}>Marilog</option>
                   <option value={"tor"}>Toril</option>
                   <option value={"tug"}> Tugbok</option>
-
-
                 </Select>
-
-
               </FormControl>
-
               <FormControl id='barangay' isRequired>
                 <FormLabel>Barangay</FormLabel>
 
@@ -165,12 +137,6 @@ export default function Registerpage() {
                     onChange={e => setBarangay(e.target.value)}
                 />
               </FormControl>
-
-
-
-
-
-
 
               <FormControl id='password' isRequired>
                 <FormLabel>Password</FormLabel>
@@ -185,7 +151,7 @@ export default function Registerpage() {
               </FormControl>
               <Button
                   type='submit'
-                  colorScheme='blue'
+                  colorScheme='green'
                   size='lg'
                   fontSize='md'
                   isLoading={isSubmitting}
@@ -199,7 +165,7 @@ export default function Registerpage() {
               Login
             </Button>
           </Center>
-          <DividerWithText my={6}>OR</DividerWithText>
+          {/* <DividerWithText my={6}>OR</DividerWithText>
           <Button
               variant='outline'
               isFullWidth
@@ -212,7 +178,7 @@ export default function Registerpage() {
               }
           >
             Sign in with Google
-          </Button>
+          </Button> */}
         </Card>
       </Layout>
   )

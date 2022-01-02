@@ -27,8 +27,8 @@ export default function Create() {
 
     return (
         <>
-            <Button ref={btnRef} colorScheme='teal' onClick={onOpen}>
-                <AddIcon />
+            <Button ref={btnRef} leftIcon={<AddIcon />} colorScheme='green' onClick={onOpen}>
+                Add new user
             </Button>
             <Drawer
                 isOpen={isOpen}

@@ -6,23 +6,33 @@ import {
     ModalHeader,
     ModalFooter,
     ModalBody,
-    ModalCloseButton, Button,  useDisclosure,
+    ModalCloseButton,
+    Button,
+    useDisclosure,
+    Tooltip
 } from '@chakra-ui/react'
-
 import React from 'react'
+import { ViewIcon } from '@chakra-ui/icons'
 
 
 
-
-export default function TempModal({works}) {
-    const obj = {works}
+export default function TempModal({ works }) {
+    const obj = { works }
 
     const { isOpen, onOpen, onClose } = useDisclosure()
     return (
         <>
-
-            <Button   onClick={() => { onOpen()}} >View Details</Button>
-
+            <Tooltip
+                label="View Details"
+                aria-label='A tooltip'
+            >
+                <Button
+                    colorScheme='teal'
+                    onClick={() => { onOpen() }}
+                >
+                    <ViewIcon />
+                </Button>
+            </Tooltip>
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
                 <ModalContent>

@@ -10,17 +10,15 @@ import {
   useToast,
 } from '@chakra-ui/react'
 import React, { useState } from 'react'
-import { FaGoogle } from 'react-icons/fa'
 import { Link, useHistory, useLocation } from 'react-router-dom'
 import { Card } from '../components/Card'
-import DividerWithText from '../components/DividerWithText'
 import { Layout } from '../components/Layout'
 import { useAuth } from '../contexts/AuthContext'
 import useMounted from '../hooks/useMounted'
 
 export default function Loginpage() {
   const history = useHistory()
-  const { signInWithGoogle, login } = useAuth()
+  const { login } = useAuth()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -115,7 +113,7 @@ export default function Loginpage() {
             {/* <PasswordField /> */}
             <Button
               type='submit'
-              colorScheme='blue'
+              colorScheme='green'
               size='lg'
               fontSize='md'
               isLoading={isSubmitting}
@@ -132,7 +130,7 @@ export default function Loginpage() {
             Register
           </Button>
         </HStack>
-        <DividerWithText my={6}>OR</DividerWithText>
+        {/* <DividerWithText my={6}>OR</DividerWithText>
         <Button
           variant='outline'
           isFullWidth
@@ -148,7 +146,7 @@ export default function Loginpage() {
           }
         >
           Sign in with Google
-        </Button>
+        </Button> */}
       </Card>
     </Layout>
   )
