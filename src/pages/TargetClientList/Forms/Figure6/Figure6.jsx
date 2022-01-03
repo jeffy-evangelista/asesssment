@@ -1,4 +1,15 @@
-import {  Box, Button, Center, FormControl,  FormLabel, GridItem, HStack, SimpleGrid, Spacer } from '@chakra-ui/react';
+import {
+    Box,
+    Button,
+    Center,
+    FormControl,
+    FormLabel,
+    GridItem,
+    HStack,
+    SimpleGrid,
+    Spacer,
+    useToast
+} from '@chakra-ui/react';
 import React, { useState } from 'react'
 import * as Yup from "yup";
 import { Form, Formik } from 'formik';
@@ -259,21 +270,32 @@ export default function Figure6({works}) {
 
         updateUsers(formData);
     };
-
+    const toast = useToast()
     async  function updateUsers(formData) {
         //create alert
         const documentId = JSON.parse(JSON.stringify(works.id))
         const userRef = doc(db, 'client', documentId);
         await  updateDoc(userRef,{
             Figure6: formData
-
-        }).then(() => {
-            alert("Form Updated Successfully")
-        }).catch(function (error) {
-            console.error("Error writing document: In Figure 6 ", error);
-        });
-
-
+        })
+            .catch(function(error) {
+            console.log(error)
+            toast({
+                title: 'Document Not Updated.',
+                description: error,
+                status: 'error',
+                duration: 9000,
+                isClosable: true,
+            })
+        }).then(function(any){
+            toast({
+                title: 'Document Updated.',
+                description: "Successfully Updated Figure 6.",
+                status: 'success',
+                duration: 9000,
+                isClosable: true,
+            })
+        })
     }
 
 
@@ -337,7 +359,7 @@ const StepOne = (props) => {
                                         />
                                     </GridItem >
                                     <GridItem >
-                                        <TextField
+                                        <NumberField
                                             name="familySerialNo"
                                             label="Family Serial No."
                                         />
@@ -521,7 +543,7 @@ const StepTwo = (props) => {
                                                         1st visit (1st tri)
                                                     </FormLabel>
                                                 </Center>
-                                                <TextField
+                                                <NumberField
                                                     name="micronutrientSupplementation1.ironSulfate.firstVisit.no"
                                                     label="Number of Tablets"
                                                 />
@@ -538,7 +560,7 @@ const StepTwo = (props) => {
                                                         2nd visit (2nd tri)
                                                     </FormLabel>
                                                 </Center>
-                                                <TextField
+                                                <NumberField
                                                     name="micronutrientSupplementation1.ironSulfate.secondVisit.no"
                                                     label="Number of Tablets"
                                                 />
@@ -555,7 +577,7 @@ const StepTwo = (props) => {
                                                         3rd visit (3rd tri)
                                                     </FormLabel>
                                                 </Center>
-                                                <TextField
+                                                <NumberField
                                                     name="micronutrientSupplementation1.ironSulfate.thirdVisit.no"
                                                     label="Number of Tablets"
                                                 />
@@ -572,7 +594,7 @@ const StepTwo = (props) => {
                                                         4th visit (3rd tri)
                                                     </FormLabel>
                                                 </Center>
-                                                <TextField
+                                                <NumberField
                                                     name="micronutrientSupplementation1.ironSulfate.fourthVisit.no"
                                                     label="Number of Tablets"
                                                 />
@@ -596,7 +618,7 @@ const StepTwo = (props) => {
                                                         2nd visit (2nd tri)
                                                     </FormLabel>
                                                 </Center>
-                                                <TextField
+                                                <NumberField
                                                     name="micronutrientSupplementation1.calciumCarbonate.secondVisit.no"
                                                     label="Number of Tablets"
                                                 />
@@ -613,7 +635,7 @@ const StepTwo = (props) => {
                                                         3rd visit (3rd tri)
                                                     </FormLabel>
                                                 </Center>
-                                                <TextField
+                                                <NumberField
                                                     name="micronutrientSupplementation1.calciumCarbonate.thirdVisit.no"
                                                     label="Number of Tablets"
                                                 />
@@ -631,7 +653,7 @@ const StepTwo = (props) => {
                                                         4th visit (3rd tri)
                                                     </FormLabel>
                                                 </Center>
-                                                <TextField
+                                                <NumberField
                                                     name="micronutrientSupplementation1.calciumCarbonate.fourthVisit.no"
                                                     label="Number of Tablets"
                                                 />
@@ -713,21 +735,21 @@ const StepThree = (props) => {
                                             />
                                         </GridItem>
                                         <GridItem>
-                                            <TextField
+                                            <NumberField
                                                 name="nutritionalAssessment.low"
                                                 label="Low"
                                                 placeholder="< 18.5"
                                             />
                                         </GridItem>
                                         <GridItem>
-                                            <TextField
+                                            <NumberField
                                                 name="nutritionalAssessment.normal"
                                                 label="Normal"
                                                 placeholder="18.5 - 22.9"
                                             />
                                         </GridItem>
                                         <GridItem>
-                                            <TextField
+                                            <NumberField
                                                 name="nutritionalAssessment.high"
                                                 label="High"
                                                 placeholder="≥ 23"
@@ -909,13 +931,13 @@ const StepFour = (props) => {
                                 />
                                 <SimpleGrid columns={3} spacing={3}>
                                     <GridItem>
-                                        <TextField
+                                        <NumberField
                                             label="Low"
                                             name="birthWeight.low"
                                         />
                                     </GridItem>
                                     <GridItem>
-                                        <TextField
+                                        <NumberField
                                             label="Normal"
                                             name="birthWeight.normal"
                                         />
@@ -1058,7 +1080,7 @@ const StepFive = (props) => {
                                                     1st month postpartum
                                                 </FormLabel>
                                             </Center>
-                                            <TextField
+                                            <NumberField
                                                 name="micronutrientSupplementation2.ironWithFolicAcid.firstMonth.no"
                                                 label="Number of Tablets"
                                             />
@@ -1075,7 +1097,7 @@ const StepFive = (props) => {
                                                     2nd month postpartum
                                                 </FormLabel>
                                             </Center>
-                                            <TextField
+                                            <NumberField
                                                 name="micronutrientSupplementation2.ironWithFolicAcid.secondMonth.no"
                                                 label="Number of Tablets"
                                             />
@@ -1092,7 +1114,7 @@ const StepFive = (props) => {
                                                     3rd month postpartum
                                                 </FormLabel>
                                             </Center>
-                                            <TextField
+                                            <NumberField
                                                 name="micronutrientSupplementation2.ironWithFolicAcid.thirdMonth.no"
                                                 label="Number of Tablets"
                                             />

@@ -577,11 +577,11 @@ export default  function Create () {
                 laboratoryScreening: {
                     gestationalDiabetes: {
                         dateScreened: new Date(),
-                        result: ""
+                        result: "negative"
                     },
                     cbc: {
                         dateScreened: new Date(),
-                        result: "",
+                        result: "negative",
                         givenIron: ""
                     }
                 },

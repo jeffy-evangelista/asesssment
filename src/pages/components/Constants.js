@@ -73,3 +73,23 @@ export const municipalityOptions = [
     { key: 'Davao City', value: 'Davao' },
 
 ];
+
+export const bloodOptions = [
+    { key: 'Select an option', value: '' },
+    { key: 'Type A+', value: 'A1' },
+    { key: 'Type A-', value: 'A2' },
+    { key: 'Type B+', value: 'B1' },
+    { key: 'Type B-', value: 'B2' },
+    { key: 'Type AB+', value: 'AB1' },
+    { key: 'Type AB-', value: 'AB2' },
+    { key: 'Type O+', value: 'O2' },
+    { key: 'Type O-', value: 'O2' },
+
+];
+export const transportOption = [
+    { key: 'Select an option', value: '' },
+    { key: 'Public', value: 'public' },
+    { key: 'Private', value: 'private' },
+
+
+];

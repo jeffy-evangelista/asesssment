@@ -2,7 +2,7 @@ import {Box, Center, Container, Flex, Heading, Stack, Text, useColorModeValue} f
 import React, {useEffect, useState} from 'react'
 import {Layout} from '../../components/Layout'
 import {useAuth} from '../../contexts/AuthContext'
-import {collection, getDocs, query, where} from "firebase/firestore";
+import {collection, onSnapshot, query, where} from "firebase/firestore";
 import {db} from '../../utils/init-firebase'
 
 import Update from './Update'
@@ -11,25 +11,21 @@ export default function Profile() {
    const { currentUser } = useAuth()
    const [data,setData]= useState([])
 
-
     useEffect(() => {
-        fetchData().then(r => console.log("this is user data"));
-    }, );
+        fetchData();
+    }, []);
 
-    const fetchData = async () => {
+    const fetchData = () => {
         const userData = []
         const q = query(collection(db, "users"), where("email", "==", currentUser.email))
-        const querySnapshot = await getDocs(q);
-        querySnapshot.forEach((doc) => {
-            console.log(doc.id, " => ", doc.data());
-            userData.push(doc.data())
-        });
-        setData(userData)
+        onSnapshot(q, (snapshot) => {
+            snapshot.forEach((doc) => {
+                userData.push(doc.data())
+            })
+            setData(userData)
+        })
+
     };
-
-
-
-
 
   return (
     <Layout>

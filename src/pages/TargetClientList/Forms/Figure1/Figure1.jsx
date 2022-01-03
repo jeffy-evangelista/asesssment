@@ -1,4 +1,4 @@
-import {Box, Button, FormControl, GridItem, HStack, SimpleGrid, Spacer} from '@chakra-ui/react';
+import {Box, Button, FormControl, GridItem, HStack, SimpleGrid, Spacer, useToast} from '@chakra-ui/react';
 import React, {useState} from 'react'
 import * as Yup from "yup";
 import {Form, Formik} from 'formik';
@@ -12,6 +12,7 @@ import {doc, updateDoc} from "firebase/firestore";
 import {db} from "../../../../utils/init-firebase";
 import Select from "../../../components/Fields/Select";
 import {barangayOptions, provinceOptions, regionOptions} from "../../../components/Constants";
+import NumberField from "../../../components/Fields/NumberField";
 
 
 export default  function Figure1({works}) {
@@ -91,18 +92,32 @@ export default  function Figure1({works}) {
   const makeRequest = (formData) => {
     updateUsers(formData)
   };
-
+  const toast = useToast()
   async function updateUsers(formData) {
 
     const documentId = JSON.parse(JSON.stringify(works.id))
     const userRef = doc(db, 'client', documentId);
     await updateDoc(userRef, {
       Figure1: formData,
-    }).then(() => {
-      alert("Form Updated Successfully")
-    }).catch(function (error) {
-      console.error("Error writing document: In Figure 1 ", error);
-    });
+    }).catch(function(error) {
+      toast({
+        title: 'Document Updated.',
+        description: error,
+        status: 'error',
+        duration: 9000,
+        isClosable: true,
+      })
+
+    }).then(function(any){
+      toast({
+        title: 'Document Updated.',
+        description: "Successfully Updated Figure 1.",
+        status: 'success',
+        duration: 9000,
+        isClosable: true,
+      })
+
+    })
   }
 
   const handleNextStep = (newData, final = false) => {
@@ -270,15 +285,15 @@ const StepTwo = (props) => {
                       <ErrorMessaging name="middleName" />
                     </GridItem>
                     <GridItem colSpan={6}>
-                      <TextField label="Age" name="age" />
+                      <NumberField label="Age" name="age" />
                       <ErrorMessaging name="age" />
                     </GridItem>
                     <GridItem colSpan={6}>
-                      <TextField label="Gravidity" name="gravidity" />
+                      <NumberField label="Gravidity" name="gravidity" />
                       <ErrorMessaging name="gravidity" />
                     </GridItem>
                     <GridItem colSpan={6}>
-                      <TextField label="Parity" name="parity" />
+                      <NumberField label="Parity" name="parity" />
                       <ErrorMessaging name="parity" />
                     </GridItem>
                     <GridItem colSpan={6}>

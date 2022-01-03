@@ -36,12 +36,7 @@ export default  function Update ({id}) {
 
         const userRef = doc(db, 'users', id.id);
         await  updateDoc(userRef,{
-            id: id.id,
-            displayName:values.displayName,
-            email: values.email,
-            administrativeDistrict:values.administrativeDistrict,
-            legislativeDistrict:values.legislativeDistrict,
-            barangay:values.barangay,
+         ...values
 
         })
     }
@@ -83,12 +78,13 @@ export default  function Update ({id}) {
                         <Stack spacing='24px'>
                             <Formik
                                 initialValues={{
-                                    id: id.id,
-                                    displayName:id.displayName,
-                                    email: id.email,
-                                    administrativeDistrict: id.administrativeDistrict,
-                                    legislativeDistrict: id.legislativeDistrict,
-                                    barangay: id.barangay,
+                                    ...id
+                                    // id: id.id,
+                                    // displayName:id.displayName,
+                                    // email: id.email,
+                                    // administrativeDistrict: id.administrativeDistrict,
+                                    // legislativeDistrict: id.legislativeDistrict,
+                                    // barangay: id.barangay,
                                 }}
                                 onSubmit={(values, actions) => {
                                     updateUsers2(values)

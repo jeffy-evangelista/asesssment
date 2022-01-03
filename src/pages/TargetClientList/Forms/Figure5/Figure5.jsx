@@ -1,4 +1,19 @@
-import { Box, Button, Center, FormControl, FormHelperText, FormLabel, GridItem, HStack, ListItem, SimpleGrid, Spacer, Text, UnorderedList } from '@chakra-ui/react';
+import {
+    Box,
+    Button,
+    Center,
+    FormControl,
+    FormHelperText,
+    FormLabel,
+    GridItem,
+    HStack,
+    ListItem,
+    SimpleGrid,
+    Spacer,
+    Text,
+    UnorderedList,
+    useToast
+} from '@chakra-ui/react';
 import React, { useState } from 'react'
 import * as Yup from "yup";
 import {  Form, Formik } from 'formik';
@@ -11,6 +26,7 @@ import Checkbox from '../../../components/Fields/Checkbox';
 import SubHeading from '../../../components/Labels/SubHeading';
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from "../../../../utils/init-firebase";
+import NumberField from "../../../components/Fields/NumberField";
 
 export default function Figure5({ works }) {
     const data6 = JSON.parse(JSON.stringify({ works }))
@@ -179,7 +195,7 @@ export default function Figure5({ works }) {
     });
     const [currentStep, setCurrentStep] = useState(0);
 
-
+    const toast = useToast()
     const makeRequest = (formData) => {
         updateUsers(formData);
     };
@@ -191,13 +207,25 @@ export default function Figure5({ works }) {
         await updateDoc(userRef, {
             Figure5: formData
 
-        }).then(() => {
+        }).catch(function(error) {
+            toast({
+                title: 'Document not Updated.',
+                description: error,
+                status: 'error',
+                duration: 9000,
+                isClosable: true,
+            })
 
-            alert("Form Updated Successfully")
-        }).catch(function (error) {
+        }).then(function(any){
+            toast({
+                title: 'Document Updated.',
+                description: "Successfully Updated Figure 5.",
+                status: 'success',
+                duration: 9000,
+                isClosable: true,
+            })
 
-            console.error("Error updating document: in Figure 5 ", error);
-        });
+        })
     }
 
 
@@ -657,7 +685,7 @@ const StepThree = (props) => {
                                             </FormLabel>
                                         </GridItem>
                                         <GridItem>
-                                            <TextField
+                                            <NumberField
                                                 placeholder="Number"
                                                 name="supplementation.noOfTabletsGiven.no" />
                                         </GridItem>
@@ -673,7 +701,7 @@ const StepThree = (props) => {
                                             </FormLabel>
                                         </GridItem>
                                         <GridItem>
-                                            <TextField
+                                            <NumberField
                                                 placeholder="Number"
                                                 name="supplementation.vitaminA.no" />
                                         </GridItem>

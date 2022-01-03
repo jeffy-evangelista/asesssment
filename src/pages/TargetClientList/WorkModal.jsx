@@ -1,5 +1,5 @@
 //Temporary Modal To Create Client Information
-import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, Button, useDisclosure, Heading, Accordion, AccordionItem, AccordionButton, Box, AccordionIcon, AccordionPanel, Tooltip } from '@chakra-ui/react'
+import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, Button, useDisclosure, Accordion, AccordionItem, AccordionButton, Box, AccordionIcon, AccordionPanel, Tooltip } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import Figure1 from "./Forms/Figure1/Figure1";
 import Figure2 from "./Forms/Figure2/Figure2";

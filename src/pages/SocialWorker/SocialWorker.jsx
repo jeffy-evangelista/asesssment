@@ -70,11 +70,7 @@ export default function SocialWorker() {
                                     </Stack>
                                 </Td>
                             </Tr>
-
-
-
                         );
-
                     })}
                 </Tbody>
             </Table>

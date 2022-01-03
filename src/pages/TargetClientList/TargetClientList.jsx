@@ -10,7 +10,6 @@ import {
     Th,
     Tbody,
     Td,
-    chakra
 } from '@chakra-ui/react'
 import { Layout } from '../../components/Layout'
 import React, { useEffect, useState } from 'react'
@@ -20,7 +19,7 @@ import TempModal from "./tempModal";
 import WorkModal from "./WorkModal";
 import Create from "./Create";
 import { useTable, useSortBy } from 'react-table'
-import { TriangleDownIcon, TriangleUpIcon } from '@chakra-ui/icons'
+
 
 export default function TargetClientList() {
     const [targetClient, setTargetClient] = useState([]);

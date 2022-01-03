@@ -1,4 +1,19 @@
-import { Box, Button, Center, FormControl, FormLabel, GridItem, HStack, ListItem, SimpleGrid, Spacer, Text, UnorderedList, VStack } from '@chakra-ui/react';
+import {
+    Box,
+    Button,
+    Center,
+    FormControl,
+    FormLabel,
+    GridItem,
+    HStack,
+    ListItem,
+    SimpleGrid,
+    Spacer,
+    Text,
+    UnorderedList,
+    useToast,
+    VStack
+} from '@chakra-ui/react';
 import React, { useState } from 'react'
 import * as Yup from "yup";
 import { Form, Formik } from 'formik';
@@ -10,6 +25,7 @@ import Select from '../../../components/Fields/Select';
 import Checkbox from '../../../components/Fields/Checkbox';
 import {doc, updateDoc} from "firebase/firestore";
 import {db} from "../../../../utils/init-firebase";
+import NumberField from "../../../components/Fields/NumberField";
 
 
 export default function Figure2({works}) {
@@ -299,7 +315,7 @@ export default function Figure2({works}) {
             }
         }
     });
-
+    const toast = useToast()
     const [currentStep, setCurrentStep] = useState(0);
     const makeRequest = (formData) => {
 
@@ -311,11 +327,25 @@ export default function Figure2({works}) {
         const userRef = doc(db, 'client', documentId);
         await  updateDoc(userRef,{
             Figure2: formData
-        }).then(() => {
-            alert("Form Updated Successfully")
-        }).catch(function (error) {
-            console.error("Error writing document: In Figure 2 ", error);
-        });
+        }).catch(function(error) {
+            toast({
+                title: 'Document not Updated.',
+                description: error,
+                status: 'error',
+                duration: 9000,
+                isClosable: true,
+            })
+
+        }).then(function(any){
+            toast({
+                title: 'Document Updated.',
+                description: "Successfully Updated Figure 5.",
+                status: 'success',
+                duration: 9000,
+                isClosable: true,
+            })
+
+        })
     }
 
 
@@ -501,13 +531,13 @@ const StepTwo = (props) => {
                                 <GridItem>
                                     <SimpleGrid columns={2} spacingX={5}>
                                         <GridItem colSpan={1}>
-                                            <TextField
+                                            <NumberField
                                                 name="sideA.familySerial.avgFamilyIncome"
                                                 label="Average Family Income"
                                             />
                                         </GridItem>
                                         <GridItem colSpan={1}>
-                                            <TextField
+                                            <NumberField
                                                 name="sideA.familySerial.noOfChildren"
                                                 label="No. of Children"
                                             />

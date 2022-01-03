@@ -8,7 +8,7 @@ import {
     HStack,
     SimpleGrid,
     Spacer,
-    Text,
+    Text, useToast,
 } from '@chakra-ui/react';
 
 import React, {useState} from 'react'
@@ -20,6 +20,9 @@ import FormHeading from '../../../components/Labels/FormHeading';
 import DatePicker from '../../../components/Fields/DatePicker';
 import {doc, updateDoc} from "firebase/firestore";
 import {db} from "../../../../utils/init-firebase";
+import NumberField from "../../../components/Fields/NumberField";
+import Select from "../../../components/Fields/Select";
+import {bloodOptions,transportOption} from "../../../components/Constants";
 
 export default function Figure4({works}) {
 
@@ -85,18 +88,32 @@ export default function Figure4({works}) {
 
         updateUsers(formData);
     };
-
+    const toast = useToast()
     async  function updateUsers(formData) {
         const documentId = JSON.parse(JSON.stringify(works.id))
         const userRef = doc(db, 'client', documentId);
         await  updateDoc(userRef,{
             Figure4: formData
 
-        }).then(() => {
-            alert("Form Updated Successfully")
-        }).catch(function (error) {
-            console.error("Error writing document: In Figure 5 ", error);
-        });
+        }).catch(function(error) {
+            toast({
+                title: 'Document not Updated.',
+                description: error,
+                status: 'error',
+                duration: 9000,
+                isClosable: true,
+            })
+
+        }).then(function(any){
+            toast({
+                title: 'Document Updated.',
+                description: "Successfully Updated Figure 4.",
+                status: 'success',
+                duration: 9000,
+                isClosable: true,
+            })
+
+        })
     }
 
 
@@ -185,7 +202,7 @@ const StepOne = (props) => {
                                 </SimpleGrid>
                                 <SimpleGrid columns={3} spacingX={3}>
                                     <GridItem colSpan={2} >
-                                        <TextField
+                                        <NumberField
                                             label="The estimated cost of the
                                             maternity package in this facility is"
                                             name="estimatedCost"
@@ -234,9 +251,10 @@ const StepTwo = (props) => {
                             <SimpleGrid spacingY={5}>
                                 <SimpleGrid columns={3} spacingX={4}>
                                     <GridItem >
-                                        <TextField
+                                                                              <Select
                                             label="The available transport is"
                                             name="availableTransportation"
+                                            options={transportOption}
                                         />
                                     </GridItem>
                                     <GridItem colSpan={2}>
@@ -261,7 +279,7 @@ const StepTwo = (props) => {
                                     </GridItem>
                                     <GridItem>
                                         <div>
-                                            <TextField
+                                            <NumberField
                                                 label="and with contact number at"
                                                 name="bringer.Number"
                                             />
@@ -306,7 +324,7 @@ const StepTwo = (props) => {
                                         </FormHelperText>
                                     </GridItem>
                                     <GridItem>
-                                        <TextField
+                                        <NumberField
                                             label="with contact number at"
                                             name="companion.Number"
                                         />
@@ -386,9 +404,10 @@ const StepThree = (props) => {
                         <FormControl>
                             <SimpleGrid  spacingY={5}>
                                 <GridItem>
-                                    <TextField
-                                        name="bloodType"
+                                    <Select
                                         label="My blood type is"
+                                        name="bloodType"
+                                        options={bloodOptions}
                                     />
                                 </GridItem>
                                 <SimpleGrid columns={2} spacingX={5}>
@@ -423,7 +442,7 @@ const StepThree = (props) => {
                                         <TextField label="Address" name="complicationReferral.address" />
                                     </GridItem>
                                     <GridItem>
-                                        <TextField label="Tel. No" name="complicationReferral.number" />
+                                        <NumberField label="Tel. No" name="complicationReferral.number" />
                                     </GridItem>
                                 </SimpleGrid>
                             </SimpleGrid>
