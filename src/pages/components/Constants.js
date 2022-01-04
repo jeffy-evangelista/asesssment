@@ -4,6 +4,16 @@ export const legislativeDistrictOptions = [
     { key: 'D2', value: 'd2' },
     { key: 'D3', value: 'd3' }
 ];
+
+export const legislativeDistrictOptions1 = [
+    { key: 'Select an option', value: '' },
+    { key: 'D1', value: 'd1' }
+
+];
+export const legislativeDistrictOptions2 = [
+    { key: 'Select an option', value: '' },
+    { key: 'D3', value: 'd3' }
+];
 export const administrativeDistricts = [
     { key: 'Select an option', value: '' },
     { key: 'Poblacion', value: 'Poblacion' },
@@ -35,6 +45,8 @@ export const barangayOptions = [
     { key: 'Salapawan', value: 'Salapawan' },
     { key: 'Sumimao', value: 'Sumimao' },
     { key: 'Tapak', value: 'Tapak' }
+
+
 ];
 export const positionOptions = [
     { key: 'Select an option', value: '' },

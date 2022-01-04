@@ -1,67 +1,16 @@
 import {Center, Grid, GridItem, SimpleGrid, Text} from '@chakra-ui/layout'
 import {Stat, StatGroup, StatHelpText, StatLabel, StatNumber} from '@chakra-ui/stat'
 import React from 'react'
+import IframeResizer from "iframe-resizer-react";
 
 export default function T17() {
     return (
         <Grid borderWidth='1px' maxW="full" borderRadius="lg" p={5}>
-            <Grid templateColumns='repeat(4, 1fr)' gap={5}>
-                <GridItem bg="teal.200" p={5} borderRadius="lg" colSpan={1} >
-                    <Center h='full'>
-                        <StatGroup >
-                            <Stat>
-                                <StatLabel >Total number of Deliveries</StatLabel>
-                                <StatNumber>0000</StatNumber>
-                                <StatHelpText>%</StatHelpText>
-                            </Stat>
-                        </StatGroup>
-                    </Center>
-                </GridItem>
-                <GridItem bg="cyan.200" borderWidth='1px' borderRadius="lg" p={5} colSpan={3}>
-                    <SimpleGrid columns={4} gap={3}>
-                        <GridItem colSpan={3}>
-                            <Grid templateColumns='repeat(2, 1fr)' gap={3}>
-                                <GridItem borderColor='black' p={5} colSpan={2} rowSpan={1} border='1px' borderRadius="lg">
-                                    <Text fontSize="lg" align="center">Type of Health Facility</Text>
-                                </GridItem>
-                                <GridItem borderColor='black' p={5} colSpan={1} border='1px' borderRadius="lg">
-                                    <Center h='full'>
-                                        <StatGroup >
-                                            <Stat>
-                                                <StatLabel>Public</StatLabel>
-                                                <StatNumber>No. Here</StatNumber>
-                                                <StatHelpText>% here</StatHelpText>
-                                            </Stat>
-                                        </StatGroup>
-                                    </Center>
-                                </GridItem>
-                                <GridItem borderColor='black' p={5} colSpan={1} border='1px' borderRadius="lg">
-                                    <Center h='full'>
-                                        <StatGroup >
-                                            <Stat>
-                                                <StatLabel>Private</StatLabel>
-                                                <StatNumber>No. Here</StatNumber>
-                                                <StatHelpText>% here</StatHelpText>
-                                            </Stat>
-                                        </StatGroup>
-                                    </Center>
-                                </GridItem>
-                            </Grid>
-                        </GridItem>
-                        <GridItem colSpan={1} p={5} border='1px' borderRadius="lg" >
-                            <Center h='full'>
-                                <StatGroup >
-                                    <Stat>
-                                        <StatLabel >Total</StatLabel>
-                                        <StatNumber>No. here</StatNumber>
-                                        <StatHelpText>% here</StatHelpText>
-                                    </Stat>
-                                </StatGroup>
-                            </Center>
-                        </GridItem>
-                    </SimpleGrid>
-                </GridItem>
-            </Grid>
+            <IframeResizer
+                log
+                src="https://datastudio.google.com/embed/reporting/157ee1bb-e3ec-40d8-992b-b0e407fbaeb7/page/2RYiC"
+                style={{ width: '1px', minWidth: '100%'}}
+            />
         </Grid>
     )
 }

@@ -13,7 +13,12 @@ import { v4 as uuidv4 } from 'uuid';
 import { useToast } from '@chakra-ui/react'
 import { AddIcon } from "@chakra-ui/icons";
 import { useAuth } from "../../contexts/AuthContext";
-import {legislativeDistrictOptions,administrativeDistricts,barangayOptions,positionOptions} from "../components/Constants";
+import {
+    legislativeDistrictOptions,
+    administrativeDistricts,
+    barangayOptions,
+    positionOptions,
+} from "../components/Constants";
 import Select from '../components/Fields/Select';
 
 export default function Create() {
