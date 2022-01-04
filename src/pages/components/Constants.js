@@ -66,7 +66,6 @@ export const regionOptions = [
 export const provinceOptions = [
     { key: 'Select an option', value: '' },
     { key: 'Davao Del Sur', value: 'PH-DAS' },
-
 ];
 export const municipalityOptions = [
     { key: 'Select an option', value: '' },
@@ -90,6 +89,4 @@ export const transportOption = [
     { key: 'Select an option', value: '' },
     { key: 'Public', value: 'public' },
     { key: 'Private', value: 'private' },
-
-
 ];
