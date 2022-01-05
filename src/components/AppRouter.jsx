@@ -54,9 +54,7 @@ export default function AppRouter(props) {
 function ProtectedRoute(props) {
   const { currentUser } = useAuth()
   const { path } = props
-  console.log('path', path)
   const location = useLocation()
-  console.log('location state', location.state)
 
   if (
     path === '/login' ||

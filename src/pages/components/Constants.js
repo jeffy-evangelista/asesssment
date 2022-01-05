@@ -241,8 +241,15 @@ export const barangayOptions = [
 ];
 export const positionOptions = [
     { key: 'Select an option', value: '' },
-    { key: 'Admin', value: 'admin' },
-    { key: 'Not Admin', value: 'notAdmin' }
+    { key: 'SuperAdmin', value: 'SuperAdmin' },
+    { key: 'Legislative Admin', value: 'Legiadmin' },
+    { key: 'Administrative Admin', value: 'Adminadmin' },
+    { key: 'Social Worker', value: 'notAdmin' }
+
+
+
+
+
 ];
 
 export const regionOptions = [
