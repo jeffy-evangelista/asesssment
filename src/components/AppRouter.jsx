@@ -30,7 +30,7 @@ export default function AppRouter(props) {
       <Router>
         <Switch>
           <Route exact path='/' component={Homepage} />
-          <Route exact path='/login' component={Loginpage} />
+          <ProtectedRoute exact path='/login' component={Loginpage} />
           <ProtectedRoute exact path='/register' component={Registerpage} />
           <ProtectedRoute exact path='/profile' component={Profilepage} />
           <ProtectedRoute exact path='/profile/edit' component={EditProfile} />
