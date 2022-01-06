@@ -1051,34 +1051,34 @@ const StepSix = (props) => {
                                 </SimpleGrid>
                                 <SimpleGrid columns={12} spacingX={3}>
                                     <GridItem colSpan={2}>
-                                        <DatePicker label="" name="sideB.records.row1.date" />
-                                        <DatePicker label="" name="sideB.records.row2.date" />
-                                        <DatePicker label="" name="sideB.records.row3.date" />
-                                        <DatePicker label="" name="sideB.records.row4.date" />
+                                        <DatePicker label="" name="records.row1.date" />
+                                        <DatePicker label="" name="records.row2.date" />
+                                        <DatePicker label="" name="records.row3.date" />
+                                        <DatePicker label="" name="records.row4.date" />
                                     </GridItem>
                                     <GridItem colSpan={3}>
-                                        <TextField label="" name="sideB.records.row1.complaints" />
-                                        <TextField label="" name="sideB.records.row2.complaints" />
-                                        <TextField label="" name="sideB.records.row3.complaints" />
-                                        <TextField label="" name="sideB.records.row4.complaints" />
+                                        <TextField label="" name="records.row1.complaints" />
+                                        <TextField label="" name="records.row2.complaints" />
+                                        <TextField label="" name="records.row3.complaints" />
+                                        <TextField label="" name="records.row4.complaints" />
                                     </GridItem>
                                     <GridItem colSpan={3}>
-                                        <TextField label="" name="sideB.records.row1.mncServicesGiven" />
-                                        <TextField label="" name="sideB.records.row2.mncServicesGiven" />
-                                        <TextField label="" name="sideB.records.row3.mncServicesGiven" />
-                                        <TextField label="" name="sideB.records.row4.mncServicesGiven" />
+                                        <TextField label="" name="records.row1.mncServicesGiven" />
+                                        <TextField label="" name="records.row2.mncServicesGiven" />
+                                        <TextField label="" name="records.row3.mncServicesGiven" />
+                                        <TextField label="" name="records.row4.mncServicesGiven" />
                                     </GridItem>
                                     <GridItem colSpan={2}>
-                                        <TextField label="" name="sideB.records.row1.nameOfProviderAndSignature" />
-                                        <TextField label="" name="sideB.records.row2.nameOfProviderAndSignature" />
+                                        <TextField label="" name="records.row1.nameOfProviderAndSignature" />
+                                        <TextField label="" name="records.row2.nameOfProviderAndSignature" />
                                         <TextField label="" name="sideB.records.row3.nameOfProviderAndSignature" />
                                         <TextField label="" name="sideB.records.row4.nameOfProviderAndSignature" />
                                     </GridItem>
                                     <GridItem colSpan={2}>
-                                        <DatePicker label="" name="sideB.records.row1.nextFollowUpSchedule" />
-                                        <DatePicker label="" name="sideB.records.row2.nextFollowUpSchedule" />
-                                        <DatePicker label="" name="sideB.records.row3.nextFollowUpSchedule" />
-                                        <DatePicker label="" name="sideB.records.row4.nextFollowUpSchedule" />
+                                        <DatePicker label="" name="records.row1.nextFollowUpSchedule" />
+                                        <DatePicker label="" name="records.row2.nextFollowUpSchedule" />
+                                        <DatePicker label="" name="records.row3.nextFollowUpSchedule" />
+                                        <DatePicker label="" name="records.row4.nextFollowUpSchedule" />
                                     </GridItem>
                                 </SimpleGrid>
                             </SimpleGrid>
