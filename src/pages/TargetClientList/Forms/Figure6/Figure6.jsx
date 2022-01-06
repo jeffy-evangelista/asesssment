@@ -24,6 +24,7 @@ import SubHeading from '../../../components/Labels/SubHeading'
 import NumberField from '../../../components/Fields/NumberField'
 import {doc, updateDoc} from "firebase/firestore";
 import {db} from "../../../../utils/init-firebase";
+import Select from "../../../components/Fields/Select";
 
 export default function Figure6({works}) {
 
@@ -108,6 +109,7 @@ export default function Figure6({works}) {
 
     const timeDev = data7.works.Figure6.dateTimeOfDelivery.seconds
     const newTimeDev =new Date(timeDev*1000)
+    console.log(newTimeDev, "newTimeDev")
 
     const twenty = data7.works.Figure6.MomAndNewbornPostPartumCheckUps.withinTwentyFourHours.seconds
     const newTwenty =new Date(twenty*1000)
@@ -217,12 +219,14 @@ export default function Figure6({works}) {
         laboratoryScreening: {
             gestationalDiabetes: {
                 dateScreened: newscreendate,
-                result: data7.works.Figure6.laboratoryScreening.gestationalDiabetes.results
+                result: data7.works.Figure6.laboratoryScreening.gestationalDiabetes.result
+
             },
             cbc: {
                 dateScreened: newcbc,
-                result: data7.works.Figure6.laboratoryScreening.cbc.results,
+                result: data7.works.Figure6.laboratoryScreening.cbc.result,
                 givenIron: data7.works.Figure6.laboratoryScreening.cbc.givenIron
+
             }
         },
         birthWeight: {
@@ -898,7 +902,7 @@ const StepFour = (props) => {
                                                 name="laboratoryScreening.gestationalDiabetes.dateScreened"
                                                 label="Date Screened"
                                             />
-                                            <Radio
+                                            <Select
                                                 label=""
                                                 name="laboratoryScreening.gestationalDiabetes.result"
                                                 options={postiveNegativeOpt}
@@ -914,7 +918,7 @@ const StepFour = (props) => {
                                                 name="laboratoryScreening.cbc.dateScreened"
                                                 label="Date Screened"
                                             />
-                                            <Radio
+                                            <Select
                                                 label=""
                                                 name="laboratoryScreening.cbc.result"
                                                 options={postiveNegativeOpt}
