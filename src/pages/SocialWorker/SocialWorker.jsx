@@ -63,9 +63,7 @@ export default function SocialWorker() {
                                 <Td>
                                     <Stack direction="row" spacing={1}>
                                    <Update works= {works}/>
-                                        <Button colorScheme='red'  >
-                                            <DeleteIcon />
-                                        </Button>
+
 
                                     </Stack>
                                 </Td>

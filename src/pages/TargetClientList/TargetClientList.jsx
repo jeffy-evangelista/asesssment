@@ -102,7 +102,7 @@ export default function TargetClientList() {
                                     <Td>{works.first} {works.middle} {works.last}</Td>
                                     <Td>
                                         <HStack>
-                                            <TempModal works={works} />
+
                                             <WorkModal works={works} />
                                         </HStack>
                                     </Td>
