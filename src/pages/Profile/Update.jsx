@@ -79,12 +79,6 @@ export default  function Update ({id}) {
                             <Formik
                                 initialValues={{
                                     ...id
-                                    // id: id.id,
-                                    // displayName:id.displayName,
-                                    // email: id.email,
-                                    // administrativeDistrict: id.administrativeDistrict,
-                                    // legislativeDistrict: id.legislativeDistrict,
-                                    // barangay: id.barangay,
                                 }}
                                 onSubmit={(values, actions) => {
                                     updateUsers2(values)
@@ -118,7 +112,7 @@ export default  function Update ({id}) {
                                             {({ field, form }) => (
                                                 <FormControl isInvalid={form.errors.email && form.touched.email}>
                                                     <FormLabel htmlFor='email'>Email Address</FormLabel>
-                                                    <Input {...field} id='email' placeholder='email' />
+                                                    <Input {...field} id='email' placeholder='email' isDisabled />
                                                     <FormErrorMessage>{form.errors.email}</FormErrorMessage>
                                                 </FormControl>
                                             )}
