@@ -1,4 +1,4 @@
-import { Box, Center, Flex, Heading, HStack } from '@chakra-ui/layout'
+import { Box, Center, Flex, Heading } from '@chakra-ui/layout'
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from '@chakra-ui/tabs'
 import React from 'react'
 import { Layout } from '../../components/Layout'
@@ -28,7 +28,7 @@ import T23 from './Tabs/T23'
 import T24 from './Tabs/T24'
 import T25 from './Tabs/T25'
 import T26 from './Tabs/T26'
-import { Select } from '@chakra-ui/react'
+
 
 export default function Index() {
 

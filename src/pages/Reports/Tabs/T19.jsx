@@ -1,5 +1,3 @@
-import {Center, Grid, GridItem, SimpleGrid, Text} from '@chakra-ui/layout'
-import {Stat, StatGroup, StatHelpText, StatLabel, StatNumber} from '@chakra-ui/stat'
 import React from 'react'
 import IframeResizer from "iframe-resizer-react";
 

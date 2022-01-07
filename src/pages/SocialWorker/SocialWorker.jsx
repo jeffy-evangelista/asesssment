@@ -8,7 +8,7 @@ import {
     Tr,
     Th,
     Tbody,
-    Td, Button,
+    Td,
 } from '@chakra-ui/react'
 import React, { useState, useEffect } from 'react'
 import {
@@ -18,7 +18,6 @@ import { db } from '../../utils/init-firebase'
 import Create from "./Create";
 import Update from "./Update";
 import {Layout} from "../../components/Layout";
-import {DeleteIcon} from "@chakra-ui/icons";
 export default function SocialWorker() {
     const [socialWork, setSocialWork] = useState([]);
 
