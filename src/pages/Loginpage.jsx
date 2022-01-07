@@ -15,14 +15,16 @@ import { Card } from '../components/Card'
 import { Layout } from '../components/Layout'
 import { useAuth } from '../contexts/AuthContext'
 import useMounted from '../hooks/useMounted'
+import { FaGoogle } from 'react-icons/fa'
+import DividerWithText from '../components/DividerWithText'
 
 export default function Loginpage() {
   const history = useHistory()
-  const { login } = useAuth()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
   const toast = useToast()
+  const { signInWithGoogle, login } = useAuth()
   // const mounted = useRef(false)
   const location = useLocation()
 
@@ -130,7 +132,7 @@ export default function Loginpage() {
             Register
           </Button>
         </HStack>
-        {/* <DividerWithText my={6}>OR</DividerWithText>
+        <DividerWithText my={6}>OR</DividerWithText>
         <Button
           variant='outline'
           isFullWidth
@@ -146,7 +148,7 @@ export default function Loginpage() {
           }
         >
           Sign in with Google
-        </Button> */}
+        </Button>
       </Card>
     </Layout>
   )

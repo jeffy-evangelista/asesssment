@@ -5,12 +5,10 @@ import IframeResizer from "iframe-resizer-react";
 
 export default function T2() {
     return (
-        <Grid borderWidth='1px' maxW="full" borderRadius="lg" p={5}>
             <IframeResizer
                 log
                 src=""
-                style={{ width: '1px', minWidth: '100%'}}
+                style={{ width: '1px', minWidth: '100%', minHeight: '1000px'}}
             />
-        </Grid>
     )
 }
