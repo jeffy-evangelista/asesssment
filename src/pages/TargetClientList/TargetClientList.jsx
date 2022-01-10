@@ -3,30 +3,21 @@ import {
     Spacer,
     HStack,
     Heading,
-    Center,
-    Table,
-    Thead,
-    Tr,
-    Th,
-    Tbody,
-    Td,
+    Box,
+    Input
 } from '@chakra-ui/react'
 import { Layout } from '../../components/Layout'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useMemo } from 'react'
 import { collection, onSnapshot } from "firebase/firestore";
 import { db } from "../../utils/init-firebase";
 import TempModal from "./tempModal";
 import WorkModal from "./WorkModal";
 import Create from "./Create";
-import { useTable, useSortBy } from 'react-table'
-
+import DataTable, { createTheme } from "react-data-table-component";
 
 export default function TargetClientList() {
+    const [filterText, setFilterText] = useState("");
     const [targetClient, setTargetClient] = useState([]);
-
-    useEffect(() => {
-        Data();
-    }, []);
 
     const Data = () => {
         const usersCollectionRef = collection(db, "client");
@@ -39,82 +30,78 @@ export default function TargetClientList() {
         })
     };
 
+    useEffect(() => {
+        Data();
+    }, []);
 
-
+    const columns = useMemo(
+        () => [
+            {
+                name: "First Name",
+                selector: (row) => row.first,
+                sortable: true,
+                grow: 2,
+            },
+            {
+                name: "Last Name",
+                selector: (row) => row.last,
+                sortable: true,
+                grow: 2,
+            },
+            {
+                name: "Actions",
+                cell: (works) => <HStack>
+                    <TempModal works={works} />
+                    <WorkModal works={works} />
+                </HStack>
+            },
+        ],
+        []
+    );
 
 
     return (
+
         <Layout>
-            <Flex>
+            <Flex pb={5}>
                 <Heading>Target Client List</Heading>
                 <Spacer />
-                <Create />
+                <HStack>
+                    <Input
+                        type="text"
+                        placeholder="Search List"
+                        onChange={(e) => setFilterText(e.target.value)}
+                    />
+                    <Create />
+                </HStack>
             </Flex>
-            <Center py={6}>
-                <Table variant="striped" >
-                    <Thead>
-                        <Tr>
-                            <Th>Client Name</Th>
-                            <Th>Actions</Th>
-                        </Tr>
-                    </Thead>
-                    <Tbody>
-                        {targetClient.map((works) => {
-                            return (
-                                <Tr key={works.id}>
-                                    <Td>{works.first} {works.middle} {works.last}</Td>
-                                    <Td>
-                                        <HStack>
 
-                                            <WorkModal works={works} />
-                                        </HStack>
-                                    </Td>
+            <DataTable
+                highlightOnHover
+                pagination
+                direction="ltr"
+                responsive
+                striped
+                columns={columns}
+                data={targetClient.filter((value) => {
+                    if (filterText === "") {
+                        return value;
+                    } else if (
+                        value.first
+                            .toLowerCase()
+                            .includes(filterText.toLowerCase())
+                    ) {
+                        return value;
+                    } else if (
+                        value.last
+                            .toLowerCase()
+                            .includes(filterText.toLowerCase())
+                    ) {
+                        return value;
+                    }
+                })}
 
-                                </Tr>
-                            );
-                        })}
-                    </Tbody>
-                </Table>
-            </Center>
-            {/* <Table {...getTableProps()}>
-                <Thead>
-                    {headerGroups.map((headerGroup) => (
-                        <Tr {...headerGroup.getHeaderGroupProps()}>
-                            {headerGroup.headers.map((column) => (
-                                <Th
-                                    {...column.getHeaderProps(column.getSortByToggleProps())}
-                                    isNumeric={column.isNumeric}
-                                >
-                                    {column.render('Header')}
-                                    <chakra.span pl='4'>
-                                        {column.isSorted ? (
-                                            column.isSortedDesc ? (
-                                                <TriangleDownIcon aria-label='sorted descending' />
-                                            ) : (
-                                                <TriangleUpIcon aria-label='sorted ascending' />
-                                            )
-                                        ) : null}
-                                    </chakra.span>
-                                </Th>
-                            ))}
-                        </Tr>
-                    ))}
-                </Thead>
-                <Tbody {...getTableBodyProps()}>
-                    {rows.map((row) => {
-                        prepareRow(row)
-                        return (
-                            <Tr {...row.getRowProps()}>
-                                {row.cells.map((cell) => (
-                                    <Td {...cell.getCellProps()} isNumeric={cell.column.isNumeric}>
-                                        {cell.render('Cell')}
-                                    </Td>
-                                ))}
-                            </Tr>
-                        )
-                    })}
-                </Tbody>
-            </Table> */}
+            />
         </Layout>
     )
 }

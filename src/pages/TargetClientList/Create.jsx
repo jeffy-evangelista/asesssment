@@ -638,8 +638,8 @@ export default  function Create () {
 
     return (
         <>
-            <Button ref={btnRef} leftIcon={<AddIcon/>} colorScheme='green' onClick={onOpen}>
-            Add New Record
+            <Button ref={btnRef}  colorScheme='green' onClick={onOpen}>
+            {/* Add New Record */}<AddIcon/>
             </Button>
             <Drawer
                 isOpen={isOpen}

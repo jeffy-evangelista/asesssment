@@ -93,7 +93,8 @@ const Navbar = () => {
                 colorScheme="blue"
                 rightIcon={<ChevronDownIcon />}
               >
-                {currentUser.email}
+                {/* {currentUser.email} */}
+                Account
               </MenuButton>
               <MenuList>
                 <Link to='/profile'>
