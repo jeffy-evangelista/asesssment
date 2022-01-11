@@ -23,9 +23,6 @@ export default function Homepage() {
           e-Maternal Care and Services
         </Heading>
       </Stack>
-      <Link to='/target-client-list'>
-          Update Client
-      </Link>
     </Layout>
 
   )

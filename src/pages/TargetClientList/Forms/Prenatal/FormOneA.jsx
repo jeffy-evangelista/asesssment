@@ -36,7 +36,7 @@ import { doc, updateDoc } from "firebase/firestore";
 import { db } from "../../../../utils/init-firebase";
 import NumberField from "../../../components/Fields/NumberField";
 
-export default function Figure2() {
+export default function FormOneA() {
 
     const initialValues = {
         familySerial: {
@@ -101,7 +101,7 @@ export default function Figure2() {
         }
     }
 
-    const onSubmit = values => {
+    const onSubmit = (values) => {
         console.log('Form data', values)
     }
 
@@ -233,24 +233,24 @@ export default function Figure2() {
         <>
             <Button onClick={onOpen}>MNC Form 1 Side A</Button>
 
-            <Formik
-                initialValues={initialValues}
-                onSubmit={onSubmit}
+            <Modal
+                closeOnOverlayClick={false}
+                isOpen={isOpen}
+                onClose={onClose}
+                size='full'
+                scrollBehavior='inside'
             >
-                <Form>
-                    <FormControl>
-                        <Modal
-                            closeOnOverlayClick={false}
-                            isOpen={isOpen}
-                            onClose={onClose}
-                            size='full'
-                            scrollBehavior='inside'
-                        >
-                            <ModalOverlay />
-                            <ModalContent>
-                                <ModalHeader>MNC Form 1 Side A</ModalHeader>
-                                <ModalCloseButton />
-                                <ModalBody pb={6}>
+                <Formik
+                    initialValues={initialValues}
+                    onSubmit={onSubmit}
+                >
+                    <Form>
+                        <ModalOverlay />
+                        <ModalContent>
+                            <ModalHeader>MNC Form 1 Side A</ModalHeader>
+                            <ModalCloseButton />
+                            <ModalBody pb={6}>
+                                <FormControl>
                                     {/* <FormHeading text='MATERNAL CLIENT RECORD for Prenatal Care' /> */}
                                     <SimpleGrid
                                         columns={{ base: '1', md: '2', xl: '3' }}
@@ -600,17 +600,18 @@ export default function Figure2() {
                                                 />
                                             </SimpleGrid>
                                         </Box>
+
                                     </SimpleGrid>
-                                </ModalBody>
-                                <ModalFooter>
-                                    <Button margin={5} type="submit" colorScheme='green'>Submit</Button>
-                                    <Button onClick={onClose}>Cancel</Button>
-                                </ModalFooter>
-                            </ModalContent>
-                        </Modal>
-                    </FormControl>
-                </Form>
-            </Formik >
+                                </FormControl>
+                            </ModalBody>
+                            <ModalFooter>
+                                <Button margin={5} type="submit" colorScheme='green'>Submit</Button>
+                                <Button onClick={onClose}>Cancel</Button>
+                            </ModalFooter>
+                        </ModalContent>
+                    </Form>
+                </Formik >
+            </Modal>
         </>
 
     )

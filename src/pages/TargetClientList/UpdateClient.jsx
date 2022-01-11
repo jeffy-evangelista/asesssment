@@ -2,8 +2,9 @@
 import { Modal, ModalOverlay, ModalContent, Flex, HStack, Tooltip, VStack, Text, Spacer, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, Button, useDisclosure } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import Figure1 from "./Forms/Figure1/Figure1";
-import Figure2 from "./Forms/Figure2/Figure2";
-import Figure4 from "./Forms/Figure4/Figure4";
+import FormOneA from "./Forms/Prenatal/FormOneA";
+import FormOneB from "./Forms/Prenatal/FormOneB";
+import BirthPlan from "./Forms/Prenatal/BirthPlan";
 import Figure5 from "./Forms/Figure5/Figure5";
 import Figure6 from "./Forms/Figure6/Figure6";
 
@@ -36,9 +37,9 @@ export default function UpdateClient({ works }) {
                 MATERNAL CLIENT RECORD for Prenatal Care
               </Text>
               <HStack align='stretch'>
-                <Figure2 />
-                <Button>MNC Form 1 Side B</Button>
-                <Button>Birth Plan</Button>
+                <FormOneA />
+                <FormOneB />
+                <BirthPlan />
               </HStack>
               <Spacer />
               <Text fontWeight='bold' mb='1rem'>
