@@ -4,18 +4,20 @@ import {
     HStack,
     Heading,
     Box,
-    Input
+    Input,
+    Link, Tooltip, Button, Text
 } from '@chakra-ui/react'
 import { Layout } from '../../components/Layout'
 import React, { useEffect, useState, useMemo } from 'react'
 import { collection, onSnapshot } from "firebase/firestore";
 import { db } from "../../utils/init-firebase";
-import TempModal from "./tempModal";
-import WorkModal from "./WorkModal";
+import ViewClient from "./ViewClient";
+import UpdateClient from "./UpdateClient";
 import Create from "./Create";
-import DataTable, { createTheme } from "react-data-table-component";
+import DataTable from "react-data-table-component";
+import { EditIcon } from '@chakra-ui/icons'
 
-export default function TargetClientList() {
+export default function IndexClient() {
     const [filterText, setFilterText] = useState("");
     const [targetClient, setTargetClient] = useState([]);
 
@@ -51,8 +53,9 @@ export default function TargetClientList() {
             {
                 name: "Actions",
                 cell: (works) => <HStack>
-                    <TempModal works={works} />
-                    <WorkModal works={works} />
+                    <ViewClient works={works} />
+                    <UpdateClient works={works} />
+
                 </HStack>
             },
         ],
@@ -63,8 +66,11 @@ export default function TargetClientList() {
     return (
 
         <Layout>
+
             <Flex pb={5}>
-                <Heading>Target Client List</Heading>
+                <Heading >
+                    Target Client List
+                </Heading>
                 <Spacer />
                 <HStack>
                     <Input

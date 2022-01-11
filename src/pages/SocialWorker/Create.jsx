@@ -45,7 +45,7 @@ export default function Create() {
                 <DrawerContent>
                     <DrawerCloseButton />
                     <DrawerHeader borderBottomWidth='1px'>
-                        Create New Social Worker Account
+                        Add new Social Worker
                     </DrawerHeader>
                     <DrawerBody>
                         <Stack spacing='24px'>
@@ -95,8 +95,8 @@ export default function Create() {
                                         <Field name='displayName' >
                                             {({ field, form }) => (
                                                 <FormControl isInvalid={form.errors.displayName && form.touched.displayName}>
-                                                    <FormLabel htmlFor='displayName'>Display Name</FormLabel>
-                                                    <Input {...field} id='displayName' placeholder='displayName' />
+                                                    <FormLabel htmlFor='displayName'>Name</FormLabel>
+                                                    <Input {...field} id='displayName' placeholder='Input Name' />
                                                     <FormErrorMessage>{form.errors.displayName}</FormErrorMessage>
                                                 </FormControl>
                                             )}
@@ -106,7 +106,7 @@ export default function Create() {
                                             {({ field, form }) => (
                                                 <FormControl isInvalid={form.errors.email && form.touched.email}>
                                                     <FormLabel htmlFor='email'>Email Address</FormLabel>
-                                                    <Input {...field} id='email' placeholder='email' />
+                                                    <Input {...field} id='email' placeholder='Input Email' />
                                                     <FormErrorMessage>{form.errors.email}</FormErrorMessage>
                                                 </FormControl>
                                             )}

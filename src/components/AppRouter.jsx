@@ -16,9 +16,9 @@ import EditProfile from '../pages/Profile/Update'
 import Registerpage from '../pages/Registerpage'
 import ResetPasswordPage from '../pages/ResetPasswordPage'
 import TestPage from '../pages/TestPage'
-import TargetClientList from '../pages/TargetClientList/TargetClientList'
+import IndexClient from '../pages/TargetClientList/IndexClient'
 import CreateClient from '../pages/TargetClientList/Create'
-import UpdateClient from '../pages/TargetClientList/Update'
+import UpdateClient from '../pages/TargetClientList/UpdateClient'
 import SocialWorker from '../pages/SocialWorker/SocialWorker'
 import CreateSocialWorker from '../pages/SocialWorker/Create'
 import UpdateSocialWorker from '../pages/SocialWorker/Update'
@@ -36,11 +36,9 @@ export default function AppRouter(props) {
           <ProtectedRoute exact path='/profile/edit' component={EditProfile} />
           <ProtectedRoute exact path='/test' component={TestPage} />
           <ProtectedRoute exact path='/social-worker' component={SocialWorker} />
-          <ProtectedRoute exact path='/social-worker/create' component={CreateSocialWorker} />
-          <ProtectedRoute exact path='/social-worker/update' component={UpdateSocialWorker} />
-          <ProtectedRoute exact path='/target-client-list' component={TargetClientList} />
-          <ProtectedRoute exact path='/target-client-list/create' component={CreateClient} />
-          <ProtectedRoute exact path='/target-client-list/update' component={UpdateClient} />
+          <ProtectedRoute exact path='/target-client-list' component={IndexClient} />
+          {/* <ProtectedRoute exact path='/target-client-list/create' component={CreateClient} /> */}
+          {/* <ProtectedRoute path='/target-client-list/update' component={UpdateClient} /> */}
           <ProtectedRoute exact path='/reports' component={Reports} />
           <ProtectedRoute exact path='/forgot-password' component={ForgotPasswordPage} />
           <ProtectedRoute exact path='/reset-password' component={ResetPasswordPage} />
@@ -63,7 +61,7 @@ function ProtectedRoute(props) {
     path === '/reset-password'
   ) {
     return currentUser ? (
-      <Redirect to={location.state?.from ?? '/profile'} />
+      <Redirect to={location.state?.from ?? '/target-client-list'} />
     ) : (
       <Route {...props} />
     )

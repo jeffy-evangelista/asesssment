@@ -6,31 +6,31 @@ import {
     DrawerHeader,
     DrawerOverlay,
     DrawerContent,
-    DrawerCloseButton, useDisclosure, Button, Input, FormControl, FormErrorMessage, FormLabel, Stack,useToast
+    DrawerCloseButton, useDisclosure, Button, Input, FormControl, FormErrorMessage, FormLabel, Stack, useToast
 } from '@chakra-ui/react'
-import {Form,Field,Formik} from "formik";
+import { Form, Field, Formik } from "formik";
 
-import { doc, updateDoc} from "firebase/firestore";
-import {db} from "../../utils/init-firebase";
+import { doc, updateDoc } from "firebase/firestore";
+import { db } from "../../utils/init-firebase";
 
-import { ViewIcon} from "@chakra-ui/icons";
+import { ViewIcon } from "@chakra-ui/icons";
 import Select from "../components/Fields/Select";
-import {legislativeDistrictOptions,administrativeDistricts,barangayOptions,positionOptions} from "../components/Constants"
+import { legislativeDistrictOptions, administrativeDistricts, barangayOptions, positionOptions } from "../components/Constants"
 
 
 
 
-export default  function Update ({works}) {
+export default function Update({ works }) {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const btnRef = React.useRef()
     const toast = useToast()
     const firstField = React.useRef()
 
-    async  function updateUsers(values) {
+    async function updateUsers(values) {
         const documentId = JSON.parse(JSON.stringify(values.id))
         const userRef = doc(db, 'users', documentId);
-        await  updateDoc(userRef,{
-           ...values
+        await updateDoc(userRef, {
+            ...values
         })
     }
 
@@ -56,7 +56,7 @@ export default  function Update ({works}) {
                         <Stack spacing='24px'>
                             <Formik
                                 initialValues={{
-                                   ...works
+                                    ...works
                                 }}
                                 onSubmit={(values, actions) => {
                                     updateUsers(values)

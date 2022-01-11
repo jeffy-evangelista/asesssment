@@ -16,7 +16,7 @@ import { ViewIcon } from '@chakra-ui/icons'
 
 
 
-export default function TempModal({ works }) {
+export default function ViewPatient({ works }) {
     const obj = { works }
 
     const { isOpen, onOpen, onClose } = useDisclosure()

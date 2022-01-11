@@ -9,7 +9,7 @@ import Figure6 from "./Forms/Figure6/Figure6";
 
 import { EditIcon } from '@chakra-ui/icons'
 
-export default function WorkModal({ works }) {
+export default function UpdateClient({ works }) {
     const [setData] = useState(works);
     const { isOpen, onOpen, onClose } = useDisclosure()
     return (
@@ -25,7 +25,7 @@ export default function WorkModal({ works }) {
                     <EditIcon />
                 </Button>
             </Tooltip>
-            <Modal isOpen={isOpen} onClose={onClose} size={'full'}>
+            <Modal isOpen={isOpen} onClose={onClose} size={'sl'}>
                 <ModalOverlay />
                 <ModalContent>
                     <ModalHeader>Update Client</ModalHeader>

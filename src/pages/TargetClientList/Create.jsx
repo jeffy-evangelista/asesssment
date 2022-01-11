@@ -22,7 +22,7 @@ import {
     administrativeDistricts,
     barangayOptions
 } from "../components/Constants";
-import {Form,Field,Formik} from "formik";
+import { Form, Field, Formik } from "formik";
 import { useToast } from '@chakra-ui/react'
 import { db } from '../../utils/init-firebase'
 import {
@@ -35,10 +35,10 @@ import { AddIcon } from '@chakra-ui/icons'
 
 
 
-export default  function Create () {
+export default function Create() {
 
 
- async function createClient(values){
+    async function createClient(values) {
 
         const usersCollectionRef = collection(db, "client");
         await addDoc(usersCollectionRef, {
@@ -48,20 +48,20 @@ export default  function Create () {
             administrativeDistrict: values.administrativeDistrict,
             legislativeDistrict: values.legislativeDistrict,
             barangay: values.barangay,
-            age:values.age,
+            age: values.age,
             Figure1: {
-                year:new Date(),
-                region: '11' ,
+                year: new Date(),
+                region: '11',
                 province: '',
-                municipality:'' ,
-                barangay:''  ,
+                municipality: '',
+                barangay: '',
                 birthingCenter: '',
-                birthingCenterAddress:'' ,
+                birthingCenterAddress: '',
                 referralCenter: '',
                 referralCenterAddress: '',
 
                 lastName: '',
-                firstName:'' ,
+                firstName: '',
                 middleName: '',
                 age: '',
                 gravidity: "",
@@ -69,7 +69,7 @@ export default  function Create () {
                 expDateOfDel: new Date(),
 
                 firstTri: new Date(),
-                secondTri:new Date(),
+                secondTri: new Date(),
                 thirdTri: new Date(),
                 pregOutcome: "",
 
@@ -86,7 +86,7 @@ export default  function Create () {
                 ruralHealthUnit: "",
             },
 
-            Figure2:{
+            Figure2: {
                 sideA: {
                     familySerial: {
                         client: {
@@ -94,21 +94,21 @@ export default  function Create () {
                             highestEducation: '',
                             occupation: '',
                             addressStreet: '',
-                            addressBarangay:'',
+                            addressBarangay: '',
                             addressMunicipality: '',
-                            addressProvince:'',
+                            addressProvince: '',
                         },
                         spouse: {
                             firstName: '',
-                            middleName:'',
-                            lastName:'',
+                            middleName: '',
+                            lastName: '',
                             birthday: new Date(),
                             highestEducation: '',
                             occupation: ''
                         },
                         avgFamilyIncome: '',
                         noOfChildren: '',
-                        birthPlan:''
+                        birthPlan: ''
                     },
                     medicalHistory: {
                         reviewOfSystems: {
@@ -362,11 +362,11 @@ export default  function Create () {
                 },
                 conforme: {
                     signature: "",
-                    date:  new Date()
+                    date: new Date()
                 }
             },
-            Figure5:{
-                dateOfVisit:new Date(),
+            Figure5: {
+                dateOfVisit: new Date(),
                 physicalExamination: {
                     dateOfDelivery: new Date(),
                     attendant: "",
@@ -608,7 +608,7 @@ export default  function Create () {
                     ironWithFolicAcid: {
                         firstMonth: {
                             no: "",
-                            date:new Date()
+                            date: new Date()
                         },
                         secondMonth: {
                             no: "",
@@ -638,8 +638,8 @@ export default  function Create () {
 
     return (
         <>
-            <Button ref={btnRef}  colorScheme='green' onClick={onOpen}>
-            {/* Add New Record */}<AddIcon/>
+            <Button ref={btnRef} colorScheme='green' onClick={onOpen}>
+                {/* Add New Record */}<AddIcon />
             </Button>
             <Drawer
                 isOpen={isOpen}
@@ -651,7 +651,7 @@ export default  function Create () {
                 <DrawerContent>
                     <DrawerCloseButton />
                     <DrawerHeader borderBottomWidth='1px'>
-                        Create New Social Worker Account
+                        Add New Client
                     </DrawerHeader>
 
                     <DrawerBody>
@@ -698,11 +698,10 @@ export default  function Create () {
                                                 </FormControl>
                                             )}
                                         </Field>
-
                                         <Field name='middlename' >
                                             {({ field, form }) => (
                                                 <FormControl isInvalid={form.errors.middlename && form.touched.middlename}>
-                                                    <FormLabel htmlFor='middlename'>Middle Name Name</FormLabel>
+                                                    <FormLabel htmlFor='middlename'>Middle Name </FormLabel>
                                                     <Input {...field} id='middlename' placeholder='middlename' />
                                                     <FormErrorMessage>{form.errors.middlename}</FormErrorMessage>
                                                 </FormControl>
@@ -718,43 +717,38 @@ export default  function Create () {
                                             )}
                                         </Field>
                                         <Select
-
                                             label="Legislative District"
                                             name="legislativeDistrict"
-                                            options={legislativeDistrictOptions} />
-
-
+                                            options={legislativeDistrictOptions}
+                                        />
 
                                         <Select
                                             label="Administrative District"
                                             name="administrativeDistrict"
-                                            options={administrativeDistricts} />
-
+                                            options={administrativeDistricts}
+                                        />
 
                                         <Select
                                             label="Barangay"
                                             name="barangay"
-                                            options={barangayOptions} />
-
-
-
-
+                                            options={barangayOptions}
+                                        />
 
                                         <Field name='age' >
                                             {({ field, form }) => (
                                                 <FormControl isInvalid={form.errors.age && form.touched.age}>
                                                     <FormLabel htmlFor='firstname'>Age</FormLabel>
                                                     <NumberInput  >
-                                                        <NumberInputField {...field} id='age' placeholder='age'  />
-
+                                                        <NumberInputField
+                                                            {...field}
+                                                            id='age'
+                                                            placeholder='age'
+                                                        />
                                                     </NumberInput>
-
                                                     <FormErrorMessage>{form.errors.age}</FormErrorMessage>
                                                 </FormControl>
                                             )}
                                         </Field>
-
-
 
                                         <Button
                                             mt={4}
@@ -769,13 +763,10 @@ export default  function Create () {
                             </Formik>
                         </Stack>
                     </DrawerBody>
-
                     <DrawerFooter borderTopWidth='1px'>
                         <Button variant='outline' mr={3} onClick={onClose}>
                             Cancel
                         </Button>
-
-
                     </DrawerFooter>
                 </DrawerContent>
             </Drawer>

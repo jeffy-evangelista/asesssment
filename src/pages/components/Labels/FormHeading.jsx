@@ -5,7 +5,7 @@ import React from 'react'
 export default function FormHeading({ text }) {
     return (
         <Center>
-            <Heading as='h2' fontSize={{ base: 'md', sm: '4xl', md: '6xl' }}>{text}</Heading>
+            <Heading as='h2' fontSize={{ base: 'md', sm: 'xl', md: '3xl' }}>{text}</Heading>
         </Center>
         
     )
