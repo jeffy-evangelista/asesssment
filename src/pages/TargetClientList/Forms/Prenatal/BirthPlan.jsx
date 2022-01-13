@@ -24,7 +24,7 @@ const accredationStatusOpt = [
     { key: 'Yes', value: 'yes' },
     { key: 'no', value: 'no' }
 ];
-const BirthPlan = () => {
+export default function BirthPlan() {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const initialValues = {
         attendantName: '',
