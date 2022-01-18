@@ -56,7 +56,7 @@ export default function Registerpage() {
                 }
                 // your register logic here
                 setIsSubmitting(true)
-                register(email, password,displayName,barangay,districtAdministrative,districtLegislative)
+                register(email, password,displayName)
                     .then(res => {  })
                     .catch(error => {
                       console.log(error.message)
@@ -96,48 +96,6 @@ export default function Registerpage() {
                     onChange={e => setName(e.target.value)}
                 />
               </FormControl>
-              <FormControl id='districtLegislative' isRequired>
-                <FormLabel>Legislative District</FormLabel>
-                <Select placeholder='Select Legislative District' value={districtLegislative}
-                        onChange={e => setDistrictLegislative(e.target.value)}  >
-                  <option value={"1d"}>1st District</option>
-                  <option value={"2d"}>2nd District</option>
-                  <option value={"3d"}>3rd District</option>
-                </Select>
-              </FormControl>
-              <FormControl id='districtAdministrative' isRequired>
-                <FormLabel>Administrative District</FormLabel>
-                <Select placeholder='Select Administrative District' value={districtAdministrative}
-                        onChange={e => setDistrictAdministrative(e.target.value)}  >
-                  <option disabled="disabled" >District 1</option>
-                  <option value={"pob"} >Poblacion</option>
-                  <option value={"tal"}>Talomo</option>
-                  <option disabled="disabled" >District 2</option>
-                  <option value={"agd"}> Agdao</option>
-                  <option value={"buh"}> Buhangin</option>
-                  <option value={"bun"}> Bunawan</option>
-                  <option value={"paq"}> Paquibato</option>
-                  <option disabled="disabled" >District 3</option>
-                  <option value={"bag"} > Baguio</option>
-                  <option value={"cal"}>   Calinan</option>
-                  <option value={"mar"}>Marilog</option>
-                  <option value={"tor"}>Toril</option>
-                  <option value={"tug"}> Tugbok</option>
-                </Select>
-              </FormControl>
-              <FormControl id='barangay' isRequired>
-                <FormLabel>Barangay</FormLabel>
-
-                <Input
-                    name='name'
-                    type='name'
-                    autoComplete='name'
-                    required
-                    value={barangay}
-                    onChange={e => setBarangay(e.target.value)}
-                />
-              </FormControl>
-
               <FormControl id='password' isRequired>
                 <FormLabel>Password</FormLabel>
                 <Input

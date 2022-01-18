@@ -21,7 +21,6 @@ import { useToast } from '@chakra-ui/react'
 import { doc, updateDoc} from "firebase/firestore";
 import {db} from "../../utils/init-firebase";
 import Select from "../components/Fields/Select";
-import {legislativeDistrictOptions,administrativeDistricts,barangayOptions} from "../components/Constants"
 
 
 
@@ -117,22 +116,7 @@ export default  function Update ({id}) {
                                                 </FormControl>
                                             )}
                                         </Field>
-                                        <Select
-                                            label="Legislative District"
-                                            name="legislativeDistrict"
-                                            options={legislativeDistrictOptions}
-                                        />
-                                        <Select
-                                            label="Administrative District"
-                                            name="administrativeDistrict"
-                                            options={administrativeDistricts}
-                                        />
-                                        <Select
-                                            label="Barangay"
-                                            name="barangay"
-                                            options={barangayOptions}
-                                        />
-
+                                   
                                         <Button
                                             mt={4}
                                             colorScheme='teal'

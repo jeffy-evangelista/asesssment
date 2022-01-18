@@ -17,11 +17,6 @@ import {
     NumberInput,
     NumberInputField,
 } from '@chakra-ui/react'
-import {
-    legislativeDistrictOptions,
-    administrativeDistricts,
-    barangayOptions
-} from "../components/Constants";
 import { Form, Field, Formik } from "formik";
 import { useToast } from '@chakra-ui/react'
 import { db } from '../../utils/init-firebase'
@@ -716,23 +711,7 @@ export default function Create() {
                                                 </FormControl>
                                             )}
                                         </Field>
-                                        <Select
-                                            label="Legislative District"
-                                            name="legislativeDistrict"
-                                            options={legislativeDistrictOptions}
-                                        />
 
-                                        <Select
-                                            label="Administrative District"
-                                            name="administrativeDistrict"
-                                            options={administrativeDistricts}
-                                        />
-
-                                        <Select
-                                            label="Barangay"
-                                            name="barangay"
-                                            options={barangayOptions}
-                                        />
 
                                         <Field name='age' >
                                             {({ field, form }) => (

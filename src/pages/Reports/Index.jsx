@@ -47,56 +47,14 @@ export default function Index() {
                             <Tab _selected={{ color: 'white', bg: 'teal' }}>T2</Tab>
                             <Tab _selected={{ color: 'white', bg: 'teal' }}>T3</Tab>
                             <Tab _selected={{ color: 'white', bg: 'teal' }}>T4</Tab>
-                            <Tab _selected={{ color: 'white', bg: 'teal' }}>T5</Tab>
-                            <Tab _selected={{ color: 'white', bg: 'teal' }}>T6</Tab>
-                            <Tab _selected={{ color: 'white', bg: 'teal' }}>T7</Tab>
-                            <Tab _selected={{ color: 'white', bg: 'teal' }}>T8</Tab>
-                            <Tab _selected={{ color: 'white', bg: 'teal' }}>T9</Tab>
-                            <Tab _selected={{ color: 'white', bg: 'teal' }}>T10</Tab>
-                            <Tab _selected={{ color: 'white', bg: 'teal' }}>T11</Tab>
-                            <Tab _selected={{ color: 'white', bg: 'teal' }}>T12</Tab>
-                            <Tab _selected={{ color: 'white', bg: 'teal' }}>T13</Tab>
-                            <Tab _selected={{ color: 'white', bg: 'teal' }}>T14</Tab>
-                            <Tab _selected={{ color: 'white', bg: 'teal' }}>T15</Tab>
-                            <Tab _selected={{ color: 'white', bg: 'teal' }}>T16</Tab>
-                            <Tab _selected={{ color: 'white', bg: 'teal' }}>T17</Tab>
-                            <Tab _selected={{ color: 'white', bg: 'teal' }}>T18</Tab>
-                            <Tab _selected={{ color: 'white', bg: 'teal' }}>T19</Tab>
-                            <Tab _selected={{ color: 'white', bg: 'teal' }}>T20</Tab>
-                            <Tab _selected={{ color: 'white', bg: 'teal' }}>T21</Tab>
-                            <Tab _selected={{ color: 'white', bg: 'teal' }}>T22</Tab>
-                            <Tab _selected={{ color: 'white', bg: 'teal' }}>T23</Tab>
-                            <Tab _selected={{ color: 'white', bg: 'teal' }}>T24</Tab>
-                            <Tab _selected={{ color: 'white', bg: 'teal' }}>T25</Tab>
-                            <Tab _selected={{ color: 'white', bg: 'teal' }}>T26</Tab>
+
                         </TabList>
                         <TabPanels>
                             <TabPanel><T1 /></TabPanel>
                             <TabPanel><T2 /></TabPanel>
                             <TabPanel><T3 /></TabPanel>
                             <TabPanel><T4 /></TabPanel>
-                            <TabPanel><T5 /></TabPanel>
-                            <TabPanel><T6 /></TabPanel>
-                            <TabPanel><T7 /></TabPanel>
-                            <TabPanel><T8 /></TabPanel>
-                            <TabPanel><T9 /></TabPanel>
-                            <TabPanel><T10 /></TabPanel>
-                            <TabPanel><T11 /></TabPanel>
-                            <TabPanel><T12 /></TabPanel>
-                            <TabPanel><T13 /></TabPanel>
-                            <TabPanel><T14 /></TabPanel>
-                            <TabPanel><T15 /></TabPanel>
-                            <TabPanel><T16 /></TabPanel>
-                            <TabPanel><T17 /></TabPanel>
-                            <TabPanel><T18 /></TabPanel>
-                            <TabPanel><T19 /></TabPanel>
-                            <TabPanel><T20 /></TabPanel>
-                            <TabPanel><T21 /></TabPanel>
-                            <TabPanel><T22 /></TabPanel>
-                            <TabPanel><T23 /></TabPanel>
-                            <TabPanel><T24 /></TabPanel>
-                            <TabPanel><T25 /></TabPanel>
-                            <TabPanel><T26 /></TabPanel>
+
                         </TabPanels>
                     </Tabs>
                 </Box>

@@ -15,7 +15,6 @@ import { db } from "../../utils/init-firebase";
 
 import { ViewIcon } from "@chakra-ui/icons";
 import Select from "../components/Fields/Select";
-import { legislativeDistrictOptions, administrativeDistricts, barangayOptions, positionOptions } from "../components/Constants"
 
 
 

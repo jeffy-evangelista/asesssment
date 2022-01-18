@@ -18,9 +18,9 @@ export default function Homepage() {
           fontWeight={800}
           fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
           lineHeight={'110%'}
-          color="blue.500"
+          color="green.500"
         >
-          e-Maternal Care and Services
+          The City Health Office of Davao
         </Heading>
       </Stack>
     </Layout>

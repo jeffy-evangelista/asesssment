@@ -1,100 +1,64 @@
-import { Box, Button, Menu, MenuButton, VStack,  MenuItem, useBreakpointValue, Collapse, IconButton, useDisclosure, Text, Stack,  Flex, MenuList } from '@chakra-ui/react'
+import {
+  Box,
+  Center,
+  HStack,
+  IconButton,
+  Spacer,
+  useColorMode,
+  useColorModeValue,
+  Heading,
+  Menu,
+  MenuButton,
+  Button,
+  MenuList,
+  MenuItem,
+  Link
+} from '@chakra-ui/react'
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { FaMoon, FaSun } from 'react-icons/fa'
 import { useAuth } from '../contexts/AuthContext'
-import { ChevronDownIcon, HamburgerIcon, CloseIcon } from '@chakra-ui/icons'
+import Navlink from './Navlink'
+import { ChevronDownIcon } from '@chakra-ui/icons'
 
-const Navbar = () => {
+export default function Navbar() {
+  const { toggleColorMode } = useColorMode()
+  // const { logout, currentUser } = useAuth()
   const { logout, currentUser } = useAuth()
-  const { isOpen, onToggle } = useDisclosure();
+
   return (
     <Box
-      mb={5}>
-      <Flex
-        minH={"60px"}
-        py={{ base: 2 }}
-        px={{ base: 4 }}
-        borderBottom={1}
-        borderStyle={"solid"}
-        borderColor="gray.200"
-        align={"center"}
+      borderBottom='2px'
+      borderBottomColor={useColorModeValue('gray.100', 'gray.700')}
+      mb={4}
+      py={4}
+    >
+      <HStack
+        justifyContent='flex-end'
+        maxW='container.xl'
+        mx='auto'
+        spacing={4}
       >
-        <Flex
-          flex={{ base: 1, md: "auto" }}
-          ml={{ base: -2 }}
-          display={{ base: "flex", md: "none" }}
-        >
-          <IconButton
-            onClick={onToggle}
-            icon={
-              isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />
-            }
-            variant={"ghost"}
-            aria-label={"Toggle Navigation"}
-          />
-        </Flex>
-        <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
-          <Text
-            textAlign={useBreakpointValue({ base: "center", md: "left" })}
-            fontFamily={"heading"}
-            fontWeight="600"
-          >
-            FHSIS
-          </Text>
-          <Flex display={{ base: "none", md: "flex" }} ml={10}>
-            <DesktopNav />
-          </Flex>
-        </Flex>
+        {/* <Navlink to='/' name='City Health Office' size='lg' /> */}
+        <Heading color="green.500">
+          City Health Office
+        </Heading>
+        <Spacer />
 
-        {!currentUser &&
-          <Stack
-            flex={{ base: 1, md: 0 }}
-            justify={"flex-end"}
-            direction={"row"}
-            spacing={6}
-          >
-            <Button
-              display={{ base: "none", md: "inline-flex" }}
-              as={"a"}
-              fontSize={"sm"}
-              fontWeight={400}
-              variant={"link"}>
-              <Link to='/login'>
-                Login
-              </Link>
-            </Button>
-            <Link to='/register'>
-              <Button
-                display={{ base: "none", md: "inline-flex" }}
-                fontSize={"sm"}
-                fontWeight={600}
-                color={"white"}
-                colorScheme="blue"
-                href={"#"}
-                _hover={{
-                  bg: "blue.300"
-                }}
-              >
-                Register
-              </Button>
-            </Link>
-          </Stack>
-        }
+        {!currentUser && <Navlink to='/login' name='Login' />}
+        {!currentUser && <Navlink to='/register' name='Register' />}
         {currentUser &&
-          <Stack
-            flex={{ base: 1, md: 0 }}
-            justify={"flex-end"}
-            direction={"row"}
-            spacing={6}
-          >
+          <>
+            <Navlink to='/users' name='Users' />
+            <Navlink to='/patients' name='Patients' />
+
             <Menu>
               <MenuButton
                 as={Button}
-                colorScheme="blue"
+                colorScheme="green"
                 rightIcon={<ChevronDownIcon />}
               >
-                {/* {currentUser.email} */}
                 Account
+
               </MenuButton>
               <MenuList>
                 <Link to='/profile'>
@@ -113,82 +77,35 @@ const Navbar = () => {
                 </Link>
               </MenuList>
             </Menu>
-          </Stack>
+          </>
         }
-      </Flex>
-      <Collapse in={isOpen} animateOpacity>
-        <MobileNav />
-      </Collapse>
-    </Box >
+      </HStack>
+      <HStack
+        justifyContent='center'
+        maxW='container.xl'
+        mx='auto'
+        spacing={4}
+        mt={3}
+      >
+        {currentUser &&
+          <>
+            <Navlink to='/animal-bite-admin' name='Animal Bite Treatment Admin' />
+            <Navlink to='/communicable-admin' name='Communicable Diseases Admin' />
+            <Navlink to='/immunization-admin' name='Immunization and Nutrition Admin' />
+            <Navlink to='/tropical-admin' name='Tropical Diseases Admin' />
+          </>
+        }
+        {
+          !currentUser &&
+          <>
+            <Navlink to='/animal-bite' name='Animal Bite Treatment' />
+            <Navlink to='/communicable' name='Communicable Diseases' />
+            <Navlink to='/immunization' name='Immunization and Nutrition' />
+            <Navlink to='/tropical' name='Tropical Diseasesm' />
+          </>
+        }
+
+      </HStack>
+    </Box>
   )
 }
-
-const MobileNav = () => {
-  const { currentUser } = useAuth()
-  return (
-    <Stack p={4} boxShadow="lg" display={{ md: "none" }}>
-      {currentUser &&
-        <VStack align="left">
-          <Link to='/social-worker' >
-            <Text fontWeight={600} color="gray.600" >
-              Social Worker
-            </Text>
-          </Link>
-          <Link to='/target-client-list'>
-            <Text fontWeight={600} color="gray.600" >
-              Target Client List
-            </Text>
-          </Link>
-          <Link to='/reports'>
-            <Text fontWeight={600} color="gray.600" >
-              Reports
-            </Text>
-          </Link>
-        </VStack>
-      }
-      {!currentUser &&
-        <VStack align="left">
-          <Link to='/login' >
-            <Text fontWeight={600} color="gray.600" >
-              Login
-            </Text>
-          </Link>
-          <Link to='/register'>
-            <Text fontWeight={600} color="gray.600" >
-              Register
-            </Text>
-          </Link>
-        </VStack>
-      }
-    </Stack>
-  );
-};
-
-const DesktopNav = () => {
-  const { currentUser } = useAuth()
-  return (
-    <Stack direction={"row"} spacing={4}>
-      {currentUser &&
-        <>
-          <Link to='/social-worker' >
-            <Text fontWeight={600} color="gray.600" >
-              Social Worker
-            </Text>
-          </Link>
-          <Link to='/target-client-list'>
-            <Text fontWeight={600} color="gray.600" >
-              Target Client List
-            </Text>
-          </Link>
-          <Link to='/reports'>
-            <Text fontWeight={600} color="gray.600" >
-              Reports
-            </Text>
-          </Link>
-        </>
-      }
-    </Stack>
-  );
-};
-
-export default Navbar;

@@ -3,15 +3,14 @@ import { getAuth } from 'firebase/auth';
 import { getFirestore,enableIndexedDbPersistence  } from "@firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyASSwQ4BOaNEA6LhzF9e2bbF3t8YbzOJM8",
-  authDomain: "fhsismaternalcare-db852.firebaseapp.com",
-  databaseURL: "https://fhsismaternalcare-db852-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "fhsismaternalcare-db852",
-  storageBucket: "fhsismaternalcare-db852.appspot.com",
-  messagingSenderId: "555857684535",
-  appId: "1:555857684535:web:b74fabb9cb9a862a0877b2",
-  measurementId: "G-ZLFDX7NSQQ"
-};
+    apiKey: "AIzaSyBJCU6OdDSonSIWVSulFtnE5YHC8ocdTks",
+    authDomain: "itelect-402bc.firebaseapp.com",
+    projectId: "itelect-402bc",
+    storageBucket: "itelect-402bc.appspot.com",
+    messagingSenderId: "96721184885",
+    appId: "1:96721184885:web:ad586aa4687f279beff03c",
+    measurementId: "G-9SBGB52THX"
+  };
 
 const app = initializeApp(firebaseConfig);
 

@@ -11,18 +11,18 @@ import { Layout } from '../../components/Layout'
 import React, { useEffect, useState, useMemo } from 'react'
 import { collection, onSnapshot } from "firebase/firestore";
 import { db } from "../../utils/init-firebase";
-import ViewClient from "./ViewClient";
-import UpdateClient from "./UpdateClient";
-import Create from "./Create";
+import ViewUser from "./ViewUser";
+import UpdateUser from "./UpdateUser";
+import CreateUser from "./CreateUser";
 import DataTable from "react-data-table-component";
 import { EditIcon } from '@chakra-ui/icons'
 
-export default function IndexClient() {
+export default function IndexUser() {
     const [filterText, setFilterText] = useState("");
     const [targetClient, setTargetClient] = useState([]);
 
     const Data = () => {
-        const usersCollectionRef = collection(db, "patients");
+        const usersCollectionRef = collection(db, "users");
         onSnapshot(usersCollectionRef, (snapshot) => {
             let userData = []
             snapshot.docs.forEach(doc => {
@@ -51,10 +51,16 @@ export default function IndexClient() {
                 grow: 2,
             },
             {
+                name: "Role",
+                selector: (row) => row.role,
+                sortable: true,
+                grow: 2,
+            },
+            {
                 name: "Actions",
                 cell: (works) => <HStack>
-                    <ViewClient works={works} />
-                    <UpdateClient works={works} />
+                    <ViewUser works={works} />
+                    <UpdateUser works={works} />
 
                 </HStack>
             },
@@ -69,7 +75,7 @@ export default function IndexClient() {
 
             <Flex pb={5}>
                 <Heading >
-                    Target Client List
+                    Users List
                 </Heading>
                 <Spacer />
                 <HStack>
@@ -78,7 +84,7 @@ export default function IndexClient() {
                         placeholder="Search List"
                         onChange={(e) => setFilterText(e.target.value)}
                     />
-                    <Create />
+                    <CreateUser />
                 </HStack>
             </Flex>
 

@@ -72,7 +72,7 @@ export default function Profile() {
           </Stack>
 
 
-          <Stack direction={'row'} justify={'center'} spacing={6}>
+          {/* <Stack direction={'row'} justify={'center'} spacing={6}>
 
               {data.map(item => (
                   <Flex align={'center'}>
@@ -82,7 +82,7 @@ export default function Profile() {
               ))}
 
 
-          </Stack>
+          </Stack> */}
         </Box>
       </Box>
     </Center>

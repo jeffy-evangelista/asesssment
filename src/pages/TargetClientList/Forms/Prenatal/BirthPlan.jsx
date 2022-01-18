@@ -18,7 +18,6 @@ import { doc, updateDoc } from "firebase/firestore";
 import { db } from "../../../../utils/init-firebase";
 import NumberField from "../../../components/Fields/NumberField";
 import Select from "../../../components/Fields/Select";
-import { bloodOptions, transportOption } from "../../../components/Constants";
 import { Formik, Field, Form } from 'formik';
 const accredationStatusOpt = [
     { key: 'Yes', value: 'yes' },

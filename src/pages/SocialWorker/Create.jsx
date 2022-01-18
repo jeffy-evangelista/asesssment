@@ -13,12 +13,6 @@ import { v4 as uuidv4 } from 'uuid';
 import { useToast } from '@chakra-ui/react'
 import { AddIcon } from "@chakra-ui/icons";
 import { useAuth } from "../../contexts/AuthContext";
-import {
-    legislativeDistrictOptions,
-    administrativeDistricts,
-    barangayOptions,
-    positionOptions,
-} from "../components/Constants";
 import Select from '../components/Fields/Select';
 
 export default function Create() {
@@ -111,26 +105,7 @@ export default function Create() {
                                                 </FormControl>
                                             )}
                                         </Field>
-                                        <Select
-                                            label="Legislative District"
-                                            name="legislativeDistrict"
-                                            options={legislativeDistrictOptions}
-                                        />
-                                        <Select
-                                            label="Administrative District"
-                                            name="administrativeDistrict"
-                                            options={administrativeDistricts}
-                                        />
-                                        <Select
-                                            label="Barangay"
-                                            name="barangay"
-                                            options={barangayOptions}
-                                        />
-                                        <Select
-                                            label="Position"
-                                            name="isAdmin"
-                                            options={positionOptions}
-                                        />
+                                       
                                         <Button
                                             mt={4}
                                             colorScheme='teal'

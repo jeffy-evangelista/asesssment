@@ -11,13 +11,14 @@ import { Layout } from '../../components/Layout'
 import React, { useEffect, useState, useMemo } from 'react'
 import { collection, onSnapshot } from "firebase/firestore";
 import { db } from "../../utils/init-firebase";
-import ViewClient from "./ViewClient";
-import UpdateClient from "./UpdateClient";
-import Create from "./Create";
+import ViewUser from "./ViewPatient";
+// import UpdateUser from "./UpdatePatient";
+import CreateUser from "./CreatePatient";
 import DataTable from "react-data-table-component";
 import { EditIcon } from '@chakra-ui/icons'
+import AnimalBite from './UpdatePatient';
 
-export default function IndexClient() {
+export default function IndexPatient() {
     const [filterText, setFilterText] = useState("");
     const [targetClient, setTargetClient] = useState([]);
 
@@ -53,8 +54,8 @@ export default function IndexClient() {
             {
                 name: "Actions",
                 cell: (works) => <HStack>
-                    <ViewClient works={works} />
-                    <UpdateClient works={works} />
+                    <ViewUser works={works} />
+                    < AnimalBite works={works} />
 
                 </HStack>
             },
@@ -69,7 +70,7 @@ export default function IndexClient() {
 
             <Flex pb={5}>
                 <Heading >
-                    Target Client List
+                    Patients List
                 </Heading>
                 <Spacer />
                 <HStack>
@@ -78,7 +79,7 @@ export default function IndexClient() {
                         placeholder="Search List"
                         onChange={(e) => setFilterText(e.target.value)}
                     />
-                    <Create />
+                    <CreateUser />
                 </HStack>
             </Flex>
 
@@ -93,13 +94,13 @@ export default function IndexClient() {
                     if (filterText === "") {
                         return value;
                     } else if (
-                        value.first
+                        value.fName
                             .toLowerCase()
                             .includes(filterText.toLowerCase())
                     ) {
                         return value;
                     } else if (
-                        value.last
+                        value.lName
                             .toLowerCase()
                             .includes(filterText.toLowerCase())
                     ) {
