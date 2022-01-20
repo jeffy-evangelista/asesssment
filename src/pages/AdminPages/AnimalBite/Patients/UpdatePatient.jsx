@@ -135,7 +135,7 @@ export default function UpdatePatient({ works }) {
                 </Stack>
               </ModalBody>
               <ModalFooter>
-                <Button margin={5} type="submit" colorScheme='green'>Submit</Button>
+                <Button margin={5} type="submit" colorScheme='blue'>Submit</Button>
                 <Button onClick={onClose}>Cancel</Button>
               </ModalFooter>
             </ModalContent>

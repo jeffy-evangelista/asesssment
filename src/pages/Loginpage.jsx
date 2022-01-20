@@ -91,8 +91,6 @@ export default function Loginpage() {
         >
 
           <Stack spacing='6'>
-            <h1>Email: demo@gmail.com</h1>
-            <h1>Password: 123456</h1>
             <FormControl id='email'>
               <FormLabel>Email address</FormLabel>
               <Input
@@ -118,7 +116,7 @@ export default function Loginpage() {
             {/* <PasswordField /> */}
             <Button
               type='submit'
-              colorScheme='green'
+              colorScheme='blue'
               size='lg'
               fontSize='md'
               isLoading={isSubmitting}
@@ -127,7 +125,7 @@ export default function Loginpage() {
             </Button>
           </Stack>
         </chakra.form>
-        <HStack justifyContent='space-between' my={4}>
+        {/* <HStack justifyContent='space-between' my={4}>
           <Button variant='link'>
             <Link to='/forgot-password'>Forgot password?</Link>
           </Button>
@@ -151,7 +149,7 @@ export default function Loginpage() {
           }
         >
           Sign in with Google
-        </Button>
+        </Button> */}
       </Card>
     </Layout>
   )

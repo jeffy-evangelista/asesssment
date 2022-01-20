@@ -1,5 +1,7 @@
 //Temporary Modal To Display Client Information
 import {
+    SimpleGrid,
+    Box,
     Modal,
     ModalOverlay,
     ModalContent,
@@ -10,7 +12,8 @@ import {
     Button,
     useDisclosure,
     Tooltip, Text,
-    Heading
+    Heading,
+    Stack
 } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { ViewIcon } from '@chakra-ui/icons'
@@ -39,12 +42,60 @@ export default function ViewPatient({ works }) {
                     <ModalBody>
                         <div>
                             {data.map(patient => (
-                                <>
-                                    <Heading as='h4' size='md' color='grey'>
-                                        Name
-                                    </Heading>
-                                    <Text fontSize='md'>{patient.fName} {patient.mName} {patient.lName}</Text>
-                                </>
+                                <Stack spacing={5}>
+                                    <Box>
+                                        <Heading as='h5' size='sm' color='grey'>
+                                            Name
+                                        </Heading>
+                                        <Text fontSize='md' fontSize='md' color="blue.600">{patient.fName} {patient.mName} {patient.lName}</Text>
+                                    </Box>
+                                    <Box>
+                                        <Heading as='h5' size='sm' color='grey'>
+                                            Age
+                                        </Heading>
+                                        <Text fontSize='md' color="blue.600">{patient.age}</Text>
+                                    </Box>
+                                    <Box>
+                                        <Heading as='h5' size='sm' color='grey'>
+                                            Sex
+                                        </Heading>
+                                        <Text fontSize='md' color="blue.600">{patient.sex}</Text>
+                                    </Box>
+                                    <SimpleGrid columns={2} spacing={5}>
+                                        <Box>
+                                            <Heading as='h5' size='sm' color='grey'>
+                                                Diagnosis
+                                            </Heading>
+                                            <Text fontSize='md' fontSize='md' color="blue.600">{patient.CommunicableDiseases.diagnosis} </Text>
+                                        </Box>
+                                        <Box>
+                                            <Heading as='h5' size='sm' color='grey'>
+                                                Guardian
+                                            </Heading>
+                                            <Text fontSize='md' fontSize='md' color="blue.600">{patient.CommunicableDiseases.guardian} </Text>
+                                        </Box>
+                                        <Box>
+                                            <Heading as='h5' size='sm' color='grey'>
+                                                Workplace / School
+                                            </Heading>
+                                            <Text fontSize='md' fontSize='md' color="blue.600">{patient.CommunicableDiseases.patientWorkplace} </Text>
+                                        </Box>
+                                        <Box>
+                                            <Heading as='h5' size='sm' color='grey'>
+                                                Workplace / School Address
+                                            </Heading>
+                                            <Text fontSize='md' fontSize='md' color="blue.600">{patient.CommunicableDiseases.patientWorkplaceAddress} </Text>
+                                        </Box>
+                                        <Box>
+                                            <Heading as='h5' size='sm' color='grey'>
+                                                Was the patient hostpitalized?
+                                            </Heading>
+                                            <Text fontSize='md' fontSize='md' color="blue.600">{patient.CommunicableDiseases.hostpitalized} </Text>
+                                        </Box>
+                                    </SimpleGrid>
+
+
+                                </Stack >
                             ))}
                         </div>
 

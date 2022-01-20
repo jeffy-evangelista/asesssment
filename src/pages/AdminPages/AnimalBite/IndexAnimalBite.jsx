@@ -76,7 +76,7 @@ export default function IndexCommunicable() {
                 borderRadius='lg'
                 p={5}
             >
-                <Tabs variant='soft-rounded' colorScheme='green'>
+                <Tabs variant='soft-rounded' colorScheme='blue'>
                     <TabList>
                         <Tab>Overview</Tab>
                         <Tab>Patient List</Tab>

@@ -38,23 +38,28 @@ export default function Navbar() {
         mx='auto'
         spacing={4}
       >
-        {/* <Navlink to='/' name='City Health Office' size='lg' /> */}
-        <Heading color="green.500">
-          City Health Office
-        </Heading>
+        <Navlink to='/' name='City Health Office' size='lg' />
+        
+          {/* <Heading color="blue.500">
+            City Health Office
+          </Heading> */}
+        
         <Spacer />
 
         {!currentUser && <Navlink to='/login' name='Login' />}
         {!currentUser && <Navlink to='/register' name='Register' />}
         {currentUser &&
-          <>
-            <Navlink to='/users' name='Users' />
-            <Navlink to='/patients' name='Patients' />
+          <HStack>
 
+            <Navlink to='/users' name='Users' />
+            <Navlink to='/reports' name='Reports' />
+            <Navlink to='/patients' name='Patients' />
+            <Spacer/>
             <Menu>
               <MenuButton
                 as={Button}
-                colorScheme="green"
+                colorScheme="blue"
+                
                 rightIcon={<ChevronDownIcon />}
               >
                 Account
@@ -77,24 +82,24 @@ export default function Navbar() {
                 </Link>
               </MenuList>
             </Menu>
-          </>
+          </HStack>
         }
       </HStack>
       <HStack
         justifyContent='center'
         maxW='container.xl'
-        mx='auto'
+        mx='auto'ww
         spacing={4}
-        mt={3}
+        // mt={3}
       >
-        {currentUser &&
+        {/* {currentUser &&
           <>
             <Navlink to='/animal-bite-admin' name='Animal Bite Treatment Admin' />
             <Navlink to='/communicable-admin' name='Communicable Diseases Admin' />
             <Navlink to='/immunization-admin' name='Immunization and Nutrition Admin' />
             <Navlink to='/tropical-admin' name='Tropical Diseases Admin' />
           </>
-        }
+        } */}
         {
           !currentUser &&
           <>

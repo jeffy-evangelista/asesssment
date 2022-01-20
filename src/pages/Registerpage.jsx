@@ -109,7 +109,7 @@ export default function Registerpage() {
               </FormControl>
               <Button
                   type='submit'
-                  colorScheme='green'
+                  colorScheme='blue'
                   size='lg'
                   fontSize='md'
                   isLoading={isSubmitting}

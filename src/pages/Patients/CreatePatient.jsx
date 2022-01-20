@@ -78,7 +78,7 @@ export default function Create() {
         <>
             <Button
                 ref={btnRef}
-                colorScheme='green'
+                colorScheme='blue'
                 onClick={onOpen}
             >
                 <AddIcon />

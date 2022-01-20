@@ -15,7 +15,7 @@ import Profilepage from '../pages/Profile/Profile'
 import EditProfile from '../pages/Profile/Update'
 import Registerpage from '../pages/Registerpage'
 import ResetPasswordPage from '../pages/ResetPasswordPage'
-import TestPage from '../pages/TestPage'
+import Reports from '../pages/Reports'
 import IndexUser from '../pages/Users/IndexUser'
 import IndexPatient from '../pages/Patients/IndexPatient'
 import ImmunizationNutrition from '../pages/LandingPages/ImmunizationNutrition'
@@ -44,7 +44,7 @@ export default function AppRouter(props) {
           <ProtectedRoute exact path='/register' component={Registerpage} />
           <ProtectedRoute exact path='/profile' component={Profilepage} />
           <ProtectedRoute exact path='/profile/edit' component={EditProfile} />
-          <ProtectedRoute exact path='/test' component={TestPage} />
+          <ProtectedRoute exact path='/reports' component={Reports} />
           <ProtectedRoute exact path='/users' component={IndexUser} />
           <ProtectedRoute exact path='/patients' component={IndexPatient} />
           <ProtectedRoute exact path='/forgot-password' component={ForgotPasswordPage} />

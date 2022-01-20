@@ -55,7 +55,6 @@ export default function IndexPatient() {
                 name: "Actions",
                 cell: (works) => <HStack>
                     <ViewUser works={works} />
-                    < AnimalBite works={works} />
 
                 </HStack>
             },
