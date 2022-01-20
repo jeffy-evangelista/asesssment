@@ -1,11 +1,23 @@
-import { TabList, TabPanel, Heading, HStack, Flex, Spacer, Input, Box, TabPanels, Tabs, Tab } from '@chakra-ui/react'
-import React, { useState, useEffect, useMemo } from 'react'
+import {
+    Flex,
+    Spacer,
+    HStack,
+    Heading,
+    Box,
+    Input,
+    Link, Tooltip, Button, Text,
+    Tabs, TabList, TabPanels, Tab, TabPanel
+} from '@chakra-ui/react'
 import { Layout } from '../../../components/Layout'
+import React, { useEffect, useState, useMemo } from 'react'
 import { collection, onSnapshot } from "firebase/firestore";
 import { db } from "../../../utils/init-firebase";
+import ViewPatient from "./Patients/ViewPatient";
+import AnimalBite from "./Patients/UpdatePatient";
 import DataTable from "react-data-table-component";
+import Create from './Patients/CreatePatient'
 
-export default function IndexAnimalBite() {
+export default function IndexCommunicable() {
     const [filterText, setFilterText] = useState("");
     const [targetClient, setTargetClient] = useState([]);
 
@@ -33,12 +45,6 @@ export default function IndexAnimalBite() {
                 grow: 2,
             },
             {
-                name: "Middle Name",
-                selector: (row) => row.mName,
-                sortable: true,
-                grow: 2,
-            },
-            {
                 name: "Last Name",
                 selector: (row) => row.lName,
                 sortable: true,
@@ -47,8 +53,8 @@ export default function IndexAnimalBite() {
             {
                 name: "Actions",
                 cell: (works) => <HStack>
-                    {/* <ViewUser works={works} />
-                    <UpdateUser works={works} /> */}
+                    <ViewPatient works={works} />
+                    < AnimalBite works={works} />
 
                 </HStack>
             },
@@ -58,10 +64,14 @@ export default function IndexAnimalBite() {
 
 
     return (
+
         <Layout>
-            <Heading pb={5}>Animal Bite</Heading>
+            <Flex pb={5}>
+                <Heading >
+                    ABT Admin
+                </Heading>
+            </Flex>
             <Box
-                maxW='full'
                 borderWidth='1px'
                 borderRadius='lg'
                 p={5}
@@ -69,15 +79,14 @@ export default function IndexAnimalBite() {
                 <Tabs variant='soft-rounded' colorScheme='green'>
                     <TabList>
                         <Tab>Overview</Tab>
-                        <Tab>Patients List</Tab>
+                        <Tab>Patient List</Tab>
                     </TabList>
                     <TabPanels>
                         <TabPanel>
-                            <p>one!</p>
+                            {/* <iframe src="https://datastudio.google.com/embed/reporting/09ea3264-dc68-4b96-ace1-0641d5d6faac/page/ytpjC" /> */}
                         </TabPanel>
                         <TabPanel>
                             <Flex pb={5}>
-        
                                 <Spacer />
                                 <HStack>
                                     <Input
@@ -85,10 +94,9 @@ export default function IndexAnimalBite() {
                                         placeholder="Search List"
                                         onChange={(e) => setFilterText(e.target.value)}
                                     />
-                                    {/* <CreateUser /> */}
+                                    <Create />
                                 </HStack>
                             </Flex>
-
                             <DataTable
                                 highlightOnHover
                                 pagination
@@ -106,17 +114,10 @@ export default function IndexAnimalBite() {
                                     ) {
                                         return value;
                                     } else if (
-                                        value.mName
-                                            .toLowerCase()
-                                            .includes(filterText.toLowerCase())
-                                    ) {
-                                        return value;
-                                    } else if (
                                         value.lName
                                             .toLowerCase()
                                             .includes(filterText.toLowerCase())
-                                    )
-                                     {
+                                    ) {
                                         return value;
                                     }
                                 })}
@@ -126,6 +127,8 @@ export default function IndexAnimalBite() {
                     </TabPanels>
                 </Tabs>
             </Box>
+
+
         </Layout>
     )
 }

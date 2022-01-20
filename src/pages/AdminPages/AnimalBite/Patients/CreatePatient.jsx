@@ -23,14 +23,14 @@ import {
 } from '@chakra-ui/react'
 import { Form, Field, Formik } from "formik";
 import { useToast } from '@chakra-ui/react'
-import { db } from '../../utils/init-firebase'
-import DatePicker from '../components/Fields/DatePicker';
-import Radio from '../components/Fields/Radio'
+import { db } from '../../../../utils/init-firebase'
+import DatePicker from '../../../components/Fields/DatePicker';
+import Radio from '../../../components/Fields/Radio'
 import { collection, addDoc } from "firebase/firestore"
-import Select from "../components/Fields/Select";
+import Select from "../../../components/Fields/Select";
 import { AddIcon } from '@chakra-ui/icons'
-import TextField from '../components/Fields/TextField';
-import NumberField from '../components/Fields/NumberField';
+import TextField from '../../../components/Fields/TextField';
+import NumberField from '../../../components/Fields/NumberField';
 
 
 export default function Create() {
@@ -51,7 +51,6 @@ export default function Create() {
                 locationOfTransmission: "",
                 statusOfThePatient: "",
                 courseOfTreatment: ""
-
             },
             CommunicableDiseases: {
                 diagnosis: "",
@@ -78,7 +77,7 @@ export default function Create() {
         <>
             <Button
                 ref={btnRef}
-                colorScheme='green'
+                colorScheme='blue'
                 onClick={onOpen}
             >
                 <AddIcon />

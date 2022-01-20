@@ -32,28 +32,28 @@ export default function CommunicableForm() {
                     </Heading>
                     <Select
                         label="Diagnosis"
-                        name="animalBite.animal"
+                        name="diagnosis"
                         options={diagnosisOpt}
                     />
                     <DatePicker
-                        name="animalBite.date"
+                        name="onsetDate"
                         label="Onset Date"
                     />
                     <TextField
                         label="Guardian Name"
-                        name=""
+                        name="guardian"
                     />
                     <TextField
                         label="Patient workplace / School"
-                        name=""
+                        name="patientWorkplace"
                     />
                     <TextField
                         label="Patient workplace / School Address"
-                        name=""
+                        name="patientWorkplaceAddress"
                     />
                     <Radio
                         label="was hospitalized ?"
-                        name="animalBite.animal"
+                        name="hostpitalized"
                         options={hospitalizedOpt}
                     />
                 </Form>
