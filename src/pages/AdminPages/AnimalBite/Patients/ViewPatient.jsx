@@ -22,8 +22,10 @@ import React, { useState } from 'react'
 import { ViewIcon } from '@chakra-ui/icons'
 
 export default function ViewPatient({ works }) {
-    const [data, setData] = useState([works]);
+    const [newValues, setData] = useState([works]);
     const { isOpen, onOpen, onClose } = useDisclosure()
+    
+     const data = JSON.parse(JSON.stringify(newValues))
     return (
         <>
             <Tooltip
