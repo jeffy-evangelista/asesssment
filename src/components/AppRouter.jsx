@@ -7,48 +7,33 @@ import {
   useLocation,
 } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
-import ForgotPasswordPage from '../pages/ForgotPasswordPage'
 import Homepage from '../pages/Homepage'
 import Loginpage from '../pages/Loginpage'
 import NotfoundPage from '../pages/NotfoundPage'
 import Profilepage from '../pages/Profile/Profile'
 import EditProfile from '../pages/Profile/Update'
 import Registerpage from '../pages/Registerpage'
-import ResetPasswordPage from '../pages/ResetPasswordPage'
-import Reports from '../pages/Reports'
+import Menu from '../pages/NavPages/User/Menu/Menu'
+import TechnologyStack from '../pages/NavPages/User/TechnologyStack'
+import ContactInformation from '../pages/NavPages/User/ContactInformation'
 import IndexUser from '../pages/Users/IndexUser'
-import IndexPatient from '../pages/Patients/IndexPatient'
-import ImmunizationNutrition from '../pages/LandingPages/ImmunizationNutrition'
-import AnimalBite from '../pages/LandingPages/AnimalBite'
-import CommunicableDiseases from '../pages/LandingPages/CommunicableDiseases'
-import TropicalDiseases from '../pages/LandingPages/TropicalDiseases'
-import IndexAnimalBite from '../pages/AdminPages/AnimalBite/IndexAnimalBite'
-import IndexCommunicable from '../pages/AdminPages/Communicable/IndexCommunicable'
-import IndexImmunization from '../pages/AdminPages/Immunization/IndexImmunization'
-import IndexTropical from '../pages/AdminPages/Tropical/IndexTropical'
+
 export default function AppRouter(props) {
   return (
     <>
       <Router>
         <Switch>
+
           <Route exact path='/' component={Homepage} />
-          <Route exact path='/animal-bite' component={AnimalBite} />
-          <Route exact path='/communicable' component={CommunicableDiseases} />
-          <Route exact path='/immunization' component={ImmunizationNutrition} />
-          <Route exact path='/tropical' component={TropicalDiseases} />
-          <ProtectedRoute exact path='/animal-bite-admin' component={IndexAnimalBite} />
-          <ProtectedRoute exact path='/communicable-admin' component={IndexCommunicable} />
-          <ProtectedRoute exact path='/immunization-admin' component={IndexImmunization} />
-          <ProtectedRoute exact path='/tropical-admin' component={IndexTropical} />
+          <ProtectedRoute exact path='/contact-information' component={ContactInformation} />
+          <ProtectedRoute exact path='/menu' component={Menu} />
+          <ProtectedRoute exact path='/technology-stack' component={TechnologyStack} />
           <ProtectedRoute exact path='/login' component={Loginpage} />
           <ProtectedRoute exact path='/register' component={Registerpage} />
           <ProtectedRoute exact path='/profile' component={Profilepage} />
           <ProtectedRoute exact path='/profile/edit' component={EditProfile} />
-          <ProtectedRoute exact path='/reports' component={Reports} />
           <ProtectedRoute exact path='/users' component={IndexUser} />
-          <ProtectedRoute exact path='/patients' component={IndexPatient} />
-          <ProtectedRoute exact path='/forgot-password' component={ForgotPasswordPage} />
-          <ProtectedRoute exact path='/reset-password' component={ResetPasswordPage} />
+        
           <Route exact path='*' component={NotfoundPage} />
         </Switch>
       </Router>

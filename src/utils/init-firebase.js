@@ -1,20 +1,20 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from 'firebase/auth';
-import { getFirestore,enableIndexedDbPersistence  } from "@firebase/firestore";
+import { getFirestore, enableIndexedDbPersistence } from "@firebase/firestore";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBJCU6OdDSonSIWVSulFtnE5YHC8ocdTks",
-    authDomain: "itelect-402bc.firebaseapp.com",
-    projectId: "itelect-402bc",
-    storageBucket: "itelect-402bc.appspot.com",
-    messagingSenderId: "96721184885",
-    appId: "1:96721184885:web:ad586aa4687f279beff03c",
-    measurementId: "G-9SBGB52THX"
-  };
+    apiKey: "AIzaSyDumL9Ckg9_OjZAE4weFRObW1mRomNtRFw",
+    authDomain: "assessment-d1540.firebaseapp.com",
+    projectId: "assessment-d1540",
+    storageBucket: "assessment-d1540.appspot.com",
+    messagingSenderId: "935217462360",
+    appId: "1:935217462360:web:e0507374681793a81a5e2d",
+    measurementId: "G-Y3FTD0RK9D"
+};
 
 const app = initializeApp(firebaseConfig);
 
- const db = getFirestore(app);
+const db = getFirestore(app);
 
 enableIndexedDbPersistence(db).catch((err) => {
     if (err.code === 'failed-precondition') {
@@ -31,4 +31,4 @@ enableIndexedDbPersistence(db).catch((err) => {
 
 
 export const auth = getAuth(app);
-export {db}
+export { db }

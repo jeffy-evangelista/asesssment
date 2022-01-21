@@ -20,10 +20,9 @@ export default function Registerpage() {
   const history = useHistory()
   const { register } = useAuth()
   const [email, setEmail] = useState('')
-  const [displayName, setName] = useState('')
-  const [districtLegislative, setDistrictLegislative] = useState('')
-  const [districtAdministrative, setDistrictAdministrative] = useState('')
-  const [barangay, setBarangay] = useState('')
+  const [userName, setUserName] = useState('')
+  const [fName, setFName] = useState('');
+  const [lName, setLName] = useState('');
   const [password, setPassword] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
   const toast = useToast()
@@ -56,7 +55,7 @@ export default function Registerpage() {
                 }
                 // your register logic here
                 setIsSubmitting(true)
-                register(email, password,displayName)
+                register(email, password, userName, fName, lName)
                     .then(res => {  })
                     .catch(error => {
                       console.log(error.message)
@@ -86,14 +85,34 @@ export default function Registerpage() {
                     onChange={e => setEmail(e.target.value)}
                 />
               </FormControl>
-              <FormControl id='name' isRequired>
-                <FormLabel>Name</FormLabel>
+              <FormControl id='userName' isRequired>
+                <FormLabel>Username</FormLabel>
                 <Input
-                    name='name'
-                    type='name'
-                    autoComplete='name'
+                    name='userName'
+                    type='userName'
+                    autoComplete='userName'
                     required
-                    onChange={e => setName(e.target.value)}
+                    onChange={e => setUserName(e.target.value)}
+                />
+              </FormControl>
+              <FormControl id='fName' isRequired>
+                <FormLabel>First Name</FormLabel>
+                <Input
+                    name='fName'
+                    type='fName'
+                    autoComplete='fName'
+                    required
+                    onChange={e => setFName(e.target.value)}
+                />
+              </FormControl>
+              <FormControl id='lName' isRequired>
+                <FormLabel>Last Name</FormLabel>
+                <Input
+                    name='lName'
+                    type='lName'
+                    autoComplete='lName'
+                    required
+                    onChange={e => setLName(e.target.value)}
                 />
               </FormControl>
               <FormControl id='password' isRequired>

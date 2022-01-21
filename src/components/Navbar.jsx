@@ -12,13 +12,14 @@ import {
   Button,
   MenuList,
   MenuItem,
-  Link
+  Link, Image
 } from '@chakra-ui/react'
 import React from 'react'
 import { FaMoon, FaSun } from 'react-icons/fa'
 import { useAuth } from '../contexts/AuthContext'
 import Navlink from './Navlink'
 import { ChevronDownIcon } from '@chakra-ui/icons'
+import logo from '../assets/logo.png'
 
 export default function Navbar() {
   const { toggleColorMode } = useColorMode()
@@ -38,28 +39,30 @@ export default function Navbar() {
         mx='auto'
         spacing={4}
       >
-        <Navlink to='/' name='City Health Office' size='lg' />
-        
-          {/* <Heading color="blue.500">
-            City Health Office
-          </Heading> */}
-        
+
+        <Link to="/">
+          <Image
+            maxHeight="50px"
+            src={logo}
+          />
+        </Link>
+        <Navlink to='/' name='Mangan da Kita' size='lg' />
+
         <Spacer />
 
         {!currentUser && <Navlink to='/login' name='Login' />}
         {!currentUser && <Navlink to='/register' name='Register' />}
         {currentUser &&
           <HStack>
-
-            <Navlink to='/users' name='Users' />
-            <Navlink to='/reports' name='Reports' />
-            <Navlink to='/patients' name='Patients' />
-            <Spacer/>
+            <Navlink to='/menu' name='Menu' />
+            <Navlink to='/contact-information' name='Contact Information' />
+            <Navlink to='/technology-stack' name='Technology Stack' />
+            <Spacer />
             <Menu>
               <MenuButton
                 as={Button}
                 colorScheme="blue"
-                
+
                 rightIcon={<ChevronDownIcon />}
               >
                 Account
@@ -88,28 +91,10 @@ export default function Navbar() {
       <HStack
         justifyContent='center'
         maxW='container.xl'
-        mx='auto'ww
+        mx='auto' ww
         spacing={4}
-        // mt={3}
+      // mt={3}
       >
-        {/* {currentUser &&
-          <>
-            <Navlink to='/animal-bite-admin' name='Animal Bite Treatment Admin' />
-            <Navlink to='/communicable-admin' name='Communicable Diseases Admin' />
-            <Navlink to='/immunization-admin' name='Immunization and Nutrition Admin' />
-            <Navlink to='/tropical-admin' name='Tropical Diseases Admin' />
-          </>
-        } */}
-        {
-          !currentUser &&
-          <>
-            <Navlink to='/animal-bite' name='Animal Bite Treatment' />
-            <Navlink to='/communicable' name='Communicable Diseases' />
-            <Navlink to='/immunization' name='Immunization and Nutrition' />
-            <Navlink to='/tropical' name='Tropical Diseasesm' />
-          </>
-        }
-
       </HStack>
     </Box>
   )

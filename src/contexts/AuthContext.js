@@ -19,8 +19,6 @@ const AuthContext = createContext({
   login: () => Promise,
   register: () => Promise,
   logout: () => Promise,
-  forgotPassword: () => Promise,
-  resetPassword: () => Promise,
   manualLogin: () => Promise
 
 
@@ -49,17 +47,16 @@ export default function AuthContextProvider({ children }) {
   }
 
 
-  function register(email, password,displayName,barangay,districtAdministrative,districtLegislative) {
-    return createUserWithEmailAndPassword(auth, email, password,displayName,barangay,districtAdministrative,districtLegislative)
+  function register(email, password,userName, fName, lName) {
+    return createUserWithEmailAndPassword(auth, email, password,userName, fName, lName)
         .then(async cred => {
           const usersCollectionRef = doc(db, 'users', cred.user.uid);
           await setDoc(usersCollectionRef, {
             email: email,
             id: cred.user.uid,
-            displayName: displayName,
-            districtAdministrative: districtAdministrative,
-            districtLegislative: districtLegislative,
-            barangay: barangay,
+            fName: fName,
+            lName: lName,
+            userName: userName,
             isAdmin: false,
           });
         })
@@ -68,15 +65,6 @@ export default function AuthContextProvider({ children }) {
 
 
 
-  function forgotPassword(email) {
-    return sendPasswordResetEmail(auth, email, {
-      url: `http://localhost:3000/login`,
-    })
-  }
-
-  function resetPassword(oobCode, newPassword) {
-    return confirmPasswordReset(auth, oobCode, newPassword)
-  }
 
   function logout() {
     return signOut(auth)
@@ -95,7 +83,7 @@ export default function AuthContextProvider({ children }) {
           await setDoc(userRef, {
             email: values.email,
             id: cred.user.uid,
-            displayName: values.displayName,
+            userName: values.userName,
             districtAdministrative:values.administrativeDistrict,
             districtLegislative:values.legislativeDistrict,
             barangay:values.barangay,
@@ -110,8 +98,6 @@ export default function AuthContextProvider({ children }) {
     login,
     register,
     logout,
-    forgotPassword,
-    resetPassword,
     manualLogin,
 
 
