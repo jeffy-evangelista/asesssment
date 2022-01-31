@@ -1,16 +1,37 @@
 import {
   Heading,
-  AspectRatio
+  AspectRatio,
+  Box, HStack, Link,
+  Text
 } from '@chakra-ui/react'
 import React from 'react'
 import { Layout } from '../../../components/Layout'
-
 export default function ContactInformation() {
   return (
     <Layout>
       <Heading mb={5}>
         CONTACT INFORMATION
       </Heading>
+
+      <Box  marginY={5} p={6}>
+        <HStack>
+          <Text>Address:</Text>
+          <Text>
+            Cabantian, Forestal Rd, Davao City, Davao del Sur, Philippines</Text>
+        </HStack>
+        <HStack>
+          <Text>Email:</Text>
+          <Link color='blue' href='https://mail.google.com/mail/u/0/#inbox?compose=new' isExternal> mangandakita@gmail.com</Link>
+          <Text></Text>
+        </HStack>
+        <HStack>
+          <Text>Contact Number:</Text>
+
+          <Text>09764832898</Text>
+        </HStack>
+
+
+      </Box>
       <div className="mapouter">
         <div className="gmap_canvas">
           <iframe width={1280} height={720} id="gmap_canvas" src="https://maps.google.com/maps?q=Metro%20Davao&t=&z=13&ie=UTF8&iwloc=&output=embed" frameBorder={0} scrolling="no" marginHeight={0} marginWidth={0} />

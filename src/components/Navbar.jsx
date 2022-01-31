@@ -40,51 +40,52 @@ export default function Navbar() {
         spacing={4}
       >
 
-        <Link to="/">
-          <Image
-            maxHeight="50px"
-            src={logo}
-          />
-        </Link>
-        <Navlink to='/' name='Mangan da Kita' size='lg' />
 
+        {!currentUser &&
+
+          <HStack>
+            <Link to="/">
+              <Image
+                maxHeight="50px"
+                src={logo}
+              />
+            </Link>
+            <Navlink to='/' name='Mangan da Kita' size='lg' />
+          </HStack>
+        }
         <Spacer />
-
-        {!currentUser && <Navlink to='/login' name='Login' />}
-        {!currentUser && <Navlink to='/register' name='Register' />}
-        {currentUser &&
+        {!currentUser &&
           <HStack>
             <Navlink to='/menu' name='Menu' />
             <Navlink to='/contact-information' name='Contact Information' />
             <Navlink to='/technology-stack' name='Technology Stack' />
+          </HStack>
+        }
+        <Spacer />
+        {!currentUser &&
+          <HStack>
+            <Navlink to='/login' name='Login' />
+            <Navlink to='/register' name='Register' />
+          </HStack>
+        }
+        {currentUser &&
+          <HStack>
+            <Navlink to='/order' name='Order' />
+            <Navlink to='/profile' name='Profile' />
             <Spacer />
-            <Menu>
-              <MenuButton
-                as={Button}
-                colorScheme="blue"
-
-                rightIcon={<ChevronDownIcon />}
+            <Link
+              to='/logout'
+              onClick={async e => {
+                e.preventDefault()
+                await logout()
+              }}
+            >
+              <Button
+                colorScheme='blue'
               >
-                Account
-
-              </MenuButton>
-              <MenuList>
-                <Link to='/profile'>
-                  <MenuItem>
-                    Profile
-                  </MenuItem>
-                </Link>
-                <Link to='/logout' name='Logout' onClick={async e => {
-                  e.preventDefault()
-                  await logout()
-                }}
-                >
-                  <MenuItem>
-                    Logout
-                  </MenuItem>
-                </Link>
-              </MenuList>
-            </Menu>
+                Logout
+              </Button>
+            </Link>
           </HStack>
         }
       </HStack>

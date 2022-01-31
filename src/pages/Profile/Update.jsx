@@ -1,12 +1,12 @@
 import React from 'react'
 import {
-    Drawer,
-    DrawerBody,
-    DrawerFooter,
-    DrawerHeader,
-    DrawerOverlay,
-    DrawerContent,
-    DrawerCloseButton,
+    Modal,
+    ModalBody,
+    ModalFooter,
+    ModalHeader,
+    ModalOverlay,
+    ModalContent,
+    ModalCloseButton,
     useDisclosure,
     Button,
     Input,
@@ -16,26 +16,26 @@ import {
     Stack,
     useColorModeValue,
 } from '@chakra-ui/react'
-import {Form,Field,Formik} from "formik";
+import { Form, Field, Formik } from "formik";
 import { useToast } from '@chakra-ui/react'
-import { doc, updateDoc} from "firebase/firestore";
-import {db} from "../../utils/init-firebase";
+import { doc, updateDoc } from "firebase/firestore";
+import { db } from "../../utils/init-firebase";
 import Select from "../components/Fields/Select";
 
 
 
 
-export default  function Update ({id}) {
+export default function Update({ id }) {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const btnRef = React.useRef()
     const toast = useToast()
     const firstField = React.useRef()
 
-    async  function updateUsers2(values) {
+    async function updateUsers2(values) {
 
         const userRef = doc(db, 'users', id.id);
-        await  updateDoc(userRef,{
-         ...values
+        await updateDoc(userRef, {
+            ...values
 
         })
     }
@@ -43,103 +43,98 @@ export default  function Update ({id}) {
 
     return (
         <>
-
             <Button
-                w={'full'}
-                mt={8}
-                bg={useColorModeValue('#151f21', 'gray.900')}
-                color={'white'}
-                rounded={'md'} ref={btnRef} colorScheme='black' onClick={onOpen}
-                _hover={{
-                    transform: 'translateY(-2px)',
-                    boxShadow: 'lg',
-                }}
+                colorScheme='green'
+                ref={btnRef}
+                onClick={onOpen}
             >
-                Update User
-
+                Update Profile
             </Button>
 
 
-            <Drawer
+            <Modal
                 isOpen={isOpen}
                 placement='right'
                 initialFocusRef={firstField}
                 onClose={onClose}
             >
-                <DrawerOverlay />
-                <DrawerContent>
-                    <DrawerCloseButton />
-                    <DrawerHeader borderBottomWidth='1px'>
-                        Update Social Worker Account
-                    </DrawerHeader>
-
-                    <DrawerBody>
-                        <Stack spacing='24px'>
-                            <Formik
-                                initialValues={{
-                                    ...id
-                                }}
-                                onSubmit={(values, actions) => {
-                                    updateUsers2(values)
-                                        .then(() => {
-                                            toast({
-                                                title: 'Success',
-                                                description: 'User Profile Updated Successfully',
-                                                status: 'info',
-                                                duration: 9000,
-                                                isClosable: true,
-                                            })
-                                            actions.setSubmitting(false)
-                                            onClose()
-                                        })
-
-                                }}
-                            >
-                                {(props) => (
-                                    <Form>
-                                        <Field name='displayName' >
+                <ModalOverlay />
+                <ModalContent>
+                    <ModalCloseButton />
+                    <ModalHeader borderBottomWidth='1px'>
+                        Update Profile
+                    </ModalHeader>
+                    <Formik
+                        initialValues={{
+                            ...id
+                        }}
+                        onSubmit={(values, actions) => {
+                            updateUsers2(values)
+                                .then(() => {
+                                    toast({
+                                        title: 'Success',
+                                        description: 'User Profile Updated Successfully',
+                                        status: 'info',
+                                        duration: 9000,
+                                        isClosable: true,
+                                    })
+                                    actions.setSubmitting(false)
+                                    onClose()
+                                })
+                        }}
+                    >
+                        {(props) => (
+                            <Form>
+                                <ModalBody>
+                                    <Stack spacing='24px'>
+                                    <Field name='userName' >
                                             {({ field, form }) => (
-                                                <FormControl isInvalid={form.errors.displayName && form.touched.displayName}>
-                                                    <FormLabel htmlFor='displayName'>Display Name</FormLabel>
-                                                    <Input {...field} id='displayName' placeholder='displayName' />
-                                                    <FormErrorMessage>{form.errors.displayName}</FormErrorMessage>
+                                                <FormControl isInvalid={form.errors.userName && form.touched.userName}>
+                                                    <FormLabel htmlFor='userName'>First Name</FormLabel>
+                                                    <Input {...field} id='userName'  />
+                                                    <FormErrorMessage>{form.errors.userName}</FormErrorMessage>
                                                 </FormControl>
                                             )}
                                         </Field>
-
-                                        <Field name='email' >
+                                        <Field name='fName' >
                                             {({ field, form }) => (
-                                                <FormControl isInvalid={form.errors.email && form.touched.email}>
-                                                    <FormLabel htmlFor='email'>Email Address</FormLabel>
-                                                    <Input {...field} id='email' placeholder='email' isDisabled />
-                                                    <FormErrorMessage>{form.errors.email}</FormErrorMessage>
+                                                <FormControl isInvalid={form.errors.fName && form.touched.fName}>
+                                                    <FormLabel htmlFor='fName'>First Name</FormLabel>
+                                                    <Input {...field} id='fName'  />
+                                                    <FormErrorMessage>{form.errors.fName}</FormErrorMessage>
                                                 </FormControl>
                                             )}
                                         </Field>
-                                   
-                                        <Button
-                                            mt={4}
-                                            colorScheme='teal'
-                                            isLoading={props.isSubmitting}
-                                            type='submit'
-                                        >
-                                            Submit
-                                        </Button>
-                                    </Form>
-                                )}
-                            </Formik>
-                        </Stack>
-                    </DrawerBody>
-
-                    <DrawerFooter borderTopWidth='1px'>
-                        <Button variant='outline' mr={3} onClick={onClose}>
-                            Cancel
-                        </Button>
-
-
-                    </DrawerFooter>
-                </DrawerContent>
-            </Drawer>
+                                        
+                                        <Field name='lName' >
+                                            {({ field, form }) => (
+                                                <FormControl isInvalid={form.errors.lName && form.touched.lName}>
+                                                    <FormLabel htmlFor='lName'>First Name</FormLabel>
+                                                    <Input {...field} id='lName'  />
+                                                    <FormErrorMessage>{form.errors.lName}</FormErrorMessage>
+                                                </FormControl>
+                                            )}
+                                        </Field>
+                                    </Stack>
+                                </ModalBody>
+                                <ModalFooter borderTopWidth='1px'>
+                                    <Button
+                                        isLoading={props.isSubmitting}
+                                        type='submit'
+                                        colorScheme='blue'
+                                        mr={3}
+                                    >
+                                        Submit
+                                    </Button>
+                                    <Button variant='outline' mr={3} onClick={onClose}>
+                                        Cancel
+                                    </Button>
+                                </ModalFooter>
+                            </Form>
+                        )}
+                    </Formik>
+                </ModalContent>
+            </Modal>
         </>
     )
 }
