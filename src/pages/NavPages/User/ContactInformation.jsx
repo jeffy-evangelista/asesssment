@@ -15,9 +15,8 @@ export default function ContactInformation() {
 
       <Box  marginY={5} p={6}>
         <HStack>
-          <Text>Address:</Text>
-          <Text>
-            Cabantian, Forestal Rd, Davao City, Davao del Sur, Philippines</Text>
+          <Text>Contact Number:</Text>
+          <Text>09764832898</Text>
         </HStack>
         <HStack>
           <Text>Email:</Text>
@@ -25,16 +24,14 @@ export default function ContactInformation() {
           <Text></Text>
         </HStack>
         <HStack>
-          <Text>Contact Number:</Text>
-
-          <Text>09764832898</Text>
+          <Text>Address:</Text>
+          <Text>
+            Cabantian, Forestal Rd, Davao City, Davao del Sur, Philippines</Text>
         </HStack>
-
-
       </Box>
       <div className="mapouter">
         <div className="gmap_canvas">
-          <iframe width={1280} height={720} id="gmap_canvas" src="https://maps.google.com/maps?q=Metro%20Davao&t=&z=13&ie=UTF8&iwloc=&output=embed" frameBorder={0} scrolling="no" marginHeight={0} marginWidth={0} />
+          <iframe width={1280} height={720} id="gmap_canvas" src="https://maps.google.com/maps?q=Cabantian,%20Forestal%20Rd,%20Davao%20City,%20Davao%20del%20Sur,%20Philippines&t=&z=13&ie=UTF8&iwloc=&output=embed" frameBorder={0} scrolling="no" marginHeight={0} marginWidth={0} />
           <a href="https://www.embedgooglemap.net/blog/divi-discount-code-elegant-themes-coupon/" />
           <br />
           <style dangerouslySetInnerHTML={{ __html: ".mapouter{position:relative;text-align:right;height:720px;width:1280px;}" }} />
@@ -43,6 +40,8 @@ export default function ContactInformation() {
           <style dangerouslySetInnerHTML={{ __html: ".gmap_canvas {overflow:hidden;background:none!important;height:720px;width:1280px;}" }} />
         </div>
       </div>
+
+    
     </Layout>
 
   )

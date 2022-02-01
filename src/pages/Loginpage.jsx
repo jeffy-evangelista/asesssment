@@ -15,8 +15,7 @@ import { Card } from '../components/Card'
 import { Layout } from '../components/Layout'
 import { useAuth } from '../contexts/AuthContext'
 import useMounted from '../hooks/useMounted'
-import { FaGoogle } from 'react-icons/fa'
-import DividerWithText from '../components/DividerWithText'
+import { ExternalLinkIcon } from '@chakra-ui/icons'
 
 export default function Loginpage() {
   const history = useHistory()
@@ -123,33 +122,14 @@ export default function Loginpage() {
             >
               Sign in
             </Button>
+            <Link href='https://assessment-beta.vercel.app/' isExternal>
+              Login as Admin
+            </Link>
+            <Link href='https://chakra-ui.com' isExternal>
+              Chakra Design system <ExternalLinkIcon mx='2px' />
+            </Link>
           </Stack>
         </chakra.form>
-        {/* <HStack justifyContent='space-between' my={4}>
-          <Button variant='link'>
-            <Link to='/forgot-password'>Forgot password?</Link>
-          </Button>
-          <Button variant='link' onClick={() => history.push('/register')}>
-            Register
-          </Button>
-        </HStack>
-        <DividerWithText my={6}>OR</DividerWithText>
-        <Button
-          variant='outline'
-          isFullWidth
-          colorScheme='red'
-          leftIcon={<FaGoogle />}
-          onClick={() =>
-            signInWithGoogle()
-              .then(user => {
-                handleRedirectToOrBack()
-                console.log(user)
-              })
-              .catch(e => console.log(e.message))
-          }
-        >
-          Sign in with Google
-        </Button> */}
       </Card>
     </Layout>
   )
