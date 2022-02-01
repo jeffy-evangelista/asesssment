@@ -31,13 +31,12 @@ export default function AppRouter(props) {
           <Route exact path='/contact-information' component={ContactInformation} />
           <Route exact path='/menu' component={Menu} />
           <Route exact path='/technology-stack' component={TechnologyStack} />
-          <Route exact path='/order' component={Order} />
+          <ProtectedRoute exact path='/list-of-orders' component={Order} />
           <ProtectedRoute exact path='/login' component={Loginpage} />
           <ProtectedRoute exact path='/register' component={Registerpage} />
           <ProtectedRoute exact path='/profile' component={Profilepage} />
           <ProtectedRoute exact path='/profile/edit' component={EditProfile} />
           <ProtectedRoute exact path='/users' component={IndexUser} />
-        
           <Route exact path='*' component={NotfoundPage} />
         </Switch>
       </Router>
@@ -57,7 +56,7 @@ function ProtectedRoute(props) {
     path === '/reset-password'
   ) {
     return currentUser ? (
-      <Redirect to={location.state?.from ?? '/order'} />
+      <Redirect to={location.state?.from ?? '/list-of-orders'} />
     ) : (
       <Route {...props} />
     )

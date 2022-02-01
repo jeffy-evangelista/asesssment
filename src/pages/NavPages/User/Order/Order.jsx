@@ -57,74 +57,73 @@ export default function Order() {
       },
       {
         name: "Actions",
-        cell: (works) => <HStack>
-          <PayThruGCash
-          // works={works}
-          />
-          <SendProofOfPayment
-          // works={works}
-          />
-
-        </HStack>
+        cell: (works) =>
+            <HStack>
+              <PayThruGCash
+                works={works}
+              />
+              <SendProofOfPayment
+                works={works}
+              />
+            </HStack>
       },
-    ],
-    []
-  );
+            ],
+            []
+            );
 
-  return (
-    <Layout>
-      <Heading mb={5}>
-        YOUR ORDERS
-      </Heading>
+            return (
+            <Layout>
+              <Heading mb={5}>
+                LIST OF ORDERS
+              </Heading>
 
 
-      <Box p={5} borderWidth="1px">
-        <Flex pb={5}>
-          <PlaceOrder />
-          <Spacer />
-          <HStack>
-            <Input
-              type="text"
-              placeholder="Search List"
-              onChange={(e) => setFilterText(e.target.value)}
-            />
+              <Box p={5} borderWidth="1px">
+                <Flex pb={5}>
+                  <Spacer />
+                  <HStack>
+                    <Input
+                      type="text"
+                      placeholder="Search List"
+                      onChange={(e) => setFilterText(e.target.value)}
+                    />
 
-          </HStack>
-        </Flex>
-        <DataTable
-          highlightOnHover
-          pagination
-          direction="ltr"
-          responsive
-          striped
-          columns={columns}
-          data={targetClient.filter((value) => {
-            if (filterText === "") {
-              return value;
-            } else if (
-              value.customerName
-                .toLowerCase()
-                .includes(filterText.toLowerCase())
-            ) {
-              return value;
-            } else if (
-              value.orderStatus
-                .toLowerCase()
-                .includes(filterText.toLowerCase())
-            ) {
-              return value;
-            } else if (
-              value.orderType
-                .toLowerCase()
-                .includes(filterText.toLowerCase())
-            ) {
-              return value;
-            }
-          })}
+                  </HStack>
+                </Flex>
+                <DataTable
+                  highlightOnHover
+                  pagination
+                  direction="ltr"
+                  responsive
+                  striped
+                  columns={columns}
+                  data={targetClient.filter((value) => {
+                    if (filterText === "") {
+                      return value;
+                    } else if (
+                      value.customerName
+                        .toLowerCase()
+                        .includes(filterText.toLowerCase())
+                    ) {
+                      return value;
+                    } else if (
+                      value.orderStatus
+                        .toLowerCase()
+                        .includes(filterText.toLowerCase())
+                    ) {
+                      return value;
+                    } else if (
+                      value.orderType
+                        .toLowerCase()
+                        .includes(filterText.toLowerCase())
+                    ) {
+                      return value;
+                    }
+                  })}
 
-        />
-      </Box>
-    </Layout >
+                />
+              </Box>
+            </Layout >
 
-  )
+            )
 }

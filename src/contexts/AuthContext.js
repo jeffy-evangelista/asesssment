@@ -50,7 +50,7 @@ export default function AuthContextProvider({ children }) {
   function register(email, password,userName, fName, lName) {
     return createUserWithEmailAndPassword(auth, email, password,userName, fName, lName)
         .then(async cred => {
-          const usersCollectionRef = doc(db, 'users', cred.user.uid);
+          const usersCollectionRef = doc(db, 'admins', cred.user.uid);
           await setDoc(usersCollectionRef, {
             email: email,
             id: cred.user.uid,
@@ -79,7 +79,7 @@ export default function AuthContextProvider({ children }) {
      const password = "123456"
     return createUserWithEmailAndPassword(auth, values.email, password)
         .then(async cred => {
-          const userRef = doc(db, 'users', cred.user.uid);
+          const userRef = doc(db, 'admins', cred.user.uid);
           await setDoc(userRef, {
             email: values.email,
             id: cred.user.uid,

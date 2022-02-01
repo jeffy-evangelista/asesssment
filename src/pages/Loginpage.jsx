@@ -124,7 +124,7 @@ export default function Loginpage() {
               Sign in
             </Button>
             <Link href='https://assessment-beta.vercel.app/'>
-              Login as Admin
+              Login as User
             </Link>
           </Stack>
         </chakra.form>

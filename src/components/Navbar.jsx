@@ -70,7 +70,7 @@ export default function Navbar() {
         }
         {currentUser &&
           <HStack>
-            <Navlink to='/order' name='Order' />
+            <Navlink to='/list-of-orders' name='List of Orders' />
             <Navlink to='/profile' name='Profile' />
             <Spacer />
             <Link

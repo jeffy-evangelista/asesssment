@@ -17,7 +17,7 @@ export default function Profile() {
 
   const fetchData = () => {
     const userData = []
-    const q = query(collection(db, "users"), where("email", "==", currentUser.email))
+    const q = query(collection(db, "admins"), where("email", "==", currentUser.email))
     onSnapshot(q, (snapshot) => {
       snapshot.forEach((doc) => {
         userData.push(doc.data())
