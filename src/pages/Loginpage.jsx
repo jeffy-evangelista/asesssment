@@ -123,7 +123,7 @@ export default function Loginpage() {
             >
               Sign in
             </Button>
-            <Link href='https://assessment-beta.vercel.app/'>
+            <Link href='https://asessment.vercel.app/login'>
               Login as User
             </Link>
           </Stack>
