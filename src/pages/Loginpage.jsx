@@ -6,11 +6,12 @@ import {
   Heading,
   HStack,
   Input,
+  Link,
   Stack,
   useToast,
 } from '@chakra-ui/react'
 import React, { useState } from 'react'
-import { Link, useHistory, useLocation } from 'react-router-dom'
+import { useHistory, useLocation } from 'react-router-dom'
 import { Card } from '../components/Card'
 import { Layout } from '../components/Layout'
 import { useAuth } from '../contexts/AuthContext'
@@ -122,15 +123,13 @@ export default function Loginpage() {
             >
               Sign in
             </Button>
-            <Link href='https://assessment-beta.vercel.app/' isExternal>
+            <Link href='https://assessment-beta.vercel.app/'>
               Login as Admin
-            </Link>
-            <Link href='https://chakra-ui.com' isExternal>
-              Chakra Design system <ExternalLinkIcon mx='2px' />
             </Link>
           </Stack>
         </chakra.form>
       </Card>
+      
     </Layout>
   )
 }

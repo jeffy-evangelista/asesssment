@@ -40,8 +40,6 @@ export default function ContactInformation() {
           <style dangerouslySetInnerHTML={{ __html: ".gmap_canvas {overflow:hidden;background:none!important;height:720px;width:1280px;}" }} />
         </div>
       </div>
-
-    
     </Layout>
 
   )
