@@ -40,7 +40,7 @@ export default function Navbar() {
         spacing={4}
       >
 
-
+{/* 
         {!currentUser &&
 
           <HStack>
@@ -60,7 +60,7 @@ export default function Navbar() {
             <Navlink to='/contact-information' name='Contact Information' />
             <Navlink to='/technology-stack' name='Technology Stack' />
           </HStack>
-        }
+        } */}
         <Spacer />
         {!currentUser &&
           <HStack>
